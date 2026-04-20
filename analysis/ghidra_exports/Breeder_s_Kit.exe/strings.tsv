@@ -1,0 +1,207 @@
+address	length	value
+00400000	2	MZ
+00400080	2	PE
+00400178	5	.text
+004001a0	6	.rdata
+004001c8	5	.data
+004001f0	6	.idata
+00400218	5	.rsrc
+00400240	6	.reloc
+00412060	7	CSprite
+00412090	19	Failed to read file
+004120a4	28	256 colour bit map required.
+004120c4	20	Failed to read file.
+004120dc	20	Failed to open file.
+004120f4	6	CGauge
+00412118	25	Can not create data file.
+00412134	9	Gauge.spr
+00412140	9	CSexSheet
+00412168	7	Sex.bmp
+00412170	22	Millennium Interactive
+00412188	23	Creatures\\Breeder's Kit
+004121a4	5	Aphro
+004121ac	8	Shop.bmp
+004121b8	14	dde: getb monk
+004121c8	14	dde: getb cnam
+004121dc	14	Please wait...
+004121ec	32	Could not register OLE factories
+00412210	11	%s|%s|%s|%d
+0041221c	7	Sex.OLE
+00412224	13	Breeder's Kit
+00412234	20	Pregnancy monitoring
+0041224c	6	Tool%d
+00412254	9	Creatures
+00412260	13	MS Sans Serif
+00412270	9	CShopItem
+00412298	10	CPropSheet
+004122c8	6	On Top
+004122d0	8	Location
+004122dc	22	inst,app: quit %d,endm
+004122fc	19	There is no subject
+00412310	14	dde: putv ownr
+00412320	36	Can not communicate with application
+00412348	5	CItem
+00412368	16	CRegistryHandler
+004123a0	9	SOFTWARE\\
+004123ac	14	CFertilityPage
+004123d8	99	inst,dde: putv chem %d,dde: putv chem %d,dde: putv chem %d,dde: putv chem %d,dde: putv chem %d,endm
+0041243c	14	dde: putv gend
+0041244c	23	Can not open data file.
+00412464	11	palette.dta
+00412470	17	Palette Directory
+00412484	8	Male.bmp
+00412490	13	Pregnancy.spr
+004124a0	13	Fertility.spr
+004124b0	6	Health
+004124bc	11	Communicate
+004124c8	8	CToolOLE
+004124f4	14	CAddObjectPage
+00412524	10	Addbgd.bmp
+00412530	10	CCoverPage
+00412590	15	Sounds\\####.wav
+004125a0	17	Not enough memory
+004125b4	15	NO aggregation?
+004125c4	17	Invalid parameter
+004125d8	25	Wave format not supported
+004125f4	25	Resources already in use?
+00412640	7	CDIBPal
+00412660	10	CDIBStatic
+00412688	13	CPhasedSprite
+004126b0	9	%s_%d.bmp
+004126bc	14	CPregnancyPage
+004126f0	45	inst,dde: putv chem 66,dde: putv chem 59,endm
+00412728	10	Preg%d.spr
+00413946	17	DirectSoundCreate
+00413958	10	DSOUND.dll
+00413964	9	MFC40.DLL
+00413970	17	__CxxFrameHandler
+00413984	6	strchr
+0041398e	7	_mbscmp
+00413998	7	memmove
+004139a0	12	MSVCRT40.dll
+004139b0	11	__dllonexit
+004139be	7	_onexit
+004139c8	16	_except_handler3
+004139dc	17	?terminate@@YAXXZ
+004139f0	5	_exit
+004139f8	11	_XcptFilter
+00413a06	4	exit
+00413a0e	11	__p__acmdln
+00413a1c	9	_initterm
+00413a28	13	__getmainargs
+00413a38	16	__setusermatherr
+00413a4c	12	_adjust_fdiv
+00413a5c	12	__p__commode
+00413a6c	10	__p__fmode
+00413a7a	14	__set_app_type
+00413a8c	10	_controlfp
+00413a9a	5	Sleep
+00413aa2	10	GetVersion
+00413ab0	16	GetModuleHandleA
+00413ac4	15	GetStartupInfoA
+00413ad4	12	KERNEL32.dll
+00413ae4	7	SetRect
+00413aee	9	UnionRect
+00413afa	10	OffsetRect
+00413b08	12	EnableWindow
+00413b18	8	SetTimer
+00413b24	9	KillTimer
+00413b30	8	IsWindow
+00413b3c	8	IsIconic
+00413b48	9	wsprintfA
+00413b54	9	LoadIconA
+00413b60	12	SendMessageA
+00413b70	16	GetSystemMetrics
+00413b84	13	GetWindowRect
+00413b94	12	PostMessageA
+00413ba4	14	InvalidateRect
+00413bb6	8	CopyRect
+00413bc2	13	GetClientRect
+00413bd2	9	GetParent
+00413bde	13	IntersectRect
+00413bec	10	USER32.dll
+00413bfa	11	CreateFontA
+00413c08	13	CreatePalette
+00413c18	12	DeleteObject
+00413c28	14	RealizePalette
+00413c3a	16	CreateDIBSection
+00413c4e	8	DeleteDC
+00413c5a	12	SelectObject
+00413c6a	6	BitBlt
+00413c74	18	CreateCompatibleDC
+00413c88	9	GDI32.dll
+00413c94	11	RegCloseKey
+00413ca2	15	RegCreateKeyExA
+00413cb4	16	RegQueryValueExA
+00413cc8	14	RegSetValueExA
+00413cd8	12	ADVAPI32.dll
+00413ce6	12	OLEAUT32.dll
+00413cf6	8	_setmbcp
+004148fa	5	HELPU
+00414906	5	HELPF
+00414912	5	HELPD
+0041491e	6	CLOSEU
+0041492c	6	CLOSEF
+0041493a	6	CLOSED
+00414948	5	NEXTD
+00414954	5	NEXTF
+00414960	5	NEXTU
+0041496c	5	PREVD
+00414978	5	PREVF
+00414984	5	PREVU
+00414990	6	EARTHD
+0041499e	6	EARTHU
+004149ac	6	EARTHF
+004149c6	15	VS_VERSION_INFO
+00414a22	14	StringFileInfo
+00414a46	8	040904B0
+00414a5e	11	CompanyName
+00414a7e	15	FileDescription
+00414aa0	24	OLE TEST MFC Application
+00414ada	11	FileVersion
+00414af4	10	1, 0, 0, 1
+00414b12	12	InternalName
+00414b2c	8	OLE TEST
+00414b46	14	LegalCopyright
+00414b64	16	Copyright © 1996
+00414b8e	15	LegalTrademarks
+00414bb6	16	OriginalFilename
+00414bd8	12	OLE TEST.EXE
+00414bfa	11	ProductName
+00414c14	20	OLE TEST Application
+00414c46	14	ProductVersion
+00414c64	10	1, 0, 0, 1
+00414c82	11	VarFileInfo
+00414ca2	11	Translation
+0041c9e4	0	
+0041c9e6	0	
+0041c9e8	0	
+0041c9ea	0	
+0041c9ec	85	OLE initialization failed.  Make sure that the OLE libraries are the correct version.
+0041ca98	9	Oestrogen
+0041caac	12	Progesterone
+0041cac6	12	Testosterone
+0041cae0	6	Health
+0041caee	9	Sex Drive
+0041cb02	9	Fertility
+0041cb16	16	Breeder's Kit...
+0041cb38	16	Breeder's Kit - 
+0041cb5a	10	 Paused - 
+0041cb70	0	
+0041cb72	0	
+0041cb74	0	
+0041cb76	0	
+0041cb78	0	
+0041cb7a	32	Keep window always on top\nOn top
+0041cbbc	0	
+0041cbbe	0	
+0041cbc0	0	
+0041cbc2	0	
+0041cbc4	0	
+0041cbc6	0	
+0041cbc8	0	
+0041cbca	0	
+0041cbcc	0	
+0041cbce	0	
+0041cbd0	0	
+0041cbd2	0	

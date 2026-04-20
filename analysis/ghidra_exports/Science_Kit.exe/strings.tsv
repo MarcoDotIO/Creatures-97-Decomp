@@ -1,0 +1,227 @@
+address	length	value
+00400000	2	MZ
+00400080	2	PE
+00400178	5	.text
+004001a0	6	.rdata
+004001c8	5	.data
+004001f0	6	.idata
+00400218	5	.rsrc
+00400240	6	.reloc
+00415060	13	CDecisionPage
+00415088	25	Can not create data file.
+004150b4	12	addv var0 1,
+004150c4	19	dde: cell 6 var0 0,
+004150d9	7	eps 16,
+004150e4	12	setv var0 0,
+004150f4	18	dde: putv chem 55,
+00415108	18	dde: putv chem 54,
+0041511c	15	dde: putv _it_,
+0041512c	5	inst,
+0041514c	13	CScienceSheet
+00415178	11	Science.bmp
+00415184	22	Millennium Interactive
+0041519c	21	Creatures\\Science Kit
+004151b8	7	CSprite
+004151d8	19	Failed to read file
+004151ec	28	256 colour bit map required.
+0041520c	20	Failed to read file.
+00415224	20	Failed to open file.
+0041523c	10	CCoverPage
+00415264	14	Please wait...
+00415274	32	Could not register OLE factories
+00415298	11	%s|%s|%s|%d
+004152a4	11	Science.OLE
+004152b0	11	Science Kit
+004152bc	19	Advanced monitoring
+004152d0	6	Tool%d
+004152d8	9	Creatures
+004152e4	13	MS Sans Serif
+004152f4	16	CRegistryHandler
+00415328	9	SOFTWARE\\
+00415338	15	Sounds\\####.wav
+00415348	17	Not enough memory
+0041535c	15	NO aggregation?
+0041536c	17	Invalid parameter
+00415380	25	Wave format not supported
+0041539c	25	Resources already in use?
+004153e8	11	CInjectPage
+00415410	8	Dose.bmp
+0041541c	8	Chemical
+00415428	23	Can not open data file.
+00415440	14	injections.str
+00415450	6	Cheese
+00415458	10	dosage.spr
+00415464	11	chem %d %d,
+00415470	11	sdosage.spr
+0041547c	11	pdosage.spr
+00415488	11	cdosage.spr
+00415494	11	bdosage.spr
+004154a0	11	odosage.spr
+004154ac	11	ydosage.spr
+004154b8	10	CPropSheet
+004154e8	6	On Top
+004154f0	8	Location
+004154fc	22	inst,app: quit %d,endm
+0041551c	19	There is no subject
+00415530	14	dde: putv ownr
+00415540	14	dde: getb cnam
+00415554	10	Privileges
+00415568	36	Can not communicate with application
+00415590	12	CScannerPage
+004155b8	11	Scanner.bmp
+004155c4	13	setv var0 %d,
+004155d4	15	CChromosonePage
+00415604	12	Pigmentation
+00415614	9	Instincts
+00415630	10	Appearance
+0041563c	6	Unused
+00415644	20	Chemical Definitions
+0041565c	18	Chemical Reactions
+00415670	17	Chemical Emitters
+00415684	18	Chemical Receptors
+00415698	11	Brain Lobes
+004156a4	7	%d - %d
+004156ac	14	dde: gene,endm
+004156bc	6	Female
+004156cc	14	dde: putv gend
+004156dc	18	Genetics Directory
+004156f0	14	dde: getb monk
+00415700	11	palette.dta
+0041570c	17	Palette Directory
+00415720	8	Gene.spr
+0041572c	13	CPhasedSprite
+0041575c	11	Communicate
+00415768	8	CToolOLE
+00415794	12	CMonitorPage
+004157c0	16	allchemicals.str
+004157d8	11	Waste Water
+004157e4	13	chemicals.str
+004157f4	10	themes.str
+0041580c	18	dde: putv chem %d,
+0041582c	7	CDIBPal
+00415870	10	CDIBStatic
+00416af6	17	DirectSoundCreate
+00416b08	10	DSOUND.dll
+00416b14	9	MFC40.DLL
+00416b20	17	__CxxFrameHandler
+00416b34	7	_mbscmp
+00416b3e	6	sscanf
+00416b48	11	__p__pctype
+00416b56	8	_isctype
+00416b62	16	__p___mb_cur_max
+00416b74	12	MSVCRT40.dll
+00416b84	11	__dllonexit
+00416b92	7	_onexit
+00416b9c	16	_except_handler3
+00416bb0	17	?terminate@@YAXXZ
+00416bc4	5	_exit
+00416bcc	11	_XcptFilter
+00416bda	4	exit
+00416be2	11	__p__acmdln
+00416bf0	9	_initterm
+00416bfc	13	__getmainargs
+00416c0c	16	__setusermatherr
+00416c20	12	_adjust_fdiv
+00416c30	12	__p__commode
+00416c40	10	__p__fmode
+00416c4e	14	__set_app_type
+00416c60	10	_controlfp
+00416c6e	5	Sleep
+00416c76	10	GetVersion
+00416c84	16	GetModuleHandleA
+00416c98	15	GetStartupInfoA
+00416ca8	12	KERNEL32.dll
+00416cb8	12	SendMessageA
+00416cc8	9	KillTimer
+00416cd4	8	SetTimer
+00416ce0	9	LoadIconA
+00416cec	8	FillRect
+00416cf8	8	CopyRect
+00416d04	13	GetClientRect
+00416d14	9	wsprintfA
+00416d20	12	EnableWindow
+00416d30	8	IsIconic
+00416d3c	7	SetRect
+00416d46	16	GetSystemMetrics
+00416d5a	13	GetWindowRect
+00416d6a	12	PostMessageA
+00416d7a	8	ScrollDC
+00416d86	11	InflateRect
+00416d94	9	GetParent
+00416da0	13	IntersectRect
+00416dae	10	USER32.dll
+00416dbc	14	GetStockObject
+00416dce	16	CreateSolidBrush
+00416de2	11	CreateFontA
+00416df0	6	BitBlt
+00416dfa	9	CreatePen
+00416e06	13	SetBitmapBits
+00416e16	10	GetObjectA
+00416e24	22	CreateCompatibleBitmap
+00416e3e	18	CreateCompatibleDC
+00416e54	13	CreatePalette
+00416e64	12	DeleteObject
+00416e74	14	RealizePalette
+00416e86	16	CreateDIBSection
+00416e9a	8	DeleteDC
+00416ea6	12	SelectObject
+00416eb4	9	GDI32.dll
+00416ec0	11	RegCloseKey
+00416ece	15	RegCreateKeyExA
+00416ee0	16	RegQueryValueExA
+00416ef4	14	RegSetValueExA
+00416f04	12	ADVAPI32.dll
+00416f12	12	OLEAUT32.dll
+00416f22	8	_setmbcp
+00418272	6	CLEARD
+00418280	6	CLEARF
+0041828e	6	CLEARU
+0041829c	5	HELPD
+004182a8	6	CLOSED
+004182b6	5	HELPF
+004182c2	6	CLOSEF
+004182d0	5	HELPU
+004182dc	6	CLOSEU
+004182ea	11	BUTTONGENED
+00418302	11	BUTTONGENEF
+0041831a	11	BUTTONGENEU
+00418332	12	BUTTONBRAINF
+0041834c	12	BUTTONBRAIND
+00418366	12	BUTTONBRAINU
+00418386	15	VS_VERSION_INFO
+004183e2	14	StringFileInfo
+00418406	8	040904B0
+0041841e	11	CompanyName
+0041843e	15	FileDescription
+00418460	24	OLE TEST MFC Application
+0041849a	11	FileVersion
+004184b4	10	1, 0, 0, 1
+004184d2	12	InternalName
+004184ec	8	OLE TEST
+00418506	14	LegalCopyright
+00418524	16	Copyright © 1996
+0041854e	15	LegalTrademarks
+00418576	16	OriginalFilename
+00418598	12	OLE TEST.EXE
+004185ba	11	ProductName
+004185d4	20	OLE TEST Application
+00418606	14	ProductVersion
+00418624	10	1, 0, 0, 1
+00418642	11	VarFileInfo
+00418662	11	Translation
+0042d50c	0	
+0042d50e	0	
+0042d510	0	
+0042d512	0	
+0042d514	85	OLE initialization failed.  Make sure that the OLE libraries are the correct version.
+0042d5c0	15	Decision OutPut
+0042d5e0	8	Chemical
+0042d5f2	5	Theme
+0042d5fe	3	MAX
+0042d606	10	Remove the
+0042d61c	7	theme ?
+0042d62c	16	Science Kit...  
+0042d64e	10	 Paused - 
+0042d664	14	Science Kit - 
+0042d682	9	Add Theme
+0042d696	0	

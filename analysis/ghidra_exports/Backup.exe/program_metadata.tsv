@@ -1,0 +1,14 @@
+key	value
+program_name	Backup.exe
+domain_path	/Backup.exe
+executable_format	Portable Executable (PE)
+language_id	x86:LE:32:default
+compiler_spec	windows
+image_base	00400000
+md5	9d31e7718fe88f88a072bf0a5ec85498
+function_count	49
+decompile_ok_count	49
+decompile_failed_count	0
+import_count	137
+export_count	1
+string_count	106

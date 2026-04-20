@@ -1,0 +1,14 @@
+key	value
+program_name	Creatures.exe
+domain_path	/Creatures.exe
+executable_format	Portable Executable (PE)
+language_id	x86:LE:32:default
+compiler_spec	windows
+image_base	00400000
+md5	14b5e58dfd7efb3c39c086837e83763a
+function_count	1116
+decompile_ok_count	1116
+decompile_failed_count	0
+import_count	511
+export_count	1
+string_count	720

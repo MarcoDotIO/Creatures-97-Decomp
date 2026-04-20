@@ -1,0 +1,258 @@
+address	length	value
+00400000	2	MZ
+00400080	2	PE
+00400178	5	.text
+004001a0	6	.rdata
+004001c8	5	.data
+004001f0	6	.idata
+00400218	5	.rsrc
+00400240	6	.reloc
+0040a044	11	Communicate
+0040a050	8	CToolOLE
+0040a07c	12	Hatchery.OLE
+0040a08c	13	CHatcheryView
+0040a0b8	6	Cheese
+0040a0c0	6	Darwin
+0040a0c8	10	Privileges
+0040a0dc	22	Millennium Interactive
+0040a0f4	9	Creatures
+0040a104	21	Hatchery\\lightoff.bmp
+0040a11c	18	Hatchery\\scan5.bmp
+0040a130	18	Hatchery\\scan4.bmp
+0040a144	18	Hatchery\\scan3.bmp
+0040a158	18	Hatchery\\scan2.bmp
+0040a16c	18	Hatchery\\scan1.bmp
+0040a180	18	Hatchery\\scan0.bmp
+0040a194	17	Hatchery\\fan3.bmp
+0040a1a8	17	Hatchery\\fan2.bmp
+0040a1bc	17	Hatchery\\fan1.bmp
+0040a1d0	17	Hatchery\\fan0.bmp
+0040a1e4	19	Hatchery\\female.bmp
+0040a1f8	20	Hatchery\\genspin.bmp
+0040a210	17	Hatchery\\egg5.bmp
+0040a224	17	Hatchery\\egg4.bmp
+0040a238	17	Hatchery\\egg3.bmp
+0040a24c	17	Hatchery\\egg2.bmp
+0040a260	17	Hatchery\\egg1.bmp
+0040a274	17	Hatchery\\egg0.bmp
+0040a288	21	Hatchery\\htchmask.bmp
+0040a2a0	21	Hatchery\\hatchery.bmp
+0040a2b8	11	mvto %d 870
+0040a2c4	10	dde: hatc,
+0040a304	10	new: gene 
+0040a328	13	setv attr 67,
+0040a338	19	setv clas 33882624,
+0040a354	27	new: simp eggs 8 %d 2000 0,
+0040a384	10	sys: wtop,
+0040a3a0	20	.PAVCFileException@@
+0040a3c4	13	a:\\header.dat
+0040a3e0	18	Genetics Directory
+0040a3f8	7	Eggstra
+0040a400	6	xxxxxx
+0040a408	18	Creatures\\Hatchery
+0040a430	16	CreateDIBSection
+0040a464	16	CRegistryHandler
+0040a498	9	SOFTWARE\\
+0040a4a8	15	Sounds\\####.wav
+0040a4b8	17	Not enough memory
+0040a4cc	15	NO aggregation?
+0040a4dc	17	Invalid parameter
+0040a4f0	25	Wave format not supported
+0040a50c	25	Resources already in use?
+0040a558	10	CMainFrame
+0040a580	8	Location
+0040a590	32	Could not register OLE factories
+0040a5b4	11	%s|%s|%s|%d
+0040a5c0	12	The Hatchery
+0040a5d0	16	Hatch a new norn
+0040a5e4	6	Tool%d
+0040a5ec	7	Blitmap
+0040a61c	8	C:\\Data\\
+0040a628	12	CHatcheryDoc
+0040a654	36	Can not communicate with application
+0040a67c	22	inst,app: quit %d,endm
+0040a6b0	15	.?AVtype_info@@
+005daa76	17	DirectSoundCreate
+005daa88	10	DSOUND.dll
+005daa94	9	MFC40.DLL
+005daaa0	17	__CxxFrameHandler
+005daab4	4	rand
+005daabc	7	strncpy
+005daac6	5	srand
+005daace	4	time
+005daad6	7	_mbscmp
+005daade	12	MSVCRT40.dll
+005daaee	11	__dllonexit
+005daafc	7	_onexit
+005dab06	16	_except_handler3
+005dab1a	17	?terminate@@YAXXZ
+005dab2e	20	??1type_info@@UAE@XZ
+005dab46	5	_exit
+005dab4e	11	_XcptFilter
+005dab5c	4	exit
+005dab64	11	__p__acmdln
+005dab72	9	_initterm
+005dab7e	13	__getmainargs
+005dab8e	16	__setusermatherr
+005daba2	12	_adjust_fdiv
+005dabb2	12	__p__commode
+005dabc2	10	__p__fmode
+005dabd0	14	__set_app_type
+005dabe2	10	_controlfp
+005dabf0	9	CopyFileA
+005dabfc	16	RemoveDirectoryA
+005dac10	14	GetProcAddress
+005dac22	16	GetModuleHandleA
+005dac36	10	GetVersion
+005dac44	5	Sleep
+005dac4c	15	GetStartupInfoA
+005dac5c	12	KERNEL32.dll
+005dac6c	12	PostMessageA
+005dac7c	8	SetTimer
+005dac88	9	UnionRect
+005dac94	7	SetRect
+005dac9e	9	ReleaseDC
+005dacaa	5	GetDC
+005dacb2	9	wsprintfA
+005dacbe	8	PtInRect
+005dacca	14	InvalidateRect
+005dacdc	9	KillTimer
+005dace8	12	EnableWindow
+005dacf8	16	GetSystemMetrics
+005dad0c	13	GetWindowRect
+005dad1c	12	SendMessageA
+005dad2a	10	USER32.dll
+005dad38	14	RealizePalette
+005dad4a	13	CreatePalette
+005dad5a	23	GetSystemPaletteEntries
+005dad74	13	GetDeviceCaps
+005dad84	12	DeleteObject
+005dad94	8	DeleteDC
+005dada0	6	BitBlt
+005dadaa	12	SelectObject
+005dadba	18	CreateCompatibleDC
+005dadce	9	GDI32.dll
+005dadda	11	RegCloseKey
+005dade8	15	RegCreateKeyExA
+005dadfa	16	RegQueryValueExA
+005dae0e	14	RegSetValueExA
+005dae1e	12	ADVAPI32.dll
+005dae2c	12	OLEAUT32.dll
+005dae3c	8	_stricmp
+005dae48	8	_setmbcp
+005db926	15	VS_VERSION_INFO
+005db982	14	StringFileInfo
+005db9a6	8	040904b0
+005db9be	11	CompanyName
+005db9de	15	FileDescription
+005dba00	24	HATCHERY MFC Application
+005dba3a	11	FileVersion
+005dba54	10	1, 0, 0, 1
+005dba72	12	InternalName
+005dba8c	8	HATCHERY
+005dbaa6	14	LegalCopyright
+005dbac4	16	Copyright © 1996
+005dbaee	16	OriginalFilename
+005dbb10	12	HATCHERY.EXE
+005dbb32	11	ProductName
+005dbb4c	20	HATCHERY Application
+005dbb7e	14	ProductVersion
+005dbb9c	10	1, 0, 0, 1
+005dbbba	11	VarFileInfo
+005dbbda	11	Translation
+005dc120	0	
+005dc122	0	
+005dc124	0	
+005dc126	0	
+005dc128	85	OLE initialization failed.  Make sure that the OLE libraries are the correct version.
+005dc1d4	0	
+005dc1d6	0	
+005dc1d8	0	
+005dc1da	0	
+005dc1dc	0	
+005dc1de	0	
+005dc1e0	0	
+005dc1e2	0	
+005dc1e4	0	
+005dc1e6	0	
+005dc1e8	0	
+005dc1ec	56	Egg Hatchery\n\nHatche\n\n\nHatchery.Document\nHatche Document
+005dc25e	0	
+005dc260	0	
+005dc262	0	
+005dc264	0	
+005dc266	0	
+005dc268	0	
+005dc26a	0	
+005dc26c	0	
+005dc26e	0	
+005dc270	0	
+005dc272	0	
+005dc274	0	
+005dc276	0	
+005dc278	0	
+005dc27a	0	
+005dc27c	8	Hatchery
+005dc28e	5	Ready
+005dc29a	0	
+005dc29c	0	
+005dc29e	0	
+005dc2a0	0	
+005dc2a2	0	
+005dc2a4	0	
+005dc2a6	0	
+005dc2a8	0	
+005dc2aa	0	
+005dc2ac	0	
+005dc2ae	0	
+005dc2b0	0	
+005dc2b2	0	
+005dc2b4	0	
+005dc2b8	63	Display program information, version number and copyright\nAbout
+005dc338	52	Quit the application; prompts to save documents\nExit
+005dc3a2	0	
+005dc3a4	0	
+005dc3a6	0	
+005dc3a8	0	
+005dc3aa	0	
+005dc3ac	0	
+005dc3ae	0	
+005dc3b0	0	
+005dc3b2	0	
+005dc3b4	0	
+005dc3b6	0	
+005dc3b8	0	
+005dc3ba	0	
+005dc3bc	0	
+005dc3c0	22	Change the window size
+005dc3ee	26	Change the window position
+005dc424	28	Reduce the window to an icon
+005dc45e	31	Enlarge the window to full size
+005dc49e	34	Switch to the next document window
+005dc4e4	38	Switch to the previous document window
+005dc532	57	Close the active window and prompts to save the documents
+005dc5a6	0	
+005dc5a8	0	
+005dc5aa	0	
+005dc5ac	0	
+005dc5ae	0	
+005dc5b0	0	
+005dc5b2	0	
+005dc5b4	0	
+005dc5b6	0	
+005dc5b8	0	
+005dc5ba	0	
+005dc5bc	33	Restore the window to normal size
+005dc600	18	Activate Task List
+005dc626	33	Egg Disk has been write protected
+005dc66a	22	You have no more eggs!
+005dc698	41	The egg could not be moved from the disk!
+005dc6ec	0	
+005dc6ee	0	
+005dc6f0	0	
+005dc6f2	0	
+005dc6f4	0	
+005dc6f6	0	
+005dc6f8	0	
+005dc6fa	0	
+005dc6fc	0	

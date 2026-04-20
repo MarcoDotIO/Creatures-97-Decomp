@@ -1,0 +1,107 @@
+address	length	value
+00400000	2	MZ
+00400080	2	PE
+00400178	5	.text
+004001a0	6	.rdata
+004001c8	5	.data
+004001f0	6	.idata
+00400218	5	.rsrc
+00400240	6	.reloc
+00406028	20	.PAVCFileException@@
+00406048	14	Failed copying
+00406058	5	Aphro
+00406060	7	AphroBU
+00406068	6	Health
+00406070	8	HealthBU
+0040607c	9	World.sfc
+00406094	14	Main Directory
+004060b4	15	Image Directory
+004060c4	45	SOFTWARE\\Millennium Interactive\\Creatures\\1.0
+004060f8	7	Eggstra
+00406100	54	SOFTWARE\\Millennium Interactive\\Creatures\\Hatchery\\0.1
+00406138	6	xxxxxx
+00406148	15	.?AVtype_info@@
+004074e8	9	MFC40.DLL
+004074f4	17	__CxxFrameHandler
+00407508	4	rand
+00407510	5	srand
+00407518	4	time
+0040751e	12	MSVCRT40.dll
+0040752e	20	??1type_info@@UAE@XZ
+00407546	11	__dllonexit
+00407554	7	_onexit
+0040755e	5	_exit
+00407566	11	_XcptFilter
+00407574	4	exit
+0040757c	11	__p__acmdln
+0040758a	9	_initterm
+00407596	13	__getmainargs
+004075a6	16	__setusermatherr
+004075ba	12	_adjust_fdiv
+004075ca	12	__p__commode
+004075da	10	__p__fmode
+004075e8	14	__set_app_type
+004075fa	16	_except_handler3
+0040760e	10	_controlfp
+0040761c	9	FindClose
+00407628	13	FindNextFileA
+00407638	9	CopyFileA
+00407644	14	FindFirstFileA
+00407656	5	Sleep
+0040765e	10	GetVersion
+0040766c	16	GetModuleHandleA
+00407680	15	GetStartupInfoA
+00407690	12	KERNEL32.dll
+004076a0	9	LoadIconA
+004076ac	12	SendMessageA
+004076bc	11	AppendMenuA
+004076ca	13	GetSystemMenu
+004076da	8	DrawIcon
+004076e6	13	GetClientRect
+004076f6	16	GetSystemMetrics
+0040770a	8	IsIconic
+00407716	12	EnableWindow
+00407724	10	USER32.dll
+00407732	11	RegCloseKey
+00407740	16	RegQueryValueExA
+00407754	13	RegOpenKeyExA
+00407764	14	RegSetValueExA
+00407774	12	ADVAPI32.dll
+00407784	8	_stricmp
+00407790	8	_setmbcp
+0040961a	15	VS_VERSION_INFO
+00409676	14	StringFileInfo
+0040969a	8	040904b0
+004096b2	11	CompanyName
+004096d2	15	FileDescription
+004096f4	22	BACKUP MFC Application
+0040972a	11	FileVersion
+00409744	10	1, 0, 0, 1
+00409762	12	InternalName
+0040977c	6	BACKUP
+00409792	14	LegalCopyright
+004097b0	16	Copyright © 1996
+004097da	16	OriginalFilename
+004097fc	10	BACKUP.EXE
+0040981a	11	ProductName
+00409834	18	BACKUP Application
+00409862	14	ProductVersion
+00409880	10	1, 0, 0, 1
+0040989e	11	VarFileInfo
+004098be	11	Translation
+0041271c	0	
+0041271e	0	
+00412720	0	
+00412722	0	
+00412724	0	
+00412726	16	&About Backup...
+00412748	30	You may now restart Creatures.
+00412786	0	
+00412788	0	
+0041278a	0	
+0041278c	0	
+0041278e	0	
+00412790	0	
+00412792	0	
+00412794	0	
+00412796	0	

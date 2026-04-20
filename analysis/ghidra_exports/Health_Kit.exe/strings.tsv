@@ -1,0 +1,208 @@
+address	length	value
+00400000	2	MZ
+00400080	2	PE
+00400178	5	.text
+004001a0	6	.rdata
+004001c8	5	.data
+004001f0	6	.idata
+00400218	5	.rsrc
+00400240	6	.reloc
+00411060	12	CScannerPage
+00411088	9	Lobes.bmp
+00411094	14	dde: lobe,endm
+004110a4	25	Can not create data file.
+004110c0	9	Lobes.spr
+004110d4	13	setv var0 %d,
+004110e4	5	inst,
+00411110	19	Failed to read file
+00411124	28	256 colour bit map required.
+00411144	20	Failed to read file.
+0041115c	20	Failed to open file.
+00411174	12	CFitnessPage
+004111a0	79	inst,dde: putv chem 62,dde: putv chem 59,dde: putv chem 4,dde: putv chem 5,endm
+004111f0	12	Skeleton.bmp
+00411200	23	Can not open data file.
+00411218	11	palette.dta
+00411224	17	Palette Directory
+00411238	22	Millennium Interactive
+00411250	9	Creatures
+00411260	9	Therm.bmp
+0041126c	9	Blink.spr
+00411278	10	Hearts.spr
+00411284	12	CHealthSheet
+004112b0	10	Health.bmp
+004112bc	20	Creatures\\Health Kit
+004112d4	6	Health
+004112dc	9	Black.bmp
+004112e8	16	CRegistryHandler
+00411320	9	SOFTWARE\\
+0041132c	6	CGauge
+00411350	9	Gauge.spr
+0041135c	14	CAddObjectPage
+0041138c	10	Addbgd.bmp
+00411398	8	Shop.bmp
+004113c0	11	Communicate
+004113cc	8	CToolOLE
+004113f4	10	Health.OLE
+00411400	10	CPropSheet
+00411430	6	On Top
+00411438	8	Location
+00411444	22	inst,app: quit %d,endm
+00411464	19	There is no subject
+00411478	14	dde: putv ownr
+00411488	14	dde: getb cnam
+00411498	36	Can not communicate with application
+004114c0	10	CDIBStatic
+004114ec	14	Please wait...
+004114fc	32	Could not register OLE factories
+00411520	11	%s|%s|%s|%d
+0041152c	10	Health Kit
+00411538	18	Initial monitoring
+0041154c	6	Tool%d
+00411554	13	MS Sans Serif
+00411564	13	CPhasedSprite
+00411590	10	CCoverPage
+004115b8	5	CItem
+004115d8	10	CStatePage
+00411600	18	dde: putv chem %d,
+00411614	7	CDIBPal
+00411638	15	Sounds\\####.wav
+00411648	17	Not enough memory
+0041165c	15	NO aggregation?
+0041166c	17	Invalid parameter
+00411680	25	Wave format not supported
+0041169c	25	Resources already in use?
+004116e8	9	CShopItem
+00411710	7	CSprite
+00412936	17	DirectSoundCreate
+00412948	10	DSOUND.dll
+00412954	9	MFC40.DLL
+00412960	17	__CxxFrameHandler
+00412974	4	rand
+0041297c	7	_mbscmp
+00412984	12	MSVCRT40.dll
+00412994	16	_except_handler3
+004129a8	17	?terminate@@YAXXZ
+004129bc	11	__dllonexit
+004129ca	7	_onexit
+004129d4	5	_exit
+004129dc	11	_XcptFilter
+004129ea	4	exit
+004129f2	11	__p__acmdln
+00412a00	9	_initterm
+00412a0c	13	__getmainargs
+00412a1c	16	__setusermatherr
+00412a30	12	_adjust_fdiv
+00412a40	12	__p__commode
+00412a50	10	__p__fmode
+00412a5e	14	__set_app_type
+00412a70	10	_controlfp
+00412a7e	5	Sleep
+00412a86	10	GetVersion
+00412a94	16	GetModuleHandleA
+00412aa8	15	GetStartupInfoA
+00412ab8	12	KERNEL32.dll
+00412ac8	12	SendMessageA
+00412ad8	9	KillTimer
+00412ae4	8	SetTimer
+00412af0	13	GetClientRect
+00412b00	9	LoadIconA
+00412b0c	9	wsprintfA
+00412b18	12	EnableWindow
+00412b28	7	SetRect
+00412b32	8	IsIconic
+00412b3e	9	UnionRect
+00412b4a	10	OffsetRect
+00412b58	14	InvalidateRect
+00412b6a	12	PostMessageA
+00412b7a	16	GetSystemMetrics
+00412b8e	13	GetWindowRect
+00412b9e	9	GetParent
+00412baa	13	IntersectRect
+00412bba	8	CopyRect
+00412bc4	10	USER32.dll
+00412bd2	12	DeleteObject
+00412be2	14	RealizePalette
+00412bf4	16	CreateDIBSection
+00412c08	8	DeleteDC
+00412c14	12	SelectObject
+00412c24	6	BitBlt
+00412c2e	18	CreateCompatibleDC
+00412c44	11	CreateFontA
+00412c52	13	CreatePalette
+00412c60	9	GDI32.dll
+00412c6c	11	RegCloseKey
+00412c7a	15	RegCreateKeyExA
+00412c8c	16	RegQueryValueExA
+00412ca0	14	RegSetValueExA
+00412cb0	12	ADVAPI32.dll
+00412cbe	12	OLEAUT32.dll
+00412cce	8	_setmbcp
+00413c2a	5	HELPU
+00413c36	5	HELPF
+00413c42	5	HELPD
+00413c4e	6	CLOSEU
+00413c5c	6	CLOSEF
+00413c6a	6	CLOSED
+00413c78	5	NEXTD
+00413c84	5	NEXTF
+00413c90	5	NEXTU
+00413c9c	5	PREVD
+00413ca8	5	PREVF
+00413cb4	5	PREVU
+00413cc0	6	EARTHD
+00413cce	6	EARTHF
+00413cdc	6	EARTHU
+00413cf6	15	VS_VERSION_INFO
+00413d52	14	StringFileInfo
+00413d76	8	040904B0
+00413d8e	11	CompanyName
+00413dae	15	FileDescription
+00413dd0	24	OLE TEST MFC Application
+00413e0a	11	FileVersion
+00413e24	10	1, 0, 0, 1
+00413e42	12	InternalName
+00413e5c	8	OLE TEST
+00413e76	14	LegalCopyright
+00413e94	16	Copyright © 1996
+00413ebe	15	LegalTrademarks
+00413ee6	16	OriginalFilename
+00413f08	12	OLE TEST.EXE
+00413f2a	11	ProductName
+00413f44	20	OLE TEST Application
+00413f76	14	ProductVersion
+00413f94	10	1, 0, 0, 1
+00413fb2	11	VarFileInfo
+00413fd2	11	Translation
+0041fcc4	0	
+0041fcc6	0	
+0041fcc8	0	
+0041fcca	0	
+0041fccc	85	OLE initialization failed.  Make sure that the OLE libraries are the correct version.
+0041fd78	14	Health Kit... 
+0041fd96	14	Health Kit -  
+0041fdb4	10	 Paused - 
+0041fdca	4	Pain
+0041fdd4	6	Hunger
+0041fde2	10	Exhaustion
+0041fdf8	10	Sleepiness
+0041fe0e	7	Boredom
+0041fe1e	0	
+0041fe20	0	
+0041fe22	0	
+0041fe24	0	
+0041fe26	0	
+0041fe28	0	
+0041fe2a	32	Keep window always on top\nOn top
+0041fe6c	0	
+0041fe6e	0	
+0041fe70	0	
+0041fe72	0	
+0041fe74	0	
+0041fe76	0	
+0041fe78	0	
+0041fe7a	0	
+0041fe7c	0	
+0041fe7e	0	
+0041fe80	0	
+0041fe82	0	

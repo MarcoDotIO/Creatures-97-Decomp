@@ -1,0 +1,14 @@
+key	value
+program_name	Launcher.exe
+domain_path	/Launcher.exe
+executable_format	Portable Executable (PE)
+language_id	x86:LE:32:default
+compiler_spec	windows
+image_base	00400000
+md5	c33eee7a23c5ddb87483141629969b53
+function_count	174
+decompile_ok_count	174
+decompile_failed_count	0
+import_count	195
+export_count	1
+string_count	117

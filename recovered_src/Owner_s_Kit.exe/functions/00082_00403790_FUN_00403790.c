@@ -1,0 +1,39 @@
+/*
+ * Program: Owner_s_Kit.exe
+ * Function: FUN_00403790
+ * Entry: 00403790
+ * Namespace: Global
+ * Prototype: undefined FUN_00403790(void * this, int param_1)
+ */
+
+
+void __thiscall FUN_00403790(void *this,int param_1)
+
+{
+  int iVar1;
+  BOOL BVar2;
+  
+  Ordinal_2081();
+  iVar1 = FUN_00409e20((int)this);
+  if (iVar1 == 0) {
+    if ((param_1 == 1) && (*(int *)((int)this + 0xb60) == 0)) {
+      FUN_00409e30(this,1);
+      iVar1 = *(int *)this;
+      (**(code **)(iVar1 + 0xe4))();
+      (**(code **)(iVar1 + 0xd4))();
+      *(undefined4 *)((int)this + 0xb60) = 1;
+    }
+    if ((*(int *)((int)this + 0xb5c) == 1) && (param_1 != 1)) {
+      BVar2 = IsIconic(*(HWND *)((int)this + 0x20));
+      if (BVar2 == 0) {
+        FUN_00409e30(this,0);
+        iVar1 = *(int *)this;
+        (**(code **)(iVar1 + 0xe4))();
+        (**(code **)(iVar1 + 0xd0))();
+        *(undefined4 *)((int)this + 0xb60) = 0;
+      }
+    }
+  }
+  return;
+}
+

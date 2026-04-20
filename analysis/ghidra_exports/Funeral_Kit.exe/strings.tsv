@@ -1,0 +1,197 @@
+address	length	value
+00400000	2	MZ
+00400080	2	PE
+00400178	5	.text
+004001a0	6	.rdata
+004001c8	5	.data
+004001f0	6	.idata
+00400218	5	.rsrc
+00400240	6	.reloc
+00410060	7	CSprite
+00410080	19	Failed to read file
+00410094	28	256 colour bit map required.
+004100b4	20	Failed to read file.
+004100cc	20	Failed to open file.
+004100e4	10	CPropSheet
+00410110	6	On Top
+00410118	8	Location
+00410124	22	inst,app: quit %d,endm
+00410144	19	There is no subject
+00410158	14	dde: putv ownr
+00410168	14	dde: getb cnam
+0041017c	22	Millennium Interactive
+00410194	9	Creatures
+004101a4	36	Can not communicate with application
+004101cc	10	CPhotoPage
+00410228	9	grave.bmp
+0041023c	13	The Graveyard
+0041024c	9	Grave.bmp
+00410258	11	Unknown.bmp
+00410264	10	CPhotoItem
+00410288	14	%H:%M %B %d %Y
+00410298	17	CCreatureRegister
+004102c8	14	%H:%M %b %d %Y
+004102f8	13	CUnMarkedPage
+00410320	9	No Record
+00410330	32	Could not register OLE factories
+00410354	11	%s|%s|%s|%d
+00410360	11	Funeral.OLE
+0041036c	18	Creature Graveyard
+00410380	17	Pay your respects
+00410394	6	Tool%d
+0041039c	13	MS Sans Serif
+004103b0	11	Communicate
+004103bc	8	CToolOLE
+004103fc	10	CCoverPage
+00410420	16	CRegistryHandler
+00410458	9	SOFTWARE\\
+00410468	15	Sounds\\####.wav
+00410478	17	Not enough memory
+0041048c	15	NO aggregation?
+0041049c	17	Invalid parameter
+004104b0	25	Wave format not supported
+004104cc	25	Resources already in use?
+00410518	7	CDIBPal
+00410538	10	CGravePage
+00410560	12	.Photo Album
+00410570	12	The Register
+00410588	20	48574f32.Photo Album
+004105a0	5	CItem
+004105c0	10	CDIBStatic
+004105e8	13	CFuneralSheet
+00410610	11	Funeral.bmp
+0041061c	21	Creatures\\Funeral Kit
+00410634	25	Can not create data file.
+004119a6	17	DirectSoundCreate
+004119b8	10	DSOUND.dll
+004119c4	9	MFC40.DLL
+004119d0	17	__CxxFrameHandler
+004119e2	12	MSVCRT40.dll
+004119f2	16	_except_handler3
+00411a06	17	?terminate@@YAXXZ
+00411a1a	11	__dllonexit
+00411a28	7	_onexit
+00411a32	5	_exit
+00411a3a	11	_XcptFilter
+00411a48	4	exit
+00411a50	11	__p__acmdln
+00411a5e	9	_initterm
+00411a6a	13	__getmainargs
+00411a7a	16	__setusermatherr
+00411a8e	12	_adjust_fdiv
+00411a9e	12	__p__commode
+00411aae	10	__p__fmode
+00411abc	14	__set_app_type
+00411ace	10	_controlfp
+00411adc	5	Sleep
+00411ae4	10	GetVersion
+00411af2	16	GetModuleHandleA
+00411b06	15	GetStartupInfoA
+00411b16	12	KERNEL32.dll
+00411b26	9	LoadIconA
+00411b32	12	SendMessageA
+00411b42	9	KillTimer
+00411b4e	16	GetSystemMetrics
+00411b62	13	GetWindowRect
+00411b72	12	PostMessageA
+00411b82	9	wsprintfA
+00411b8e	8	SetTimer
+00411b9a	8	IsIconic
+00411ba6	12	EnableWindow
+00411bb6	13	GetClientRect
+00411bc6	14	InvalidateRect
+00411bd8	9	GetParent
+00411be4	13	IntersectRect
+00411bf4	8	CopyRect
+00411bfe	10	USER32.dll
+00411c0c	11	CreateFontA
+00411c1a	13	CreatePalette
+00411c2a	12	DeleteObject
+00411c3a	14	RealizePalette
+00411c4c	16	CreateDIBSection
+00411c60	8	DeleteDC
+00411c6c	12	SelectObject
+00411c7c	6	BitBlt
+00411c86	18	CreateCompatibleDC
+00411c9a	9	GDI32.dll
+00411ca6	11	RegCloseKey
+00411cb4	15	RegCreateKeyExA
+00411cc6	16	RegQueryValueExA
+00411cda	14	RegSetValueExA
+00411cea	12	ADVAPI32.dll
+00411cf8	12	OLEAUT32.dll
+00411d08	8	_setmbcp
+004127aa	5	HELPU
+004127b6	5	HELPF
+004127c2	5	HELPD
+004127ce	6	CLOSEU
+004127dc	6	CLOSEF
+004127ea	6	CLOSED
+004127f8	5	NEXTU
+00412804	5	NEXTF
+00412810	5	NEXTD
+0041281c	5	PREVD
+00412828	5	PREVF
+00412834	5	PREVU
+00412840	5	DONED
+0041284c	5	DONEF
+00412858	5	DONEU
+00412864	6	PREVAU
+00412872	6	PREVAF
+00412880	6	PREVAD
+0041288e	6	NEXTAF
+0041289c	6	NEXTAD
+004128aa	6	NEXTAU
+004128c6	15	VS_VERSION_INFO
+00412922	14	StringFileInfo
+00412946	8	040904B0
+0041295e	11	CompanyName
+0041297e	15	FileDescription
+004129a0	24	OLE TEST MFC Application
+004129da	11	FileVersion
+004129f4	10	1, 0, 0, 1
+00412a12	12	InternalName
+00412a2c	8	OLE TEST
+00412a46	14	LegalCopyright
+00412a64	16	Copyright © 1996
+00412a8e	15	LegalTrademarks
+00412ab6	16	OriginalFilename
+00412ad8	12	OLE TEST.EXE
+00412afa	11	ProductName
+00412b14	20	OLE TEST Application
+00412b46	14	ProductVersion
+00412b64	10	1, 0, 0, 1
+00412b82	11	VarFileInfo
+00412ba2	11	Translation
+00418054	0	
+00418056	0	
+00418058	0	
+0041805a	0	
+0041805c	85	OLE initialization failed.  Make sure that the OLE libraries are the correct version.
+00418108	18	Creature Graveyard
+0041812e	14	Please wait...
+0041814c	5	Photo
+00418158	9	No Record
+0041816c	0	
+0041816e	0	
+00418170	0	
+00418172	0	
+00418174	0	
+00418176	0	
+00418178	0	
+0041817c	0	
+0041817e	0	
+00418180	0	
+00418182	32	Keep window always on top\nOn top
+004181c4	32	The entry of the epitath\nEpitath
+00418206	0	
+00418208	0	
+0041820a	0	
+0041820c	0	
+0041820e	0	
+00418210	0	
+00418212	0	
+00418214	0	
+00418216	0	
+00418218	0	
+0041821a	0	

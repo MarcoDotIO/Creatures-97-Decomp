@@ -1,0 +1,16 @@
+program_name	installed_relpath	binary_kind	reconstruction_scope	notes
+Creatures.exe	Creatures/Creatures.exe	authored	full_source	Main game executable
+Backup.exe	Creatures/Backup.exe	authored	full_source	Game-authored utility
+Launcher.exe	Creatures/Launcher.exe	authored	full_source	Game-authored launcher
+Hatchery.exe	Creatures/Hatchery.exe	authored	full_source	Game-authored hatchery tool
+Breeder's Kit.exe	Creatures/Breeder's Kit.exe	authored	full_source	Game-authored kit executable
+Funeral Kit.exe	Creatures/Funeral Kit.exe	authored	full_source	Game-authored kit executable
+Health Kit.exe	Creatures/Health Kit.exe	authored	full_source	Game-authored kit executable
+Owner's Kit.exe	Creatures/Owner's Kit.exe	authored	full_source	Game-authored kit executable
+Science Kit.exe	Creatures/Science Kit.exe	authored	full_source	Game-authored kit executable
+Score Kit.exe	Creatures/Score Kit.exe	authored	full_source	Game-authored kit executable
+remove.exe	Creatures/remove.exe	authored	full_source	Game-authored uninstall helper
+CTL3D32.DLL	DLLS/CTL3D32.DLL	dependency	interface_only	Microsoft redistributable UI dependency
+MFC40.DLL	DLLS/MFC40.DLL	dependency	interface_only	Microsoft MFC runtime
+MSVCRT40.DLL	DLLS/MSVCRT40.DLL	dependency	interface_only	Microsoft C runtime
+Wing32.dll	DLLS/Wing32.dll	dependency	interface_only	Microsoft WinG graphics dependency

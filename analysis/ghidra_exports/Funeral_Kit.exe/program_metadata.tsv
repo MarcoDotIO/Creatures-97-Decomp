@@ -1,0 +1,14 @@
+key	value
+program_name	Funeral_Kit.exe
+domain_path	/Funeral_Kit.exe
+executable_format	Portable Executable (PE)
+language_id	x86:LE:32:default
+compiler_spec	windows
+image_base	00400000
+md5	0d618651d16a005ed39ab7f54985a114
+function_count	496
+decompile_ok_count	496
+decompile_failed_count	0
+import_count	278
+export_count	1
+string_count	196

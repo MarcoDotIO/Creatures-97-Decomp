@@ -1,0 +1,60 @@
+entry	name	prototype	body_size	parameter_count	calling_convention	is_external	is_thunk	caller_count	callee_count
+00401000	FUN_00401000	undefined4 * FUN_00401000(void * this, undefined4 param_1)	115	2	__thiscall	false	false	0	4
+004010e9	FUN_004010e9	undefined FUN_004010e9(void)	8	0	__stdcall	false	false	0	1
+00401130	FUN_00401130	undefined4 FUN_00401130(int param_1)	57	1	__fastcall	false	false	0	2
+00401799	FUN_00401799	undefined FUN_00401799(void)	8	0	__stdcall	false	false	0	1
+004017a1	FUN_004017a1	undefined FUN_004017a1(void)	8	0	__stdcall	false	false	0	1
+004017a9	FUN_004017a9	undefined FUN_004017a9(void)	8	0	__stdcall	false	false	0	1
+004017b1	FUN_004017b1	undefined FUN_004017b1(void)	8	0	__stdcall	false	false	0	1
+004017c3	FUN_004017c3	undefined FUN_004017c3(void)	8	0	__stdcall	false	false	0	1
+004017e0	FUN_004017e0	undefined4 FUN_004017e0(LPCSTR param_1)	168	1	__stdcall	false	false	0	4
+00401890	FUN_00401890	undefined FUN_00401890(undefined4 param_1, undefined4 param_2)	239	2	__stdcall	false	false	0	10
+0040198b	FUN_0040198b	undefined FUN_0040198b(void)	8	0	__stdcall	false	false	1	1
+00401993	FUN_00401993	undefined FUN_00401993(void)	8	0	__stdcall	false	false	1	1
+004019a5	FUN_004019a5	undefined FUN_004019a5(void)	8	0	__stdcall	false	false	1	1
+004019b0	Ordinal_1359	undefined Ordinal_1359()	5	0	unknown	false	true	1	0
+00401a30	FUN_00401a30	undefined4 * FUN_00401a30(undefined4 * param_1)	77	1	__fastcall	false	false	1	1
+00401ae9	FUN_00401ae9	undefined FUN_00401ae9(void)	8	0	__stdcall	false	false	0	1
+00401b10	FUN_00401b10	undefined FUN_00401b10(void)	10	0	__stdcall	false	false	0	1
+00401b20	FUN_00401b20	undefined FUN_00401b20(void)	14	0	__stdcall	false	false	0	1
+00401b6b	FUN_00401b6b	undefined FUN_00401b6b(void)	10	0	__stdcall	false	false	0	1
+00401c46	FUN_00401c46	undefined FUN_00401c46(void)	8	0	__stdcall	false	false	0	1
+00401c4e	FUN_00401c4e	undefined FUN_00401c4e(void)	8	0	__stdcall	false	false	0	1
+00401c60	FUN_00401c60	undefined FUN_00401c60(void)	63	0	__stdcall	false	false	0	1
+00401cb1	FUN_00401cb1	undefined FUN_00401cb1(void)	8	0	__stdcall	false	false	1	1
+00401cc6	Ordinal_2199	undefined Ordinal_2199()	6	0	unknown	false	true	0	0
+00401db6	Ordinal_570	undefined Ordinal_570()	6	0	unknown	false	true	2	0
+00401dbc	Ordinal_1014	undefined Ordinal_1014()	6	0	unknown	false	true	1	0
+00401dc2	Ordinal_1035	undefined Ordinal_1035()	6	0	unknown	false	true	2	0
+00401dc8	Ordinal_315	undefined Ordinal_315()	6	0	unknown	false	true	1	0
+00401dce	Ordinal_731	undefined Ordinal_731()	6	0	unknown	false	true	0	0
+00401dd4	Ordinal_4173	undefined Ordinal_4173()	6	0	unknown	false	true	1	0
+00401dec	Ordinal_706	undefined Ordinal_706()	6	0	unknown	false	true	9	0
+00401df2	Ordinal_4312	undefined Ordinal_4312()	6	0	unknown	false	true	0	0
+00401df8	Ordinal_819	undefined Ordinal_819()	6	0	unknown	false	true	0	0
+00401dfe	Ordinal_486	undefined Ordinal_486()	6	0	unknown	false	true	0	0
+00401e04	Ordinal_834	undefined Ordinal_834()	6	0	unknown	false	true	0	0
+00401e0a	Ordinal_836	undefined Ordinal_836()	6	0	unknown	false	true	1	0
+00401e10	Ordinal_3859	undefined Ordinal_3859()	6	0	unknown	false	true	0	0
+00401e16	Ordinal_762	undefined Ordinal_762()	6	0	unknown	false	true	1	0
+00401e1c	Ordinal_4940	undefined Ordinal_4940()	6	0	unknown	false	true	1	0
+00401e22	Ordinal_267	undefined Ordinal_267()	6	0	unknown	false	true	1	0
+00401e28	Ordinal_483	undefined Ordinal_483()	6	0	unknown	false	true	1	0
+00401e2e	Ordinal_1359	undefined Ordinal_1359()	6	0	unknown	false	true	0	0
+00401eb8	Ordinal_721	undefined Ordinal_721()	6	0	unknown	false	true	2	0
+00401ebe	Ordinal_504	undefined Ordinal_504()	6	0	unknown	false	true	1	0
+00401ec4	Ordinal_2299	undefined Ordinal_2299()	6	0	unknown	false	true	0	0
+00401eca	__CxxFrameHandler	undefined __CxxFrameHandler()	6	0	unknown	false	true	0	0
+00401ef0	FUN_00401ef0	undefined FUN_00401ef0(_onexit_t param_1)	156	1	__cdecl	false	false	1	4
+00401f90	FUN_00401f90	int FUN_00401f90(_onexit_t param_1)	19	1	__cdecl	false	false	1	1
+00401fb0	entry	undefined entry(void)	378	0	__stdcall	false	false	0	13
+00402152	~type_info	void ~type_info(type_info * this)	6	1	__thiscall	false	true	0	0
+00402158	__dllonexit	undefined __dllonexit()	6	0	unknown	false	true	1	0
+0040215e	_XcptFilter	int _XcptFilter(ulong _ExceptionNum, _EXCEPTION_POINTERS * _ExceptionPtr)	6	2	__cdecl	false	true	0	0
+00402164	initterm	undefined initterm()	6	0	__cdecl	false	true	1	0
+00402170	__setdefaultprecision	undefined __setdefaultprecision(void)	19	0	__stdcall	false	false	1	1
+004021a0	FUN_004021a0	undefined FUN_004021a0(void)	1	0	__stdcall	false	false	1	0
+004021a8	_controlfp	uint _controlfp(uint _NewValue, uint _Mask)	6	2	__cdecl	false	true	1	0
+004021ae	_WinMain@16	undefined _WinMain@16(undefined4 param_1, undefined4 param_2, undefined4 param_3, undefined4 param_4)	25	4	__stdcall	false	false	1	1
+004021c7	FUN_004021c7	undefined4 FUN_004021c7(int param_1, undefined4 param_2)	45	2	__stdcall	false	false	0	2
+00402216	Ordinal_1368	undefined Ordinal_1368()	6	0	unknown	false	true	1	0

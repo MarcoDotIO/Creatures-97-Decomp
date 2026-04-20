@@ -1,0 +1,28 @@
+/*
+ * Program: Hatchery.exe
+ * Function: FUN_004043c0
+ * Entry: 004043c0
+ * Namespace: Global
+ * Prototype: undefined FUN_004043c0(void * this, int param_1, LPCSTR param_2, LPBYTE param_3, BYTE * param_4)
+ */
+
+
+void __thiscall FUN_004043c0(void *this,int param_1,LPCSTR param_2,LPBYTE param_3,BYTE *param_4)
+
+{
+  undefined4 uVar1;
+  bool bVar2;
+  undefined3 extraout_var;
+  
+  if (*(int *)((int)this + 4) != 0) {
+    bVar2 = FUN_00404320(this,param_1,param_2,param_3);
+    if (CONCAT31(extraout_var,bVar2) == 0) {
+      FUN_00404460(this,param_1,param_2,param_4);
+      uVar1 = *(undefined4 *)(param_4 + 4);
+      *(undefined4 *)param_3 = *(undefined4 *)param_4;
+      *(undefined4 *)(param_3 + 4) = uVar1;
+    }
+  }
+  return;
+}
+

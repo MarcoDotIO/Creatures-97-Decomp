@@ -1,0 +1,14 @@
+key	value
+program_name	Hatchery.exe
+domain_path	/Hatchery.exe
+executable_format	Portable Executable (PE)
+language_id	x86:LE:32:default
+compiler_spec	windows
+image_base	00400000
+md5	ed776d4478aa541df3b479693c894290
+function_count	225
+decompile_ok_count	225
+decompile_failed_count	0
+import_count	304
+export_count	1
+string_count	257

@@ -1,0 +1,14 @@
+key	value
+program_name	remove.exe
+domain_path	/remove.exe
+executable_format	Portable Executable (PE)
+language_id	x86:LE:32:default
+compiler_spec	windows
+image_base	00400000
+md5	2e2866f849a57a2a959b4e59b623caf4
+function_count	59
+decompile_ok_count	59
+decompile_failed_count	0
+import_count	130
+export_count	1
+string_count	137

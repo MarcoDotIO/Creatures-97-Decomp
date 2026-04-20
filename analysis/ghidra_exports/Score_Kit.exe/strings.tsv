@@ -1,0 +1,185 @@
+address	length	value
+00400000	2	MZ
+00400080	2	PE
+00400178	5	.text
+004001a0	6	.rdata
+004001c8	5	.data
+004001f0	6	.idata
+00400218	5	.rsrc
+00400240	6	.reloc
+0040c050	7	CSprite
+0040c070	19	Failed to read file
+0040c084	28	256 colour bit map required.
+0040c0a4	20	Failed to read file.
+0040c0bc	20	Failed to open file.
+0040c0d4	7	CDIBPal
+0040c0f8	11	CScoreSheet
+0040c120	9	Score.bmp
+0040c12c	22	Millennium Interactive
+0040c144	19	Creatures\\Score Kit
+0040c160	14	Please wait...
+0040c170	32	Could not register OLE factories
+0040c194	11	%s|%s|%s|%d
+0040c1a0	9	Score.OLE
+0040c1ac	15	Performance Kit
+0040c1bc	12	Scoring data
+0040c1cc	6	Tool%d
+0040c1d4	9	Creatures
+0040c1e0	13	MS Sans Serif
+0040c1f4	11	Communicate
+0040c200	8	CToolOLE
+0040c22c	10	CScorePage
+0040c250	12	Brdscore.bmp
+0040c260	12	Scorebgd.bmp
+0040c270	19	dde: putv mins,endm
+0040c284	19	dde: putv hour,endm
+0040c2a0	18	dde: putv scor %d,
+0040c2b4	5	inst,
+0040c2bc	23	Can not open data file.
+0040c2d4	11	palette.dta
+0040c2e0	17	Palette Directory
+0040c2f4	25	Can not create data file.
+0040c310	9	Score.spr
+0040c31c	8	Time.spr
+0040c328	14	AllNumbers.spr
+0040c338	10	CDIBStatic
+0040c360	16	CRegistryHandler
+0040c398	9	SOFTWARE\\
+0040c3e0	10	CPropSheet
+0040c410	6	On Top
+0040c418	8	Location
+0040c424	22	inst,app: quit %d,endm
+0040c444	19	There is no subject
+0040c458	14	dde: putv ownr
+0040c468	14	dde: getb cnam
+0040c478	36	Can not communicate with application
+0040c4a0	10	CCoverPage
+0040c4c8	13	CPhasedSprite
+0040c4f0	15	Sounds\\####.wav
+0040c500	17	Not enough memory
+0040c514	15	NO aggregation?
+0040c524	17	Invalid parameter
+0040c538	25	Wave format not supported
+0040c554	25	Resources already in use?
+0040d8c6	17	DirectSoundCreate
+0040d8d8	10	DSOUND.dll
+0040d8e4	9	MFC40.DLL
+0040d8f0	17	__CxxFrameHandler
+0040d902	12	MSVCRT40.dll
+0040d912	11	__dllonexit
+0040d920	7	_onexit
+0040d92a	16	_except_handler3
+0040d93e	17	?terminate@@YAXXZ
+0040d952	5	_exit
+0040d95a	11	_XcptFilter
+0040d968	4	exit
+0040d970	11	__p__acmdln
+0040d97e	9	_initterm
+0040d98a	13	__getmainargs
+0040d99a	16	__setusermatherr
+0040d9ae	12	_adjust_fdiv
+0040d9be	12	__p__commode
+0040d9ce	10	__p__fmode
+0040d9dc	14	__set_app_type
+0040d9ee	10	_controlfp
+0040d9fc	5	Sleep
+0040da04	10	GetVersion
+0040da12	16	GetModuleHandleA
+0040da26	15	GetStartupInfoA
+0040da36	12	KERNEL32.dll
+0040da46	8	SetTimer
+0040da52	9	KillTimer
+0040da5e	8	IsIconic
+0040da6a	12	EnableWindow
+0040da7a	9	wsprintfA
+0040da86	12	PostMessageA
+0040da96	12	SendMessageA
+0040daa6	12	SetScrollPos
+0040dab6	9	LoadIconA
+0040dac2	7	SetRect
+0040dacc	13	GetClientRect
+0040dadc	14	SetScrollRange
+0040daee	14	GetScrollRange
+0040db00	12	GetScrollPos
+0040db10	9	GetParent
+0040db1c	13	GetWindowRect
+0040db2c	13	IntersectRect
+0040db3c	8	CopyRect
+0040db48	16	GetSystemMetrics
+0040db5a	10	USER32.dll
+0040db68	13	CreatePalette
+0040db78	11	CreateFontA
+0040db86	12	DeleteObject
+0040db96	14	RealizePalette
+0040dba8	16	CreateDIBSection
+0040dbbc	8	DeleteDC
+0040dbc8	12	SelectObject
+0040dbd8	6	BitBlt
+0040dbe2	18	CreateCompatibleDC
+0040dbf6	9	GDI32.dll
+0040dc02	11	RegCloseKey
+0040dc10	15	RegCreateKeyExA
+0040dc22	16	RegQueryValueExA
+0040dc36	14	RegSetValueExA
+0040dc46	12	ADVAPI32.dll
+0040dc54	12	OLEAUT32.dll
+0040dc64	8	_setmbcp
+0040e47a	5	HELPU
+0040e486	5	HELPF
+0040e492	5	HELPD
+0040e49e	6	CLOSEU
+0040e4ac	6	CLOSEF
+0040e4ba	6	CLOSED
+0040e4d6	15	VS_VERSION_INFO
+0040e532	14	StringFileInfo
+0040e556	8	040904B0
+0040e56e	11	CompanyName
+0040e58e	15	FileDescription
+0040e5b0	24	OLE TEST MFC Application
+0040e5ea	11	FileVersion
+0040e604	10	1, 0, 0, 1
+0040e622	12	InternalName
+0040e63c	8	OLE TEST
+0040e656	14	LegalCopyright
+0040e674	16	Copyright © 1996
+0040e69e	15	LegalTrademarks
+0040e6c6	16	OriginalFilename
+0040e6e8	12	OLE TEST.EXE
+0040e70a	11	ProductName
+0040e724	20	OLE TEST Application
+0040e756	14	ProductVersion
+0040e774	10	1, 0, 0, 1
+0040e792	11	VarFileInfo
+0040e7b2	11	Translation
+00410c38	0	
+00410c3a	0	
+00410c3c	0	
+00410c3e	0	
+00410c40	85	OLE initialization failed.  Make sure that the OLE libraries are the correct version.
+00410cec	15	Performance Kit
+00410d0c	13	Hatchery Eggs
+00410d28	12	Natural Eggs
+00410d42	14	Previous Norns
+00410d60	13	Current Norns
+00410d7c	14	Breeders Score
+00410d9a	12	Time Elapsed
+00410db4	9	 - Paused
+00410dc8	0	
+00410dca	0	
+00410dcc	0	
+00410dd0	0	
+00410dd2	0	
+00410dd4	0	
+00410dd6	32	Keep window always on top\nOn top
+00410e18	0	
+00410e1a	0	
+00410e1c	0	
+00410e1e	0	
+00410e20	0	
+00410e22	0	
+00410e24	0	
+00410e26	0	
+00410e28	0	
+00410e2a	0	
+00410e2c	0	
+00410e2e	0	

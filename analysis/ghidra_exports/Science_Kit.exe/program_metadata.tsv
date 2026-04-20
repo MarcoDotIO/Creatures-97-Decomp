@@ -1,0 +1,14 @@
+key	value
+program_name	Science_Kit.exe
+domain_path	/Science_Kit.exe
+executable_format	Portable Executable (PE)
+language_id	x86:LE:32:default
+compiler_spec	windows
+image_base	00400000
+md5	f3135be1ea64c6ec001d61e281b10349
+function_count	610
+decompile_ok_count	610
+decompile_failed_count	0
+import_count	320
+export_count	1
+string_count	226

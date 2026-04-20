@@ -1,0 +1,511 @@
+entry	name	prototype	body_size	parameter_count	calling_convention	is_external	is_thunk	caller_count	callee_count
+004010d0	FUN_004010d0	undefined4 * FUN_004010d0(undefined4 * param_1)	414	1	__fastcall	false	false	1	7
+004012d0	FUN_004012d0	undefined4 * FUN_004012d0(void * this, byte param_1)	30	2	__thiscall	false	false	0	2
+004012f0	FUN_004012f0	undefined FUN_004012f0(undefined4 * param_1)	108	1	__fastcall	false	false	2	5
+0040135c	FUN_0040135c	undefined FUN_0040135c(void)	14	0	__stdcall	false	false	1	1
+0040136a	FUN_0040136a	undefined FUN_0040136a(void)	14	0	__stdcall	false	false	1	1
+00401378	FUN_00401378	undefined FUN_00401378(void)	24	0	__stdcall	false	false	1	1
+00401390	FUN_00401390	undefined FUN_00401390(void)	14	0	__stdcall	false	false	1	1
+004013a8	FUN_004013a8	undefined FUN_004013a8(void)	8	0	__stdcall	false	false	1	1
+004013d0	FUN_004013d0	undefined4 FUN_004013d0(int param_1)	115	1	__fastcall	false	false	0	3
+00401590	FUN_00401590	undefined FUN_00401590(int param_1)	41	1	__fastcall	false	false	1	1
+00401670	FUN_00401670	undefined4 FUN_00401670(int param_1)	31	1	__fastcall	false	false	0	0
+004016b0	FUN_004016b0	undefined4 FUN_004016b0(int param_1)	249	1	__fastcall	false	false	0	4
+004017b0	FUN_004017b0	undefined4 FUN_004017b0(int param_1)	463	1	__fastcall	false	false	1	16
+0040197f	FUN_0040197f	undefined FUN_0040197f(void)	8	0	__stdcall	false	false	1	1
+00401997	FUN_00401997	undefined FUN_00401997(void)	8	0	__stdcall	false	false	1	1
+004019a9	FUN_004019a9	undefined FUN_004019a9(void)	8	0	__stdcall	false	false	1	1
+004019c0	FUN_004019c0	undefined4 FUN_004019c0(int param_1)	82	1	__fastcall	false	false	0	1
+00401a20	FUN_00401a20	undefined4 FUN_00401a20(int param_1)	54	1	__fastcall	false	false	1	0
+00401a60	FUN_00401a60	undefined FUN_00401a60(int param_1)	31	1	__fastcall	false	false	1	0
+00401a80	FUN_00401a80	undefined4 FUN_00401a80(int param_1)	11	1	__fastcall	false	false	1	1
+00401a90	FUN_00401a90	undefined4 FUN_00401a90(int param_1)	23	1	__fastcall	false	false	1	0
+00401ab0	FUN_00401ab0	undefined FUN_00401ab0(int param_1)	243	1	__fastcall	false	false	0	3
+00401bb0	FUN_00401bb0	undefined4 FUN_00401bb0(int param_1)	128	1	__fastcall	false	false	1	3
+00401c30	FUN_00401c30	undefined FUN_00401c30(int param_1)	46	1	__fastcall	false	false	1	2
+00401c60	FUN_00401c60	undefined4 FUN_00401c60(int param_1)	258	1	__fastcall	false	false	0	2
+00401e10	FUN_00401e10	undefined FUN_00401e10(undefined4 * param_1)	61	1	__fastcall	false	false	3	1
+00401e57	FUN_00401e57	undefined FUN_00401e57(void)	8	0	__stdcall	false	false	1	1
+00401e60	FUN_00401e60	undefined FUN_00401e60(undefined4 * param_1)	7	1	__fastcall	false	false	12	0
+00401eef	FUN_00401eef	undefined FUN_00401eef(void)	8	0	__stdcall	false	false	0	1
+00401f62	FUN_00401f62	undefined FUN_00401f62(void)	11	0	__stdcall	false	false	0	1
+00401f77	FUN_00401f77	undefined FUN_00401f77(void)	8	0	__stdcall	false	false	0	1
+00401f80	FUN_00401f80	undefined FUN_00401f80(undefined4 * param_1)	74	1	__fastcall	false	false	8	2
+00401fca	FUN_00401fca	undefined FUN_00401fca(void)	11	0	__stdcall	false	false	1	1
+00401fdf	FUN_00401fdf	undefined FUN_00401fdf(void)	8	0	__stdcall	false	false	1	1
+00401ff0	FUN_00401ff0	undefined4 FUN_00401ff0(undefined4 param_1)	3	1	__fastcall	false	false	1	0
+00402000	FUN_00402000	undefined4 FUN_00402000(undefined4 param_1)	3	1	__fastcall	false	false	1	0
+00402040	FUN_00402040	undefined4 FUN_00402040(void * this, byte param_1)	30	2	__thiscall	false	false	0	2
+00402110	FUN_00402110	undefined4 * FUN_00402110(undefined4 * param_1)	87	1	__fastcall	false	false	1	0
+00402180	FUN_00402180	undefined4 * FUN_00402180(void * this, byte param_1)	30	2	__thiscall	false	false	0	2
+004021a0	FUN_004021a0	undefined FUN_004021a0(undefined4 * param_1)	129	1	__fastcall	false	false	1	2
+0040222b	FUN_0040222b	undefined FUN_0040222b(void)	8	0	__stdcall	false	false	1	1
+00402240	FUN_00402240	undefined FUN_00402240(void * this, int param_1)	175	2	__thiscall	false	false	0	4
+004022f0	FUN_004022f0	undefined4 FUN_004022f0(int param_1)	50	1	__fastcall	false	false	1	1
+00402330	FUN_00402330	undefined4 FUN_00402330(void * this, undefined4 param_1)	453	2	__thiscall	false	false	1	13
+00402505	FUN_00402505	undefined FUN_00402505(void)	8	0	__stdcall	false	false	1	1
+00402517	FUN_00402517	undefined FUN_00402517(void)	8	0	__stdcall	false	false	1	1
+00402520	FUN_00402520	bool FUN_00402520(void * this, int param_1, int param_2, undefined4 * param_3)	245	4	__thiscall	false	false	1	2
+00402620	FUN_00402620	int FUN_00402620(void * this, int param_1, int param_2)	57	3	__thiscall	false	false	6	0
+00402660	FUN_00402660	undefined FUN_00402660(void * this, undefined4 * param_1)	38	2	__thiscall	false	false	1	0
+00402690	FUN_00402690	undefined FUN_00402690(void * this, undefined1 param_1, int * param_2)	121	3	__thiscall	false	false	4	1
+004027e0	FUN_004027e0	undefined4 * FUN_004027e0(undefined4 * param_1)	224	1	__fastcall	false	false	1	6
+00402950	FUN_00402950	undefined4 * FUN_00402950(void * this, byte param_1)	30	2	__thiscall	false	false	0	2
+00402970	FUN_00402970	undefined FUN_00402970(undefined4 * param_1)	135	1	__fastcall	false	false	2	8
+004029f7	FUN_004029f7	undefined FUN_004029f7(void)	14	0	__stdcall	false	false	1	1
+00402a05	FUN_00402a05	undefined FUN_00402a05(void)	14	0	__stdcall	false	false	1	1
+00402a13	FUN_00402a13	undefined FUN_00402a13(void)	14	0	__stdcall	false	false	1	1
+00402a21	FUN_00402a21	undefined FUN_00402a21(void)	14	0	__stdcall	false	false	1	1
+00402a2f	FUN_00402a2f	undefined FUN_00402a2f(void)	14	0	__stdcall	false	false	1	1
+00402a3d	FUN_00402a3d	undefined FUN_00402a3d(void)	14	0	__stdcall	false	false	1	1
+00402a4b	FUN_00402a4b	undefined FUN_00402a4b(void)	14	0	__stdcall	false	false	1	1
+00402a63	FUN_00402a63	undefined FUN_00402a63(void)	8	0	__stdcall	false	false	1	1
+00402a90	FUN_00402a90	undefined4 FUN_00402a90(int param_1)	125	1	__fastcall	false	false	0	3
+00402e10	FUN_00402e10	undefined FUN_00402e10(int param_1)	58	1	__fastcall	false	false	2	1
+00402e50	FUN_00402e50	undefined FUN_00402e50(int param_1)	31	1	__fastcall	false	false	1	0
+00402e70	FUN_00402e70	undefined FUN_00402e70(int param_1)	59	1	__fastcall	false	false	0	2
+00402eb0	FUN_00402eb0	undefined FUN_00402eb0(int param_1)	17	1	__fastcall	false	false	0	2
+00402f70	FUN_00402f70	bool FUN_00402f70(int param_1)	18	1	__fastcall	false	false	0	0
+00402fb0	FUN_00402fb0	undefined4 FUN_00402fb0(int param_1)	90	1	__fastcall	false	false	0	3
+00403010	FUN_00403010	undefined4 FUN_00403010(int param_1)	612	1	__stdcall	false	false	1	16
+00403274	FUN_00403274	undefined FUN_00403274(void)	8	0	__stdcall	false	false	1	1
+0040328c	FUN_0040328c	undefined FUN_0040328c(void)	8	0	__stdcall	false	false	1	1
+00403294	FUN_00403294	undefined FUN_00403294(void)	8	0	__stdcall	false	false	1	1
+004032a6	FUN_004032a6	undefined FUN_004032a6(void)	11	0	__stdcall	false	false	1	1
+004032c0	FUN_004032c0	undefined4 FUN_004032c0(int param_1)	82	1	__fastcall	false	false	0	1
+00403320	FUN_00403320	undefined4 FUN_00403320(int param_1)	82	1	__fastcall	false	false	0	1
+00403380	FUN_00403380	undefined4 FUN_00403380(int param_1)	147	1	__fastcall	false	false	1	3
+00403420	FUN_00403420	undefined4 FUN_00403420(int param_1)	11	1	__fastcall	false	false	1	1
+00403430	FUN_00403430	undefined4 FUN_00403430(int param_1)	73	1	__fastcall	false	false	3	2
+00403480	FUN_00403480	undefined4 FUN_00403480(int param_1)	18	1	__fastcall	false	false	2	0
+004034a0	thunk_FUN_00403910	undefined4 thunk_FUN_00403910(void * param_1)	5	1	__fastcall	false	true	1	0
+004034b0	FUN_004034b0	undefined FUN_004034b0(int param_1)	260	1	__fastcall	false	false	1	4
+004035c0	FUN_004035c0	undefined FUN_004035c0(int param_1)	17	1	__fastcall	false	false	0	2
+004035e0	FUN_004035e0	undefined FUN_004035e0(int param_1)	17	1	__fastcall	false	false	1	1
+00403600	FUN_00403600	undefined4 FUN_00403600(int param_1)	720	1	__fastcall	false	false	1	16
+004038d0	FUN_004038d0	undefined FUN_004038d0(void)	8	0	__stdcall	false	false	1	1
+004038e8	FUN_004038e8	undefined FUN_004038e8(void)	8	0	__stdcall	false	false	1	1
+004038fa	FUN_004038fa	undefined FUN_004038fa(void)	8	0	__stdcall	false	false	1	1
+00403910	FUN_00403910	undefined4 FUN_00403910(void * param_1)	596	1	__fastcall	false	false	0	9
+00403b80	FUN_00403b80	undefined4 FUN_00403b80(int param_1)	41	1	__fastcall	false	false	1	1
+00403bb0	FUN_00403bb0	undefined4 FUN_00403bb0(void * param_1)	99	1	__fastcall	false	false	1	2
+00403c20	FUN_00403c20	undefined4 FUN_00403c20(void * this, int param_1)	168	2	__thiscall	false	false	1	4
+00403cd0	FUN_00403cd0	undefined4 FUN_00403cd0(void * this, int param_1)	168	2	__thiscall	false	false	1	4
+00403d80	FUN_00403d80	undefined FUN_00403d80(undefined1 * param_1, int param_2)	38	2	__stdcall	false	false	2	0
+00403db0	FUN_00403db0	undefined FUN_00403db0(undefined1 * param_1, int param_2)	22	2	__stdcall	false	false	1	0
+00403dd0	FUN_00403dd0	undefined FUN_00403dd0(undefined1 * param_1, int param_2)	28	2	__stdcall	false	false	1	0
+00403df0	FUN_00403df0	undefined FUN_00403df0(void * this, int param_1, void * param_2)	485	3	__thiscall	false	false	3	2
+00403fe0	FUN_00403fe0	undefined FUN_00403fe0(void * this, RECT * param_1)	23	2	__thiscall	false	false	2	1
+00404000	FUN_00404000	undefined4 FUN_00404000(int param_1)	211	1	__fastcall	false	false	1	2
+004040e0	FUN_004040e0	undefined4 FUN_004040e0(void * this, char * param_1)	76	2	__thiscall	false	false	0	1
+00404150	FUN_00404150	undefined FUN_00404150(void * this, int param_1)	439	2	__thiscall	false	false	0	7
+00404390	FUN_00404390	undefined4 * FUN_00404390(void * this, byte param_1)	30	2	__thiscall	false	false	0	2
+004043b0	FUN_004043b0	undefined4 * FUN_004043b0(void * this, undefined4 param_1, undefined4 param_2, undefined4 param_3, undefined4 param_4)	165	5	__thiscall	false	false	0	6
+004044a0	FUN_004044a0	undefined FUN_004044a0(undefined4 * param_1)	108	1	__fastcall	false	false	1	5
+0040450c	FUN_0040450c	undefined FUN_0040450c(void)	14	0	__stdcall	false	false	1	1
+0040451a	FUN_0040451a	undefined FUN_0040451a(void)	14	0	__stdcall	false	false	1	1
+00404528	FUN_00404528	undefined FUN_00404528(void)	14	0	__stdcall	false	false	1	1
+00404536	FUN_00404536	undefined FUN_00404536(void)	14	0	__stdcall	false	false	1	1
+0040454e	FUN_0040454e	undefined FUN_0040454e(void)	8	0	__stdcall	false	false	1	1
+00404560	FUN_00404560	undefined FUN_00404560(void * this, undefined4 param_1)	13	2	__thiscall	false	false	1	1
+004045c0	FUN_004045c0	undefined4 FUN_004045c0(int param_1)	61	1	__fastcall	false	false	0	2
+00404600	FUN_00404600	undefined FUN_00404600(int param_1)	38	1	__fastcall	false	false	0	3
+0040484d	FUN_0040484d	undefined FUN_0040484d(void)	8	0	__stdcall	false	false	0	1
+00404855	FUN_00404855	undefined FUN_00404855(void)	8	0	__stdcall	false	false	0	1
+0040485d	FUN_0040485d	undefined FUN_0040485d(void)	8	0	__stdcall	false	false	0	1
+0040486f	FUN_0040486f	undefined FUN_0040486f(void)	8	0	__stdcall	false	false	0	1
+00404905	FUN_00404905	undefined FUN_00404905(void)	8	0	__stdcall	false	false	0	1
+00404917	FUN_00404917	undefined FUN_00404917(void)	8	0	__stdcall	false	false	0	1
+00404920	thunk_FUN_00407f90	undefined4 thunk_FUN_00407f90(int param_1)	5	1	__fastcall	false	true	1	0
+00404960	FUN_00404960	undefined FUN_00404960(int param_1)	66	1	__fastcall	false	false	0	4
+004049b0	FUN_004049b0	undefined FUN_004049b0(void * this, int param_1)	147	2	__thiscall	false	false	0	4
+00404a90	FUN_00404a90	undefined4 * FUN_00404a90(undefined4 * param_1)	86	1	__fastcall	false	false	4	0
+00404b00	FUN_00404b00	undefined4 * FUN_00404b00(void * this, byte param_1)	30	2	__thiscall	false	false	0	2
+00404b20	FUN_00404b20	undefined FUN_00404b20(undefined4 * param_1)	148	1	__fastcall	false	false	5	3
+00404bbe	FUN_00404bbe	undefined FUN_00404bbe(void)	8	0	__stdcall	false	false	1	1
+00404bd0	FUN_00404bd0	undefined4 FUN_00404bd0(void * this, char * param_1, char * param_2, char * param_3)	652	4	__thiscall	false	false	3	2
+00404e60	FUN_00404e60	bool FUN_00404e60(void * this, int param_1, LPCSTR param_2, LPBYTE param_3, DWORD param_4)	82	5	__thiscall	false	false	3	1
+00404ec0	FUN_00404ec0	bool FUN_00404ec0(void * this, int param_1, LPCSTR param_2, LPBYTE param_3)	36	4	__thiscall	false	false	1	1
+00404ef0	FUN_00404ef0	bool FUN_00404ef0(void * this, int param_1, LPCSTR param_2, LPBYTE param_3)	36	4	__thiscall	false	false	1	1
+00404f20	FUN_00404f20	undefined FUN_00404f20(void * this, int param_1, LPCSTR param_2, LPBYTE param_3, DWORD param_4, BYTE * param_5)	97	6	__thiscall	false	false	2	2
+00404f90	FUN_00404f90	undefined FUN_00404f90(void * this, int param_1, LPCSTR param_2, LPBYTE param_3, undefined4 param_4)	63	5	__thiscall	false	false	1	2
+00404fd0	FUN_00404fd0	undefined FUN_00404fd0(void * this, int param_1, LPCSTR param_2, LPBYTE param_3, BYTE * param_4)	71	5	__thiscall	false	false	1	2
+00405020	FUN_00405020	bool FUN_00405020(void * this, int param_1, LPCSTR param_2, BYTE * param_3)	77	4	__thiscall	false	false	2	1
+00405070	FUN_00405070	bool FUN_00405070(void * this, int param_1, LPCSTR param_2)	59	3	__thiscall	false	false	2	1
+004050b0	FUN_004050b0	bool FUN_004050b0(void * this, int param_1, LPCSTR param_2, BYTE * param_3)	59	4	__thiscall	false	false	2	1
+004051c0	FUN_004051c0	undefined4 * FUN_004051c0(undefined4 * param_1)	86	1	__fastcall	false	false	0	1
+00405230	FUN_00405230	undefined4 * FUN_00405230(void * this, byte param_1)	30	2	__thiscall	false	false	0	2
+00405250	FUN_00405250	undefined FUN_00405250(undefined4 * param_1)	61	1	__fastcall	false	false	1	1
+00405297	FUN_00405297	undefined FUN_00405297(void)	8	0	__stdcall	false	false	1	1
+004053e0	FUN_004053e0	undefined FUN_004053e0(int param_1)	46	1	__fastcall	false	false	0	1
+00405440	thunk_FUN_00405450	undefined4 thunk_FUN_00405450(int param_1)	5	1	__fastcall	false	true	0	0
+00405450	FUN_00405450	undefined4 FUN_00405450(int param_1)	309	1	__fastcall	false	false	0	14
+00405585	FUN_00405585	undefined FUN_00405585(void)	8	0	__stdcall	false	false	1	1
+0040559d	FUN_0040559d	undefined FUN_0040559d(void)	8	0	__stdcall	false	false	1	1
+004055af	FUN_004055af	undefined FUN_004055af(void)	8	0	__stdcall	false	false	1	1
+004055c0	FUN_004055c0	undefined FUN_004055c0(int param_1)	43	1	__fastcall	false	false	0	1
+004055f0	FUN_004055f0	undefined FUN_004055f0(void * this, int param_1)	281	2	__thiscall	false	false	1	4
+004057f0	FUN_004057f0	undefined4 * FUN_004057f0(undefined4 * param_1)	903	1	__fastcall	false	false	1	12
+00405e10	FUN_00405e10	undefined4 * FUN_00405e10(void * this, byte param_1)	30	2	__thiscall	false	false	0	2
+00405e30	FUN_00405e30	undefined FUN_00405e30(undefined4 * param_1)	234	1	__fastcall	false	false	2	19
+00405f1a	FUN_00405f1a	undefined FUN_00405f1a(void)	14	0	__stdcall	false	false	1	1
+00405f28	FUN_00405f28	undefined FUN_00405f28(void)	14	0	__stdcall	false	false	1	1
+00405f36	FUN_00405f36	undefined FUN_00405f36(void)	14	0	__stdcall	false	false	1	1
+00405f44	FUN_00405f44	undefined FUN_00405f44(void)	14	0	__stdcall	false	false	1	1
+00405f52	FUN_00405f52	undefined FUN_00405f52(void)	14	0	__stdcall	false	false	1	1
+00405f60	FUN_00405f60	undefined FUN_00405f60(void)	14	0	__stdcall	false	false	1	1
+00405f6e	FUN_00405f6e	undefined FUN_00405f6e(void)	14	0	__stdcall	false	false	1	1
+00405f7c	FUN_00405f7c	undefined FUN_00405f7c(void)	14	0	__stdcall	false	false	1	1
+00405f8a	FUN_00405f8a	undefined FUN_00405f8a(void)	14	0	__stdcall	false	false	1	1
+00405f98	FUN_00405f98	undefined FUN_00405f98(void)	14	0	__stdcall	false	false	1	1
+00405fa6	FUN_00405fa6	undefined FUN_00405fa6(void)	14	0	__stdcall	false	false	1	1
+00405fb4	FUN_00405fb4	undefined FUN_00405fb4(void)	14	0	__stdcall	false	false	1	1
+00405fc2	FUN_00405fc2	undefined FUN_00405fc2(void)	14	0	__stdcall	false	false	1	1
+00405fd0	FUN_00405fd0	undefined FUN_00405fd0(void)	14	0	__stdcall	false	false	1	1
+00405fde	FUN_00405fde	undefined FUN_00405fde(void)	14	0	__stdcall	false	false	1	1
+00405fec	FUN_00405fec	undefined FUN_00405fec(void)	14	0	__stdcall	false	false	1	1
+00405ffa	FUN_00405ffa	undefined FUN_00405ffa(void)	14	0	__stdcall	false	false	1	1
+00406008	FUN_00406008	undefined FUN_00406008(void)	14	0	__stdcall	false	false	1	1
+00406020	FUN_00406020	undefined FUN_00406020(void)	8	0	__stdcall	false	false	1	1
+004060f0	FUN_004060f0	undefined4 FUN_004060f0(int param_1)	115	1	__fastcall	false	false	0	3
+00406170	FUN_00406170	undefined FUN_00406170(int param_1)	46	1	__fastcall	false	false	0	4
+00406470	FUN_00406470	undefined FUN_00406470(void)	1	0	__stdcall	false	false	0	0
+00406480	FUN_00406480	bool FUN_00406480(int param_1)	18	1	__fastcall	false	false	0	0
+004064a0	FUN_004064a0	bool FUN_004064a0(int param_1)	18	1	__fastcall	false	false	1	0
+004064c0	FUN_004064c0	undefined FUN_004064c0(int param_1)	31	1	__fastcall	false	false	1	0
+004064e0	FUN_004064e0	undefined4 FUN_004064e0(void * param_1)	410	1	__fastcall	false	false	0	13
+00406684	FUN_00406684	undefined FUN_00406684(void)	8	0	__stdcall	false	false	1	1
+00406696	FUN_00406696	undefined FUN_00406696(void)	8	0	__stdcall	false	false	1	1
+004066a0	FUN_004066a0	undefined4 FUN_004066a0(int param_1)	385	1	__fastcall	false	false	1	14
+00406821	FUN_00406821	undefined FUN_00406821(void)	8	0	__stdcall	false	false	1	1
+00406839	FUN_00406839	undefined FUN_00406839(void)	8	0	__stdcall	false	false	1	1
+0040684b	FUN_0040684b	undefined FUN_0040684b(void)	8	0	__stdcall	false	false	1	1
+00406860	FUN_00406860	undefined FUN_00406860(int param_1)	17	1	__fastcall	false	false	0	1
+00406880	FUN_00406880	undefined FUN_00406880(int param_1)	208	1	__fastcall	false	false	1	4
+00406950	FUN_00406950	undefined4 FUN_00406950(void * this, int param_1)	57	2	__thiscall	false	false	1	1
+00406990	FUN_00406990	undefined FUN_00406990(int param_1)	494	1	__fastcall	false	false	1	8
+00406d80	FUN_00406d80	undefined4 * FUN_00406d80(undefined4 * param_1)	77	1	__fastcall	false	false	1	0
+00406e4b	FUN_00406e4b	undefined FUN_00406e4b(void)	8	0	__stdcall	false	false	0	1
+00406e60	FUN_00406e60	undefined FUN_00406e60(undefined4 * param_1)	73	1	__fastcall	false	false	6	2
+00406eb3	FUN_00406eb3	undefined FUN_00406eb3(void)	8	0	__stdcall	false	false	1	1
+00406ec0	FUN_00406ec0	undefined4 * FUN_00406ec0(undefined4 * param_1)	91	1	__fastcall	false	false	1	0
+00406f9f	FUN_00406f9f	undefined FUN_00406f9f(void)	8	0	__stdcall	false	false	0	1
+00406fb0	FUN_00406fb0	undefined FUN_00406fb0(undefined4 * param_1)	61	1	__fastcall	false	false	8	1
+00406ff7	FUN_00406ff7	undefined FUN_00406ff7(void)	8	0	__stdcall	false	false	1	1
+00407000	FUN_00407000	undefined4 FUN_00407000(void * this, byte param_1)	30	2	__thiscall	false	false	0	2
+0040709e	FUN_0040709e	undefined FUN_0040709e(void)	11	0	__stdcall	false	false	0	1
+004070a9	FUN_004070a9	undefined FUN_004070a9(void)	11	0	__stdcall	false	false	0	1
+004070b4	FUN_004070b4	undefined FUN_004070b4(void)	11	0	__stdcall	false	false	0	1
+004070bf	FUN_004070bf	undefined FUN_004070bf(void)	11	0	__stdcall	false	false	0	1
+004070d4	FUN_004070d4	undefined FUN_004070d4(void)	8	0	__stdcall	false	false	0	1
+004070e0	FUN_004070e0	undefined FUN_004070e0(void)	102	0	__stdcall	false	false	3	5
+00407146	FUN_00407146	undefined FUN_00407146(void)	11	0	__stdcall	false	false	1	1
+00407151	FUN_00407151	undefined FUN_00407151(void)	11	0	__stdcall	false	false	1	1
+0040715c	FUN_0040715c	undefined FUN_0040715c(void)	11	0	__stdcall	false	false	1	1
+00407167	FUN_00407167	undefined FUN_00407167(void)	11	0	__stdcall	false	false	1	1
+0040717c	FUN_0040717c	undefined FUN_0040717c(void)	8	0	__stdcall	false	false	1	1
+00407190	FUN_00407190	undefined4 FUN_00407190(void * this, undefined4 param_1, undefined4 param_2)	48	3	__thiscall	false	false	1	1
+004071c0	FUN_004071c0	undefined4 FUN_004071c0(void * this, undefined4 param_1, undefined4 param_2)	48	3	__thiscall	false	false	1	1
+004071f0	FUN_004071f0	undefined4 FUN_004071f0(void * this, undefined4 param_1, undefined4 param_2)	48	3	__thiscall	false	false	1	1
+00407220	FUN_00407220	undefined4 FUN_00407220(void * this, undefined4 param_1, undefined4 param_2)	48	3	__thiscall	false	false	2	1
+00407250	FUN_00407250	undefined4 FUN_00407250(void * this, undefined4 param_1, undefined4 param_2)	48	3	__thiscall	false	false	1	1
+004073a0	FUN_004073a0	undefined FUN_004073a0(void)	28	0	__stdcall	false	false	0	1
+004073c0	FUN_004073c0	undefined FUN_004073c0(void)	14	0	__stdcall	false	false	0	1
+00407460	FUN_00407460	undefined4 * FUN_00407460(void * this, byte param_1)	30	2	__thiscall	false	false	0	2
+00407480	FUN_00407480	undefined FUN_00407480(undefined4 * param_1)	73	1	__fastcall	false	false	1	2
+004074d3	FUN_004074d3	undefined FUN_004074d3(void)	8	0	__stdcall	false	false	1	1
+004074e0	FUN_004074e0	undefined FUN_004074e0(void)	43	0	__stdcall	false	false	0	3
+00407600	FUN_00407600	undefined4 * FUN_00407600(void * this, byte param_1)	30	2	__thiscall	false	false	0	2
+00407620	FUN_00407620	undefined FUN_00407620(void)	55	0	__stdcall	false	false	1	1
+00407661	FUN_00407661	undefined FUN_00407661(void)	8	0	__stdcall	false	false	1	1
+00407670	FUN_00407670	undefined4 * FUN_00407670(void * this, undefined4 param_1, undefined4 param_2, undefined4 param_3, undefined4 param_4)	166	5	__thiscall	false	false	1	6
+00407770	FUN_00407770	undefined FUN_00407770(undefined4 * param_1)	108	1	__fastcall	false	false	2	5
+004077dc	FUN_004077dc	undefined FUN_004077dc(void)	14	0	__stdcall	false	false	1	1
+004077ea	FUN_004077ea	undefined FUN_004077ea(void)	14	0	__stdcall	false	false	1	1
+004077f8	FUN_004077f8	undefined FUN_004077f8(void)	14	0	__stdcall	false	false	1	1
+00407806	FUN_00407806	undefined FUN_00407806(void)	14	0	__stdcall	false	false	1	1
+0040781e	FUN_0040781e	undefined FUN_0040781e(void)	8	0	__stdcall	false	false	1	1
+00407830	FUN_00407830	undefined FUN_00407830(void * this, undefined4 param_1)	94	2	__thiscall	false	false	2	4
+00407890	FUN_00407890	undefined4 FUN_00407890(void * this, undefined4 param_1)	82	2	__thiscall	false	false	0	3
+004078f0	FUN_004078f0	undefined4 FUN_004078f0(int param_1)	70	1	__fastcall	false	false	0	2
+00407940	FUN_00407940	undefined FUN_00407940(int * param_1)	248	1	__fastcall	false	false	0	10
+00407a40	FUN_00407a40	undefined FUN_00407a40(int * param_1)	120	1	__fastcall	false	false	0	4
+00407ac0	FUN_00407ac0	undefined4 FUN_00407ac0(int param_1)	331	1	__fastcall	false	false	1	8
+00407d10	FUN_00407d10	undefined4 FUN_00407d10(void * param_1)	143	1	__fastcall	false	false	0	4
+00407da0	FUN_00407da0	undefined FUN_00407da0(void * param_1)	77	1	__fastcall	false	false	0	4
+00407ec0	FUN_00407ec0	int FUN_00407ec0(void * this, undefined2 param_1, int param_2)	120	3	__thiscall	false	false	7	2
+00407f40	FUN_00407f40	undefined4 FUN_00407f40(void * this, int param_1)	66	2	__thiscall	false	false	1	1
+00407f90	FUN_00407f90	undefined4 FUN_00407f90(int param_1)	7	1	__fastcall	false	false	1	0
+00407fa0	FUN_00407fa0	undefined FUN_00407fa0(void * this, int param_1)	18	2	__thiscall	false	false	1	0
+00407fc0	FUN_00407fc0	bool FUN_00407fc0(void * this, undefined4 param_1, char * param_2)	113	3	__thiscall	false	false	6	1
+00408040	FUN_00408040	undefined4 FUN_00408040(void * this, char * param_1)	180	2	__thiscall	false	false	1	3
+00408100	FUN_00408100	undefined4 FUN_00408100(void * this, undefined4 param_1, int param_2)	98	3	__thiscall	false	false	6	2
+004084bf	FUN_004084bf	undefined FUN_004084bf(void)	8	0	__stdcall	false	false	0	1
+00408520	Ordinal_4933	undefined Ordinal_4933()	5	0	unknown	false	true	1	1
+00408600	FUN_00408600	undefined4 * FUN_00408600(undefined4 * param_1)	123	1	__fastcall	false	false	5	3
+004086a0	FUN_004086a0	undefined4 * FUN_004086a0(void * this, byte param_1)	30	2	__thiscall	false	false	0	2
+004086c0	FUN_004086c0	undefined FUN_004086c0(undefined4 * param_1)	85	1	__fastcall	false	false	7	3
+00408715	FUN_00408715	undefined FUN_00408715(void)	11	0	__stdcall	false	false	1	1
+0040872a	FUN_0040872a	undefined FUN_0040872a(void)	8	0	__stdcall	false	false	1	1
+00408740	FUN_00408740	undefined4 FUN_00408740(int param_1)	377	1	__fastcall	false	false	0	7
+004088c0	FUN_004088c0	undefined FUN_004088c0(int param_1)	102	1	__fastcall	false	false	1	3
+00408930	FUN_00408930	undefined FUN_00408930(void * this, int param_1)	46	2	__thiscall	false	false	0	2
+00408960	FUN_00408960	undefined4 FUN_00408960(int param_1)	127	1	__fastcall	false	false	2	4
+004089e9	FUN_004089e9	undefined FUN_004089e9(void)	8	0	__stdcall	false	false	1	1
+00408a00	FUN_00408a00	undefined FUN_00408a00(void * param_1)	23	1	__fastcall	false	false	0	2
+00408a30	FUN_00408a30	undefined FUN_00408a30(void * this, undefined4 param_1, undefined4 param_2, undefined4 param_3, undefined4 param_4, undefined4 param_5, undefined4 param_6)	63	7	__thiscall	false	false	0	2
+00408a70	FUN_00408a70	undefined4 FUN_00408a70(int param_1)	247	1	__fastcall	false	false	1	5
+00408b80	FUN_00408b80	bool FUN_00408b80(int param_1)	69	1	__fastcall	false	false	1	2
+00408bd0	FUN_00408bd0	undefined4 FUN_00408bd0(int param_1)	454	1	__fastcall	false	false	1	11
+00408d96	FUN_00408d96	undefined FUN_00408d96(void)	8	0	__stdcall	false	false	1	1
+00408dc0	FUN_00408dc0	undefined FUN_00408dc0(void * this, RECT * param_1, int param_2, int param_3)	328	4	__thiscall	false	false	8	11
+00408f12	FUN_00408f12	undefined FUN_00408f12(void)	8	0	__stdcall	false	false	1	1
+00408f40	FUN_00408f40	undefined4 * FUN_00408f40(undefined4 * param_1)	137	1	__fastcall	false	false	1	1
+0040906c	FUN_0040906c	undefined FUN_0040906c(void)	14	0	__stdcall	false	false	0	1
+00409084	FUN_00409084	undefined FUN_00409084(void)	8	0	__stdcall	false	false	0	1
+004090b0	FUN_004090b0	undefined FUN_004090b0(void)	10	0	__stdcall	false	false	0	1
+004090c0	FUN_004090c0	undefined FUN_004090c0(void)	14	0	__stdcall	false	false	0	1
+0040910e	FUN_0040910e	undefined FUN_0040910e(void)	10	0	__stdcall	false	false	0	1
+00409122	FUN_00409122	undefined FUN_00409122(void)	10	0	__stdcall	false	false	0	1
+00409320	FUN_00409320	bool FUN_00409320(void)	204	0	__stdcall	false	false	0	5
+004093f6	FUN_004093f6	undefined FUN_004093f6(void)	8	0	__stdcall	false	false	1	1
+00409400	FUN_00409400	undefined FUN_00409400(void)	57	0	__stdcall	false	false	0	2
+0040952f	FUN_0040952f	undefined FUN_0040952f(void)	8	0	__stdcall	false	false	0	1
+00409540	FUN_00409540	undefined FUN_00409540(undefined4 * param_1)	61	1	__fastcall	false	false	3	1
+00409587	FUN_00409587	undefined FUN_00409587(void)	8	0	__stdcall	false	false	1	1
+00409640	FUN_00409640	undefined4 * FUN_00409640(undefined4 * param_1)	109	1	__fastcall	false	false	1	1
+004096d0	FUN_004096d0	undefined4 * FUN_004096d0(void * this, byte param_1)	30	2	__thiscall	false	false	0	2
+004096f0	FUN_004096f0	undefined FUN_004096f0(undefined4 * param_1)	167	1	__fastcall	false	false	3	4
+00409797	FUN_00409797	undefined FUN_00409797(void)	11	0	__stdcall	false	false	1	1
+004097ac	FUN_004097ac	undefined FUN_004097ac(void)	8	0	__stdcall	false	false	1	1
+004097c0	FUN_004097c0	undefined FUN_004097c0(void * this, int param_1, int param_2)	459	3	__thiscall	false	false	3	7
+004099a0	FUN_004099a0	undefined FUN_004099a0(void * this, void * param_1, int param_2, int * param_3, int * param_4, int param_5)	119	6	__thiscall	false	false	5	1
+00409af0	FUN_00409af0	undefined4 * FUN_00409af0(undefined4 * param_1)	167	1	__fastcall	false	false	1	4
+00409bf0	FUN_00409bf0	undefined4 * FUN_00409bf0(void * this, byte param_1)	30	2	__thiscall	false	false	0	2
+00409c10	FUN_00409c10	undefined FUN_00409c10(undefined4 * param_1)	108	1	__fastcall	false	false	2	5
+00409c7c	FUN_00409c7c	undefined FUN_00409c7c(void)	14	0	__stdcall	false	false	1	1
+00409c8a	FUN_00409c8a	undefined FUN_00409c8a(void)	14	0	__stdcall	false	false	1	1
+00409c98	FUN_00409c98	undefined FUN_00409c98(void)	14	0	__stdcall	false	false	1	1
+00409ca6	FUN_00409ca6	undefined FUN_00409ca6(void)	14	0	__stdcall	false	false	1	1
+00409cbe	FUN_00409cbe	undefined FUN_00409cbe(void)	8	0	__stdcall	false	false	1	1
+00409cf0	FUN_00409cf0	undefined4 FUN_00409cf0(int param_1)	76	1	__fastcall	false	false	0	2
+00409d40	FUN_00409d40	undefined FUN_00409d40(void)	34	0	__stdcall	false	false	0	2
+00409e10	FUN_00409e10	undefined4 FUN_00409e10(void * this, undefined4 param_1, undefined4 param_2, undefined4 param_3, undefined4 param_4)	120	5	__thiscall	false	false	1	4
+00409f70	FUN_00409f70	undefined4 * FUN_00409f70(undefined4 * param_1)	114	1	__fastcall	false	false	1	1
+0040a010	FUN_0040a010	undefined4 * FUN_0040a010(void * this, byte param_1)	30	2	__thiscall	false	false	0	2
+0040a030	FUN_0040a030	undefined FUN_0040a030(undefined4 * param_1)	122	1	__fastcall	false	false	2	4
+0040a0aa	FUN_0040a0aa	undefined FUN_0040a0aa(void)	11	0	__stdcall	false	false	1	1
+0040a0b5	FUN_0040a0b5	undefined FUN_0040a0b5(void)	11	0	__stdcall	false	false	1	1
+0040a0ca	FUN_0040a0ca	undefined FUN_0040a0ca(void)	8	0	__stdcall	false	false	1	1
+0040a0e0	FUN_0040a0e0	undefined FUN_0040a0e0(void * this, int param_1)	194	2	__thiscall	false	false	1	5
+0040a1c0	FUN_0040a1c0	undefined FUN_0040a1c0(void * this, void * param_1, int * param_2, int param_3)	28	4	__thiscall	false	false	1	1
+0040a2b0	FUN_0040a2b0	undefined4 * FUN_0040a2b0(undefined4 * param_1)	519	1	__fastcall	false	false	1	5
+0040a620	FUN_0040a620	undefined4 * FUN_0040a620(void * this, byte param_1)	30	2	__thiscall	false	false	0	2
+0040a640	FUN_0040a640	undefined FUN_0040a640(undefined4 * param_1)	189	1	__fastcall	false	false	2	14
+0040a6fd	FUN_0040a6fd	undefined FUN_0040a6fd(void)	14	0	__stdcall	false	false	1	1
+0040a70b	FUN_0040a70b	undefined FUN_0040a70b(void)	14	0	__stdcall	false	false	1	1
+0040a719	FUN_0040a719	undefined FUN_0040a719(void)	14	0	__stdcall	false	false	1	1
+0040a727	FUN_0040a727	undefined FUN_0040a727(void)	14	0	__stdcall	false	false	1	1
+0040a735	FUN_0040a735	undefined FUN_0040a735(void)	14	0	__stdcall	false	false	1	1
+0040a743	FUN_0040a743	undefined FUN_0040a743(void)	14	0	__stdcall	false	false	1	1
+0040a751	FUN_0040a751	undefined FUN_0040a751(void)	14	0	__stdcall	false	false	1	1
+0040a75f	FUN_0040a75f	undefined FUN_0040a75f(void)	14	0	__stdcall	false	false	1	1
+0040a76d	FUN_0040a76d	undefined FUN_0040a76d(void)	14	0	__stdcall	false	false	1	1
+0040a77b	FUN_0040a77b	undefined FUN_0040a77b(void)	14	0	__stdcall	false	false	1	1
+0040a789	FUN_0040a789	undefined FUN_0040a789(void)	27	0	__stdcall	false	false	1	1
+0040a7a4	FUN_0040a7a4	undefined FUN_0040a7a4(void)	14	0	__stdcall	false	false	1	1
+0040a7b2	FUN_0040a7b2	undefined FUN_0040a7b2(void)	14	0	__stdcall	false	false	1	1
+0040a7ca	FUN_0040a7ca	undefined FUN_0040a7ca(void)	8	0	__stdcall	false	false	1	1
+0040a8b0	FUN_0040a8b0	int FUN_0040a8b0(int param_1)	151	1	__fastcall	false	false	0	4
+0040a9a0	FUN_0040a9a0	undefined4 FUN_0040a9a0(int param_1)	137	1	__fastcall	false	false	0	8
+0040aa30	FUN_0040aa30	undefined FUN_0040aa30(int param_1)	41	1	__fastcall	false	false	1	1
+0040aa80	FUN_0040aa80	undefined4 FUN_0040aa80(int param_1)	73	1	__fastcall	false	false	0	2
+0040ab50	FUN_0040ab50	bool FUN_0040ab50(int param_1)	18	1	__fastcall	false	false	1	0
+0040ab90	FUN_0040ab90	undefined4 FUN_0040ab90(int param_1)	271	1	__fastcall	false	false	1	4
+0040aca0	FUN_0040aca0	undefined4 FUN_0040aca0(int param_1)	612	1	__stdcall	false	false	1	16
+0040af04	FUN_0040af04	undefined FUN_0040af04(void)	8	0	__stdcall	false	false	1	1
+0040af1c	FUN_0040af1c	undefined FUN_0040af1c(void)	8	0	__stdcall	false	false	1	1
+0040af24	FUN_0040af24	undefined FUN_0040af24(void)	8	0	__stdcall	false	false	1	1
+0040af36	FUN_0040af36	undefined FUN_0040af36(void)	11	0	__stdcall	false	false	1	1
+0040af50	FUN_0040af50	undefined4 FUN_0040af50(int param_1)	46	1	__fastcall	false	false	1	2
+0040af80	FUN_0040af80	undefined FUN_0040af80(int param_1)	31	1	__fastcall	false	false	1	0
+0040afa0	FUN_0040afa0	undefined FUN_0040afa0(void)	1	0	__stdcall	false	false	1	0
+0040afb0	FUN_0040afb0	undefined4 FUN_0040afb0(int param_1)	389	1	__fastcall	false	false	1	9
+0040b135	FUN_0040b135	undefined FUN_0040b135(void)	8	0	__stdcall	false	false	1	1
+0040b13d	FUN_0040b13d	undefined FUN_0040b13d(void)	8	0	__stdcall	false	false	1	1
+0040b145	FUN_0040b145	undefined FUN_0040b145(void)	8	0	__stdcall	false	false	1	1
+0040b14d	FUN_0040b14d	undefined FUN_0040b14d(void)	8	0	__stdcall	false	false	1	1
+0040b15f	FUN_0040b15f	undefined FUN_0040b15f(void)	8	0	__stdcall	false	false	1	1
+0040b170	FUN_0040b170	undefined FUN_0040b170(int param_1)	57	1	__fastcall	false	false	0	2
+0040b1b0	FUN_0040b1b0	undefined4 FUN_0040b1b0(int param_1)	148	1	__fastcall	false	false	1	2
+0040b250	FUN_0040b250	undefined4 FUN_0040b250(int param_1)	126	1	__fastcall	false	false	1	0
+0040b2d0	FUN_0040b2d0	undefined4 FUN_0040b2d0(int param_1)	268	1	__fastcall	false	false	1	2
+0040b440	FUN_0040b440	undefined4 * FUN_0040b440(undefined4 * param_1)	139	1	__fastcall	false	false	2	0
+0040b4f0	FUN_0040b4f0	undefined4 * FUN_0040b4f0(void * this, byte param_1)	30	2	__thiscall	false	false	0	2
+0040b510	FUN_0040b510	undefined FUN_0040b510(undefined4 * param_1)	83	1	__fastcall	false	false	4	2
+0040b56d	FUN_0040b56d	undefined FUN_0040b56d(void)	8	0	__stdcall	false	false	1	1
+0040b580	FUN_0040b580	undefined FUN_0040b580(void * this, int param_1, byte param_2, byte param_3, byte param_4, byte param_5, LPCSTR param_6)	109	7	__thiscall	false	false	1	2
+0040b6a0	FUN_0040b6a0	undefined4 * FUN_0040b6a0(undefined4 * param_1)	104	1	__fastcall	false	false	1	0
+0040b730	FUN_0040b730	undefined4 * FUN_0040b730(void * this, byte param_1)	30	2	__thiscall	false	false	0	2
+0040b750	FUN_0040b750	undefined FUN_0040b750(undefined4 * param_1)	83	1	__fastcall	false	false	1	2
+0040b7ad	FUN_0040b7ad	undefined FUN_0040b7ad(void)	8	0	__stdcall	false	false	1	1
+0040b7c0	FUN_0040b7c0	undefined4 FUN_0040b7c0(void * this, int param_1)	268	2	__thiscall	false	false	1	4
+0040b92f	FUN_0040b92f	undefined FUN_0040b92f(void)	8	0	__stdcall	false	false	0	1
+0040b940	FUN_0040b940	undefined FUN_0040b940(undefined4 * param_1)	61	1	__fastcall	false	false	1	1
+0040b987	FUN_0040b987	undefined FUN_0040b987(void)	8	0	__stdcall	false	false	1	1
+0040b990	FUN_0040b990	undefined4 * FUN_0040b990(undefined4 * param_1)	89	1	__fastcall	false	false	1	0
+0040ba00	FUN_0040ba00	undefined4 * FUN_0040ba00(void * this, byte param_1)	30	2	__thiscall	false	false	0	2
+0040ba20	FUN_0040ba20	undefined FUN_0040ba20(undefined4 * param_1)	84	1	__fastcall	false	false	1	2
+0040ba7e	FUN_0040ba7e	undefined FUN_0040ba7e(void)	8	0	__stdcall	false	false	1	1
+0040ba90	FUN_0040ba90	undefined4 * FUN_0040ba90(undefined4 * param_1)	19	1	__fastcall	false	false	1	0
+0040bab0	FUN_0040bab0	undefined4 * FUN_0040bab0(undefined4 * param_1)	414	1	__fastcall	false	false	0	4
+0040bc80	FUN_0040bc80	undefined4 * FUN_0040bc80(void * this, byte param_1)	30	2	__thiscall	false	false	0	2
+0040bca0	FUN_0040bca0	undefined FUN_0040bca0(undefined4 * param_1)	120	1	__fastcall	false	false	1	5
+0040bd18	FUN_0040bd18	undefined FUN_0040bd18(void)	14	0	__stdcall	false	false	1	1
+0040bd26	FUN_0040bd26	undefined FUN_0040bd26(void)	14	0	__stdcall	false	false	1	1
+0040bd3e	FUN_0040bd3e	undefined FUN_0040bd3e(void)	8	0	__stdcall	false	false	1	1
+0040bd50	FUN_0040bd50	undefined * FUN_0040bd50(void)	29	0	__stdcall	false	false	2	0
+0040bd70	FUN_0040bd70	undefined4 * FUN_0040bd70(void * this, undefined4 param_1)	1168	2	__thiscall	false	false	1	8
+0040c214	FUN_0040c214	undefined FUN_0040c214(void)	8	0	__stdcall	false	false	1	1
+0040c220	FUN_0040c220	int FUN_0040c220(void * this, int param_1)	269	2	__thiscall	false	false	2	0
+0040c330	FUN_0040c330	undefined FUN_0040c330(void * param_1)	43	1	__fastcall	false	false	2	2
+0040c360	FUN_0040c360	undefined FUN_0040c360(int param_1)	68	1	__fastcall	false	false	1	1
+0040c3b0	FUN_0040c3b0	undefined FUN_0040c3b0(void * param_1)	96	1	__fastcall	false	false	0	2
+0040c4b0	FUN_0040c4b0	undefined FUN_0040c4b0(void * this, int param_1)	82	2	__thiscall	false	false	3	0
+0040c510	FUN_0040c510	undefined FUN_0040c510(void * this, int * param_1)	119	2	__thiscall	false	false	2	1
+0040c590	FUN_0040c590	undefined FUN_0040c590(void * this, int param_1)	39	2	__thiscall	false	false	0	1
+0040c5c0	FUN_0040c5c0	undefined4 FUN_0040c5c0(void * param_1)	99	1	__fastcall	false	false	2	3
+0040c630	FUN_0040c630	undefined4 FUN_0040c630(void * this, int param_1)	73	2	__thiscall	false	false	1	2
+0040c680	FUN_0040c680	undefined4 FUN_0040c680(void * this, int param_1)	245	2	__thiscall	false	false	1	1
+0040c780	FUN_0040c780	undefined4 FUN_0040c780(void)	132	0	__stdcall	false	false	1	5
+0040c80e	FUN_0040c80e	undefined FUN_0040c80e(void)	8	0	__stdcall	false	false	1	1
+0040c820	FUN_0040c820	undefined4 * FUN_0040c820(void * this, int param_1)	168	2	__thiscall	false	false	3	4
+0040c8d0	FUN_0040c8d0	byte FUN_0040c8d0(void * this, int param_1)	47	2	__thiscall	false	false	1	1
+0040c900	FUN_0040c900	uint FUN_0040c900(void * this, int param_1, int param_2, undefined4 param_3, undefined4 param_4)	259	5	__thiscall	false	false	1	5
+0040ca79	FUN_0040ca79	undefined FUN_0040ca79(void)	8	0	__stdcall	false	false	0	1
+0040ca90	FUN_0040ca90	undefined4 FUN_0040ca90(void * this, int param_1, int * param_2)	116	3	__thiscall	false	false	0	2
+0040cb10	FUN_0040cb10	undefined4 FUN_0040cb10(void * this, int param_1, int param_2)	135	3	__thiscall	false	false	0	1
+0040cba0	FUN_0040cba0	int FUN_0040cba0(char * param_1, int * param_2)	57	2	__cdecl	false	false	2	0
+0040cc90	FUN_0040cc90	undefined4 * FUN_0040cc90(undefined4 * param_1)	106	1	__fastcall	false	false	1	2
+0040cd30	FUN_0040cd30	undefined4 * FUN_0040cd30(void * this, byte param_1)	30	2	__thiscall	false	false	0	2
+0040cd50	FUN_0040cd50	undefined FUN_0040cd50(undefined4 * param_1)	90	1	__fastcall	false	false	1	3
+0040cdaa	FUN_0040cdaa	undefined FUN_0040cdaa(void)	11	0	__stdcall	false	false	1	1
+0040cdb5	FUN_0040cdb5	undefined FUN_0040cdb5(void)	11	0	__stdcall	false	false	1	1
+0040cdca	FUN_0040cdca	undefined FUN_0040cdca(void)	8	0	__stdcall	false	false	1	1
+0040cde0	FUN_0040cde0	undefined FUN_0040cde0(void * this, int param_1)	144	2	__thiscall	false	false	0	5
+0040cf20	FUN_0040cf20	undefined4 * FUN_0040cf20(undefined4 * param_1)	84	1	__fastcall	false	false	4	0
+0040cf90	FUN_0040cf90	undefined4 * FUN_0040cf90(void * this, byte param_1)	30	2	__thiscall	false	false	0	2
+0040cfb0	FUN_0040cfb0	undefined FUN_0040cfb0(undefined4 * param_1)	100	1	__fastcall	false	false	4	2
+0040d01e	FUN_0040d01e	undefined FUN_0040d01e(void)	8	0	__stdcall	false	false	1	1
+0040d030	FUN_0040d030	undefined FUN_0040d030(void * this, int param_1, int param_2)	251	3	__thiscall	false	false	2	6
+0040d130	FUN_0040d130	undefined4 FUN_0040d130(void * this, undefined4 param_1)	470	2	__thiscall	false	false	2	13
+0040d316	FUN_0040d316	undefined FUN_0040d316(void)	8	0	__stdcall	false	false	1	1
+0040d328	FUN_0040d328	undefined FUN_0040d328(void)	8	0	__stdcall	false	false	1	1
+0040d330	FUN_0040d330	int FUN_0040d330(void * this, int param_1, int param_2)	43	3	__thiscall	false	false	1	0
+0040d360	FUN_0040d360	undefined FUN_0040d360(void * this, void * param_1, int param_2, int * param_3, int * param_4)	297	5	__thiscall	false	false	5	2
+0040d48a	DirectSoundCreate	undefined DirectSoundCreate()	6	0	unknown	false	true	1	0
+0040d490	Ordinal_729	undefined Ordinal_729()	6	0	unknown	false	true	20	0
+0040d496	Ordinal_265	undefined Ordinal_265()	6	0	unknown	false	true	0	0
+0040d520	Ordinal_5647	undefined Ordinal_5647()	6	0	unknown	false	true	0	0
+0040d5e6	Ordinal_675	undefined Ordinal_675()	6	0	unknown	false	true	5	0
+0040d5ec	Ordinal_706	undefined Ordinal_706()	6	0	unknown	false	true	29	0
+0040d5f2	Ordinal_701	undefined Ordinal_701()	6	0	unknown	false	true	19	0
+0040d5fe	Ordinal_509	undefined Ordinal_509()	6	0	unknown	false	true	6	0
+0040d604	Ordinal_486	undefined Ordinal_486()	6	0	unknown	false	true	18	0
+0040d60a	Ordinal_439	undefined Ordinal_439()	6	0	unknown	false	true	5	0
+0040d610	Ordinal_731	undefined Ordinal_731()	6	0	unknown	false	true	39	0
+0040d616	Ordinal_2008	undefined Ordinal_2008()	6	0	unknown	false	true	0	0
+0040d61c	Ordinal_2081	undefined Ordinal_2081()	6	0	unknown	false	true	15	0
+0040d622	Ordinal_2293	undefined Ordinal_2293()	6	0	unknown	false	true	8	0
+0040d628	Ordinal_4450	undefined Ordinal_4450()	6	0	unknown	false	true	0	0
+0040d62e	Ordinal_4173	undefined Ordinal_4173()	6	0	unknown	false	true	1	0
+0040d634	Ordinal_1014	undefined Ordinal_1014()	6	0	unknown	false	true	2	0
+0040d63a	Ordinal_1035	undefined Ordinal_1035()	6	0	unknown	false	true	6	0
+0040d640	Ordinal_762	undefined Ordinal_762()	6	0	unknown	false	true	12	0
+0040d652	Ordinal_592	undefined Ordinal_592()	6	0	unknown	false	true	11	0
+0040d658	Ordinal_537	undefined Ordinal_537()	6	0	unknown	false	true	7	0
+0040d65e	Ordinal_1725	undefined Ordinal_1725()	6	0	unknown	false	true	7	0
+0040d664	Ordinal_2456	undefined Ordinal_2456()	6	0	unknown	false	true	7	0
+0040d66a	Ordinal_2403	undefined Ordinal_2403()	6	0	unknown	false	true	8	0
+0040d670	Ordinal_271	undefined Ordinal_271()	6	0	unknown	false	true	7	0
+0040d676	Ordinal_1061	undefined Ordinal_1061()	6	0	unknown	false	true	8	0
+0040d67c	Ordinal_5003	undefined Ordinal_5003()	6	0	unknown	false	true	8	0
+0040d682	Ordinal_4619	undefined Ordinal_4619()	6	0	unknown	false	true	11	0
+0040d688	Ordinal_336	undefined Ordinal_336()	6	0	unknown	false	true	8	0
+0040d68e	Ordinal_340	undefined Ordinal_340()	6	0	unknown	false	true	11	0
+0040d694	Ordinal_4205	undefined Ordinal_4205()	6	0	unknown	false	true	0	0
+0040d69a	Ordinal_4429	undefined Ordinal_4429()	6	0	unknown	false	true	0	0
+0040d6b2	Ordinal_4817	undefined Ordinal_4817()	6	0	unknown	false	true	2	0
+0040d6b8	Ordinal_5656	undefined Ordinal_5656()	6	0	unknown	false	true	2	0
+0040d6be	Ordinal_4819	undefined Ordinal_4819()	6	0	unknown	false	true	3	0
+0040d6e8	Ordinal_895	undefined Ordinal_895()	6	0	unknown	false	true	1	0
+0040d6ee	Ordinal_5492	undefined Ordinal_5492()	6	0	unknown	false	true	1	0
+0040d6f4	Ordinal_3656	undefined Ordinal_3656()	6	0	unknown	false	true	1	0
+0040d6fa	Ordinal_817	undefined Ordinal_817()	6	0	unknown	false	true	0	0
+0040d724	Ordinal_624	undefined Ordinal_624()	6	0	unknown	false	true	4	0
+0040d72a	Ordinal_542	undefined Ordinal_542()	6	0	unknown	false	true	3	0
+0040d730	Ordinal_5439	undefined Ordinal_5439()	6	0	unknown	false	true	6	0
+0040d736	Ordinal_374	undefined Ordinal_374()	6	0	unknown	false	true	3	0
+0040d73c	Ordinal_1996	undefined Ordinal_1996()	6	0	unknown	false	true	0	0
+0040d742	Ordinal_2072	undefined Ordinal_2072()	6	0	unknown	false	true	0	0
+0040d748	Ordinal_2001	undefined Ordinal_2001()	6	0	unknown	false	true	0	0
+0040d74e	Ordinal_2064	undefined Ordinal_2064()	6	0	unknown	false	true	0	0
+0040d754	Ordinal_1440	undefined Ordinal_1440()	6	0	unknown	false	true	0	0
+0040d75a	Ordinal_1717	undefined Ordinal_1717()	6	0	unknown	false	true	2	0
+0040d760	Ordinal_5110	undefined Ordinal_5110()	6	0	unknown	false	true	1	0
+0040d766	Ordinal_5610	undefined Ordinal_5610()	6	0	unknown	false	true	1	0
+0040d76c	Ordinal_760	undefined Ordinal_760()	6	0	unknown	false	true	1	0
+0040d772	Ordinal_5191	undefined Ordinal_5191()	6	0	unknown	false	true	3	0
+0040d77e	Ordinal_2115	undefined Ordinal_2115()	6	0	unknown	false	true	3	0
+0040d784	Ordinal_3537	undefined Ordinal_3537()	6	0	unknown	false	true	5	0
+0040d78a	Ordinal_403	undefined Ordinal_403()	6	0	unknown	false	true	1	0
+0040d796	Ordinal_546	undefined Ordinal_546()	6	0	unknown	false	true	1	0
+0040d7ae	Ordinal_1081	undefined Ordinal_1081()	6	0	unknown	false	true	1	0
+0040d7b4	Ordinal_4096	undefined Ordinal_4096()	6	0	unknown	false	true	1	0
+0040d7ba	Ordinal_678	undefined Ordinal_678()	6	0	unknown	false	true	1	0
+0040d7c0	Ordinal_392	undefined Ordinal_392()	6	0	unknown	false	true	1	0
+0040d7c6	Ordinal_447	undefined Ordinal_447()	6	0	unknown	false	true	1	0
+0040d7cc	Ordinal_1835	undefined Ordinal_1835()	6	0	unknown	false	true	1	0
+0040d7d2	Ordinal_2530	undefined Ordinal_2530()	6	0	unknown	false	true	1	0
+0040d7d8	Ordinal_4933	undefined Ordinal_4933()	6	0	unknown	false	true	2	0
+0040d7de	Ordinal_3900	undefined Ordinal_3900()	6	0	unknown	false	true	1	0
+0040d7e4	Ordinal_5490	undefined Ordinal_5490()	6	0	unknown	false	true	2	0
+0040d7ea	Ordinal_5181	undefined Ordinal_5181()	6	0	unknown	false	true	1	0
+0040d7f0	Ordinal_4178	undefined Ordinal_4178()	6	0	unknown	false	true	1	0
+0040d814	Ordinal_2515	undefined Ordinal_2515()	6	0	unknown	false	true	1	0
+0040d81a	Ordinal_545	undefined Ordinal_545()	6	0	unknown	false	true	3	0
+0040d820	Ordinal_5127	undefined Ordinal_5127()	6	0	unknown	false	true	3	0
+0040d826	Ordinal_285	undefined Ordinal_285()	6	0	unknown	false	true	3	0
+0040d82c	Ordinal_1842	undefined Ordinal_1842()	6	0	unknown	false	true	1	0
+0040d8a4	Ordinal_721	undefined Ordinal_721()	6	0	unknown	false	true	2	0
+0040d8aa	Ordinal_504	undefined Ordinal_504()	6	0	unknown	false	true	1	0
+0040d8b0	Ordinal_4869	undefined Ordinal_4869()	6	0	unknown	false	true	0	0
+0040d8b6	Ordinal_5630	undefined Ordinal_5630()	6	0	unknown	false	true	0	0
+0040d8bc	Ordinal_5055	undefined Ordinal_5055()	6	0	unknown	false	true	0	0
+0040d8c2	Ordinal_5056	undefined Ordinal_5056()	6	0	unknown	false	true	0	0
+0040d8c8	Ordinal_2299	undefined Ordinal_2299()	6	0	unknown	false	true	0	0
+0040d8ce	Ordinal_1060	undefined Ordinal_1060()	6	0	unknown	false	true	0	0
+0040d8d4	Ordinal_1066	undefined Ordinal_1066()	6	0	unknown	false	true	0	0
+0040d8da	Ordinal_1426	undefined Ordinal_1426()	6	0	unknown	false	true	3	0
+0040d8e0	Ordinal_2390	undefined Ordinal_2390()	6	0	unknown	false	true	0	0
+0040d8e6	Ordinal_781	undefined Ordinal_781()	6	0	unknown	false	true	2	0
+0040d8ec	Ordinal_784	undefined Ordinal_784()	6	0	unknown	false	true	2	0
+0040d8f8	Ordinal_4960	undefined Ordinal_4960()	6	0	unknown	false	true	2	0
+0040d8fe	Ordinal_2891	undefined Ordinal_2891()	6	0	unknown	false	true	1	0
+0040d904	__CxxFrameHandler	undefined __CxxFrameHandler()	6	0	unknown	false	true	0	0
+0040d910	`eh_vector_destructor_iterator'	void `eh_vector_destructor_iterator'(void * param_1, uint param_2, int param_3, _func_void_void_ptr * param_4)	112	4	__stdcall	false	false	2	1
+0040d980	FUN_0040d980	undefined FUN_0040d980(void)	28	0	__stdcall	false	false	1	1
+0040d9a0	__ArrayUnwind	void __ArrayUnwind(void * param_1, uint param_2, int param_3, _func_void_void_ptr * param_4)	103	4	__stdcall	false	false	2	0
+0040da40	`eh_vector_constructor_iterator'	void `eh_vector_constructor_iterator'(void * param_1, uint param_2, int param_3, _func_void_void_ptr * param_4, _func_void_void_ptr * param_5)	112	5	__stdcall	false	false	2	1
+0040dab0	FUN_0040dab0	undefined FUN_0040dab0(void)	28	0	__stdcall	false	false	1	1
+0040dad0	FUN_0040dad0	undefined FUN_0040dad0(_onexit_t param_1)	156	1	__cdecl	false	false	1	4
+0040db70	FUN_0040db70	int FUN_0040db70(_onexit_t param_1)	19	1	__cdecl	false	false	2	1
+0040db90	entry	undefined entry(void)	378	0	__stdcall	false	false	0	13
+0040dd3e	__dllonexit	undefined __dllonexit()	6	0	unknown	false	true	1	0
+0040dd4a	initterm	undefined initterm()	6	0	__cdecl	false	true	1	0
+0040dd50	__setdefaultprecision	undefined __setdefaultprecision(void)	19	0	__stdcall	false	false	1	1
+0040dd80	FUN_0040dd80	undefined FUN_0040dd80(void)	1	0	__stdcall	false	false	1	0
+0040dd82	_controlfp	uint _controlfp(uint _NewValue, uint _Mask)	6	2	__cdecl	false	true	1	0
+0040dd88	_WinMain@16	undefined _WinMain@16(undefined4 param_1, undefined4 param_2, undefined4 param_3, undefined4 param_4)	25	4	__stdcall	false	false	1	1
+0040dda1	FUN_0040dda1	undefined4 FUN_0040dda1(int param_1, undefined4 param_2)	45	2	__stdcall	false	false	0	2
+0040ddf0	Ordinal_1368	undefined Ordinal_1368()	6	0	unknown	false	true	1	0

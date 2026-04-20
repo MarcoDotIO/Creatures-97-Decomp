@@ -1,0 +1,217 @@
+address	length	value
+00400000	2	MZ
+00400080	2	PE
+00400178	5	.text
+004001a0	6	.rdata
+004001c8	5	.data
+004001f0	6	.idata
+00400218	5	.rsrc
+00400240	6	.reloc
+00412060	7	CSprite
+00412090	19	Failed to read file
+004120a4	28	256 colour bit map required.
+004120c4	20	Failed to read file.
+004120dc	20	Failed to open file.
+00412118	22	Could not create file.
+00412134	11	Communicate
+00412140	8	CToolOLE
+0041216c	9	Owner.OLE
+00412178	11	COwnerSheet
+004121a0	9	Owner.bmp
+004121ac	22	Millennium Interactive
+004121c4	20	Creatures\\Owners Kit
+004121e0	14	dde: getb monk
+004121f0	12	The Register
+00412200	10	CCoverPage
+00412240	10	CDIBStatic
+0041226c	14	Please wait...
+0041227c	32	Could not register OLE factories
+004122a0	11	%s|%s|%s|%d
+004122ac	11	Owner's Kit
+004122b8	12	Norn details
+004122c8	6	Tool%d
+004122d0	9	Creatures
+004122dc	13	MS Sans Serif
+004122ec	10	CPhotoPage
+00412348	14	photograph.bmp
+00412358	5	Photo
+00412360	12	.Photo Album
+00412378	9	dde: pict
+00412384	10	dde: panc,
+00412398	17	Delete photograph
+004123ac	9	Blank.bmp
+004123c4	43	Bitmaps (*.bmp)|*.bmp|All files (*.*)|*.*||
+004123f0	17	CCreatureRegister
+00412420	14	%H:%M %b %d %Y
+00412430	10	CPhotoItem
+00412458	14	%H:%M %B %d %Y
+00412468	5	CItem
+00412488	10	COwnerPage
+004124b0	14	dde: putv gend
+004124c0	14	dde: getb ctim
+004124d0	14	dde: getb data
+004124e0	24	dde: putb [%s] data,endm
+00412500	9	rmev norn
+0041250c	16	CRegistryHandler
+00412540	9	SOFTWARE\\
+0041254c	10	CPropSheet
+00412578	6	On Top
+00412580	8	Location
+0041258c	22	inst,app: quit %d,endm
+004125ac	19	There is no subject
+004125c0	14	dde: putv ownr
+004125d0	14	dde: getb cnam
+004125e4	36	Can not communicate with application
+0041260c	13	CPedigreePage
+00412638	8	Pedigree
+00412648	15	Sounds\\####.wav
+00412658	17	Not enough memory
+0041266c	15	NO aggregation?
+0041267c	17	Invalid parameter
+00412690	25	Wave format not supported
+004126ac	25	Resources already in use?
+004126f8	16	CCertificatePage
+00412728	9	birth.bmp
+0041273c	5	     
+00412774	7	CDIBPal
+004139ee	17	DirectSoundCreate
+00413a00	10	DSOUND.dll
+00413a0c	9	MFC40.DLL
+00413a18	17	__CxxFrameHandler
+00413a2c	6	strchr
+00413a36	7	_getcwd
+00413a40	6	_chdir
+00413a4a	6	sscanf
+00413a54	7	_mbscmp
+00413a5c	12	MSVCRT40.dll
+00413a6c	11	__dllonexit
+00413a7a	7	_onexit
+00413a84	16	_except_handler3
+00413a98	17	?terminate@@YAXXZ
+00413aac	5	_exit
+00413ab4	11	_XcptFilter
+00413ac2	4	exit
+00413aca	11	__p__acmdln
+00413ad8	9	_initterm
+00413ae4	13	__getmainargs
+00413af4	16	__setusermatherr
+00413b08	12	_adjust_fdiv
+00413b18	12	__p__commode
+00413b28	10	__p__fmode
+00413b36	14	__set_app_type
+00413b48	10	_controlfp
+00413b56	5	Sleep
+00413b5e	10	GetVersion
+00413b6c	16	GetModuleHandleA
+00413b80	15	GetStartupInfoA
+00413b90	12	KERNEL32.dll
+00413ba0	12	EnableWindow
+00413bb0	12	PostMessageA
+00413bc0	8	SetTimer
+00413bcc	9	KillTimer
+00413bd8	8	IsIconic
+00413be4	12	SendMessageA
+00413bf4	13	GetClientRect
+00413c04	9	LoadIconA
+00413c10	9	GetParent
+00413c1c	13	GetWindowRect
+00413c2c	13	IntersectRect
+00413c3c	8	CopyRect
+00413c48	9	wsprintfA
+00413c54	14	InvalidateRect
+00413c66	16	GetSystemMetrics
+00413c78	10	USER32.dll
+00413c86	12	DeleteObject
+00413c96	14	RealizePalette
+00413ca8	16	CreateDIBSection
+00413cbc	8	DeleteDC
+00413cc8	12	SelectObject
+00413cd8	6	BitBlt
+00413ce2	18	CreateCompatibleDC
+00413cf8	11	CreateFontA
+00413d06	13	CreatePalette
+00413d14	9	GDI32.dll
+00413d20	11	RegCloseKey
+00413d2e	15	RegCreateKeyExA
+00413d40	16	RegQueryValueExA
+00413d54	14	RegSetValueExA
+00413d64	12	ADVAPI32.dll
+00413d72	12	OLEAUT32.dll
+00413d82	8	_setmbcp
+00414e6a	7	SAVEASD
+00414e7a	7	SAVEASF
+00414e8a	7	SAVEASU
+00414e9a	7	CAMERAD
+00414eaa	7	CAMERAF
+00414eba	7	CAMERAU
+00414eca	7	DELETED
+00414eda	7	DELETEF
+00414eea	7	DELETEU
+00414efa	7	UPDATED
+00414f0a	7	UPDATEF
+00414f1a	7	UPDATEU
+00414f2a	5	HELPU
+00414f36	5	HELPF
+00414f42	5	HELPD
+00414f4e	6	CLOSEU
+00414f5c	6	CLOSEF
+00414f6a	6	CLOSED
+00414f78	5	NEXTU
+00414f84	5	NEXTF
+00414f90	5	NEXTD
+00414f9c	5	PREVD
+00414fa8	5	PREVF
+00414fb4	5	PREVU
+00414fc6	15	VS_VERSION_INFO
+00415022	14	StringFileInfo
+00415046	8	040904B0
+0041505e	11	CompanyName
+0041507e	15	FileDescription
+004150a0	24	OLE TEST MFC Application
+004150da	11	FileVersion
+004150f4	10	1, 0, 0, 1
+00415112	12	InternalName
+0041512c	8	OLE TEST
+00415146	14	LegalCopyright
+00415164	16	Copyright © 1996
+0041518e	15	LegalTrademarks
+004151b6	16	OriginalFilename
+004151d8	12	OLE TEST.EXE
+004151fa	11	ProductName
+00415214	20	OLE TEST Application
+00415246	14	ProductVersion
+00415264	10	1, 0, 0, 1
+00415282	11	VarFileInfo
+004152a2	11	Translation
+0041f520	0	
+0041f522	0	
+0041f524	0	
+0041f526	0	
+0041f528	85	OLE initialization failed.  Make sure that the OLE libraries are the correct version.
+0041f5d4	14	Register Birth
+0041f5f2	0	
+0041f5f4	54	Please enter a filename of no more than 255 characters
+0041f662	7	Unknown
+0041f672	45	Creature name must have 10 characters or less
+0041f6ce	15	Owner's Kit... 
+0041f6ee	12	 Paused  -  
+0041f708	14	Owner's Kit - 
+0041f726	12	Unregistered
+0041f740	4	Male
+0041f74a	6	Female
+0041f758	0	
+0041f75a	0	
+0041f75c	0	
+0041f75e	32	Keep window always on top\nOn top
+0041f7a0	28	Detail the pedigree\nPedigree
+0041f7da	0	
+0041f7dc	0	
+0041f7de	0	
+0041f7e0	0	
+0041f7e2	0	
+0041f7e4	0	
+0041f7e6	0	
+0041f7e8	0	
+0041f7ea	0	
+0041f7ec	0	
+0041f7ee	0	

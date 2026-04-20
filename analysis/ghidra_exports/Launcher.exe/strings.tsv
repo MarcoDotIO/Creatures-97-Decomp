@@ -1,0 +1,118 @@
+address	length	value
+00400000	2	MZ
+00400080	2	PE
+00400178	5	.text
+004001a0	6	.rdata
+004001c8	5	.data
+004001f0	6	.idata
+00400218	5	.rsrc
+00400240	6	.reloc
+00405048	16	CRegistryHandler
+00405080	9	SOFTWARE\\
+0040508c	10	CDIBStatic
+004050b8	13	Creatures.exe
+004050c8	7	SFC.OLE
+004050d0	9	Title.bmp
+004050dc	10	BTitle.bmp
+004050f8	9	Build.txt
+00405105	9	ntro2.smk
+00405110	9	IntroPath
+00405120	22	Millennium Interactive
+00405138	9	Creatures
+00405148	7	Applets
+00405170	19	Failed to read file
+00405184	28	256 colour bit map required.
+004051a4	20	Failed to read file.
+004051bc	20	Failed to open file.
+004051d4	7	CDIBPal
+004066f0	9	MFC40.DLL
+004066fc	17	__CxxFrameHandler
+00406710	7	_mbscmp
+0040671a	6	strchr
+00406722	12	MSVCRT40.dll
+00406732	11	__dllonexit
+00406740	7	_onexit
+0040674a	5	_exit
+00406752	11	_XcptFilter
+00406760	4	exit
+00406768	11	__p__acmdln
+00406776	9	_initterm
+00406782	13	__getmainargs
+00406792	16	__setusermatherr
+004067a6	12	_adjust_fdiv
+004067b6	12	__p__commode
+004067c6	10	__p__fmode
+004067d4	14	__set_app_type
+004067e6	16	_except_handler3
+004067fa	10	_controlfp
+00406808	5	Sleep
+00406810	10	GetVersion
+0040681e	16	GetModuleHandleA
+00406832	15	GetStartupInfoA
+00406842	12	KERNEL32.dll
+00406852	13	GetClientRect
+00406862	9	GetParent
+0040686e	13	GetWindowRect
+0040687e	13	IntersectRect
+0040688e	8	CopyRect
+0040689a	9	ReleaseDC
+004068a6	12	EnableWindow
+004068b6	5	GetDC
+004068be	16	GetSystemMetrics
+004068d2	12	SendMessageA
+004068e0	10	USER32.dll
+004068ee	12	DeleteObject
+004068fe	14	RealizePalette
+00406910	16	CreateDIBSection
+00406924	8	DeleteDC
+00406930	12	SelectObject
+00406940	6	BitBlt
+0040694a	18	CreateCompatibleDC
+00406960	13	GetDeviceCaps
+00406970	13	CreatePalette
+0040697e	9	GDI32.dll
+0040698a	11	RegCloseKey
+00406998	15	RegCreateKeyExA
+004069aa	16	RegQueryValueExA
+004069be	14	RegSetValueExA
+004069ce	12	ADVAPI32.dll
+004069de	13	ShellExecuteA
+004069ec	11	SHELL32.dll
+004069fa	8	_setmbcp
+004071e6	15	VS_VERSION_INFO
+00407242	14	StringFileInfo
+00407266	8	040904B0
+0040727e	11	CompanyName
+0040729e	15	FileDescription
+004072c0	26	LAUNCH SFC MFC Application
+004072fe	11	FileVersion
+00407318	10	1, 0, 0, 1
+00407336	12	InternalName
+00407350	10	LAUNCH SFC
+0040736e	14	LegalCopyright
+0040738c	16	Copyright © 1996
+004073b6	15	LegalTrademarks
+004073de	16	OriginalFilename
+00407400	14	LAUNCH SFC.EXE
+00407426	11	ProductName
+00407440	22	LAUNCH SFC Application
+00407476	14	ProductVersion
+00407494	10	1, 0, 0, 1
+004074b2	11	VarFileInfo
+004074d2	11	Translation
+00407a84	0	
+00407a86	0	
+00407a88	0	
+00407a8a	0	
+00407a8c	85	OLE initialization failed.  Make sure that the OLE libraries are the correct version.
+00407b38	27	Millennium Interactive Ltd.
+00407b70	12	SFC Launcher
+00407b8a	3	1.0
+00407b92	67	Warning: Creatures will run at its best in 256 colour screen modes.
+00407c1a	146	"WARNING: This is a press preview beta+ build of Creatures.  Additional tweaks and bug fixes are likely to be made between this and final builds."
+00407d40	9	Creatures
+00407d54	0	
+00407d56	49	Please insert the Creatures CD before continuing.
+00407dba	0	
+00407dbc	0	
+00407dbe	0	

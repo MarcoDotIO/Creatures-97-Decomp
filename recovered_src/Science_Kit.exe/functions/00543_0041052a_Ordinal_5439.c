@@ -1,0 +1,18 @@
+/*
+ * Program: Science_Kit.exe
+ * Function: Ordinal_5439
+ * Entry: 0041052a
+ * Namespace: MFC40.DLL
+ * Prototype: undefined Ordinal_5439()
+ */
+
+
+void Ordinal_5439(void)
+
+{
+                    /* WARNING: Could not recover jumptable at 0x0041052a. Too many branches */
+                    /* WARNING: Treating indirect jump as call */
+  Ordinal_5439();
+  return;
+}
+

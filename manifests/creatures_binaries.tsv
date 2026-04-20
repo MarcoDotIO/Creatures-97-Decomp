@@ -1,0 +1,16 @@
+relpath	size	sha256	description
+Creatures/Backup.exe	62464	f8edf143a85000c0c0e214288a4f24becbf1033d33a9638f1cc03f677112c05f	PE32 executable (GUI) Intel 80386, for MS Windows
+Creatures/Breeder's Kit.exe	114176	17b0b31ed1fbab5a92f3fa2674ab5832c81f5c50a9ed4fa9d199b41e877f6183	PE32 executable (GUI) Intel 80386, for MS Windows
+Creatures/Creatures.exe	271360	9acad9a81c2c363d80ba402c6eb45e889e14e82301aa4568847a8e25b204de7c	PE32 executable (GUI) Intel 80386, for MS Windows
+Creatures/Funeral Kit.exe	97280	070afcaaf4ff425b025e8238f93cd691ff50a500bc9e7aa7bb2f9ce574b9d3c8	PE32 executable (GUI) Intel 80386, for MS Windows
+Creatures/Hatchery.exe	54784	efc33179b99a7b65774afa4f8997433090957301593a93018965791fb45d70c1	PE32 executable (GUI) Intel 80386, for MS Windows
+Creatures/Health Kit.exe	131072	469355de1c8a147bade475cd01929f111acab75beddd10af98dbd7142ffc9c38	PE32 executable (GUI) Intel 80386, for MS Windows
+Creatures/Launcher.exe	26624	189890657b3d38473a90004f864f56150c8b1b892a68dbf21d32aa28630fa8b9	PE32 executable (GUI) Intel 80386, for MS Windows
+Creatures/Owner's Kit.exe	122880	5bf71b6d5d799a366050c049b0e044e0ef7ea7b44bc7df69128c15f41ccac3b5	PE32 executable (GUI) Intel 80386, for MS Windows
+Creatures/Science Kit.exe	187904	01ace5bec8a5a96eb5b92d9b35e9740eab859c95393eb4a0ae7cb5a1f706c836	PE32 executable (GUI) Intel 80386, for MS Windows
+Creatures/Score Kit.exe	66048	ae07f09992d30061ad64de18e28b343b6572c7d4af9039d1764abfa6e6f885b9	PE32 executable (GUI) Intel 80386, for MS Windows
+Creatures/remove.exe	15872	5ec5175b1b0e1ab8b81434a9d2ea3cdea72ad7bb7811c1d11e6edd653326f679	PE32 executable (GUI) Intel 80386, for MS Windows
+DLLS/CTL3D32.DLL	26624	f52be8f2df2d434da7ceae635a45379f071c4b69d44002a7c89ef47028480500	PE32 executable (DLL) (GUI) Intel 80386, for MS Windows
+DLLS/MFC40.DLL	921872	bacf00658b16bbca064ea6d7c49f74ade8773c9a2b2233031565ddcfc5157dd0	PE32 executable (DLL) (GUI) Intel 80386 (stripped to external PDB), for MS Windows
+DLLS/MSVCRT40.DLL	326656	ab55a2de2b6faf3daacd3e69473d385ceaead8033f7c79beb6bbf802f230f030	PE32 executable (DLL) (GUI) Intel 80386, for MS Windows
+DLLS/Wing32.dll	12800	bb1f552e2525e784b61d2fe0ca23f3402adec05aa5f92f4c1dfbea3966a84cbb	PE32 executable (DLL) (GUI) Intel 80386, for MS Windows

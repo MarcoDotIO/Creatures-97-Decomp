@@ -1,0 +1,14 @@
+key	value
+program_name	Score_Kit.exe
+domain_path	/Score_Kit.exe
+executable_format	Portable Executable (PE)
+language_id	x86:LE:32:default
+compiler_spec	windows
+image_base	00400000
+md5	45a37bd437ad98ffb4b71220bebf2232
+function_count	363
+decompile_ok_count	363
+decompile_failed_count	0
+import_count	250
+export_count	1
+string_count	184

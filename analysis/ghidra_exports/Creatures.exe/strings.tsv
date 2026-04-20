@@ -1,0 +1,721 @@
+address	length	value
+00400000	2	MZ
+00400080	2	PE
+00400178	5	.text
+004001a0	6	.rdata
+004001c8	5	.data
+004001f0	6	.idata
+00400218	5	.rsrc
+00400240	6	.reloc
+0042fc58	8	Genetics
+004351b0	10	CBacterium
+004351ec	7	SFCView
+00435218	15	SmoothScrolling
+00435228	11	MaxViewSize
+0043523c	6	SFCDoc
+004352e0	23	anim [1710],sndv [Spnk]
+004352f8	28	anim [232323230],sndv [Tckl]
+00435318	105	setv norn targ,sys: wtop,pose 77,sndv [dead.wav],wait 50,exec [Funeral Kit.exe] [new],wait 3000,kill ownr
+00435384	14	pose 75,wait 8
+00435394	67	loop,impt 1,pose 59,anim [61626364R],wait 20,stm# writ targ 23,ever
+004353d8	67	loop,impt 1,pose 60,anim [61626364R],wait 20,stm# writ targ 23,ever
+0043541c	368	loop,doif driv 6 gt 0,impt 3,pose 57,wait 25,stm# writ targ 21,impt 4,aslp 1,pose 58,wait 60,stm# writ targ 22,impt 15,pose 58,wait 255,stm# writ targ 22,impt 5,pose 58,wait 200,stm# writ targ 22,impt 4,aslp 0,pose 58,wait 25,stm# writ targ 22,else,doif driv 5 gt 0,impt 3,pose 58,wait 120,stm# writ targ 21,else,impt 1,pose 57,wait 50,stm# writ targ 21,endi,endi,ever
+00435590	50	impt 3,sayn,pose 34,stm# writ targ 20,wait 40,done
+004355c4	57	impt 2,aim: 0,sayn,pose 12,stm# writ targ 20,wait 20,done
+00435600	35	drop,stm# writ targ 19,wait 20,done
+00435624	40	appr,drop,stm# writ targ 19,wait 20,done
+00435650	93	impt 3,aim: 0,appr,touc,wait 4,mesg writ _it_ 4,stm# writ targ 18,wait 4,pose 12,wait 20,done
+004356b0	210	doif driv 0 le 0,doif driv 8 gt 0,impt 4,aim: 0,anim [49505152R],stm# writ targ 17,stop,endi,else,impt 4,pose 39,wait 7,doif driv 9 gt 0,anim [53545556R],wait 40,endi,pose 12,endi,stm# writ targ 17,wait 20,done
+00435784	110	impt 2,aim: 0,loop,appr,stim writ targ 0 255 0 0 0 0 0 0 0 0 0 0,impt 1,pose 12,wait 30,stm# writ targ 16,ever
+004357f4	93	impt 3,aim: 2,appr,touc,wait 4,mesg writ _it_ 2,stm# writ targ 15,wait 4,pose 12,wait 20,done
+00435854	93	impt 3,aim: 1,appr,touc,wait 4,mesg writ _it_ 1,stm# writ targ 14,wait 4,pose 12,wait 20,done
+004358b4	118	impt 3,aim: 0,appr,touc,mesg writ _it_ 4,wait 4,pose 66,mesg writ _it_ 5,wait 4,pose 12,stm# writ targ 13,wait 20,done
+0043592c	138	impt 4,aim: 0,appr,touc,mesg writ _it_ 4,wait 2,reps 3,pose 73,mesg writ _it_ 0,pose 74,wait 4,repe,pose 74,stm# writ targ 13,wait 20,done
+004359b8	93	impt 3,aim: 0,appr,touc,wait 4,mesg writ _it_ 0,stm# writ targ 13,wait 4,pose 12,wait 20,done
+00435a18	173	impt 0,loop,rndv var0 0 1,doif var0 eq 0,pose 57,rndv var0 20 40,wait var0,else,pose 59,rndv var0 1 10,wait var0,pose 60,rndv var0 1 10,wait var0,endi,stm# writ targ 12,ever
+00435ac8	57	impt 0,aim: 0,pose 12,loop,wait 50,stm# writ targ 12,ever
+00435b04	94	doif from eq pntr,stm# writ targ 3,else,stm# writ targ 4,endi,doif aslp eq 0,say$ [Ouch!],endi
+00435b64	93	doif from eq pntr,stm# writ targ 1,else,stm# writ targ 2,endi,doif aslp eq 0,say$ [Ooh!],endi
+00435bc4	18	pose 0,sndv [Bing]
+00435bd8	18	pose 1,sndv [Bing]
+00435bec	6	pose 0
+00435bf4	6	pose 6
+00435bfc	13	anim [233320]
+00435c0c	11	PALETTE.DTA
+00435c18	9	World.sfc
+00435c30	16	.PAVCException@@
+00435c4c	12	Creature.exp
+00435c68	11	webpage.url
+00435c74	14	Main Directory
+00435c84	22	Millennium Interactive
+00435c9c	9	Creatures
+00435cac	18	Kill current Norn?
+00435cc0	7	&Camera
+00435cd0	20	.PAVCFileException@@
+00435ce8	8	Deleting
+00435cfc	7	Copying
+00435d08	5	*.spr
+00435d10	9	world.sfc
+00435d1c	7	TempBu\\
+00435d24	7	Backup\\
+00435d34	9	SOFTWARE\\
+00435d40	17	Not enough memory
+00435d54	15	NO aggregation?
+00435d64	17	Invalid parameter
+00435d78	25	Wave format not supported
+00435d94	25	Resources already in use?
+00435de4	17	CCreatureRegister
+00435e10	14	%H:%M %b %d %Y
+00435e20	13	CBiochemistry
+00435e48	6	CScore
+00435e68	5	Dummy
+00435e9c	8	CD Drive
+00435ec8	52	abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ
+00435f00	6	CImage
+00435f08	8	CGallery
+00435f58	11	CHARSET.DTA
+00435f64	5	Macro
+00435f6c	13	BrainActivity
+00435f7c	11	BrainWiring
+00435f88	7	SysInfo
+00435f90	8	Vivarium
+00435f9c	42	%d|%d|%d|%d|%d|%d|%d|%d|%d|%d|%d|%d|%d|%d|
+00435fc8	8	Skeleton
+00435ff1	14	42212212011200
+00436048	42	333333323322322222221222012201120011001125
+00436160	6	\n\n\n\n\n\n
+00436169	8	3141516R
+00436174	15	XXXXXXXXXXXXXXX
+0043618c	7	CWinBMP
+004361b0	22	Could not create file.
+004361c8	12	CMacroHolder
+004361f0	6	COwner
+0043621c	9	MyToolBar
+00436228	10	CMainFrame
+00436280	10	WindowPosn
+0043628c	5	Arial
+004362a4	12	<Place Name>
+004362b4	16	,  Code Version 
+004362c8	9	Build.txt
+004362d4	10	Blackboard
+004362e8	7	Vehicle
+004362f0	14	CompoundObject
+00436300	6	Bubble
+00436308	10	CallButton
+00436314	11	PointerTool
+00436320	12	SimpleObject
+00436330	7	Scenery
+00436338	6	Object
+00436454	12	TipTimeStamp
+0043646c	8	tips.txt
+0043647c	10	TipFilePos
+00436488	10	TipStartup
+004364a4	8	BodyPart
+004364b0	6	Entity
+00436518	9	LoadMacro
+00436524	12	DestroyMacro
+00436534	11	CreateMacro
+00436540	12	ExecuteMacro
+00436554	12	RequestMacro
+00436564	7	CSfcOLE
+0043658c	7	SFC.OLE
+00436594	7	CGenome
+004365bc	9	CEventBar
+004365f0	8	NumTools
+0043660c	36	Can not communicate with application
+00436634	15	CFavouritePlace
+004366c8	7	flabber
+004366e8	5	oogle
+0043670c	5	grndl
+00436714	5	grish
+0043671c	7	graaaah
+00436758	6	bibble
+00436798	8	Creature
+004367a4	9	CInstinct
+004369a8	10	aeiouAEIOU
+004369b8	42	bcdfghjklmnpqrstvwxyzBCDFGHJKLMNPQRSTVWXYZ
+00436b88	14	The birthplace
+00436b9c	13	?!X0123456789
+00436bac	17	WAIT FOR 40 SECS!
+00436bd4	15	211111111111111
+00436be4	11	grendel.vce
+00436bf0	10	female.vce
+00436bfc	8	male.vce
+00436c3c	6	Rvalue
+00436c44	6	Lvalue
+00436c4c	14	'dde:' command
+00436c5c	8	temp.spr
+00436c68	7	%2d:%2d
+00436c78	14	'sys:' command
+00436c88	14	'app:' command
+00436c98	14	'new:' command
+00436ca8	14	'bbd:' command
+00436cb8	139	A macro script contains a syntax error and will be aborted!\nToken: %c%c%c%c, Type: %s. Owning obj: %2.2d %2.2d %2.2d\nPortion of script: %s\n
+00436d44	11	Instruction
+00436d50	10	Debug: %d\n
+00436d5c	5	Voice
+00436e88	7	View - 
+00436e90	7	EyePosn
+00436e98	6	SFCApp
+00436ef0	6	Cheese
+00436ef8	6	Darwin
+00436f00	10	Privileges
+00436f14	6	Burble
+00436f1c	8	nilnilly
+00436f28	6	Barney
+00436f30	5	Sonic
+00436f40	15	UninstallString
+00436f50	70	SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\CreaturesDeinstKey
+00436f98	11	\\Remove.exe
+00436fa4	10	Body data\\
+00436fb0	9	Genetics\\
+00436fbc	7	Images\\
+00436fc4	9	Palettes\\
+00436fd0	7	Macros\\
+00436fd8	7	Sounds\\
+00436fe0	8	Programs
+00436fec	9	Body Data
+00436ff8	18	Genetics Directory
+0043700c	15	Image Directory
+0043701c	17	Palette Directory
+00437030	15	Macro Directory
+00437040	15	Sound Directory
+00437050	6	CBrain
+00437070	21	%d|%d|%d|%d|%d|%d|%d|
+00437088	7	MapData
+004371f0	15	.?AVtype_info@@
+0043c11e	10	WinGBitBlt
+0043c12c	22	WinGRecommendDIBFormat
+0043c146	12	WinGCreateDC
+0043c156	16	WinGCreateBitmap
+0043c16a	20	WinGSetDIBColorTable
+0043c180	10	WING32.dll
+0043c18e	17	DirectSoundCreate
+0043c1a0	10	DSOUND.dll
+0043c1ac	9	MFC40.DLL
+0043c1b8	17	__CxxFrameHandler
+0043c1cc	4	rand
+0043c1d4	6	fclose
+0043c1de	5	fgetc
+0043c1e6	5	fseek
+0043c1ee	5	fopen
+0043c1f6	5	srand
+0043c1fe	4	time
+0043c206	7	_mbscmp
+0043c210	6	strchr
+0043c21a	7	sprintf
+0043c224	20	??_Difstream@@QAEXXZ
+0043c23c	25	??5istream@@QAEAAV0@AAH@Z
+0043c258	24	??0ifstream@@QAE@PBDHH@Z
+0043c274	22	?openprot@filebuf@@2HB
+0043c28e	7	strncpy
+0043c298	5	ctime
+0043c2a0	6	_fstat
+0043c2aa	5	ftell
+0043c2b2	5	fgets
+0043c2ba	9	_purecall
+0043c2c6	6	strstr
+0043c2ce	12	MSVCRT40.dll
+0043c2de	11	__dllonexit
+0043c2ec	7	_onexit
+0043c2f6	16	_except_handler3
+0043c30a	17	?terminate@@YAXXZ
+0043c31e	20	??1type_info@@UAE@XZ
+0043c336	5	_exit
+0043c33e	11	_XcptFilter
+0043c34c	4	exit
+0043c354	11	__p__acmdln
+0043c362	9	_initterm
+0043c36e	13	__getmainargs
+0043c37e	16	__setusermatherr
+0043c392	12	_adjust_fdiv
+0043c3a2	12	__p__commode
+0043c3b2	10	__p__fmode
+0043c3c0	14	__set_app_type
+0043c3d2	10	_controlfp
+0043c3e0	9	FindClose
+0043c3ec	13	FindNextFileA
+0043c3fc	14	FindFirstFileA
+0043c40e	9	CopyFileA
+0043c41a	8	lstrcpyA
+0043c426	5	Sleep
+0043c42e	10	GetVersion
+0043c43c	16	GetModuleHandleA
+0043c450	15	GetStartupInfoA
+0043c460	12	KERNEL32.dll
+0043c470	13	IntersectRect
+0043c480	11	LoadCursorA
+0043c48e	9	LoadIconA
+0043c49a	9	SetCursor
+0043c4a6	14	InvalidateRect
+0043c4b8	13	GetWindowRect
+0043c4c8	12	EnableWindow
+0043c4d8	12	SetRectEmpty
+0043c4e8	9	ReleaseDC
+0043c4f4	5	GetDC
+0043c4fc	7	SetRect
+0043c506	8	PtInRect
+0043c512	9	wsprintfA
+0043c51e	9	EqualRect
+0043c52a	8	CopyRect
+0043c536	10	GetSubMenu
+0043c544	14	GetMenuStringA
+0043c556	16	GetMenuItemCount
+0043c56a	7	GetMenu
+0043c574	11	AppendMenuA
+0043c582	10	RemoveMenu
+0043c590	11	ModifyMenuA
+0043c59e	8	SetTimer
+0043c5aa	9	KillTimer
+0043c5b6	14	DdeNameService
+0043c5c8	14	DdeInitializeA
+0043c5da	15	DdeUninitialize
+0043c5ec	22	DdeCreateStringHandleA
+0043c606	15	DdeQueryStringA
+0043c618	19	DdeFreeStringHandle
+0043c62e	19	DdeCreateDataHandle
+0043c644	13	DdeDisconnect
+0043c654	15	DdeUnaccessData
+0043c666	13	DdeAccessData
+0043c676	12	SendMessageA
+0043c686	16	GetSystemMetrics
+0043c69a	8	IsIconic
+0043c6a6	11	DrawMenuBar
+0043c6b4	10	DeleteMenu
+0043c6c2	11	LoadBitmapA
+0043c6d0	8	FillRect
+0043c6dc	14	ScreenToClient
+0043c6ee	19	SetForegroundWindow
+0043c702	10	USER32.dll
+0043c710	12	DeleteObject
+0043c720	14	RealizePalette
+0043c732	13	SelectPalette
+0043c742	8	GdiFlush
+0043c74e	6	LineTo
+0043c758	8	MoveToEx
+0043c764	9	CreatePen
+0043c770	8	DeleteDC
+0043c77c	12	SelectObject
+0043c78c	17	GetPaletteEntries
+0043c7a0	23	GetSystemPaletteEntries
+0043c7ba	13	CreatePalette
+0043c7ca	10	GetObjectA
+0043c7d8	6	BitBlt
+0043c7e2	18	CreateCompatibleDC
+0043c7f8	14	GetStockObject
+0043c80a	19	CreateFontIndirectA
+0043c81e	9	GDI32.dll
+0043c82a	15	RegCreateKeyExA
+0043c83c	11	RegCloseKey
+0043c84a	16	RegQueryValueExA
+0043c85e	14	RegSetValueExA
+0043c870	13	RegOpenKeyExA
+0043c87e	12	ADVAPI32.dll
+0043c88e	13	ShellExecuteA
+0043c89c	11	SHELL32.dll
+0043c8aa	8	_stricmp
+0043c8b6	8	_setmbcp
+0043f88e	15	VS_VERSION_INFO
+0043f8ea	14	StringFileInfo
+0043f90e	8	040904b0
+0043f926	11	CompanyName
+0043f946	15	FileDescription
+0043f968	37	SMALL FURRY CREATURES MFC Application
+0043f9ba	11	FileVersion
+0043f9d4	10	1, 0, 0, 1
+0043f9f2	12	InternalName
+0043fa0c	21	SMALL FURRY CREATURES
+0043fa3e	14	LegalCopyright
+0043fa5c	16	Copyright © 1995
+0043fa86	16	OriginalFilename
+0043faa8	25	SMALL FURRY CREATURES.EXE
+0043fae2	11	ProductName
+0043fafc	33	SMALL FURRY CREATURES Application
+0043fb46	14	ProductVersion
+0043fb64	10	1, 0, 0, 1
+0043fb82	11	VarFileInfo
+0043fba2	11	Translation
+004417c0	0	
+004417c2	0	
+004417c4	0	
+004417c6	0	
+004417c8	85	OLE initialization failed.  Make sure that the OLE libraries are the correct version.
+00441874	0	
+00441876	0	
+00441878	0	
+0044187a	38	Windows sockets initialization failed.
+004418c8	11	Handy hints
+004418e0	0	
+004418e2	26	Displays a Tip of the Day.
+00441918	18	Ti&p of the Day...
+0044193e	15	Did you know...
+0044195e	52	Tips file does not exist in the prescribed directory
+004419c8	29	Trouble reading the tips file
+00441a04	71	Creatures\n\nSFC\nWorld Files (*.sfc)\n.SFC\nCreatures.Document\nSFC Document
+00441a94	0	
+00441a96	0	
+00441a98	0	
+00441a9a	0	
+00441a9c	0	
+00441a9e	0	
+00441aa0	0	
+00441aa2	0	
+00441aa4	0	
+00441aa6	0	
+00441aa8	0	
+00441aaa	0	
+00441aac	0	
+00441aae	0	
+00441ab0	0	
+00441ab4	9	Creatures
+00441ac8	18	For Help, press F1
+00441aee	37	Select an object on which to get Help
+00441b3a	0	
+00441b3c	0	
+00441b3e	0	
+00441b40	0	
+00441b42	0	
+00441b44	0	
+00441b46	0	
+00441b48	0	
+00441b4a	0	
+00441b4c	0	
+00441b4e	0	
+00441b50	0	
+00441b52	0	
+00441b54	3	EXT
+00441b5c	3	CAP
+00441b64	3	NUM
+00441b6c	4	SCRL
+00441b76	3	OVR
+00441b7e	3	REC
+00441b86	0	
+00441b88	0	
+00441b8a	0	
+00441b8c	0	
+00441b8e	0	
+00441b90	0	
+00441b92	0	
+00441b94	0	
+00441b96	0	
+00441b98	0	
+00441b9c	25	Create a new document\nNew
+00441bd0	27	Open an existing world\nOpen
+00441c08	31	Close the active document\nClose
+00441c48	26	Save the active world\nSave
+00441c7e	45	Save the active world with a new name\nSave As
+00441cda	0	
+00441cdc	0	
+00441cde	0	
+00441ce0	0	
+00441ce2	0	
+00441ce4	0	
+00441ce6	0	
+00441ce8	58	Send the active document through electronic mail\nSend Mail
+00441d5e	0	
+00441d60	0	
+00441d62	0	
+00441d64	63	Display program information, version number and copyright\nAbout
+00441de4	25	Quit the application\nExit
+00441e18	22	Opens Help\nHelp Topics
+00441e46	28	List Help topics\nHelp Topics
+00441e80	47	Display instructions about how to use help\nHelp
+00441ee0	59	Display help for clicked on buttons, menus and windows\nHelp
+00441f58	45	Display help for current task or command\nHelp
+00441fb4	0	
+00441fb6	0	
+00441fb8	0	
+00441fba	0	
+00441fbc	0	
+00441fbe	0	
+00441fc0	0	
+00441fc2	0	
+00441fc4	0	
+00441fc8	18	Open this document
+00441fee	18	Open this document
+00442014	18	Open this document
+0044203a	18	Open this document
+00442060	18	Open this document
+00442086	18	Open this document
+004420ac	18	Open this document
+004420d2	18	Open this document
+004420f8	18	Open this document
+0044211e	18	Open this document
+00442144	18	Open this document
+0044216a	18	Open this document
+00442190	18	Open this document
+004421b6	18	Open this document
+004421dc	18	Open this document
+00442202	18	Open this document
+00442228	40	Switch to the next window pane\nNext Pane
+0044227a	53	Switch back to the previous window pane\nPrevious Pane
+004422e6	0	
+004422e8	0	
+004422ea	0	
+004422ec	0	
+004422ee	0	
+004422f0	0	
+004422f2	0	
+004422f4	0	
+004422f6	0	
+004422f8	0	
+004422fa	0	
+004422fc	0	
+004422fe	0	
+00442300	0	
+00442304	0	
+00442306	0	
+00442308	0	
+0044230a	0	
+0044230c	0	
+0044230e	40	Split the active window into panes\nSplit
+00442360	0	
+00442362	0	
+00442364	0	
+00442366	0	
+00442368	0	
+0044236a	0	
+0044236c	0	
+0044236e	0	
+00442370	0	
+00442372	0	
+00442374	25	Erase the selection\nErase
+004423a8	26	Erase everything\nErase All
+004423de	51	Copy the selection and put it on the Clipboard\nCopy
+00442446	49	Cut the selection and put it on the Clipboard\nCut
+004424aa	28	Find the specified text\nFind
+004424e4	31	Insert Clipboard contents\nPaste
+00442524	0	
+00442526	0	
+00442528	29	Repeat the last action\nRepeat
+00442564	49	Replace specific text with different text\nReplace
+004425c8	37	Select the entire document\nSelect All
+00442614	25	Undo the last action\nUndo
+00442648	38	Redo the previously undone action\nRedo
+00442696	0	
+00442698	0	
+0044269a	0	
+0044269c	39	Show or hide the toolbar\nToggle ToolBar
+004426ec	44	Show or hide the status bar\nToggle StatusBar
+00442746	66	Click this button to speak the contents of the edit box\nSpeak text
+004427cc	64	Type what you want to say, then click the SAY button\nEdit speech
+0044284e	0	
+00442850	0	
+00442852	0	
+00442854	0	
+00442856	0	
+00442858	0	
+0044285a	0	
+0044285c	0	
+0044285e	0	
+00442860	0	
+00442862	0	
+00442864	0	
+00442868	22	Change the window size
+00442896	26	Change the window position
+004428cc	28	Reduce the window to an icon
+00442906	31	Enlarge the window to full size
+00442946	34	Switch to the next document window
+0044298c	38	Switch to the previous document window
+004429da	57	Close the active window and prompts to save the documents
+00442a4e	0	
+00442a50	0	
+00442a52	0	
+00442a54	0	
+00442a56	0	
+00442a58	0	
+00442a5a	0	
+00442a5c	0	
+00442a5e	0	
+00442a60	0	
+00442a62	0	
+00442a64	33	Restore the window to normal size
+00442aa8	18	Activate Task List
+00442ace	50	Please put the Creatures CD-ROM into the CD drive.
+00442b34	48	Export Files (*.exp)|*.exp|All Files (*.*)|*.*||
+00442b96	24	Import a creature/object
+00442bc8	23	Export current creature
+00442bf8	55	Please enter a filename of no more than 255 characters.
+00442c68	12	Score xxxxxx
+00442c82	15	Life Force 100%
+00442ca2	5	DEATH
+00442cae	5	BIRTH
+00442cba	5	 EGG 
+00442cc6	5	     
+00442cd2	10	<Un Named>
+00442ce8	5	&Help
+00442cf4	33	Which is my Norn\nWhich is my Norn
+00442d38	0	
+00442d3a	0	
+00442d3c	0	
+00442d3e	0	
+00442d40	0	
+00442d42	0	
+00442d44	0	
+00442d46	0	
+00442d48	0	
+00442d4a	0	
+00442d4c	0	
+00442d4e	0	
+00442d50	0	
+00442d52	0	
+00442d54	0	
+00442d56	0	
+00442d58	0	
+00442d5a	59	See which object your pet is thinking about\nCreature's view
+00442dd2	46	Toggle between view magnifications\nToggle size
+00442e30	0	
+00442e32	43	Allow uninhibited movement around the world
+00442e8a	0	
+00442e8c	18	Select preferences
+00442eb2	30	Instantly teach your pet words
+00442ef0	0	
+00442ef2	0	
+00442ef4	50	Add this location to your list of favourite places
+00442f5a	0	
+00442f5c	0	
+00442f5e	51	Follow selected creature with the camera\nTrack Norn
+00442fc8	33	Run the crap OLE Test program\nOLE
+0044300c	0	
+0044300e	46	Enable / disable audible speech from creatures
+0044306c	0	
+0044306e	22	Select subject\nSubject
+0044309c	22	Select subject\nSubject
+004430ca	22	Select subject\nSubject
+004430f8	22	Select subject\nSubject
+00443126	22	Select subject\nSubject
+00443154	22	Select subject\nSubject
+00443182	22	Select subject\nSubject
+004431b0	22	Select subject\nSubject
+004431de	22	Select subject\nSubject
+0044320c	22	Select subject\nSubject
+0044323a	22	Select subject\nSubejct
+00443268	22	Select subject\nSubject
+00443298	22	Select subject\nSubject
+004432c6	22	Select subject\nSubject
+004432f4	16	The subject menu
+00443316	43	There are no available subjects\nNo subjects
+0044336e	16	<None Available>
+00443390	0	
+00443392	0	
+00443394	52	infect with a randomly selected species of bacterium
+004433fe	45	enable/disable logging of sound manager calls
+0044345a	47	Creation/deletion of macros, macro errors, etc.
+004434ba	22	input/output call nest
+004434e8	23	Sprite cache size, etc.
+00443518	27	concentrations at intervals
+00443550	42	Attention shifts & associated sensory data
+004435a6	42	changes in conscious & involuntary actions
+004435fc	42	sensory data, and internal sensory stimuli
+00443654	8	(Female)
+00443666	6	(Male)
+00443674	10	(Deceased)
+0044368a	0	
+0044368c	0	
+0044368e	0	
+00443690	0	
+00443692	0	
+00443694	0	
+00443696	0	
+00443698	0	
+0044369a	0	
+0044369c	0	
+0044369e	0	
+004436a0	0	
+004436a2	0	
+004436a4	29	Stimuli received from objects
+004436e0	26	Genes that switch on, etc.
+00443716	48	changes in phase of life, death, infection, etc.
+00443778	30	changes in weather, time, etc.
+004437b6	12	User actions
+004437d0	39	Applet interactions and other OLE stuff
+00443820	14	Brain activity
+0044383e	0	
+00443840	0	
+00443842	0	
+00443844	0	
+00443846	0	
+00443848	0	
+0044384a	0	
+0044384c	0	
+0044384e	0	
+00443850	41	Connect to CyberLife Web site\nWeb Connect
+004438a4	0	
+004438a6	0	
+004438a8	0	
+004438aa	0	
+004438ac	21	Resume Operation\nPlay
+004438d8	21	Pause Operation\nPause
+00443904	29	Store current camera position
+00443940	17	kill current norn
+00443964	0	
+00443966	0	
+00443968	0	
+0044396a	0	
+0044396c	0	
+0044396e	0	
+00443970	0	
+00443974	39	Retrieve a creature from the disk drive
+004439c4	48	Force selected creature to advance to next stage
+00443a26	40	Enable smooth scrolling\nSmooth Scrolling
+00443a78	48	Remove an item from the list of favourite places
+00443ada	0	
+00443adc	0	
+00443ade	0	
+00443ae0	0	
+00443ae2	0	
+00443ae4	0	
+00443ae6	0	
+00443ae8	0	
+00443aea	0	
+00443aec	0	
+00443aee	0	
+00443af0	0	
+00443af4	13	xxxx h : xx m
+00443b10	2	xx
+00443b16	31	Internet explorer could not run
+00443b56	9	Saving...
+00443b6a	46	An Error has occurred while storing world data
+00443bc8	46	It is too dangerous to export a pregnant norn!
+00443c26	0	
+00443c28	0	
+00443c2a	0	
+00443c2c	0	
+00443c2e	0	
+00443c30	0	
+00443c32	0	
+00443c34	0	
+00443c36	0	
+00443c38	0	
+00443c3c	0	
+00443c3e	0	
+00443c40	0	
+00443c42	0	
+00443c44	0	
+00443c46	0	
+00443c48	29	Hatch a new norn\nThe Hatchery
+00443c84	0	
+00443c86	24	Norn Details\nOwner's Kit
+00443cb8	29	Initial Monitoring\nHealth Kit
+00443cf4	31	Advanced monitoring\nScience Kit
+00443d34	34	Pregnancy monitoring\nBreeder's Kit
+00443d7a	0	
+00443d7c	0	
+00443d7e	28	Scoring Data\nPerformance Kit
+00443db8	36	Pay your respects\nCreature Graveyard
+00443e04	0	
+00443e06	0	
+00443e08	0	
+00443e0a	0	
+00443e0c	0	
+00443e0e	0	
+00443e10	0	
+00443e12	0	
+00443e14	0	
+00443e16	0	
+00443e18	0	
+00443e1a	0	
+00443e1c	0	
+00443e1e	0	
+00443e20	0	
+00443e22	26	Save your creature to disk

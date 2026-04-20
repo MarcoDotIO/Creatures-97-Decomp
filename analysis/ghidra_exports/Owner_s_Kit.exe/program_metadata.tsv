@@ -1,0 +1,14 @@
+key	value
+program_name	Owner_s_Kit.exe
+domain_path	/Owner_s_Kit.exe
+executable_format	Portable Executable (PE)
+language_id	x86:LE:32:default
+compiler_spec	windows
+image_base	00400000
+md5	33a914ee7e6e3df4117747e24ae1eaa6
+function_count	501
+decompile_ok_count	501
+decompile_failed_count	0
+import_count	287
+export_count	1
+string_count	216

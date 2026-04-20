@@ -1,0 +1,14 @@
+key	value
+program_name	Health_Kit.exe
+domain_path	/Health_Kit.exe
+executable_format	Portable Executable (PE)
+language_id	x86:LE:32:default
+compiler_spec	windows
+image_base	00400000
+md5	adcc822db4bed5885642bbc9a1e04af6
+function_count	510
+decompile_ok_count	510
+decompile_failed_count	0
+import_count	264
+export_count	1
+string_count	207

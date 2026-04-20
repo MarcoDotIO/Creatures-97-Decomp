@@ -1,0 +1,954 @@
+index	relpath	source_file	size	sha256
+0	README.TXT	data.z.000.README.TXT	35	e13b6604d6f6f685b569fe237aa251a5268a7b8317c85f98b15a91e7f2b34cac
+1	Creatures/48574f32.Photo Album	data.z.001.Creatures_48574f32.Photo Album	16845	22f18066d781f04cb7288ea0d4038e50a7e8f766e3bfb1b40176ff486902f12a
+2	Creatures/ADDBGD.bmp	data.z.002.Creatures_ADDBGD.bmp	13066	1e8ba6c0c65c89e410573b5189f4d1e59d4d66c52b180cdc325efdd744fafbbb
+3	Creatures/Album	data.z.003.Creatures_Album	0	e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+4	Creatures/allchemicals.str	data.z.004.Creatures_allchemicals.str	1818	4759db1d9c52616838f5b5836f6b968501878ea5ae3deb547bcd9b367db33430
+5	Creatures/AllNumbers.spr	data.z.005.Creatures_AllNumbers.spr	3642	ec71a6d1cb80531b458012c4d74869c56591fb9b21841b1fd7051f14d144ca75
+6	Creatures/Aphro	data.z.006.Creatures_Aphro	1454	d51878df3ab040044d5fc5d47f428fb92660931a31653533f05579fb114f9dd3
+7	Creatures/AphroBU	data.z.007.Creatures_AphroBU	1454	d51878df3ab040044d5fc5d47f428fb92660931a31653533f05579fb114f9dd3
+8	Creatures/Applets	data.z.008.Creatures_Applets	108	34acb94f7b67b4071de23e205ca481db88f91ac62ff72bb1ef377088462ec898
+9	Creatures/Backup.exe	data.z.009.Creatures_Backup.exe	62464	f8edf143a85000c0c0e214288a4f24becbf1033d33a9638f1cc03f677112c05f
+10	Creatures/BDosage.spr	data.z.010.Creatures_BDosage.spr	40562	dcedbae91f501d71163f77d5611acedf919be63e1766e19d4107c5acdc262de9
+11	Creatures/birth.bmp	data.z.011.Creatures_birth.bmp	75254	f43d64b6b6a0c9a7d574951252602c00882214161741540012d86b6b636e0a95
+12	Creatures/BLACK.bmp	data.z.012.Creatures_BLACK.bmp	97538	17177f5bf3223c7b031d36a90c1af90bda5d0d1a9ee0fc30f0cc2f34d9e2d306
+13	Creatures/BLANK.bmp	data.z.013.Creatures_BLANK.bmp	19638	0e56680e8c4394cbc50e1679cf4c3008583e6ec210d10f6ee617c178f7437856
+14	Creatures/Blink.spr	data.z.014.Creatures_Blink.spr	3616	f898915a3206ed4dc09c49bbc7f5792b4e38961d573fa171b0cc789df76e9022
+15	Creatures/BRDSCORE.bmp	data.z.015.Creatures_BRDSCORE.bmp	4678	bb1bb377ae440d4f894c765c681597299982c1e97e72faf3acbafb4ad5329caa
+16	Creatures/Breeder's Kit.exe	data.z.016.Creatures_Breeder's Kit.exe	114176	17b0b31ed1fbab5a92f3fa2674ab5832c81f5c50a9ed4fa9d199b41e877f6183
+17	Creatures/BTITLE.bmp	data.z.017.Creatures_BTITLE.bmp	164878	d733336e0580e79c0db4b6379970e635bed4732a1ae4ead857829159d53f8057
+18	Creatures/Build.txt	data.z.018.Creatures_Build.txt	12	b76d81a0f63705d6760f03e05654a5bf14243e7f470a76c20f9137963852de4c
+19	Creatures/cDosage.spr	data.z.019.Creatures_cDosage.spr	40562	3671dea37c1178283c4eeff71c58a5b696970ae4ba47f47b106f4451461d12f5
+20	Creatures/chemicals.str	data.z.020.Creatures_chemicals.str	805	9c3e788e699abc440fc45fbc1f81956acc97ba783e6181f76ba8e85a362a292e
+21	Creatures/Chemicals.txt	data.z.021.Creatures_Chemicals.txt	5900	fddc8b6235b5356d6045fbb1550fcb06c042e60d02a172cdd16a0319bfe478a6
+22	Creatures/creatures.cnt	data.z.022.Creatures_creatures.cnt	3308	a5e887fbe147e091cf9d017a3f64b64e2e6594e8927f8d2dac41c1e47d0228c9
+23	Creatures/Creatures.exe	data.z.023.Creatures_Creatures.exe	271360	9acad9a81c2c363d80ba402c6eb45e889e14e82301aa4568847a8e25b204de7c
+24	Creatures/CREATURES.HLP	data.z.024.Creatures_CREATURES.HLP	2772477	c0235f55dc24d92e82feb4855863ea05af307e714eef5bd3f035c4e8f5ed7c17
+25	Creatures/CREM.bmp	data.z.025.Creatures_CREM.bmp	74034	e028776adae00d4bfb053e8b90dfb0e4b7cc11b1027fd85d554eb26b6421b1bc
+26	Creatures/decision.str	data.z.026.Creatures_decision.str	102	62e0fe950174bf7915a01295efae274c114cdea4c19f9d851824f94c70c48cb9
+27	Creatures/decout.str	data.z.027.Creatures_decout.str	51	f0e9607a7ff7d328815d729ab8e28311de7784ae8f01b5dedb575d777bdffcf7
+28	Creatures/Dosage.spr	data.z.028.Creatures_Dosage.spr	40562	33aabe8c9fe040d3fc96318a2c8c025ddd6540f644d3027ba9a79420a6e629b8
+29	Creatures/DOSE.bmp	data.z.029.Creatures_DOSE.bmp	39142	dd9d8c548ef94057f18eb7bba153cd28a056a7f0c9d2b3762a66cc7ef376eff5
+30	Creatures/Eden.sfc	data.z.030.Creatures_Eden.sfc	177606	f3fa968af5d539d1a158b84a8ced7c8a44c806013deab7c9a052a93b0243c308
+31	Creatures/female.vce	data.z.031.Creatures_female.vce	640	5b3a8ea0691c29f4f4045fe2afad1f407f221d35d4a0c0c258e13412d70d497b
+32	Creatures/Fertility.spr	data.z.032.Creatures_Fertility.spr	57076	60efb6b0ea7fae187b5ef996a1573764dde706d10ed6bc5c1637706461cced60
+33	Creatures/flask2.spr	data.z.033.Creatures_flask2.spr	14358	c8b202204c59d64a7675fae8623930dd3f10ee0d779a6051bbbdb8aa78dd3be4
+34	Creatures/Funeral Kit.exe	data.z.034.Creatures_Funeral Kit.exe	97280	070afcaaf4ff425b025e8238f93cd691ff50a500bc9e7aa7bb2f9ce574b9d3c8
+35	Creatures/funeral.bmp	data.z.035.Creatures_funeral.bmp	73078	eed8ff2244487e16e96486e580f6c13ece8a75339fe06072fcf3ad2a1d2959d7
+36	Creatures/Gauge.spr	data.z.036.Creatures_Gauge.spr	8114	93b60d0dd59d180d4de1a230218c4aa31f705ee6a922c0ed7644aeda235f06ab
+37	Creatures/Gene.spr	data.z.037.Creatures_Gene.spr	49752	0eb04584dc72478bbdc2938c5d84ba7e185f482ff4a94146d521fed149e62aeb
+38	Creatures/GRAVE.bmp	data.z.038.Creatures_GRAVE.bmp	73558	b44acc83334bcea8b54ee8669e1345dc22b12a74e50d97833b3b2fce7a3d893b
+39	Creatures/grendel.vce	data.z.039.Creatures_grendel.vce	640	2982b6335dbfbd6ae06d73bdd0aba0d148cb3a2ec9c5c3bf78d772827e60caac
+40	Creatures/Hatchery.exe	data.z.040.Creatures_Hatchery.exe	54784	efc33179b99a7b65774afa4f8997433090957301593a93018965791fb45d70c1
+41	Creatures/Health	data.z.041.Creatures_Health	2824	9a1bb009ddaebce89b143aab6d9175702ddd1f83f0df295e47cbaecfcfd2f5f1
+42	Creatures/Health Kit.exe	data.z.042.Creatures_Health Kit.exe	131072	469355de1c8a147bade475cd01929f111acab75beddd10af98dbd7142ffc9c38
+43	Creatures/health.bmp	data.z.043.Creatures_health.bmp	60054	0722595eaac7adee1578272d592059d672ce06c6c93d0e37ccfcd1a8866fbdc9
+44	Creatures/HealthBU	data.z.044.Creatures_HealthBU	2824	9a1bb009ddaebce89b143aab6d9175702ddd1f83f0df295e47cbaecfcfd2f5f1
+45	Creatures/Hearts.spr	data.z.045.Creatures_Hearts.spr	1696	d897b143ed4454ec41d9bbcce4ab5757da201d5ea31edd3d9af13eabc57f14f1
+46	Creatures/injections.str	data.z.046.Creatures_injections.str	85	c190d23d9b27406dc8e0f3a147477b57732b649592081e0ab9b93eff2f137b35
+47	Creatures/launch.bmp	data.z.047.Creatures_launch.bmp	73678	73f32ebb75be1d6c6062d052954514c5e43399fb1b2f2320bae7b23d258809e0
+48	Creatures/Launcher.exe	data.z.048.Creatures_Launcher.exe	26624	189890657b3d38473a90004f864f56150c8b1b892a68dbf21d32aa28630fa8b9
+49	Creatures/Lobes.bmp	data.z.049.Creatures_Lobes.bmp	60830	6ce1cba02f02703328d042ee96083cc576945a4691a790c15a47a97ea184c94f
+50	Creatures/LOBES.SPR	data.z.050.Creatures_LOBES.SPR	427498	b9527237ee0ac96d986965cad2b687ad05344821f3f63d3b512c19d6592b9db9
+51	Creatures/MALE.bmp	data.z.051.Creatures_MALE.bmp	12922	c5e1dfbf9594d2b70d1bb48a14a4b929d8fc1e7ef35e03c57ee0481c120b0ea7
+52	Creatures/male.vce	data.z.052.Creatures_male.vce	640	38586c844434720b0ffc4bcb5b19cb306af83fea713ab02381fa6235802681d3
+53	Creatures/ODosage.spr	data.z.053.Creatures_ODosage.spr	40562	954eb230cea99ad80f52d62da2955eb6d574bddc3f48b253e3f6fa444086f9ad
+54	Creatures/owner.bmp	data.z.054.Creatures_owner.bmp	73078	b6d3bbf7948b7029b73ad891ae1aaff4dd1259a990b355519d0de4867df2b151
+55	Creatures/Owner's Kit.exe	data.z.055.Creatures_Owner's Kit.exe	122880	5bf71b6d5d799a366050c049b0e044e0ef7ea7b44bc7df69128c15f41ccac3b5
+56	Creatures/pDosage.spr	data.z.056.Creatures_pDosage.spr	40562	dd65a16f53f33fbcf6ca481175e376f4ef13b96d66fbb1ec4c0cce81ead4bd09
+57	Creatures/photograph.bmp	data.z.057.Creatures_photograph.bmp	94366	dbc66b4c74029a90d727fb88d3c7f32a5865765707760ed56c705eb0ba9dfb83
+58	Creatures/Pregnancy.spr	data.z.058.Creatures_Pregnancy.spr	33784	78a3de795ee25ddb4b2953606d73708322a6f3705fdb795658baea5039044ca9
+59	Creatures/remove.exe	data.z.059.Creatures_remove.exe	15872	5ec5175b1b0e1ab8b81434a9d2ea3cdea72ad7bb7811c1d11e6edd653326f679
+60	Creatures/scanner.bmp	data.z.060.Creatures_scanner.bmp	82054	0b49ca4589c40409c610a5567a525e8d518197f4122292f3872b94b45d3682d9
+61	Creatures/Science Kit.exe	data.z.061.Creatures_Science Kit.exe	187904	01ace5bec8a5a96eb5b92d9b35e9740eab859c95393eb4a0ae7cb5a1f706c836
+62	Creatures/science.bmp	data.z.062.Creatures_science.bmp	82054	8f62072f3f7145514b3d57a9755be0cf2d0630e158fc9f0a2dbabb184cde1e4d
+63	Creatures/Score Kit.exe	data.z.063.Creatures_Score Kit.exe	66048	ae07f09992d30061ad64de18e28b343b6572c7d4af9039d1764abfa6e6f885b9
+64	Creatures/SCORE.bmp	data.z.064.Creatures_SCORE.bmp	76678	8f3eaf4730a50ad5d5af2cecf20a7c2ef7aa9b877af750781c788745e516699a
+65	Creatures/Score.spr	data.z.065.Creatures_Score.spr	3358	36b101a0bed578daf3d313447b5b77700399e8dcc79e60d75a57569e2549c9c2
+66	Creatures/SCOREBGD.bmp	data.z.066.Creatures_SCOREBGD.bmp	12022	16e01209ae93afee56944720e03a616a8803728ab0104560745a8c1f24d8c1d5
+67	Creatures/sDosage.spr	data.z.067.Creatures_sDosage.spr	40562	c89b0f9b8f3f3111f2732e2f1ae7ce4784816a0fd6a82752bccb03ed1777530c
+68	Creatures/Sex.bmp	data.z.068.Creatures_Sex.bmp	76678	ac88313fe6c2057988659b1f631dc780743acf6e50c22f31a2bc95e24ca48153
+69	Creatures/SHOP.bmp	data.z.069.Creatures_SHOP.bmp	113506	eb72aa3cc774fda8f435f3502beadb940fb5aa2b088af3cb6bbe6e3cf730ea4a
+70	Creatures/SKELETON.BMP	data.z.070.Creatures_SKELETON.BMP	81090	353d8b1acd5feafe03df5bced0d679a187a2c75a17623dd12f612aca703756b9
+71	Creatures/The Graveyard	data.z.071.Creatures_The Graveyard	0	e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+72	Creatures/The Register	data.z.072.Creatures_The Register	0	e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+73	Creatures/themes.str	data.z.073.Creatures_themes.str	201	e985793fba9bb480f4c22083b44f2da57ffdd37060e5f6c1eec56c0e811e7078
+74	Creatures/THERM.bmp	data.z.074.Creatures_THERM.bmp	4918	8f64d70fdd03e6eb6dbf48356df65e2e751146e448b7d26f7d8e09bca1563237
+75	Creatures/Time.spr	data.z.075.Creatures_Time.spr	672	492362969dd41b37095ebd8258865de660aacbb6545e038d4a56de163b3df10e
+76	Creatures/Tips.txt	data.z.076.Creatures_Tips.txt	8047	19b8c4a81ce16ef9e6370ba64d44ff5fe4e2a458911927051d45c717fe61268d
+77	Creatures/Title.bmp	data.z.077.Creatures_Title.bmp	164878	30f14b766dc6cfb07dbb53917f68ead42527684dc3f0f638fc5057000f7b1007
+78	Creatures/UNKNOWN.bmp	data.z.078.Creatures_UNKNOWN.bmp	73558	13999b385742054ca2d70e129f3375ac85c65a26dce36992dab5605312763b22
+79	Creatures/Version.txt	data.z.079.Creatures_Version.txt	18	bf5e431b3e0cedc70ef4c2b9b4fbb3d6b7ed288edc4dde7038d739205f009e53
+80	Creatures/webpage.url	data.z.080.Creatures_webpage.url	53	ebb67eec02cab163b1bc99ef1f5068a59e8d4742821b458198db4a2622878741
+81	Creatures/World.sfc	data.z.081.Creatures_World.sfc	177606	f3fa968af5d539d1a158b84a8ced7c8a44c806013deab7c9a052a93b0243c308
+82	Creatures\Backup/yDosage.spr	data.z.082.Creatures_yDosage.spr	40562	9aa4f886c5e2d4fc0f91302cb704d86a111a021b1154df155171513363f173c2
+83	Creatures\Body data/World.sfc	data.z.083.Creatures_Backup_World.sfc	177606	f3fa968af5d539d1a158b84a8ced7c8a44c806013deab7c9a052a93b0243c308
+84	Creatures\Body data/a000.att	data.z.084.Creatures_Body data_a000.att	140	912745bdb2437a5c9e1dfd40b678b88b4b5e7c14d81288aaaa2a871120b7ab9d
+85	Creatures\Body data/A001.att	data.z.085.Creatures_Body data_A001.att	140	e3dd12b7a653df4145d06650aed1cdf8fc8a1935bcb2e80829a0be2cd392e81c
+86	Creatures\Body data/A002.att	data.z.086.Creatures_Body data_A002.att	143	4a05e332a80fe5bc0f596c6b176cd11628ead3ffba74e8e2a195d045427b5c19
+87	Creatures\Body data/a010.att	data.z.087.Creatures_Body data_a010.att	140	4fad07e6283572834ed84171150bbe288cf1454d006f198eec9100b3dc8b3c87
+88	Creatures\Body data/a011.att	data.z.088.Creatures_Body data_a011.att	140	7afd0f69f18903adcecd8794ca7c353da8ec57357f5b54af481416b61850ea80
+89	Creatures\Body data/a012.att	data.z.089.Creatures_Body data_a012.att	140	0c081160c28d052542bce5c46d7313dedf3cac03cbb3586fc5048f57a819ee24
+90	Creatures\Body data/A020.att	data.z.090.Creatures_Body data_A020.att	145	18255c271509687422b58dd1d666d1d14cb3cfd0d415ee1770f16833d6dbbdc6
+91	Creatures\Body data/A021.att	data.z.091.Creatures_Body data_A021.att	143	735a3fd274652a717d0a20290129fede49197849c984319a4679bd2c3f83b682
+92	Creatures\Body data/a022.att	data.z.092.Creatures_Body data_a022.att	140	f4f2944bf4d8e0c2780a1220125353239b96bb192dc043a4bfa3a48b93f1f846
+93	Creatures\Body data/a030.att	data.z.093.Creatures_Body data_a030.att	149	7de29acaa26d780d0286fb7cb87c5b081e713c2b90797c02bc26b04e8a0acd43
+94	Creatures\Body data/a032.att	data.z.094.Creatures_Body data_a032.att	140	e166094c708570e9dbc336111c77881ffdf6bbbf1f54ffe5da96cb7eb0f83558
+95	Creatures\Body data/a100.att	data.z.095.Creatures_Body data_a100.att	140	fd165a61f339db9253f9a1bf38754840c70661991a39bd90d39db39d027fc8a1
+96	Creatures\Body data/A400.att	data.z.096.Creatures_Body data_A400.att	140	1072f552250096082cf61dad6df1559aa0f8cb525342b6bae1c0aa906fe1c8ca
+97	Creatures\Body data/A401.att	data.z.097.Creatures_Body data_A401.att	140	b2aeae00e38479cf9eab5db4d314126e4c34352feaa0532a839f0bb9fb29956e
+98	Creatures\Body data/a402.att	data.z.098.Creatures_Body data_a402.att	140	76add1c791c188ed2ecbe1981c95fa64d6b02230ae3f0057484a94896e1f6d86
+99	Creatures\Body data/a410.att	data.z.099.Creatures_Body data_a410.att	140	4c5748569560080745a89e01c240afa5cc268ef73c711ee4b46d296e31262a0e
+100	Creatures\Body data/a411.att	data.z.100.Creatures_Body data_a411.att	143	30f5a24db8cf3c9756ad5bb7b3d70ba5a1511f48ea371c860ab68355c1f3e06c
+101	Creatures\Body data/a412.att	data.z.101.Creatures_Body data_a412.att	140	7718f48331ab34b3e407b6ddd47a86b09f39573422aa51e65bf2545ca512be91
+102	Creatures\Body data/A420.att	data.z.102.Creatures_Body data_A420.att	139	9bae79a53257a4793f924f9fad4fe67cd4c94fcb36bfc565a2cf00ab6cf32b74
+103	Creatures\Body data/a421.att	data.z.103.Creatures_Body data_a421.att	143	735a3fd274652a717d0a20290129fede49197849c984319a4679bd2c3f83b682
+104	Creatures\Body data/a422.att	data.z.104.Creatures_Body data_a422.att	140	c5da494f020b81705066e62a003cb0c59f7c1e64d9f2c860f7d83c40211f26b8
+105	Creatures\Body data/a430.att	data.z.105.Creatures_Body data_a430.att	142	73578637fd0a04f49fa29128222b5d03a6e31df513e95edc315b04a86e39427d
+106	Creatures\Body data/a500.att	data.z.106.Creatures_Body data_a500.att	140	1d1088f81c7d44c15e10c115fcb4af9da814d3466de3bfacf02939fa98943ce5
+107	Creatures\Body data/b000.att	data.z.107.Creatures_Body data_b000.att	353	a5f846bb3874028b20c70f2fb7fd474a24cae45efe7b22e3ebead905011debec
+108	Creatures\Body data/B001.att	data.z.108.Creatures_Body data_B001.att	353	19e214edcc418f951377744d6c51c27967cdf85a909f4293303708653b8cbda3
+109	Creatures\Body data/B002.att	data.z.109.Creatures_Body data_B002.att	356	958e5729a1dddb413010109f12dc02d5d15e03372b8e10615635b334c1e80901
+110	Creatures\Body data/b010.att	data.z.110.Creatures_Body data_b010.att	357	0c3f1c030b9d7206aea4d073d3a493fcb571d19b9f514800ecd0bb50def1e42e
+111	Creatures\Body data/b011.att	data.z.111.Creatures_Body data_b011.att	358	0740905b86c6fc7930809725c60a94c3f2bf1f61fc2c6b715a10761cee69dc92
+112	Creatures\Body data/b012.att	data.z.112.Creatures_Body data_b012.att	358	9c494c168b74ba9c1ccdfc923803db1a7dbc631c7be085307239a7830bb878b4
+113	Creatures\Body data/B020.att	data.z.113.Creatures_Body data_B020.att	352	0edd58e53889b3d05fdff812cbff2d4f42568f73b3742608d6af41485f186887
+114	Creatures\Body data/B021.att	data.z.114.Creatures_Body data_B021.att	359	3bf0b6d0c95f0545a0c7000f915c1fa8bc064993ac57d561d81ce5711ad754c7
+115	Creatures\Body data/b022.att	data.z.115.Creatures_Body data_b022.att	355	b1c214d68d9a3f697f70e1ea2159cfea0edda42af5ed286fb151291039008238
+116	Creatures\Body data/b100.att	data.z.116.Creatures_Body data_b100.att	371	609d195fec472064564c6619e020a19f22218d5d5492418183f2f81fb3316fff
+117	Creatures\Body data/B400.att	data.z.117.Creatures_Body data_B400.att	353	a5f846bb3874028b20c70f2fb7fd474a24cae45efe7b22e3ebead905011debec
+118	Creatures\Body data/B401.att	data.z.118.Creatures_Body data_B401.att	360	14b15b115975ca0acf8ad3ea3b9e865c698a5950d264d33d3a397f9406172790
+119	Creatures\Body data/B402.att	data.z.119.Creatures_Body data_B402.att	355	f94fa6650fa0a5cd36bcd054205993875dd8b31d03bc6ffc3738055dd2ed4f38
+120	Creatures\Body data/b410.att	data.z.120.Creatures_Body data_b410.att	358	375445245b10ed2e4bef72a157507a302e1973ea0a66d9f6884d1e91667042e8
+121	Creatures\Body data/b411.att	data.z.121.Creatures_Body data_b411.att	356	86e1e3ea0fad3813aa81a01ca1510354296599d3f3a411493d2f279df27bdc0d
+122	Creatures\Body data/b412.att	data.z.122.Creatures_Body data_b412.att	358	3c5f007b1a4bb3e79f566e8f76bd6c5daefa2a0e4804d96a6b03bd0bb6c706b2
+123	Creatures\Body data/B420.att	data.z.123.Creatures_Body data_B420.att	352	de4c96057edb28eb40e007f027645c28ea7537a92c36e9074ba9f5cfd320093e
+124	Creatures\Body data/B421.att	data.z.124.Creatures_Body data_B421.att	359	3bf0b6d0c95f0545a0c7000f915c1fa8bc064993ac57d561d81ce5711ad754c7
+125	Creatures\Body data/b422.att	data.z.125.Creatures_Body data_b422.att	358	c19e82aa5eefe09727587432ecb4a09d22a0115cb186c49368206c5270703a30
+126	Creatures\Body data/b500.att	data.z.126.Creatures_Body data_b500.att	355	24204f432bdd8e5258acd32b41b7389d06ef33c035cbaf55aa233e4fc72b4f8d
+127	Creatures\Body data/c000.att	data.z.127.Creatures_Body data_c000.att	140	4f96a5f365eeee508a73a6ef81c9a8e350d47ddf0239dc44bba35ce90e20e72a
+128	Creatures\Body data/C001.att	data.z.128.Creatures_Body data_C001.att	140	ad7c78799b09d168970db4e60c409ef88d1414f318e8d6f160555fce7c8b5967
+129	Creatures\Body data/C002.att	data.z.129.Creatures_Body data_C002.att	140	0eeae454eb2852f527a83678eeb8d241f518c5510341f1707d83c9434a05959b
+130	Creatures\Body data/c010.att	data.z.130.Creatures_Body data_c010.att	140	94c99ff66ea344e655258f1f67b881af1540666c398a17cdc20cf9ac806f4529
+131	Creatures\Body data/c011.att	data.z.131.Creatures_Body data_c011.att	140	3694d7069363019d09403347dd6814346b3d53ef9138e4a0849d78f6a6febb99
+132	Creatures\Body data/c012.att	data.z.132.Creatures_Body data_c012.att	140	d70ba527fa977ab896383ef19403931fff3a5739b74299119344dea8bba2b469
+133	Creatures\Body data/C020.att	data.z.133.Creatures_Body data_C020.att	140	983fe0c1e590ae268800cd7b81741ae7fb926cc180e98ccb9bd4a8329c4d3dbb
+134	Creatures\Body data/C021.att	data.z.134.Creatures_Body data_C021.att	140	4b62408da470c506edd8c7c6bdbae6073a11481b4bdf1d3b5fd7937a408951fe
+135	Creatures\Body data/c022.att	data.z.135.Creatures_Body data_c022.att	140	b8ca9c8d178828eebc0b127ce30f0305306bee998b4223bcd2271644b810b1e7
+136	Creatures\Body data/c100.att	data.z.136.Creatures_Body data_c100.att	140	96c7ab768a0d579a9254e872b840fbe3faa5e44ac77f61f5a913e3e72d24d237
+137	Creatures\Body data/C400.att	data.z.137.Creatures_Body data_C400.att	140	4f96a5f365eeee508a73a6ef81c9a8e350d47ddf0239dc44bba35ce90e20e72a
+138	Creatures\Body data/C401.att	data.z.138.Creatures_Body data_C401.att	140	d6babd67b20995afef64510decdaeb49cda5fff1403506356e79d45508a856bf
+139	Creatures\Body data/C402.att	data.z.139.Creatures_Body data_C402.att	140	623e84d4f06bd9543e8e90bfebf2b45083b337375da164fc370a799068c23a5e
+140	Creatures\Body data/c410.att	data.z.140.Creatures_Body data_c410.att	140	e5dc70b05cd09bbc1d93804e7171db523de8519634b49068effbdfa0e5d934e0
+141	Creatures\Body data/c411.att	data.z.141.Creatures_Body data_c411.att	140	e66c4e460d880441be66571e216404698ea1791a58d2b5a53b4a2283ba80ebbf
+142	Creatures\Body data/c412.att	data.z.142.Creatures_Body data_c412.att	140	07ac96d86abfd3a12a733334b745951b4ff1a5ec3080665f2f5ddd57e127d017
+143	Creatures\Body data/C420.att	data.z.143.Creatures_Body data_C420.att	140	983fe0c1e590ae268800cd7b81741ae7fb926cc180e98ccb9bd4a8329c4d3dbb
+144	Creatures\Body data/C421.att	data.z.144.Creatures_Body data_C421.att	140	3657eff8101404edbcdd68fee1b02a669c6b85449231cb70168bbf97b1212a18
+145	Creatures\Body data/c422.att	data.z.145.Creatures_Body data_c422.att	140	cb4ff26e621400c81d57a40be85f03a62b39201ed32e9fc63f61ea8917557dc5
+146	Creatures\Body data/C500.att	data.z.146.Creatures_Body data_C500.att	140	f5c4059e0edb3fdf135c10007f596477a7eb2cf2dab26a06156487c3e19c0be4
+147	Creatures\Body data/d000.att	data.z.147.Creatures_Body data_d000.att	140	78505802a574826991699f63838332b146d5f3eac558b01d99e754d01929b20e
+148	Creatures\Body data/D001.att	data.z.148.Creatures_Body data_D001.att	140	67dd2f580817d237e1ec87a0825cc13cbf634fa975eda923edef56c361a4a25f
+149	Creatures\Body data/D002.att	data.z.149.Creatures_Body data_D002.att	140	a0cda97a179d4a137fdbaff5abdbd093047ef621259a1f9003f7a73ab032a7a2
+150	Creatures\Body data/d010.att	data.z.150.Creatures_Body data_d010.att	140	b8d08cb0e3775e97675846b5c18c26962294b9f6f159d3cfc7609edc2e285bae
+151	Creatures\Body data/d011.att	data.z.151.Creatures_Body data_d011.att	140	8da7c84f365c5fdcb36dc03b8ecff035c38c1576af36b09f766632ca6185749d
+152	Creatures\Body data/d012.att	data.z.152.Creatures_Body data_d012.att	140	cf80f2bbccc7a006275f3b723cffa5a4b8f62e16583d5e34f433f5f9614c2599
+153	Creatures\Body data/D020.att	data.z.153.Creatures_Body data_D020.att	140	45dff90fe5e6e9f9d0f0ae08a3fe81c7b4ff035857f04f1796713ccad2b5204b
+154	Creatures\Body data/D021.att	data.z.154.Creatures_Body data_D021.att	140	c74bf27e95db6b5863127e5e4b9305cc31392b2f57d677d197e171dc9fa7ee30
+155	Creatures\Body data/d022.att	data.z.155.Creatures_Body data_d022.att	140	c3d826e1de584bcff0763673771124c8c555723a7eaba039366a60864ea8338f
+156	Creatures\Body data/d100.att	data.z.156.Creatures_Body data_d100.att	141	d9dbcf31821788195f36662f6b55c07f06e5bffdca3996a860fc31cacc62b1a9
+157	Creatures\Body data/D400.ATT	data.z.157.Creatures_Body data_D400.ATT	140	78505802a574826991699f63838332b146d5f3eac558b01d99e754d01929b20e
+158	Creatures\Body data/D401.att	data.z.158.Creatures_Body data_D401.att	140	89ecf671ddd2845187e762f109d05fd6eb559ba2192e63310300e04f803b679c
+159	Creatures\Body data/D402.att	data.z.159.Creatures_Body data_D402.att	140	d0f26410c0e765b553e445b74fdb9f24efa5c7a3fc9a2fb1bfaf5daa66964d6b
+160	Creatures\Body data/d410.att	data.z.160.Creatures_Body data_d410.att	140	6248b064031c2265a0ce66d6bda8a5ee5946c4cc23ca95b9f5329cf3e6274d23
+161	Creatures\Body data/d411.att	data.z.161.Creatures_Body data_d411.att	140	11c62a70545af886b3bd32914ecd10a81ba3f9b7e49940c1a775086ba87c91f3
+162	Creatures\Body data/d412.att	data.z.162.Creatures_Body data_d412.att	140	d0f329dac6899e7de7e723b07b6b0399fd4e52c93025956bda17133f7e8b58a3
+163	Creatures\Body data/D420.att	data.z.163.Creatures_Body data_D420.att	140	45dff90fe5e6e9f9d0f0ae08a3fe81c7b4ff035857f04f1796713ccad2b5204b
+164	Creatures\Body data/D421.att	data.z.164.Creatures_Body data_D421.att	140	e3de3c2ee424ce8638e2cb9fb2eb999a6582638c0d81a15ecd7149050606d20c
+165	Creatures\Body data/d422.att	data.z.165.Creatures_Body data_d422.att	140	5bb1e1a1695d03ab776c4828952b934884f1cf5e6463cca4b8aaa7086c435742
+166	Creatures\Body data/d500.att	data.z.166.Creatures_Body data_d500.att	142	2be8d097a36300ca1731fd531e20796d0e43bff7fe1ff2a18fd6e87377b4a931
+167	Creatures\Body data/e000.att	data.z.167.Creatures_Body data_e000.att	143	ab9ea5995c9cbfbd1f8f3a35b7087f60e0819275b197097a34fba795f341ea38
+168	Creatures\Body data/E001.att	data.z.168.Creatures_Body data_E001.att	143	bb5e62b7970852613f0a8ca4a2dc554e9d84a317c2200b345aa00e8fd357cd1d
+169	Creatures\Body data/E002.att	data.z.169.Creatures_Body data_E002.att	142	732a8ceabbcaaa7ed9b4cb4eed2b1f85d1a7c4576082ef4bf0b1357b5cc6ed31
+170	Creatures\Body data/e010.att	data.z.170.Creatures_Body data_e010.att	143	73b80db94f139bf80d0fda0625eee1d32d73de567d92c4366a2933b3e9df14b3
+171	Creatures\Body data/e011.att	data.z.171.Creatures_Body data_e011.att	142	a489253687cf4b6260c0257ee7b8de33afe90e4e169e652651c9b8b456f7df49
+172	Creatures\Body data/e012.att	data.z.172.Creatures_Body data_e012.att	143	59d9736c3cc91125eb4b9db02fe2bb684d1301e1918d327244f3533229c933dd
+173	Creatures\Body data/E020.att	data.z.173.Creatures_Body data_E020.att	141	03b726531df7170f94367e96ac331a39eac7ea22efee9ecdc3fe08930749d5bb
+174	Creatures\Body data/E021.att	data.z.174.Creatures_Body data_E021.att	142	90581197cb8ba32a2e10d98b4b245d5c2696dd0a4fa27439cda59dd83b3333b1
+175	Creatures\Body data/e022.att	data.z.175.Creatures_Body data_e022.att	142	2943c166635925d92df0d34b1b321306aadfd3ab6f6e164c67f64059cde3e811
+176	Creatures\Body data/e100.att	data.z.176.Creatures_Body data_e100.att	137	427d561e644bb8472d419c62e4e5b5a40e0385860144fd754a10582235b76cdd
+177	Creatures\Body data/E400.ATT	data.z.177.Creatures_Body data_E400.ATT	143	ab9ea5995c9cbfbd1f8f3a35b7087f60e0819275b197097a34fba795f341ea38
+178	Creatures\Body data/E401.att	data.z.178.Creatures_Body data_E401.att	141	0f93b732a29acf2a645a179de55c6f1d76d549dff3e88e70296bf7e7eb3af987
+179	Creatures\Body data/E402.att	data.z.179.Creatures_Body data_E402.att	142	e49ffd365b8df0c3027a5f7e93d854be9f4f2661672dd2021931ecdc2d53cd79
+180	Creatures\Body data/e410.att	data.z.180.Creatures_Body data_e410.att	143	bed41f8fc52e423213338474f5211c91dc3c4da6bd94934bb8650f8d74466c0d
+181	Creatures\Body data/e411.att	data.z.181.Creatures_Body data_e411.att	141	0603b2cea7e76c07be0ed5b7faf94358b4a00237874d6d5fc7f0a4cbd8ca5c4d
+182	Creatures\Body data/e412.att	data.z.182.Creatures_Body data_e412.att	143	b84c8de3f378ad34a174aab4763d955aa4bd57b1b503d062a0bb77961e00df94
+183	Creatures\Body data/E420.att	data.z.183.Creatures_Body data_E420.att	140	40ad94f530703764881a8fe61160d20eb0faccf03dd55083711678ff7dfd32a4
+184	Creatures\Body data/E421.att	data.z.184.Creatures_Body data_E421.att	138	ce85a5acdb6bc900a34cb1f510136d187c3d0c2b34fa44a1b66baee42ee1a27a
+185	Creatures\Body data/e422.att	data.z.185.Creatures_Body data_e422.att	143	4ef8df4d426ddc156e70e157eb86dea5ea78c8075ca3bfd3414b27817863f955
+186	Creatures\Body data/e500.att	data.z.186.Creatures_Body data_e500.att	139	628777ba388a913aabc165736a067a521359b2869fe29e0f7fc4b964d9afc91b
+187	Creatures\Body data/f000.att	data.z.187.Creatures_Body data_f000.att	140	e4b0b2d786ac9726749ccfc605d763b6865762b675ed823fdf7fd7d52cf4e66c
+188	Creatures\Body data/F001.att	data.z.188.Creatures_Body data_F001.att	140	51b3d0a9b2203d046a62a19fa8e19eb1fc874a7cc1ef97474c1c21455349bd7c
+189	Creatures\Body data/F002.att	data.z.189.Creatures_Body data_F002.att	140	e8915bd5939235e6a3a23d1c9400139ac34c455554a892233acabeaec8b3bfaf
+190	Creatures\Body data/f010.att	data.z.190.Creatures_Body data_f010.att	140	2013e163c6bf4f2ae487ec0b94baf4ee07d8ec6de56e0865df87a835949abed3
+191	Creatures\Body data/f011.att	data.z.191.Creatures_Body data_f011.att	140	16ffced0ff1c75c996eff7dd2aa700f9502a8dab1bb30221acc2af76742dce1f
+192	Creatures\Body data/f012.att	data.z.192.Creatures_Body data_f012.att	140	a7b4692f79282b702d0dedf4312a91b2cbab570be617967c51b3790ec22b5cfc
+193	Creatures\Body data/F020.att	data.z.193.Creatures_Body data_F020.att	140	a25c6396a50d2be4afe83e89f37c47103631c161a9f543d86a20a7419ec9f1ff
+194	Creatures\Body data/F021.att	data.z.194.Creatures_Body data_F021.att	140	85e73065cfd5a1f0b8ff5dfb8579574b3eadac82651e5f64988e92f8f0e9799b
+195	Creatures\Body data/f022.att	data.z.195.Creatures_Body data_f022.att	140	af898d84488560d9124018f1c793cc63a3e18fd44bff26d58192134297df9e50
+196	Creatures\Body data/f100.att	data.z.196.Creatures_Body data_f100.att	140	d41993e95f135916a9d9c4adab7058c86bb5b14b40493563d27052bb39d9a332
+197	Creatures\Body data/F400.ATT	data.z.197.Creatures_Body data_F400.ATT	140	e4b0b2d786ac9726749ccfc605d763b6865762b675ed823fdf7fd7d52cf4e66c
+198	Creatures\Body data/F401.att	data.z.198.Creatures_Body data_F401.att	140	73a40847f2305cf0e0ba48a0bba89eb952463795efdad032156ddfb3368771f8
+199	Creatures\Body data/F402.att	data.z.199.Creatures_Body data_F402.att	140	99c67ea22cd1de5746e1b41ac4b4aaafe816a60e343a57518235614c51a7d814
+200	Creatures\Body data/f410.att	data.z.200.Creatures_Body data_f410.att	140	d2f3383fa4b8d0c6811579cfb00819f110dbfa7961658ccfd7551dc2b0c66d89
+201	Creatures\Body data/f411.att	data.z.201.Creatures_Body data_f411.att	140	4669337d59cf715355da48759fe835f9aa9e7934c450406b402fcd3c7ac4cffc
+202	Creatures\Body data/f412.att	data.z.202.Creatures_Body data_f412.att	140	a7b4692f79282b702d0dedf4312a91b2cbab570be617967c51b3790ec22b5cfc
+203	Creatures\Body data/F420.att	data.z.203.Creatures_Body data_F420.att	140	a25c6396a50d2be4afe83e89f37c47103631c161a9f543d86a20a7419ec9f1ff
+204	Creatures\Body data/F421.att	data.z.204.Creatures_Body data_F421.att	140	116b4f165a6481df56c2263780846a4a96b6a81e0af988bc64f62ebc51a1effd
+205	Creatures\Body data/f422.att	data.z.205.Creatures_Body data_f422.att	140	6af99b914ae9e385fd9a7861db61c73cc9dfb09b5e6922d42f83c12a6a200f9c
+206	Creatures\Body data/f500.att	data.z.206.Creatures_Body data_f500.att	140	4f07c4b69ea499b41731e217dce74243808181a4ae659164a1230fa425deabaa
+207	Creatures\Body data/g000.att	data.z.207.Creatures_Body data_g000.att	140	d49963f8618e24af353d11e2146c0406e6b6382c05079fd3da19fe670ce003fd
+208	Creatures\Body data/G001.att	data.z.208.Creatures_Body data_G001.att	140	496716cc9117a69fd6a1b23fa375b73b3b3747f1e561f8483736258ea957a2f0
+209	Creatures\Body data/G002.att	data.z.209.Creatures_Body data_G002.att	140	be7180f1c3407ba7a1862e3f5c38ec6b1939d5aa4a1fd5ab26b0cf291ba5a500
+210	Creatures\Body data/g010.att	data.z.210.Creatures_Body data_g010.att	140	56a66b0c6cb39824fcaf7de43a8542d347b669f814010e1d02fc12371cd0d98c
+211	Creatures\Body data/g011.att	data.z.211.Creatures_Body data_g011.att	140	090e77f2296263c8d833b33be5818e2eb38ab6f04064a8a3deda46571da2b36d
+212	Creatures\Body data/g012.att	data.z.212.Creatures_Body data_g012.att	140	2d739de709ca7ae5266baafff05c55ac56106fa8b6418026833a520559bfff98
+213	Creatures\Body data/G020.att	data.z.213.Creatures_Body data_G020.att	140	5426abea47650d6860bc5fab91bbe9e48d16dc65c3172577477c755ce8f4b9e4
+214	Creatures\Body data/G021.att	data.z.214.Creatures_Body data_G021.att	140	05dad6afdbb2065cd720fdac0d89d3ba10a939e0a6d3db40e5239f7d409ddab8
+215	Creatures\Body data/g022.att	data.z.215.Creatures_Body data_g022.att	140	7db3a0e73834d13e9fc84ea97c75fdd3eeb0e129b5dbb1b48baed2eb86db3984
+216	Creatures\Body data/g100.att	data.z.216.Creatures_Body data_g100.att	141	b6204768cb8a6e010ef8bf02e37ff4bdbcf22c62bc0061eb40e4a75fe8e4be41
+217	Creatures\Body data/G400.ATT	data.z.217.Creatures_Body data_G400.ATT	140	d49963f8618e24af353d11e2146c0406e6b6382c05079fd3da19fe670ce003fd
+218	Creatures\Body data/G401.att	data.z.218.Creatures_Body data_G401.att	140	ef185c4c47cdf45d781624309407b4760ae5948f9f7baac926a022d16aa912ef
+219	Creatures\Body data/G402.att	data.z.219.Creatures_Body data_G402.att	140	0f142eb9a23ddf933399009dab5fca3db727564337ceb7d9632ee6bc3e4683ff
+220	Creatures\Body data/g410.att	data.z.220.Creatures_Body data_g410.att	140	62d0180838e1af1f7dbe6ea66178fa9e59cc93bace2ece8d99bba2eddaf8c13c
+221	Creatures\Body data/g411.att	data.z.221.Creatures_Body data_g411.att	140	c8e54195a0e223b15f3a6f324a6b464565bce6336981c98da1917e7d800b9c3c
+222	Creatures\Body data/g412.att	data.z.222.Creatures_Body data_g412.att	140	2d739de709ca7ae5266baafff05c55ac56106fa8b6418026833a520559bfff98
+223	Creatures\Body data/G420.att	data.z.223.Creatures_Body data_G420.att	140	5426abea47650d6860bc5fab91bbe9e48d16dc65c3172577477c755ce8f4b9e4
+224	Creatures\Body data/G421.att	data.z.224.Creatures_Body data_G421.att	140	68ce293ed7cc7800c5191f19438aacf7b0a3498f0c7f1ec26724edf4c024c6a9
+225	Creatures\Body data/g422.att	data.z.225.Creatures_Body data_g422.att	140	359e0de5e76a131b786b9ecef3a2437b2e4252d74e9d44aa5b12b4336ea327ab
+226	Creatures\Body data/g500.att	data.z.226.Creatures_Body data_g500.att	141	76ee7f35a4dbbd9390ddf8c2e4ed407f4a4dbac8f931906c411e43cb4652ac3e
+227	Creatures\Body data/h000.att	data.z.227.Creatures_Body data_h000.att	143	5217a397bbac7dc6c7dd1623314ec88942d9456f6de701a86f19c0aa7d19dde2
+228	Creatures\Body data/H001.att	data.z.228.Creatures_Body data_H001.att	143	f1dd41de6603dc2229f771e6d02b348187129ed79a1bac872ec2788392b4086c
+229	Creatures\Body data/H002.att	data.z.229.Creatures_Body data_H002.att	143	429d474c300dce72ff14d6d1d7d499a82199cce3c29a54b23066e718f4f6d7d3
+230	Creatures\Body data/h010.att	data.z.230.Creatures_Body data_h010.att	143	6f2d6439fa194246ca30777f47d7cf159df16790cd4f8de79c1c649830e79b0b
+231	Creatures\Body data/h011.att	data.z.231.Creatures_Body data_h011.att	142	da9b4bbc19c856675a86d6f3424ad58acc7b2fc6914b777a17a4dd4aaa726328
+232	Creatures\Body data/h012.att	data.z.232.Creatures_Body data_h012.att	143	1926b66f6e3f8e4181d1bc6b958a250dd9c3cd65c6bad2f8456c27bc52ec71cb
+233	Creatures\Body data/H020.att	data.z.233.Creatures_Body data_H020.att	142	b70e05a51db278090490aa2403734bb6b22e8a7df3e93b0be969a8add4b4fa06
+234	Creatures\Body data/H021.att	data.z.234.Creatures_Body data_H021.att	141	3aeda8ff96362f85d4d637dea960e71a634a168164c3a4507dc5bcc6ae5a8d52
+235	Creatures\Body data/h022.att	data.z.235.Creatures_Body data_h022.att	145	7e8df3d202f1e82b1a0c2aa0d37b285ec678678cd2e2b063cb5e053b0438dff3
+236	Creatures\Body data/h100.att	data.z.236.Creatures_Body data_h100.att	141	b444b34f482004291eb8cc4436cee5dfaf459d84fb0801ee8cd6b7b2b00b7f8f
+237	Creatures\Body data/H400.ATT	data.z.237.Creatures_Body data_H400.ATT	143	5217a397bbac7dc6c7dd1623314ec88942d9456f6de701a86f19c0aa7d19dde2
+238	Creatures\Body data/H401.att	data.z.238.Creatures_Body data_H401.att	143	c5e90d11cd1137064d77e125e9decced263ee71e44f720cf6b481e1333741960
+239	Creatures\Body data/H402.att	data.z.239.Creatures_Body data_H402.att	145	6d896d15bd008932359542396508d7c06e15d1df4d3274722b1950795824d044
+240	Creatures\Body data/h410.att	data.z.240.Creatures_Body data_h410.att	143	b3f80bd846a139101ed1a1d38d079d1e5077a0ba9006e460635835763f736453
+241	Creatures\Body data/h411.att	data.z.241.Creatures_Body data_h411.att	143	7ded47aceaf969070f72d5e0d102d79bedb550a4f32a10c2236133cb4c6bb51e
+242	Creatures\Body data/h412.att	data.z.242.Creatures_Body data_h412.att	143	1926b66f6e3f8e4181d1bc6b958a250dd9c3cd65c6bad2f8456c27bc52ec71cb
+243	Creatures\Body data/H420.att	data.z.243.Creatures_Body data_H420.att	142	a2dc063d49314efe98335dfd73c3a107423b2a5fa157e5997ccc51dba85a0c8d
+244	Creatures\Body data/H421.att	data.z.244.Creatures_Body data_H421.att	139	8b6da3b819dce13fac2597670bf98b42911b48140037e0786b700a512d9eb92d
+245	Creatures\Body data/h422.att	data.z.245.Creatures_Body data_h422.att	143	771273aa8ded749247d5130a722373d6b74882826d44f25bf473d4a664a50e45
+246	Creatures\Body data/h500.att	data.z.246.Creatures_Body data_h500.att	137	b23b4303d477c401a6235da591f3bcbea948d5386acd0ff808e31ef81f8d469e
+247	Creatures\Body data/i000.att	data.z.247.Creatures_Body data_i000.att	144	b48720844a945204b18a8698dacf7b291818f360c92c4bda4b5ba0179edcf54f
+248	Creatures\Body data/I001.att	data.z.248.Creatures_Body data_I001.att	144	f884258fd3102ad63e21e6b259b443f941d4b0a53c400f3170fb4420f3b86525
+249	Creatures\Body data/I002.att	data.z.249.Creatures_Body data_I002.att	143	c2109a906d7bc61a3d2b6c7829759189bb314d27a13c099190cc93006f46f426
+250	Creatures\Body data/i010.att	data.z.250.Creatures_Body data_i010.att	143	41581e68cc3deb3d281ea7d70fdb3de94e116f3f2275b0e51720ee5473afbae8
+251	Creatures\Body data/i011.att	data.z.251.Creatures_Body data_i011.att	142	e5a8dcfd6779dd828defe6f0f6b97bc87a0a03c2a9d9246fe0335a0af69deadc
+252	Creatures\Body data/i012.att	data.z.252.Creatures_Body data_i012.att	143	3b9b8f9b99a35b10fbac34acd1cdbe2f7ef26ad8996085ac4c9c560d98438f97
+253	Creatures\Body data/I020.att	data.z.253.Creatures_Body data_I020.att	140	40c87f9cbd907c649546087626cf99f0eaedac3d54f8617766d5332cf9255d67
+254	Creatures\Body data/I021.att	data.z.254.Creatures_Body data_I021.att	139	a3a555136a6267544576274892669737c5c027c29806405f4657b90916a9bfa8
+255	Creatures\Body data/i022.att	data.z.255.Creatures_Body data_i022.att	142	725ae05c3ce4882a2176ae7cd082a8f51f2170ede54e9cb5eb6a902f8ce38d15
+256	Creatures\Body data/i100.att	data.z.256.Creatures_Body data_i100.att	141	44baf0bd677b0e72a81059978f24a7cd77c64c7a51257e04d9f69e19ec887b3f
+257	Creatures\Body data/I400.ATT	data.z.257.Creatures_Body data_I400.ATT	144	b48720844a945204b18a8698dacf7b291818f360c92c4bda4b5ba0179edcf54f
+258	Creatures\Body data/I401.att	data.z.258.Creatures_Body data_I401.att	140	6c598a7e7293e1227d26a3c4f15d0d3fda4cffcbf75bad3a7d54144ba0c4f16d
+259	Creatures\Body data/I402.att	data.z.259.Creatures_Body data_I402.att	140	efc613bad9989bd143dd324d60baa02a2383e551f51c21c2dadca98edc050246
+260	Creatures\Body data/i410.att	data.z.260.Creatures_Body data_i410.att	142	5083d7100f9f15e0c4b197abae788ae29f11b32a539cf0057556818511aa7375
+261	Creatures\Body data/i411.att	data.z.261.Creatures_Body data_i411.att	143	648e11fa376d0914314bbe4395acedc8be7ba98325886c6a3c25fc633e4c0628
+262	Creatures\Body data/i412.att	data.z.262.Creatures_Body data_i412.att	143	17b8c50599c9d9ba992917c80889aea7c47f35a702e0b37ed0435f39bc0c879a
+263	Creatures\Body data/I420.att	data.z.263.Creatures_Body data_I420.att	140	99bcab6f7ffe525f572e6a130aaff1f2b0d0e9ec6b071e5de1e4471e318c7156
+264	Creatures\Body data/I421.att	data.z.264.Creatures_Body data_I421.att	141	30285c73a7f60e803be278cc16538eb1e5345d4e8ea6408e009ae94f70894d4b
+265	Creatures\Body data/i422.att	data.z.265.Creatures_Body data_i422.att	143	00425ce0127a26bab4a8f7809a14278b76c81436b57023e58f0da4662d16f5f6
+266	Creatures\Body data/i500.att	data.z.266.Creatures_Body data_i500.att	144	682a0ba326ace36f07db86c774645de51ca422c95c53d8bab7732688f5900f81
+267	Creatures\Body data/j000.att	data.z.267.Creatures_Body data_j000.att	143	204c7dd3f7b4c0e7f89392533cd366f33c70e225789670a30982a66e445d4d5a
+268	Creatures\Body data/J001.att	data.z.268.Creatures_Body data_J001.att	144	0a5f4f11ae217def94ca26c24da969dddbea1ad8b0290f5e71cecac5503fc822
+269	Creatures\Body data/J002.att	data.z.269.Creatures_Body data_J002.att	143	f341fd50ab2893b8cc518cc37a60a4c4309e1637111495f46930597a09a57d6e
+270	Creatures\Body data/j010.att	data.z.270.Creatures_Body data_j010.att	142	14bc32da712ac5429bc0a0ffcbce24170ad82559d9fb436517407b26431ea4ff
+271	Creatures\Body data/j011.att	data.z.271.Creatures_Body data_j011.att	143	76c65f15d276587632ba4f75c3c1256ca13c096fcce34d4a669229320de30baf
+272	Creatures\Body data/j012.att	data.z.272.Creatures_Body data_j012.att	140	1060d372afb84f756ece5498de810c7ea5bd53bea113b1ac06a4b37b0381dc29
+273	Creatures\Body data/J020.att	data.z.273.Creatures_Body data_J020.att	141	93caf0de5706a69ff5fb6fc2a68edf2457981693419ee0346dfb6bbd68cc9f8f
+274	Creatures\Body data/J021.att	data.z.274.Creatures_Body data_J021.att	140	cc0625572d8f0bbad89a32d5a944f0ffd211e50f523edde14007d8871e179d41
+275	Creatures\Body data/j022.att	data.z.275.Creatures_Body data_j022.att	141	3bb7b39f2b0c4a3714c26b3c3e5671f43e9ecd55cd9927ef28f658c8b894cef2
+276	Creatures\Body data/j100.att	data.z.276.Creatures_Body data_j100.att	141	5673445110cf7d75ba1c819e77760a9d1e690f20165d864ea9a36dfcad5182fb
+277	Creatures\Body data/J400.ATT	data.z.277.Creatures_Body data_J400.ATT	143	204c7dd3f7b4c0e7f89392533cd366f33c70e225789670a30982a66e445d4d5a
+278	Creatures\Body data/J401.att	data.z.278.Creatures_Body data_J401.att	144	e65f19080a2aede1d222cdf50a0dded1a84896bb40f8a27a1f7ebbf94967803d
+279	Creatures\Body data/J402.att	data.z.279.Creatures_Body data_J402.att	144	f41591f9008249f51340fa0eba5d7297913949afe54176c837a2069fcfa40b3c
+280	Creatures\Body data/j410.att	data.z.280.Creatures_Body data_j410.att	143	2f4743d34b4ee036643e13b0ec8011f70470d6125c0c8d2339e0299331798441
+281	Creatures\Body data/j411.att	data.z.281.Creatures_Body data_j411.att	143	652de11f8ebb9889557d45223e9f7e1a7903009b42156438de852e6c8a31bb12
+282	Creatures\Body data/j412..att	data.z.282.Creatures_Body data_j412..att	142	783106ef100a728f4eb4807ac0111224d6da6c2ca08f0a897b0205493ef9a46b
+283	Creatures\Body data/j412.att	data.z.283.Creatures_Body data_j412.att	140	1060d372afb84f756ece5498de810c7ea5bd53bea113b1ac06a4b37b0381dc29
+284	Creatures\Body data/J420.att	data.z.284.Creatures_Body data_J420.att	140	07ea48e970fb0f955adb1478e063880dc6e201c1ab08e9080faa43a47d856255
+285	Creatures\Body data/J421.att	data.z.285.Creatures_Body data_J421.att	140	cc0625572d8f0bbad89a32d5a944f0ffd211e50f523edde14007d8871e179d41
+286	Creatures\Body data/j422.att	data.z.286.Creatures_Body data_j422.att	143	78c0996e3dc6673460f6bde2fe7a7c127a7b426128f82962b821f487dcdcf4d4
+287	Creatures\Body data/j500.att	data.z.287.Creatures_Body data_j500.att	143	19501f6b03241d2385dce12c41a701f86814b70fb56ce2c263249c731ffbcef2
+288	Creatures\Body data/k000.att	data.z.288.Creatures_Body data_k000.att	144	c3bdec93e91aef7b7fb4f3191a05887d9f27930f2224095a7744bd75c5cceda2
+289	Creatures\Body data/K001.att	data.z.289.Creatures_Body data_K001.att	143	a79dc142a3fd56b11673c0f3623944ee8f6875541b8994b36f91a364db948fd5
+290	Creatures\Body data/K002.att	data.z.290.Creatures_Body data_K002.att	144	d65f195cdd55155883f790d37741f19ef2e98dbbff13097add09be5e99e08f15
+291	Creatures\Body data/k010.att	data.z.291.Creatures_Body data_k010.att	142	cc07cfacd8441bf0609457c0b1e167b5cd2952c70aabc3f2cbd07fbbee8f8202
+292	Creatures\Body data/k011.att	data.z.292.Creatures_Body data_k011.att	143	e69ae3ea0aa21f92fa87ec78597d83ca830d7f44fa83897864c56ac86d126747
+293	Creatures\Body data/k012.att	data.z.293.Creatures_Body data_k012.att	143	ee19fb60f8a8c5553fe9b27fe6e3f416b7e03d5bd713525fe681fb5584919035
+294	Creatures\Body data/K020.att	data.z.294.Creatures_Body data_K020.att	141	31c1c936c47791c09169f05bfe545b1b651a2ebec6f8de67c909743c2534af83
+295	Creatures\Body data/K021.att	data.z.295.Creatures_Body data_K021.att	141	0c3e58e5eecbbc56cf532277b9d42f4d946bd4adf9012d3c02df7a5a157e86db
+296	Creatures\Body data/k022.att	data.z.296.Creatures_Body data_k022.att	142	28bd5c46cb65c2f930f40c71e71bbbd1cda48f98e6b499a70b84b1dd8ecec69f
+297	Creatures\Body data/k100.att	data.z.297.Creatures_Body data_k100.att	141	943cd5e377caf07b91843af0ab70ba163a5754bd6a4271a922d8f53d0468ecfa
+298	Creatures\Body data/K400.ATT	data.z.298.Creatures_Body data_K400.ATT	144	c3bdec93e91aef7b7fb4f3191a05887d9f27930f2224095a7744bd75c5cceda2
+299	Creatures\Body data/K401.att	data.z.299.Creatures_Body data_K401.att	144	1093703903c46949f1c551ecacabb7604143f1a408b397fcf6e8df7c83f9ad0d
+300	Creatures\Body data/K402.att	data.z.300.Creatures_Body data_K402.att	143	013580a18221e99a47580eb67b8ddfd4ebb8c12d6240bb49acf6d61e80d02777
+301	Creatures\Body data/k410.att	data.z.301.Creatures_Body data_k410.att	143	00ebf3410411c734624c9a032a090892421223e7b0a4c7ac442cebffe2edc664
+302	Creatures\Body data/k411.att	data.z.302.Creatures_Body data_k411.att	143	9f6e8106456a94bc8932061a263589332a06015848095309e27a5644d6956d79
+303	Creatures\Body data/k412.att	data.z.303.Creatures_Body data_k412.att	143	adeba04624dfcbbdaf0686fe162d74026c314c8d94b8bffa769339c69ff5ddf3
+304	Creatures\Body data/K420.att	data.z.304.Creatures_Body data_K420.att	140	660b198e0d09e25ce51bad9146512363a12f63fb29f6f314be12a2ed10bfa0c1
+305	Creatures\Body data/K421.att	data.z.305.Creatures_Body data_K421.att	140	8bdda63903636d36ee79fe95474f61ca855b983cec17222cba55714cab2964a3
+306	Creatures\Body data/k422.att	data.z.306.Creatures_Body data_k422.att	143	468894371d4fc045356a91eef6db4262d059c17ba42a94a12d6037a109670eb5
+307	Creatures\Body data/k500.att	data.z.307.Creatures_Body data_k500.att	140	5d6a32a5b29d5de512742cfa776321da546e4879f91a74c4c053a36752cc69af
+308	Creatures\Body data/l000.att	data.z.308.Creatures_Body data_l000.att	143	4cb11334a8f829627b0e0e60f629e5de38ac369f63358a5383f7c0380fb5f308
+309	Creatures\Body data/L001.att	data.z.309.Creatures_Body data_L001.att	143	073db8d885f389882399f5fe369055f9fbf4fd6a3e7fd302b20414a300b8234c
+310	Creatures\Body data/L002.att	data.z.310.Creatures_Body data_L002.att	143	f46adf2cb3fbbc2fa7b9fb1c6a4ba1ca3eb05b3bd8c7dc39009940ca4c2b8d21
+311	Creatures\Body data/l010.att	data.z.311.Creatures_Body data_l010.att	143	bcf61e06ff98b528a94747e8267437176f2c3ccfcfd7f08d1ed14c15d7d695ab
+312	Creatures\Body data/l011.att	data.z.312.Creatures_Body data_l011.att	143	65b6bf973ad43201785c13f3ca85ce4f20e464118a76af3140c10c1b63054eb1
+313	Creatures\Body data/l012.att	data.z.313.Creatures_Body data_l012.att	143	66061ee27b814cdc04ce4ab8fd93f9631b7cb52af2c44eabaa9706d9e58be067
+314	Creatures\Body data/L020.att	data.z.314.Creatures_Body data_L020.att	140	73e0dd92974a757b247b1136d4ac9bc2c7fe81ff4654abbd78ab7d0bf34267c2
+315	Creatures\Body data/L021.att	data.z.315.Creatures_Body data_L021.att	140	e6047b86ed0edb1c308918966c1245fa7f70907b82af41e1b59f9d70ba8a578d
+316	Creatures\Body data/l022.att	data.z.316.Creatures_Body data_l022.att	143	357c167daeaa0af87dfc57e21f76425939d18d0cd68f89bb3c3f3bca6e249988
+317	Creatures\Body data/l100.att	data.z.317.Creatures_Body data_l100.att	141	42fba03df3ec70a98fbc2f8d15f7bd668e694ce9d7df15c2eb398c6f2147617f
+318	Creatures\Body data/L400.ATT	data.z.318.Creatures_Body data_L400.ATT	143	4cb11334a8f829627b0e0e60f629e5de38ac369f63358a5383f7c0380fb5f308
+319	Creatures\Body data/L401.att	data.z.319.Creatures_Body data_L401.att	140	7b81795d4ea37a87ad342ec186e56076d5e35ec1378c82f6bb3ce09bedec6b9c
+320	Creatures\Body data/l402.att	data.z.320.Creatures_Body data_l402.att	142	094e96c7330a9cbde2e371892365fc6062ded4035c35cb7d1b3ff94f745d01dc
+321	Creatures\Body data/l410.att	data.z.321.Creatures_Body data_l410.att	143	18e13629bdfe5c5ecd41eb3a2e6bba3e56309170a0d0a6c7e4631d5be2530fdb
+322	Creatures\Body data/l411.att	data.z.322.Creatures_Body data_l411.att	143	dffc60ad8b223b0fc0b033fc918c6191a9bc22fbfb4c26787c011c1e74e0c8e3
+323	Creatures\Body data/l412.att	data.z.323.Creatures_Body data_l412.att	143	f983134b880b02e3a8f3af2d6adf6bc0ae68e5898dcf27cda81b41c1d79d72f3
+324	Creatures\Body data/L420.att	data.z.324.Creatures_Body data_L420.att	140	38fb766cb86e4f9948f0d3a48b8691191e2462a9299607e3c21bfa672dd536fe
+325	Creatures\Body data/L421.att	data.z.325.Creatures_Body data_L421.att	140	2ec6106dd0562d2f3aeb514c6c94ce120bafd39bc9453493ff791a5199d0dfa4
+326	Creatures\Body data/l422.att	data.z.326.Creatures_Body data_l422.att	143	93cb8b78d57046f2ed0e0c7606a84ff794a5ebc9c10f41fcaddefc7562dc43c6
+327	Creatures\Genetics/l500.att	data.z.327.Creatures_Body data_l500.att	142	738e38e31ab5fc5eae000de47ea41f3813a8aab96b85aaaf48a2e4e8261a7a32
+328	Creatures\Genetics/dad1.gen	data.z.328.Creatures_Genetics_dad1.gen	10001	f91af913df7d90959b1023e8f3a301fc009142fec36b54d1c60ad20c305bb749
+329	Creatures\Genetics/dad2.gen	data.z.329.Creatures_Genetics_dad2.gen	10001	088ca399e704127939233f84e037e98209e7e5b15960d291e52a310cf87fffb6
+330	Creatures\Genetics/dad3.gen	data.z.330.Creatures_Genetics_dad3.gen	10001	ba2967f5c6b662c95b6eaa0f735c10b01a5ed964176d8aae31d474b6e615924b
+331	Creatures\Genetics/dad4.gen	data.z.331.Creatures_Genetics_dad4.gen	10001	b3df00cdaf678cbcd967c27cf333c5276d8d239cf30e93ba67ce5ad167c3b184
+332	Creatures\Genetics/dad5.gen	data.z.332.Creatures_Genetics_dad5.gen	10001	477bfd4e073287ee1566f23e3675293efebb93803fb6657b914ef53b087dcdd9
+333	Creatures\Genetics/dad6.gen	data.z.333.Creatures_Genetics_dad6.gen	10001	372f78ae11ab091ed46f344fc02009b4b86af6b37e25908991616244fe57aa10
+334	Creatures\Genetics/Gren.GEN	data.z.334.Creatures_Genetics_Gren.GEN	10001	a326c79093d1b91abc191a9930a821d17f8f315fe7813fda573ca2ba13381168
+335	Creatures\Genetics/Grendel.GNO	data.z.335.Creatures_Genetics_Grendel.GNO	44029	782e7b8636aad5bebe7e68ae01a44cc8e2acf8d090a23d1a69130410121971cb
+336	Creatures\Genetics/mum1.gen	data.z.336.Creatures_Genetics_mum1.gen	10001	719cbd773c2e359cd330c15d80237247fd821f4807d41b2bd56ea7cd72b681bd
+337	Creatures\Genetics/mum2.gen	data.z.337.Creatures_Genetics_mum2.gen	10001	4aeee8ab2c8a394b9823ccffe48fc1945fc74d16aab48016296ced7a507f60df
+338	Creatures\Genetics/mum3.gen	data.z.338.Creatures_Genetics_mum3.gen	10001	5e2dd56785d35716f5ca5348d246db6c630528fe8dfaf476f1955cc20af1924d
+339	Creatures\Genetics/mum4.gen	data.z.339.Creatures_Genetics_mum4.gen	10001	0e7e74c0d5415a6fd7dca51db9068318ffcb72f396129f9b23b1e8c26bc441a5
+340	Creatures\Genetics/mum5.gen	data.z.340.Creatures_Genetics_mum5.gen	10001	a988c0447dc7a05925efbec5ab803d3fa49339fe3c2fc19e9ff9f19de992e7c4
+341	Creatures\Genetics/mum6.gen	data.z.341.Creatures_Genetics_mum6.gen	10001	5ad3b7d6d65d9ce3e4aaf498b0e45e5f075b9700c090ec027db6ee2fc51d59ef
+342	Creatures\Genetics/NORN.GNO	data.z.342.Creatures_Genetics_NORN.GNO	44997	23e975860d0d5054e982e69b2a1b35250b32d98a0e208dd4643baa7bc327d330
+343	Creatures\Hatchery/TEST.GEN	data.z.343.Creatures_Genetics_TEST.GEN	10001	f91af913df7d90959b1023e8f3a301fc009142fec36b54d1c60ad20c305bb749
+344	Creatures\Hatchery/EGG0.bmp	data.z.344.Creatures_Hatchery_EGG0.bmp	2878	1ed355f400ebe5f65c115dd70e666acae1dd6ae3d3196b4fa954993aef41ff63
+345	Creatures\Hatchery/EGG1.bmp	data.z.345.Creatures_Hatchery_EGG1.bmp	3198	1e014bbecb5c6b3133c236255e7e2abedbfe053e477ee0b692cd2e23582f9a69
+346	Creatures\Hatchery/EGG2.bmp	data.z.346.Creatures_Hatchery_EGG2.bmp	2770	b32408a87137fe22b5f6e91847ae470e040660163f6b511af67e5d442ae59caf
+347	Creatures\Hatchery/EGG3.bmp	data.z.347.Creatures_Hatchery_EGG3.bmp	2806	3892a3641157ea5a673fb0494c8a640227ac609382e2c201f09228951eb44503
+348	Creatures\Hatchery/EGG4.bmp	data.z.348.Creatures_Hatchery_EGG4.bmp	2486	276b22f30b3c49b875bcfca6ff820eaeab45455b60e25c5a7db425e9c3efd572
+349	Creatures\Hatchery/EGG5.bmp	data.z.349.Creatures_Hatchery_EGG5.bmp	2486	0c20f03da2f8c03933b752932d51af90468c73d30514f09f8f68222b43048b2b
+350	Creatures\Hatchery/FAN0.BMP	data.z.350.Creatures_Hatchery_FAN0.BMP	4042	d340eee01b39cf4f4b5c814e47e6f2a2dbf1ad8b3675a3a98604e62c2080041c
+351	Creatures\Hatchery/FAN1.BMP	data.z.351.Creatures_Hatchery_FAN1.BMP	4042	6d4b1418f554420a4407d4dd0652670f1799375fc16b5ee111b2c9d85a551e63
+352	Creatures\Hatchery/FAN2.BMP	data.z.352.Creatures_Hatchery_FAN2.BMP	4042	87981bcd010695e7bf892a91a72221b94e633617a35b6adfd2c04b26e81bbbcf
+353	Creatures\Hatchery/FAN3.BMP	data.z.353.Creatures_Hatchery_FAN3.BMP	4042	974f8c1463e1d78d58d35795a7713eaa92590d694b315ce47f06d31b12cef00f
+354	Creatures\Hatchery/FEMALE.BMP	data.z.354.Creatures_Hatchery_FEMALE.BMP	1654	21db6e78cd5897659633b460392444de7c38ee06b359f7a48d4cc3a9dc695f97
+355	Creatures\Hatchery/GENSPIN.bmp	data.z.355.Creatures_Hatchery_GENSPIN.bmp	9702	42bd95381f353d20d0d4f9f0a78a30373cceb52349c8c976ef4a5a848a568457
+356	Creatures\Hatchery/hatchery.bmp	data.z.356.Creatures_Hatchery_hatchery.bmp	77878	ea5878b62f13f350b394880854af91eb6ef2a0143beea698a7e117f72688d518
+357	Creatures\Hatchery/HTCHMASK.bmp	data.z.357.Creatures_Hatchery_HTCHMASK.bmp	23798	35ccfb109eb013157db8c93c8d6de4e1b475ecf1d0fd6b6981438f3bdb1bc126
+358	Creatures\Hatchery/LIGHTOFF.BMP	data.z.358.Creatures_Hatchery_LIGHTOFF.BMP	7110	c56a0c309ea39a1b5436762e4224f05213731513efc67e8e88a5776b65c4b75b
+359	Creatures\Hatchery/MALE.BMP	data.z.359.Creatures_Hatchery_MALE.BMP	1654	1ffa461ce8662fb77c52269c31ee6d6bca7098f86532b1bb3d11ea9b4929c727
+360	Creatures\Hatchery/SCAN0.bmp	data.z.360.Creatures_Hatchery_SCAN0.bmp	7478	d8c84c128123cd4452ae63a5bebb02fbf7aede5ee90411f610b123defab83de7
+361	Creatures\Hatchery/SCAN1.bmp	data.z.361.Creatures_Hatchery_SCAN1.bmp	7478	c8f7cd0ecc283a217cd1d5794580ff26d391bb1ba4776b867330c19eee723087
+362	Creatures\Hatchery/SCAN2.bmp	data.z.362.Creatures_Hatchery_SCAN2.bmp	7478	ad703f05bc5dcfff4e49454ccd2175b58aeeed3e3c925c70fa10fe5cf7da7201
+363	Creatures\Hatchery/SCAN3.bmp	data.z.363.Creatures_Hatchery_SCAN3.bmp	7478	dd4eeb3bc2ba98a59780f4eddde5ed72997198fc757f341308ed3bd79714c7fb
+364	Creatures\Hatchery/SCAN4.bmp	data.z.364.Creatures_Hatchery_SCAN4.bmp	7478	05ac0669201b7f1c1a58b055e4a0b15507d411bba48df49863b733338d3591f9
+365	Creatures\Images/SCAN5.bmp	data.z.365.Creatures_Hatchery_SCAN5.bmp	7478	05ac0669201b7f1c1a58b055e4a0b15507d411bba48df49863b733338d3591f9
+366	Creatures\Images/A000.spr	data.z.366.Creatures_Images_A000.spr	41346	d1a8b94b734a925abc671ead99ade572ca895e582a2813e9dd68916c24aa662f
+367	Creatures\Images/a001.spr	data.z.367.Creatures_Images_a001.spr	50150	5607a8cef7ac95ed7c479641c107d48c4d5f8dd671f493dd080a28b28a19c9f9
+368	Creatures\Images/a002.spr	data.z.368.Creatures_Images_a002.spr	45018	08e0c4bb2d7b5aaffafe2379a105b7ce42feb7e3ccdbae8b90ef38137ecb0781
+369	Creatures\Images/A010.spr	data.z.369.Creatures_Images_A010.spr	65586	4d09e938f37c1b664b91fe1502a1d66f81d59c237fcc2500b238b0e313486f26
+370	Creatures\Images/a011.spr	data.z.370.Creatures_Images_a011.spr	63354	f9d4b85c67a285bedffb2172549bca6f8c5dbc2d48026ace7d06291dd90e7d6b
+371	Creatures\Images/a012.spr	data.z.371.Creatures_Images_a012.spr	60898	4b514f8482d0a19409b6e7d144af0861b14c2562e697178f7357aa2a8f7a79e7
+372	Creatures\Images/A020.spr	data.z.372.Creatures_Images_A020.spr	119538	6121e0faa88183bdc0f19d4ce1cf78298256d02643bceb0ee9eb3dd12dc8ae9b
+373	Creatures\Images/a021.spr	data.z.373.Creatures_Images_a021.spr	91330	79d4b91f8849e7da2748dc4701da551bdd6ed814bf12320251d9526eaea01a61
+374	Creatures\Images/a022.spr	data.z.374.Creatures_Images_a022.spr	94458	f21d8b5997c7500e8a6334e6228dfa8c79f4c3c541a0aea6e3da16409372319c
+375	Creatures\Images/a060.spr	data.z.375.Creatures_Images_a060.spr	114410	6e924281301fbf4afe1c68e832ac2066d9cfc918a4799b00e0247a5c3cb20cd9
+376	Creatures\Images/a061.spr	data.z.376.Creatures_Images_a061.spr	82642	d4abb014d6722d53327969f8e3f35e5328013af5d7e72699c210604baf9d4df6
+377	Creatures\Images/a062.spr	data.z.377.Creatures_Images_a062.spr	81226	9441208164ddc287f81f34c04d9e72f07cc075a9325850fdd7080b451a93c996
+378	Creatures\Images/a100.spr	data.z.378.Creatures_Images_a100.spr	49434	69f1bad369aa94f70daa29e92aed8254b3fd57509e8a534312278310405098f8
+379	Creatures\Images/A400.spr	data.z.379.Creatures_Images_A400.spr	43978	527433930edd1251b17510a06f0b25b4fd9e15a36b77ed33b3517ef210f03278
+380	Creatures\Images/A401.spr	data.z.380.Creatures_Images_A401.spr	39586	3d7db4e992f3ad47378c67aa3a4190a8f9929fc2aa56baf306a771ef31233a0d
+381	Creatures\Images/a402.spr	data.z.381.Creatures_Images_a402.spr	44202	d293ed10f53c5953815ac3bc277d9d456f44e2dd04aeead03a5eb2b5f67c5625
+382	Creatures\Images/A410.spr	data.z.382.Creatures_Images_A410.spr	56130	144963c316e3abbcddd5b9fc1faa6e00a7d834a3494474c8b5ea4ebb14b5e053
+383	Creatures\Images/a411.spr	data.z.383.Creatures_Images_a411.spr	57366	790d203632d225152334699a8f3e057969b9c911761e71fe63093ed1daf1e8b4
+384	Creatures\Images/a412.spr	data.z.384.Creatures_Images_a412.spr	62930	6c5b21f381fa76de41041cad219878c246967dd9156bc69238e98520c016a731
+385	Creatures\Images/a420.spr	data.z.385.Creatures_Images_a420.spr	85314	ecc784d9d032cdff8fdf81014a8202aa24b5a1c6c3e005fd29149f8b4e10fee9
+386	Creatures\Images/a421.spr	data.z.386.Creatures_Images_a421.spr	72946	3c7def26cebda3cca092c4f3e3ea40ffe5e158011829039028792e0f5a1fe6b9
+387	Creatures\Images/a422.spr	data.z.387.Creatures_Images_a422.spr	87290	a86509effc1f482ee1ff0f5d125efdffee0ec1ca73853c1e71f0777a0c806cdf
+388	Creatures\Images/a460.spr	data.z.388.Creatures_Images_a460.spr	96242	38686ab96f79a310a383ec2eb80e81d740a6da1fa1869407682ba585e767939e
+389	Creatures\Images/a461.spr	data.z.389.Creatures_Images_a461.spr	75586	0e9d6715d3f511bed217f9eb2f443b6d954b47cf4576ea451e9d59d0c77f7bbb
+390	Creatures\Images/a462.spr	data.z.390.Creatures_Images_a462.spr	85714	0694a49d78cf4eaf105fcafdaeb41d07eb382690cd2f983ac9c6292ebc799670
+391	Creatures\Images/a500.spr	data.z.391.Creatures_Images_a500.spr	41722	cea3ec19c83634fabb80f396fd14966380a9f2efd21d5d40b1957012defb5ab7
+392	Creatures\Images/anim.spr	data.z.392.Creatures_Images_anim.spr	88274	400167d51f11b72b83d38b68db5491167e3e12d9c965915fe7313668529b76a0
+393	Creatures\Images/auvi.spr	data.z.393.Creatures_Images_auvi.spr	191806	ffc59556507bc6c3b15dff48c2cf3140a8a7a49a6c67b7089d93d7197804174c
+394	Creatures\Images/B000.spr	data.z.394.Creatures_Images_B000.spr	13258	6bd0417a38c81e54bf5069054dafa461980f1dff3b3a48fb287385b01b67a862
+395	Creatures\Images/b001.spr	data.z.395.Creatures_Images_b001.spr	12486	76f9ba4b5c12593458af2800c581e70040990ec8510a64da6ac7ea3777f8465e
+396	Creatures\Images/b002.spr	data.z.396.Creatures_Images_b002.spr	17838	a8d65a26c3e6ce06ad6886c1e583d8e24ce36813544e3f5bcb80255fd3c76080
+397	Creatures\Images/B010.spr	data.z.397.Creatures_Images_B010.spr	19014	f3f741c5c2714b4e64f4905db1f443047df214ca9a2c7dd22a90db3f2c2b498b
+398	Creatures\Images/b011.spr	data.z.398.Creatures_Images_b011.spr	17146	40728fbc4b70c08b9cee8732e79fa514533d46794d488cce8a94eb34172a7439
+399	Creatures\Images/b012.spr	data.z.399.Creatures_Images_b012.spr	22366	c4de1a32d0f9286918ef50a8c0c5f27db7ce6f9af4df174a953d855d4389d031
+400	Creatures\Images/B020.spr	data.z.400.Creatures_Images_B020.spr	38562	a3b4e58f73003756f6425caf9d2f93a05c03cce0cf7da57ea7570f9b54ad3819
+401	Creatures\Images/b021.spr	data.z.401.Creatures_Images_b021.spr	21338	9c3380ebd7971b1e84db06f0f60935a130157dbb232b5e4feb4b28fec44aa634
+402	Creatures\Images/b022.spr	data.z.402.Creatures_Images_b022.spr	38918	8173a6897f2b06b622e27b843dce3ad30a996ce855a58ac1d1fb313dcaefdbc9
+403	Creatures\Images/b100.spr	data.z.403.Creatures_Images_b100.spr	38726	abac558f814154fbf5813cc9aba4a3208cea8c96cdc97786a9a328cde513775d
+404	Creatures\Images/B400.spr	data.z.404.Creatures_Images_B400.spr	12170	b4ce4c0fa0a22a8fcdb03ec9abc6a07026450836fe6b5bbc2350cafb43fe0413
+405	Creatures\Images/B401.spr	data.z.405.Creatures_Images_B401.spr	12374	386c91b557981a229aa8a12bd298908bf4f0f7b76d8dcd6085b3c8cff78db3a9
+406	Creatures\Images/b402.spr	data.z.406.Creatures_Images_b402.spr	16470	0c9f6d8451ffcc7896b0a868c38d1f0b8e62d7b3c9e07cae871ed66ad92916f8
+407	Creatures\Images/B410.spr	data.z.407.Creatures_Images_B410.spr	16706	c88833c64b9c5e63b0f4ca0c37196ca0ef3b2d8620fae915b0a1286a9f88a6a0
+408	Creatures\Images/b411.spr	data.z.408.Creatures_Images_b411.spr	16818	cd68c8c964b09d8fe09b59c1f1fcf33214436dc1407b401423934f998636dc17
+409	Creatures\Images/b412.spr	data.z.409.Creatures_Images_b412.spr	22250	e483c42ab851965b165edacc25a3068f4fc55d5ebfc071a86a83a1a94cbdfa27
+410	Creatures\Images/B420.spr	data.z.410.Creatures_Images_B420.spr	38562	d830b5dd85a29aef95a4b11fe6a00e0f2346f870829da3f9c972a2f03d961b80
+411	Creatures\Images/b421.spr	data.z.411.Creatures_Images_b421.spr	22526	0fe8b021ed1420c8db35706cab439f9755221feb1a6c8f7fddb2911201062090
+412	Creatures\Images/b422.spr	data.z.412.Creatures_Images_b422.spr	33662	16ad5d1d8158d2cead7655688df2003b4d97508b08a5f4085e345870150f313b
+413	Creatures\Images/b500.spr	data.z.413.Creatures_Images_b500.spr	29942	d4886d7d3d70d7c501c01893e60af6f542dd64967406eb7f05bb20fcce36a32a
+414	Creatures\Images/back.spr	data.z.414.Creatures_Images_back.spr	10026114	0621530d0e347ec58777fdd4c69bf8d9f876fc92ae91fa37fc6fb2de59f663ba
+415	Creatures\Images/ball.spr	data.z.415.Creatures_Images_ball.spr	11410	a895f4a4cbf2266e3241504793b6b1955340ce5643d67e86414a111006aa2571
+416	Creatures\Images/bbds.spr	data.z.416.Creatures_Images_bbds.spr	31370	fa040a4029f3007fcfc47727e96abdb120399be788b3a8895d10b8dbb4b94d33
+417	Creatures\Images/bees.spr	data.z.417.Creatures_Images_bees.spr	658	8b19c89c126fef729382493eeab186588ca770ccbab5d6431d4eab29c2094fb9
+418	Creatures\Images/BHRB.SPR	data.z.418.Creatures_Images_BHRB.SPR	24738	5bd2b954272a33f623db62c6d735f2595b6ae221d2823ccf8d0d883913d29234
+419	Creatures\Images/boat.spr	data.z.419.Creatures_Images_boat.spr	122482	40da1be8c71cc3fbd5808fdf41d097aad7fb47b254a4f6767859d90974f4d3de
+420	Creatures\Images/body.spr	data.z.420.Creatures_Images_body.spr	38562	a3b4e58f73003756f6425caf9d2f93a05c03cce0cf7da57ea7570f9b54ad3819
+421	Creatures\Images/bubb.spr	data.z.421.Creatures_Images_bubb.spr	12298	6df5cec6fbc11d6fa33fc076363ddd57dea63c7f8b1cffc61a7afa67042cb05d
+422	Creatures\Images/C000.spr	data.z.422.Creatures_Images_C000.spr	3830	e01c481968dd061750ac039c2708030733e04d33d89c76fea78b46b72d0ec871
+423	Creatures\Images/c001.spr	data.z.423.Creatures_Images_c001.spr	3498	5e59b27b399efcb412b8d769bdccd3f59cc7f6a0c680c8e8062032e77278f193
+424	Creatures\Images/c002.spr	data.z.424.Creatures_Images_c002.spr	5466	e573b6dac7dc5966ceef66c2680f64a665a68f486dd0b51a901624a3c29418eb
+425	Creatures\Images/C010.spr	data.z.425.Creatures_Images_C010.spr	5770	25d2afe4e45ed8a90014eefd9058a4dae5e70969cbf2cb645f305fa8854767b4
+426	Creatures\Images/c011.spr	data.z.426.Creatures_Images_c011.spr	9478	861aa6dbde133cd2ec26cba82b2fe414e63766596e83b8af641080215e9cc025
+427	Creatures\Images/c012.spr	data.z.427.Creatures_Images_c012.spr	6166	7e716f8cc6de4b71465664344b62fb1938e08a510360ef2d4164a935e10f657e
+428	Creatures\Images/C020.spr	data.z.428.Creatures_Images_C020.spr	7998	bb87b414eb9068e69ca3b5fab029c272c3e4904260f58f17ca07b912ee40ccf8
+429	Creatures\Images/c021.spr	data.z.429.Creatures_Images_c021.spr	8018	b601ebd63c3584a522e776b2096d1067a5bfa76fc87ed0df9f8566fa5e85a858
+430	Creatures\Images/c022.spr	data.z.430.Creatures_Images_c022.spr	10550	ed316aa1cb6c4f666e36c37837468643161b4a864c247e03c45f4c1bbd648d7b
+431	Creatures\Images/c100.spr	data.z.431.Creatures_Images_c100.spr	5230	8bc24c5f45066198a6cb9699dcb8ebe7e62bb3ad0e788553dbd3e1511aef5ab1
+432	Creatures\Images/C400.spr	data.z.432.Creatures_Images_C400.spr	4014	c64203db788551410c3b5ef77733f816130793cc4e5575ea2df3c0b4d5a3dca6
+433	Creatures\Images/C401.spr	data.z.433.Creatures_Images_C401.spr	3494	29ce825fbc6884d11323ba1974028d52ab885a5f876aa11bca259320ca09fcb0
+434	Creatures\Images/c402.spr	data.z.434.Creatures_Images_c402.spr	4866	0cd780f1754b5f0634051f7d0b0a64ca8a8a435ec6b575c8237a6b0466466f10
+435	Creatures\Images/C410.spr	data.z.435.Creatures_Images_C410.spr	5454	229ebe59f650613c88757c49a286fb4809130fdecd6a1bf01b52b47983d3b3d7
+436	Creatures\Images/c411.spr	data.z.436.Creatures_Images_c411.spr	8582	91bca19923668c633ac83ffc190b870f5e25405d7b4686760acfb1199cd50c47
+437	Creatures\Images/c412.spr	data.z.437.Creatures_Images_c412.spr	5502	ab5a6cda6091428162d1b357ab22ac8b2d76be6a42cbad45b25b196fe5137b4e
+438	Creatures\Images/C420.spr	data.z.438.Creatures_Images_C420.spr	7998	9991b8e7b691c34343de593b367a6de1907b7a97efcebb11c6c6cfcebc341093
+439	Creatures\Images/c421.spr	data.z.439.Creatures_Images_c421.spr	7662	9237456590e340fde55b82b5ae13356993da0650f597b1cd5fcfc5971725e6b0
+440	Creatures\Images/c422.spr	data.z.440.Creatures_Images_c422.spr	8334	1944ee5c0b481c34f501b03956b8c91daf333bf4ac204abf33ab8bb94cda5d53
+441	Creatures\Images/c500.spr	data.z.441.Creatures_Images_c500.spr	4362	56ecc610980d01256237a0f8fc1a63f711b7b6b0806db4c30d3839e724d80072
+442	Creatures\Images/cabl.spr	data.z.442.Creatures_Images_cabl.spr	28558	c5319545298f66ea0cd16ce91272065f0698afce3259b0af66358db9bff4b1a0
+443	Creatures\Images/can2.spr	data.z.443.Creatures_Images_can2.spr	56858	a462faf4a154f6c1b6ac6a92ab8ce9c4f2f53d220170ef6835f589323d9a7bb6
+444	Creatures\Images/cart.spr	data.z.444.Creatures_Images_cart.spr	72578	705ea8312c10e3662144cc0d9f9c5cbb8cc7a14b075ed0c5afe759c2ca480479
+445	Creatures\Images/CHARSET.DTA	data.z.445.Creatures_Images_CHARSET.DTA	9472	40deef25ba99a9ebfc49cd023895c2b3513b1e7c24978ffcf4ce87d07c8ffce4
+446	Creatures\Images/clok.spr	data.z.446.Creatures_Images_clok.spr	15662	36ea20480311b7c127c80fc55a2546c250459b72493f954206ab89aa0019f63f
+447	Creatures\Images/comp.spr	data.z.447.Creatures_Images_comp.spr	101830	065ceec5f6629751497b0209d64bce06df2f01b8bdbfaebc95aa5bd52bc84366
+448	Creatures\Images/cutr.spr	data.z.448.Creatures_Images_cutr.spr	74882	fccb71290b0a6e80f099b166a6b10b8a5eafdfb096f1359c812ed1a1cee130e2
+449	Creatures\Images/D000.spr	data.z.449.Creatures_Images_D000.spr	2826	66c093343000ed74dc153694a4e1335c8e1eaeafbac457e2ef0862de74779e33
+450	Creatures\Images/d001.spr	data.z.450.Creatures_Images_d001.spr	2402	c4b3470a3cbfb47d0e44c231fbf4463573d4ba178c5fc3147072f366cff13623
+451	Creatures\Images/d002.spr	data.z.451.Creatures_Images_d002.spr	4054	93828d60a939cb3cca3ac583b96617e6c68ce23637130c5e7b8b987a42571f14
+452	Creatures\Images/D010.spr	data.z.452.Creatures_Images_D010.spr	4218	8aea33eb688e2131b2810fdf239bd9946bfdf276e9c133319ca6f6d187219e43
+453	Creatures\Images/d011.spr	data.z.453.Creatures_Images_d011.spr	7146	f0a7120b1ab5568122eb3103c6c0ccff01f6bed3b50f6b1c2436a52461b2cedc
+454	Creatures\Images/d012.spr	data.z.454.Creatures_Images_d012.spr	5026	1a478d2499a02c2d99d5187b59f833daee91d8de931cf25701b6087def57f777
+455	Creatures\Images/D020.spr	data.z.455.Creatures_Images_D020.spr	5498	95863cf68f15344347e10580dbe8b027e9d43a76efc76ebb3443f2828016199b
+456	Creatures\Images/d021.spr	data.z.456.Creatures_Images_d021.spr	5886	65e6c5cd859909e5d97b385d7e22f6629f2b06af4afc5892a04cdc020580132e
+457	Creatures\Images/d022.spr	data.z.457.Creatures_Images_d022.spr	7770	381dd1568322ae4b3666933b7b9a8e69936b0144e76b5b9fd306a23bea7c84a0
+458	Creatures\Images/d100.spr	data.z.458.Creatures_Images_d100.spr	4182	6603137b571c65a8732ee1714fe74c0f131ea0206afcc6e6ddcaf02b7d64cfe3
+459	Creatures\Images/D400.spr	data.z.459.Creatures_Images_D400.spr	3018	2000edda84c4bbf3a747ae4d702366b22ecfb2196d5c23f31279b3894e3a1f1c
+460	Creatures\Images/D401.spr	data.z.460.Creatures_Images_D401.spr	2754	cc32038ede153f099c608073c6de19c297a10becd8a765d0f3a45e9b4d1d6966
+461	Creatures\Images/d402.spr	data.z.461.Creatures_Images_d402.spr	3966	75e974d90eee53eccc9e8b173c7046463b81d12a787128db3aeddc2d9294ef3d
+462	Creatures\Images/D410.spr	data.z.462.Creatures_Images_D410.spr	3794	247224c3dd69eb02dc11b4e077f1ec199148009ce88e62ba498711c242e4ce79
+463	Creatures\Images/d411.spr	data.z.463.Creatures_Images_d411.spr	6658	bde47e772c90bd273fbbdb3a55188ff17a1e5e1e35e1ddcd10b04af7c8b2f9e3
+464	Creatures\Images/d412.spr	data.z.464.Creatures_Images_d412.spr	4026	e0bb86063cd57522ff199ff424f84a1b129790154bf02ec5e205b53ab9539868
+465	Creatures\Images/D420.spr	data.z.465.Creatures_Images_D420.spr	5498	0a9613de2d0adc51a100927c8e1339bba197929d966598e571033b8ba1322068
+466	Creatures\Images/d421.spr	data.z.466.Creatures_Images_d421.spr	5086	5507161a63ece0773dd0bc5b5c70858c94d1d0fceb644213334f8e88fbb3e10c
+467	Creatures\Images/d422.spr	data.z.467.Creatures_Images_d422.spr	6958	a6250cb2fb3242329346a8e426595c564cb6008a92ffbd460e9ba6c11b088645
+468	Creatures\Images/d500.spr	data.z.468.Creatures_Images_d500.spr	2990	04850a92194cf0711afe6ba423aebc90cc6725a8e2010e79d2fe3f21dfd11c5f
+469	Creatures\Images/disp.spr	data.z.469.Creatures_Images_disp.spr	76674	ec18e7bd6195ddd2f0b942a69e3e652577d38eefc5098c42a25cedfb85489434
+470	Creatures\Images/drop.spr	data.z.470.Creatures_Images_drop.spr	1842	390e6c5091326d8b476cc0ecc5208a40ab97381bc3b88502f60b5ea717456d7b
+471	Creatures\Images/E000.spr	data.z.471.Creatures_Images_E000.spr	2350	9d6e760828b913a044829f410618188698d4326943c712db5b7833eb117f4ed7
+472	Creatures\Images/e001.spr	data.z.472.Creatures_Images_e001.spr	1870	49e188a96f8d42cd734e0e512c0cae8a4693ad004333c99a05cc8dcbcaf56812
+473	Creatures\Images/e002.spr	data.z.473.Creatures_Images_e002.spr	3250	28f88c728f5ee5c2fc15841f910db5a064498290cbed51180fefa4cdbae314ea
+474	Creatures\Images/E010.spr	data.z.474.Creatures_Images_E010.spr	3650	43ea013a6852610f0774de90ee8f87314ca4e8d1d41d6a73118e325025f269e9
+475	Creatures\Images/e011.spr	data.z.475.Creatures_Images_e011.spr	6270	52057b46225950b4151496061f5559dc3bf9f3bcb5f0c7dbef3020e135d33c47
+476	Creatures\Images/e012.spr	data.z.476.Creatures_Images_e012.spr	4062	8e68bd1928974883978a0c4ad89611735ec93f812b4ee43e399f176fd9e34eb8
+477	Creatures\Images/E020.spr	data.z.477.Creatures_Images_E020.spr	4838	042e062dc78389f56b2b3391cd7ea74f6c8f22461c429db8b08fb585b524dd5b
+478	Creatures\Images/e021.spr	data.z.478.Creatures_Images_e021.spr	4522	1a15a8f1a2d4a65774c5feccc53e1ee8e42988fed04e9c78633682b46fe7affb
+479	Creatures\Images/e022.spr	data.z.479.Creatures_Images_e022.spr	6342	68d11c85c10fc4df12796459dbbc1670763cfa47477b96c795c3bf1ddca55934
+480	Creatures\Images/e100.spr	data.z.480.Creatures_Images_e100.spr	5538	b8d499ca41c2afa890dee366fe5e5f581e81590dad6ee389370c48604e870cca
+481	Creatures\Images/E400.spr	data.z.481.Creatures_Images_E400.spr	2350	cfec048356eba5b15f5b436ea8a603e485bc963baa3f9bd48711fb92885eae26
+482	Creatures\Images/E401.spr	data.z.482.Creatures_Images_E401.spr	2066	db4eab802a7bcf4ba02a7b75905ede777cb0f37275ac30bd5ebc9ff45251220b
+483	Creatures\Images/e402.spr	data.z.483.Creatures_Images_e402.spr	3302	4a564ffaf7237c22203c279b60e69f879516cd21f577f2f775cc935581c5f43a
+484	Creatures\Images/E410.spr	data.z.484.Creatures_Images_E410.spr	3130	bad0ba7ff69b67e540bc869f86035364e208f1b93b09c1ee784bd270108ec618
+485	Creatures\Images/e411.spr	data.z.485.Creatures_Images_e411.spr	6734	72c2d19f1b8bdd91b5260b9eea42794d58a064c53c07440e9adb29cc81dde2cb
+486	Creatures\Images/e412.spr	data.z.486.Creatures_Images_e412.spr	3430	56a74382864896a15765c08cfd27c5979b0106aa1965674ad8ee611336debf8a
+487	Creatures\Images/E420.spr	data.z.487.Creatures_Images_E420.spr	4838	cdd95538429e962d04adec694fa4be2de876550a03c4e45d9489c7a496b8a7a0
+488	Creatures\Images/e421.spr	data.z.488.Creatures_Images_e421.spr	4494	102a9b1a38ea02a8e5aee53facd838ceeb3f166dc4f1465c3a86f8a331146f5f
+489	Creatures\Images/e422.spr	data.z.489.Creatures_Images_e422.spr	5202	4685659b96f372512c43f1ceec94bb1d754aeba1e6cac8c899b0c5a042a49152
+490	Creatures\Images/e500.spr	data.z.490.Creatures_Images_e500.spr	4602	97acdd9b208dca7a62f86e00eba9201a8c4bfac1c7d75925939b30f6f582ae98
+491	Creatures\Images/eggs.spr	data.z.491.Creatures_Images_eggs.spr	138626	6563c08be5a9828485d5ac2638396029c29b262601ea220fab292a9afd423e52
+492	Creatures\Images/F000.spr	data.z.492.Creatures_Images_F000.spr	3806	f56d2145d3ec55dd0b67986b6a0fb249b40113a73242e065cda72aaf05664b19
+493	Creatures\Images/f001.spr	data.z.493.Creatures_Images_f001.spr	3446	2bf4e56a44b1065441a4c2fbf9c47ca0b5b1a7bb221a02d27af135190ed08d51
+494	Creatures\Images/f002.spr	data.z.494.Creatures_Images_f002.spr	5226	9dc356259c0517fdc52091e03d7fca1593f217d2ddad4cc5b2610545fed3c6cf
+495	Creatures\Images/F010.spr	data.z.495.Creatures_Images_F010.spr	6042	655a78eb734594e3a530ddc01548c3526906a3b8d82ba0268154b16a5c08bcf1
+496	Creatures\Images/f011.spr	data.z.496.Creatures_Images_f011.spr	9002	0d53b2435860ea5bd0f47bde65795e5c12e30cdc828d3ff7ec8dda535b95f50a
+497	Creatures\Images/f012.spr	data.z.497.Creatures_Images_f012.spr	6166	b6e7ff4358eafb555c5907d7f95b4e10281ca30515f3343fcb7832aa44db47e5
+498	Creatures\Images/F020.spr	data.z.498.Creatures_Images_F020.spr	7998	20ad365fb995f527cdbd09247c62ad5c6c5e0430ee053c7b736dd1f74c57d5cb
+499	Creatures\Images/f021.spr	data.z.499.Creatures_Images_f021.spr	7790	bf426240c89b8c36f99fc410b78419d91d6b8da8f77690318651c49a5c33f402
+500	Creatures\Images/f022.spr	data.z.500.Creatures_Images_f022.spr	9958	8a1b9035202196d81fe7fd579a866ef9b23e50c45e11afbb85e06be29d6959d8
+501	Creatures\Images/f100.spr	data.z.501.Creatures_Images_f100.spr	5262	9a922d739b0c55c8fc636a25aefbb500ce8b6ae4fc366b79f04c27cd08209ccc
+502	Creatures\Images/F400.spr	data.z.502.Creatures_Images_F400.spr	4014	73e49c23fe6555bcc848417027e5d134f6aa2a33ee829ac8a76459f6c885124e
+503	Creatures\Images/F401.spr	data.z.503.Creatures_Images_F401.spr	3734	55b3df388259bcb0af621d4170cf92209eb8b33a4d9dc03378ab90bfca8d511e
+504	Creatures\Images/f402.spr	data.z.504.Creatures_Images_f402.spr	5250	bf718858c8d54d3aaa0c829ccdc968b432cc66c7f8a8a3da0533e2e87c517db3
+505	Creatures\Images/F410.spr	data.z.505.Creatures_Images_F410.spr	6530	8d9e3dcaee82c48fa767c3b5e32c6bc5e1a7d37296489b2fdf983be9812a0162
+506	Creatures\Images/f411.spr	data.z.506.Creatures_Images_f411.spr	8470	0f525440198dd5e70c648e8d78bda6b3e44d7bbfa0a339a6977b66a76df03d2d
+507	Creatures\Images/f412.spr	data.z.507.Creatures_Images_f412.spr	6166	b6e7ff4358eafb555c5907d7f95b4e10281ca30515f3343fcb7832aa44db47e5
+508	Creatures\Images/F420.spr	data.z.508.Creatures_Images_F420.spr	7998	edfb9d87198cca4e2b88e837e8320488f6adee59f2387fe240cb423db2660306
+509	Creatures\Images/f421.spr	data.z.509.Creatures_Images_f421.spr	7502	d5f78f221673c4bb82e35114392b74f09b5e4b29abd5ed1c5ad3fc1511660a0f
+510	Creatures\Images/f422.spr	data.z.510.Creatures_Images_f422.spr	8842	447d0fa8b4f98c2335322240a4d99f1285b7d525816164fbb3ba35f2e0c45d1f
+511	Creatures\Images/f500.spr	data.z.511.Creatures_Images_f500.spr	4426	e976bfc25d04bc24625b70472aca7bfaa9076b503d98e43abadca1f2f7b583d9
+512	Creatures\Images/fall.spr	data.z.512.Creatures_Images_fall.spr	59458	b944fa0827fa851c29e6f06942348aeefdb78baa17dac949afaf2513786a259b
+513	Creatures\Images/fann.spr	data.z.513.Creatures_Images_fann.spr	2198	1f78bdc53a0644d863017a4e22171c090d34fa075f749dbe064f89ab09d999e4
+514	Creatures\Images/fish.spr	data.z.514.Creatures_Images_fish.spr	26626	9548679e8b751272e1f4107776b90fa992d51ef8b71a7528a3ad293d38c578b2
+515	Creatures\Images/flag.spr	data.z.515.Creatures_Images_flag.spr	58002	02a75db98f642c661f4dff71fbb0db519bf77bd57ebe3426306a1d0fedb95040
+516	Creatures\Images/flam.spr	data.z.516.Creatures_Images_flam.spr	1314	bbf26ea9c46bae97e0fbcdd2afe76c195460ddc273bb765987a356e7f91690ca
+517	Creatures\Images/food.spr	data.z.517.Creatures_Images_food.spr	8778	4c5ef8aa4c9453b0af99170ee42518dcd89a2ffec4feaa766f270c49983a0733
+518	Creatures\Images/Full.spr	data.z.518.Creatures_Images_Full.spr	147178	b804145c2c240430ebe026e9b8ad656b8cb8b4f3ba0d0f488064263dbd10f610
+519	Creatures\Images/funl.spr	data.z.519.Creatures_Images_funl.spr	4586	fa83d0450a9689e556975834b3d6b11226804c22576dcd2e73fd20f531e6b35b
+520	Creatures\Images/G000.spr	data.z.520.Creatures_Images_G000.spr	2934	6cd358f8203dbff84c39698ddbd59784c3fb7c1d565e0a4d59a0c5f9ce49b613
+521	Creatures\Images/g001.spr	data.z.521.Creatures_Images_g001.spr	2534	7ddcc13850d2b041e593757192ab507a0b2a26384226d4103be7565c9b5b2fe1
+522	Creatures\Images/g002.spr	data.z.522.Creatures_Images_g002.spr	3538	b5bece51174d3422ef85a65191546d9d92970da7be934507a09817c798c76668
+523	Creatures\Images/G010.spr	data.z.523.Creatures_Images_G010.spr	4538	a0607cbf49ad73e4987808464ff4f26fccf8537cc099a48a5e78a34b40f27e4d
+524	Creatures\Images/g011.spr	data.z.524.Creatures_Images_g011.spr	6518	652c6941cadad4b25b26d66b994605079e26ff059c808520e484dff7e675bd9f
+525	Creatures\Images/g012.spr	data.z.525.Creatures_Images_g012.spr	5062	4777dad3756c1a4c70e7e1c651d617dbf4ba56e3877a56e5b906d20ee8968739
+526	Creatures\Images/G020.spr	data.z.526.Creatures_Images_G020.spr	5322	0261cc78e1ad47a81aa4d7cf3b80940271aa1c85d6c040f6b9fed77e6156adeb
+527	Creatures\Images/g021.spr	data.z.527.Creatures_Images_g021.spr	5782	af96c00e72a49905a8c54ee7c926b7c425160e6dacef0518050edf4d002ea294
+528	Creatures\Images/g022.spr	data.z.528.Creatures_Images_g022.spr	7358	388d943691d382c8e631aa64a0fd96bcd457c64062127cacef76a13d1ee4c154
+529	Creatures\Images/g100.spr	data.z.529.Creatures_Images_g100.spr	4118	38d8545fd87db18b6d8e470991e25feeb936fb39bfdd07fe5d7474dcce7d20e9
+530	Creatures\Images/G400.spr	data.z.530.Creatures_Images_G400.spr	2930	5dfb4c592d8d6ab9474cb198450a48b738b92f04f3d67cafb1a2346bc270fe4c
+531	Creatures\Images/G401.spr	data.z.531.Creatures_Images_G401.spr	2646	417708a335d809ca7ed6da7960498178b619b24a286b6b379af70e4f21d0b0a8
+532	Creatures\Images/g402.spr	data.z.532.Creatures_Images_g402.spr	4298	ec0a306bdfd46f3520e24d4bc739df78447faf683a09890a4cb3e8caf71216e6
+533	Creatures\Images/G410.spr	data.z.533.Creatures_Images_G410.spr	4806	113e97f890d59728e895836e587c74a4fedf48f979a9cc60c2f2f3d7a8ab7848
+534	Creatures\Images/g411.spr	data.z.534.Creatures_Images_g411.spr	6598	bdf2c7191d348ce25e696438933f7932787b1840adb57dd084cde25d9dfe4ff0
+535	Creatures\Images/g412.spr	data.z.535.Creatures_Images_g412.spr	5062	4777dad3756c1a4c70e7e1c651d617dbf4ba56e3877a56e5b906d20ee8968739
+536	Creatures\Images/G420.spr	data.z.536.Creatures_Images_G420.spr	5322	59168235e272421753fa9760c682f13ed41ddf5426a52e2a7ce0818536b211ed
+537	Creatures\Images/g421.spr	data.z.537.Creatures_Images_g421.spr	5342	064b56158f9f61b9167e2a155b0bc87675a11aaaef699578d41bc7a33608e996
+538	Creatures\Images/g422.spr	data.z.538.Creatures_Images_g422.spr	6906	c9daec3ee2a7327b5993005f13f2868b0c6cee1629fc014397abcd468fca9db3
+539	Creatures\Images/g500.spr	data.z.539.Creatures_Images_g500.spr	2942	b756f28850c6f722b0fd2bcc3d59907f8b59c8c3531e09599d28687b3450b107
+540	Creatures\Images/greg.spr	data.z.540.Creatures_Images_greg.spr	75698	f8c8fd18e9a88ba5e13ff95d750072404558cbfa895bc1dcef3f41ecca733f3b
+541	Creatures\Images/gren.SPR	data.z.541.Creatures_Images_gren.SPR	1092	b9c9bbfd1c23a3eeedf3f4211ec72283f12403864247f071b50ea8f9b9ff460c
+542	Creatures\Images/H000.spr	data.z.542.Creatures_Images_H000.spr	2258	85cd0c9f3f6d1104c85dd1b57e31b8d995aeb9c91273c5ad5e7010fa9225ba8c
+543	Creatures\Images/h001.spr	data.z.543.Creatures_Images_h001.spr	1918	e3d16d415274adbf4c68128a8443aa35e8b8daaf2cdec5683984d8c598755b04
+544	Creatures\Images/h002.spr	data.z.544.Creatures_Images_h002.spr	2962	4032f6f934a180f4a7cd0130432389eff959ba1f276c8e9563686d3490ad7a6b
+545	Creatures\Images/H010.spr	data.z.545.Creatures_Images_H010.spr	3710	133373e7bc8b1c8c7a77b7fd7d3026748e8a878bb2a08638604e806cb5fbec71
+546	Creatures\Images/h011.spr	data.z.546.Creatures_Images_h011.spr	5858	829d9eed7957e8ecb70dae9a879fc24235bbd2f4d5cf2e7b5170e01514e172f4
+547	Creatures\Images/h012.spr	data.z.547.Creatures_Images_h012.spr	4138	7051e94728df4585048044949a8df41d42fe6e489ab3148897a94ee3f5384d22
+548	Creatures\Images/H020.spr	data.z.548.Creatures_Images_H020.spr	4838	984fa4c1b93ae28bd24bc57d658b7a71a6db90c001b9fc0a36fb7acbd6aa1dbf
+549	Creatures\Images/h021.spr	data.z.549.Creatures_Images_h021.spr	4582	0af377c4e8d390599ba21a859b27184835cfcfcae3613448b7d0b96f210687bf
+550	Creatures\Images/h022.spr	data.z.550.Creatures_Images_h022.spr	6590	b8615b10afc4bef2b6f6322482867f527a81023591463497947150d004a845ac
+551	Creatures\Images/h100.spr	data.z.551.Creatures_Images_h100.spr	5630	ffba22aa262b6d29854b9cc90a4db8de561ac141690b924c7f25227c75f0a3ea
+552	Creatures\Images/H400.spr	data.z.552.Creatures_Images_H400.spr	2706	a09c06470877d17763746bb10f0f25db2436b09ea4d5af1bd28cbc91d93d0c8f
+553	Creatures\Images/H401.spr	data.z.553.Creatures_Images_H401.spr	2002	62145984ca6d33c7644900507b5f6e1e75f656410f2dc11e5481a3b62c7b8951
+554	Creatures\Images/h402.spr	data.z.554.Creatures_Images_h402.spr	3402	a330aa2c0948ca46af489e691d423828349152fb4b3afbdfbdc81d719e771435
+555	Creatures\Images/H410.spr	data.z.555.Creatures_Images_H410.spr	3866	db805695d3e3d996d579651de70a4411b58e6445a2b5ba1deb575640f20477af
+556	Creatures\Images/h411.spr	data.z.556.Creatures_Images_h411.spr	5746	a634c3ed9d56984e544133721e8f7b27e9048b7796617c91307eec8522a30bbd
+557	Creatures\Images/h412.spr	data.z.557.Creatures_Images_h412.spr	4138	7051e94728df4585048044949a8df41d42fe6e489ab3148897a94ee3f5384d22
+558	Creatures\Images/H420.spr	data.z.558.Creatures_Images_H420.spr	4838	6e47df2d67bdf1983f22aa8dce1bf84aa4b542510259b977506589ebf364c35b
+559	Creatures\Images/h421.spr	data.z.559.Creatures_Images_h421.spr	4550	3cbedcfeabcda247974b4ce65d5f0deae3ec7b5f2bc2b341309d3072748ff03b
+560	Creatures\Images/h422.spr	data.z.560.Creatures_Images_h422.spr	5978	e698a8e62143b97bc692d0e000b04cbfb669e5b3a0fdcc123ea37ac27a7b3fce
+561	Creatures\Images/h500.spr	data.z.561.Creatures_Images_h500.spr	4638	d60bff6fc806b18ef863f724b40b017720a6ec97f421b173c7df64356ed945f0
+562	Creatures\Images/heli.spr	data.z.562.Creatures_Images_heli.spr	87994	eb3a9dfcda0491d73171238b1530aec2c66be7154a6ded5d415f54c16acbeb0e
+563	Creatures\Images/herb.spr	data.z.563.Creatures_Images_herb.spr	38342	a2480ad860e9a72e1a31da9024cb34a93cf183d7f55d549627163f3982571bc3
+564	Creatures\Images/hive.spr	data.z.564.Creatures_Images_hive.spr	57202	6458944b0818ded37484333622f3bbb47c146fe381c6c0854891ac98bb8fd623
+565	Creatures\Images/htch.spr	data.z.565.Creatures_Images_htch.spr	618	df8cc0dc2eeae4c942c3951a11e7f429d366ee294ceefe1972405bf3408db78d
+566	Creatures\Images/I000.spr	data.z.566.Creatures_Images_I000.spr	1994	88dda45bfd8172c6b5c41174e7ddff3b3a53265aa83c900ed4f58e0b53c026c2
+567	Creatures\Images/i001.spr	data.z.567.Creatures_Images_i001.spr	1858	4eb082239bd943ea0dab1203cde017f2fe46edacdb7a0c03d246fb0a7f40a94b
+568	Creatures\Images/i002.spr	data.z.568.Creatures_Images_i002.spr	2958	74502c91e7f4bf209b23998dd43c0f0ff1589b2fd85c67f46c90fa331286c795
+569	Creatures\Images/I010.spr	data.z.569.Creatures_Images_I010.spr	2882	4248d2990d9b1bf8244944de071521512529e53acccf67fd4f2d255059e90c8e
+570	Creatures\Images/i011.spr	data.z.570.Creatures_Images_i011.spr	5434	dffd02ea03bab066b79dfd0d524ff57c345001e78f1a0169c6fd44c1b1f90793
+571	Creatures\Images/i012.spr	data.z.571.Creatures_Images_i012.spr	3506	dee531af16077f07ebb0fc3212663ea7519d81109e227e35b1a2864e2f773030
+572	Creatures\Images/I020.spr	data.z.572.Creatures_Images_I020.spr	3770	7a9dc56b073b81da0ce96472426dcc3e491163e5219ae5780f9aaa825067efd2
+573	Creatures\Images/i021.spr	data.z.573.Creatures_Images_i021.spr	3758	1b6c5171ccad52a0910ec34d49474e93550863868bc5aa84080bfd69fe6b3a91
+574	Creatures\Images/i022.spr	data.z.574.Creatures_Images_i022.spr	5174	ff3771585fb97c17bb52607222d86f4239a97147dc97fb8654dce84e18faea3c
+575	Creatures\Images/i100.spr	data.z.575.Creatures_Images_i100.spr	4090	3d291194ca71b903b2b43e02254ae52e93129f227648a4b3c8f69eb62e1ad757
+576	Creatures\Images/I400.spr	data.z.576.Creatures_Images_I400.spr	1786	b3aa05f5af374072d1ff2d209c0b3ca7ade0fcae4bb219b7ac4056326dec58c6
+577	Creatures\Images/I401.spr	data.z.577.Creatures_Images_I401.spr	1890	db71a5784f877960630fac9a95970deea3a92d460e4ebebf300cbf80e204a0f0
+578	Creatures\Images/i402.spr	data.z.578.Creatures_Images_i402.spr	2958	74502c91e7f4bf209b23998dd43c0f0ff1589b2fd85c67f46c90fa331286c795
+579	Creatures\Images/I410.spr	data.z.579.Creatures_Images_I410.spr	2394	f2e8b68298a671e8fa96d7638abca38584743ce62f9a0cf21cbaf0fb0848de26
+580	Creatures\Images/i411.spr	data.z.580.Creatures_Images_i411.spr	4798	44bc07eb86f26659c8232a388ff9b20ba6a8127f444bdc6567095f38c6ea8a5a
+581	Creatures\Images/i412.spr	data.z.581.Creatures_Images_i412.spr	2818	b183286cbb22b048767e1d633e37d9eebcc932a855b0f55865df8ca070047b5f
+582	Creatures\Images/I420.spr	data.z.582.Creatures_Images_I420.spr	3770	46169b3cc633388ac4f4167df9cf27995dec79693d65224d14d8aff972d77056
+583	Creatures\Images/i421.spr	data.z.583.Creatures_Images_i421.spr	3630	25ad78f6426de21f1fafd937f9969a225d7a8f4ddbe25765466f96e7213387d6
+584	Creatures\Images/i422.spr	data.z.584.Creatures_Images_i422.spr	5338	302c772f3d85b3adbbf75c1bb0ac97b3ae3299324a4838e40f1929640da04ada
+585	Creatures\Images/i500.spr	data.z.585.Creatures_Images_i500.spr	3086	6160a0835f93ca40f39dcab788daa5099f73a34bcd4366c475d15787ffb3bd15
+586	Creatures\Images/ile1.spr	data.z.586.Creatures_Images_ile1.spr	16586	0dabcca79ec418e21274e96c521f86a35f592531bcfe0e7e138b5b9b90352b29
+587	Creatures\Images/ile2.spr	data.z.587.Creatures_Images_ile2.spr	6730	8afdd88718feace64f9c133098e6ee1412475b320c9772c2840f53ea07631df2
+588	Creatures\Images/ile3.spr	data.z.588.Creatures_Images_ile3.spr	39526	d204305dcca21f9b2ccc3f23233f31e0c8f969725776f3e129ffe1c28958c053
+589	Creatures\Images/ile4.spr	data.z.589.Creatures_Images_ile4.spr	3410	38240de241b71c8abd5a98c1303c7eb0dcf06fd775231d7ddc1b07f0c4d05962
+590	Creatures\Images/ile5.spr	data.z.590.Creatures_Images_ile5.spr	2470	4d6c48cc237f79da9d1ed4df13dbb82058c001baead6f7307f48ef7affc6d445
+591	Creatures\Images/ile6.spr	data.z.591.Creatures_Images_ile6.spr	2170	4b61d564d54a43e221ba1e9e0dd034e615f085103ff1c0b5ba41e05ffb947681
+592	Creatures\Images/ile7.spr	data.z.592.Creatures_Images_ile7.spr	418	c2b5bfef9d4f4beeaaa8f3929aae8b77f6a4937dc6e05e09ab0439918514beb8
+593	Creatures\Images/ile8.spr	data.z.593.Creatures_Images_ile8.spr	8330	208bf887aa1f3cc6813e6c7990326d7f29e16907a421013f428d5b220c64a1e0
+594	Creatures\Images/ile9.spr	data.z.594.Creatures_Images_ile9.spr	19774	f7b4a4078c32663256adc81040ec2279ef518026df4876f29559e28c7c86a426
+595	Creatures\Images/ilea.spr	data.z.595.Creatures_Images_ilea.spr	32650	a7001ce8c92d0a349cc0e146e6d6681b0ce961d9160565de758e29018b3855f1
+596	Creatures\Images/ileb.spr	data.z.596.Creatures_Images_ileb.spr	45210	4533f0fcc44803530567e31d4985e983bcef6dcd5f360c1e8d3dca7e435393b1
+597	Creatures\Images/incu.spr	data.z.597.Creatures_Images_incu.spr	89626	a92399accdbe722320999654d63835459cd88c9856a27bb372dd2cc30a92c661
+598	Creatures\Images/indi.spr	data.z.598.Creatures_Images_indi.spr	21218	12f29e286f728b78c979357267f4dd03d39b05bf30e611d344b71852fe109c36
+599	Creatures\Images/inst.spr	data.z.599.Creatures_Images_inst.spr	210942	2c16ac84b8d343d1807fc27503ac352c265ebdce2d71554a8ea1c243bdc728fc
+600	Creatures\Images/J000.spr	data.z.600.Creatures_Images_J000.spr	3466	67f42bee70cf9c2428aff9fb7b10320dac3414f7f5a9a8170196220dfe09acec
+601	Creatures\Images/j001.spr	data.z.601.Creatures_Images_j001.spr	3138	c251854c7c7bcfd9b669268622e4bf73dbb8429cb9d800477d2d580b1ed9c5f6
+602	Creatures\Images/j002.spr	data.z.602.Creatures_Images_j002.spr	4234	832eda3573dc0e5276cf8000326b1863d0fefd061a1e56cee56684a268366d71
+603	Creatures\Images/J010.spr	data.z.603.Creatures_Images_J010.spr	4918	127d21e0cf6e3b1893d86188b3d91879687ffb79d91b0ad0de31e546abc7912f
+604	Creatures\Images/j011.spr	data.z.604.Creatures_Images_j011.spr	8242	2a7527359cce13c69da307e11831c2c96407c593c5c718fab427b59b3c987f92
+605	Creatures\Images/j012.spr	data.z.605.Creatures_Images_j012.spr	5594	4fc4e86f6df753f8ff6e8aa3fe6400f70f2c0262d0cc51892849013ec1d764da
+606	Creatures\Images/J020.spr	data.z.606.Creatures_Images_J020.spr	6334	0eb7d3edc08a1c55bd9662c7cfe0cff5b3016ff71ba5a63011f173da69781391
+607	Creatures\Images/j021.spr	data.z.607.Creatures_Images_j021.spr	6214	8304ba69a61ef5e6065fa283246e51904d902df9bf43892c1c9d99b4c7f2e1b7
+608	Creatures\Images/j022.spr	data.z.608.Creatures_Images_j022.spr	8410	0c9f9fd1b26a9b0d2d990c3677e5e550605c22d180d574fdc1c952952a2edd36
+609	Creatures\Images/j100.spr	data.z.609.Creatures_Images_j100.spr	6830	ccf613b32f7441e2c985cbc21104e6061ba19d76cd4cfbe4bd6192010ff21b03
+610	Creatures\Images/J400.spr	data.z.610.Creatures_Images_J400.spr	2786	247941fcfabab3a8e1e6f4ca08582c66d4f6c62603b0d412729ba03ddbb30333
+611	Creatures\Images/J401.spr	data.z.611.Creatures_Images_J401.spr	3298	dacf5b1b64640a22c810d8bd32c87098d6872cdb33cd481d40591f58da97088a
+612	Creatures\Images/j402.spr	data.z.612.Creatures_Images_j402.spr	4234	832eda3573dc0e5276cf8000326b1863d0fefd061a1e56cee56684a268366d71
+613	Creatures\Images/J410.spr	data.z.613.Creatures_Images_J410.spr	4606	472160efe3880c6adf578018bd03f6059acddef43b774cc170bda218ebbd0bba
+614	Creatures\Images/j411.spr	data.z.614.Creatures_Images_j411.spr	7262	814207bb5c1131b2630d1e0a768afe345caad81cee04cb40ad6fc9be45ab0eb3
+615	Creatures\Images/j412.spr	data.z.615.Creatures_Images_j412.spr	4974	c56db44769345d69cb94f1913ee2b2057faa08d232501aa2cf9051c439a0f5dc
+616	Creatures\Images/J420.spr	data.z.616.Creatures_Images_J420.spr	6334	e9718848d53ba5068ea19d66daac5122b08cc4975535c59e44381880a9aadbe0
+617	Creatures\Images/j421.spr	data.z.617.Creatures_Images_j421.spr	6138	65dd7104f5105900daa8dcd500e2e1f11f537f1ef366eb291f427756682e5311
+618	Creatures\Images/j422.spr	data.z.618.Creatures_Images_j422.spr	9094	add90fae9d8bfae5efd4acbdb8e9446b1a4f013d012fbe091cc6e552c94f9068
+619	Creatures\Images/j500.spr	data.z.619.Creatures_Images_j500.spr	5786	4af292e6d9bc993d9172dd1ba26ba71eb5961986bf1dde1c85736f9ebe0e480a
+620	Creatures\Images/join.spr	data.z.620.Creatures_Images_join.spr	16234	e7f2ba22e1f95b4ca148f0a0f241b30f380fa78f68229e8df80c46b04a665ad8
+621	Creatures\Images/K000.spr	data.z.621.Creatures_Images_K000.spr	2246	3f8e1938a442f06a263d2d2e475929763347d6850d7b2de4c34e486eb5bc99ae
+622	Creatures\Images/k001.spr	data.z.622.Creatures_Images_k001.spr	1794	45a2c1ab864497a1d6ddaf9168953aa4f31981fa8269c5b9d2ccf2fed784b5fe
+623	Creatures\Images/k002.spr	data.z.623.Creatures_Images_k002.spr	2734	398fe56432a911fc02942f319dca222f6f05ecaf794cf8c8f455d8800e70688d
+624	Creatures\Images/K010.spr	data.z.624.Creatures_Images_K010.spr	2878	e49f37f8546c5448aebcfae110f2a41e29c359f5fa7ce0328d5ce672f5dba405
+625	Creatures\Images/k011.spr	data.z.625.Creatures_Images_k011.spr	5966	2d7bd8c0d38cd4471e79dc7e0b554d80d4c7f1a61c249080d62ad0592a7064dd
+626	Creatures\Images/k012.spr	data.z.626.Creatures_Images_k012.spr	3470	504986ec84d5d11f0a49dff6c56565ca2d8fd55f9c29132aa167fa603293dc2f
+627	Creatures\Images/K020.spr	data.z.627.Creatures_Images_K020.spr	3770	0e4949365ffd532b22bcbae1666507acb5aa58d5d3e6b8d2980e93c1138a5bce
+628	Creatures\Images/k021.spr	data.z.628.Creatures_Images_k021.spr	3682	49429a04ea9a99304d66457bd5024cdc3b62e732317e04305488673c4d545332
+629	Creatures\Images/k022.spr	data.z.629.Creatures_Images_k022.spr	5494	029184f5986e9afd040ceec1e9ad0cb707dce25dafc0aef54d0f2bfd88f87ca3
+630	Creatures\Images/k100.spr	data.z.630.Creatures_Images_k100.spr	4090	84713c12e009758f5247509c291e5291d3e64b1dae579b16c8bd18b357aa3b52
+631	Creatures\Images/K400.spr	data.z.631.Creatures_Images_K400.spr	1694	9bbd878a53df3afb354d6316f7667c394e6fdd79350f06457f3c4df18a418ef0
+632	Creatures\Images/K401.spr	data.z.632.Creatures_Images_K401.spr	1814	f22ec665bbca6debfa20057b43ef73ee3b49bf7788324d7dbb48c1bf52746784
+633	Creatures\Images/k402.spr	data.z.633.Creatures_Images_k402.spr	2682	eadc5e00c31a5ee61c25cca8c91bb3bebd6c517609f5490ed2b8dc7c2fcac642
+634	Creatures\Images/K410.spr	data.z.634.Creatures_Images_K410.spr	2574	e8b43d3a9c5228fc1f81e3930c8d7c755540c9f96ccbdee312ed32e4f2b07aa6
+635	Creatures\Images/k411.spr	data.z.635.Creatures_Images_k411.spr	5302	9f82bed7cc32b5431eebe4824b1b859425fefee8fd1c400c46b2153e12bb2210
+636	Creatures\Images/k412.spr	data.z.636.Creatures_Images_k412.spr	2966	2cd23953f3e65e57f4e93bea26aa7c9100137512e2dd7a388892333313643593
+637	Creatures\Images/K420.spr	data.z.637.Creatures_Images_K420.spr	3770	c50740cd742adc5b615d4278288ee69e40d5526d9e7dd359fb764bebfeb1c427
+638	Creatures\Images/k421.spr	data.z.638.Creatures_Images_k421.spr	3546	29e4b22f0fbb110c82a6e07e51a95079ccd39bbf228ec3282485c70548be19b9
+639	Creatures\Images/k422.spr	data.z.639.Creatures_Images_k422.spr	5694	63978e338e8288c24e9d3a994084ff89460debc87918c09082efb76e53379fd4
+640	Creatures\Images/k500.spr	data.z.640.Creatures_Images_k500.spr	3086	e83bc89ca8729076008989cc86a6a6aa4fb12aeca029d608ab284b20447ac261
+641	Creatures\Images/kitc.spr	data.z.641.Creatures_Images_kitc.spr	48978	32056791024a3bcc6553685cb28bef69f31699d0450d7bd0faad045fd42829c8
+642	Creatures\Images/L000.spr	data.z.642.Creatures_Images_L000.spr	3778	15cd2ec6bc1029877ea83960c6958744d7f57e06c9be56922bf8e839293af06b
+643	Creatures\Images/l001.spr	data.z.643.Creatures_Images_l001.spr	3162	52d407ffd126aa320eae32d4de142b3b84f5eaff90c23590db700cef2f8559a0
+644	Creatures\Images/l002.spr	data.z.644.Creatures_Images_l002.spr	4274	08a7f930be0223a526cf823af3453541cd10518ca31d05021997ad216206d45a
+645	Creatures\Images/L010.spr	data.z.645.Creatures_Images_L010.spr	5098	e1b3d051927f3ea3e30c6f8447d51d50e65d1c5f1c0c886abcdbe5c07b26a39e
+646	Creatures\Images/l011.spr	data.z.646.Creatures_Images_l011.spr	8358	7d1d4874d791610c84bea7855a44a3fa5f405717221c728ee1e9f3898c50785f
+647	Creatures\Images/l012.spr	data.z.647.Creatures_Images_l012.spr	5842	dc18d0c6e0536751fb41f87a74de6ed93e39dcc279d0b12217ba2551f54a936e
+648	Creatures\Images/L020.spr	data.z.648.Creatures_Images_L020.spr	6334	982bf1761287d3ba9f901af00556bc1bc841769fd8527740128a00673295d6d2
+649	Creatures\Images/l021.spr	data.z.649.Creatures_Images_l021.spr	6214	6007d89e0e1c7917ac725d50f936b55b69632c44deee016d1129cd475ae0ba93
+650	Creatures\Images/l022.spr	data.z.650.Creatures_Images_l022.spr	9034	6744ba33739d99fd70f840b9bba46d5f6e75fded3bde8d032176c52f167bae6b
+651	Creatures\Images/l100.spr	data.z.651.Creatures_Images_l100.spr	5962	38a21a2d9bcf72e0f4b62abfbba51bb5729213751e4d77f30e41586615a32ada
+652	Creatures\Images/L400.spr	data.z.652.Creatures_Images_L400.spr	2734	a06ecab7a6e02be3a6deaa66d905661bf7887516d805218067e022cff2324cc3
+653	Creatures\Images/L401.spr	data.z.653.Creatures_Images_L401.spr	3178	0c528f741d31b0b89512778a479000826690a3f61962de1a5908dd6bf815b903
+654	Creatures\Images/l402.spr	data.z.654.Creatures_Images_l402.spr	4578	fb63c45dd914a99f6145608c968e9c2195f37f8f5243e1640b0b04d048fbb346
+655	Creatures\Images/L410.spr	data.z.655.Creatures_Images_L410.spr	4662	805026b013110acd671de567a36ae2c9f2d4f76aa7346710f4bc7f73e1312fdf
+656	Creatures\Images/l411.spr	data.z.656.Creatures_Images_l411.spr	7550	7e4f83f7f89432a6597515856e52b3f1c7fc9fff25677d4b16656f01d74c502a
+657	Creatures\Images/l412.spr	data.z.657.Creatures_Images_l412.spr	4934	95e00fa307806cf059bf0c28bba834fdac6700402c3625eb25402a8ddaab64d9
+658	Creatures\Images/L420.spr	data.z.658.Creatures_Images_L420.spr	6334	b7240a3fb4c4f4afda813fde8eea47babcf04ec7dcd1dca5f557082cdae96213
+659	Creatures\Images/l421.spr	data.z.659.Creatures_Images_l421.spr	6174	8cadb8f5653cb204ac757b2cd1aa051be877f0d804325c11aa686a27541e786d
+660	Creatures\Images/l422.spr	data.z.660.Creatures_Images_l422.spr	9086	2c9c8b62cbc75becd14e610103bbdae4e41253aba92fb95cd7bbec074e1f0caf
+661	Creatures\Images/l500.spr	data.z.661.Creatures_Images_l500.spr	5682	60cad19a5aaa1f476f826b40e0ef2b25f5432fdb684931cd5499865f3b16a887
+662	Creatures\Images/land.spr	data.z.662.Creatures_Images_land.spr	255134	49f0e53fd5d7045f1668c7fe4151cbed38fd9635d31d99467bd3f03282013b1f
+663	Creatures\Images/lftb.spr	data.z.663.Creatures_Images_lftb.spr	32994	b915b814e3d1a7e2cb1417a755f35d52826de436539e087cacfe907830f2623f
+664	Creatures\Images/lift.spr	data.z.664.Creatures_Images_lift.spr	41346	e155270aaa2de88fe8f8e8eff15f5be187dd19c5dd4be3206c43693bee1112e5
+665	Creatures\Images/ltvn.spr	data.z.665.Creatures_Images_ltvn.spr	59906	0f66f38fd14ba3941c9318867a033bb2c77e7d824064651970b9a0df32c9a8f7
+666	Creatures\Images/mil1.spr	data.z.666.Creatures_Images_mil1.spr	9118	bc56928f0025c79c83eeb54598b11e3eb4e72f7ee5c36efb3abd1c2e037068af
+667	Creatures\Images/mil2.spr	data.z.667.Creatures_Images_mil2.spr	17650	be40ff82ddd8076c82909d37a9d00e19928d4d8d08910175ea8be1772034bde4
+668	Creatures\Images/mil3.spr	data.z.668.Creatures_Images_mil3.spr	6078	22889c5a73f969a0d34010a90f24cd9200f7c52a977e26042d2e0b29ddc5b210
+669	Creatures\Images/MUSH.SPR	data.z.669.Creatures_Images_MUSH.SPR	7626	050a1470b94c7e049dfc210230eb836a735f7cdbf8369cf1add04d38915770cb
+670	Creatures\Images/ntoy.spr	data.z.670.Creatures_Images_ntoy.spr	66254	abecdb3e219458e96c53a0663aa02855954895ee4cc50f60ab460571bc4b3029
+671	Creatures\Images/palette.dta	data.z.671.Creatures_Images_palette.dta	768	e41e82ecd095eb2143902fdd199eaa4e57a07f8d7f402bb5747605f1f0e099cd
+672	Creatures\Images/pars.spr	data.z.672.Creatures_Images_pars.spr	5542	20d8fb66d30369998cc2655e9dc7baa497b5f738880a09544508601bc3387260
+673	Creatures\Images/pets.spr	data.z.673.Creatures_Images_pets.spr	46982	4911f8571ed381ff89500d41ace4bb6b23b1fd8da539398fba955ae30b8e5b44
+674	Creatures\Images/pill.spr	data.z.674.Creatures_Images_pill.spr	13898	b91f12570c883d5895017aa22fee4ec185d4ad7b9ee13d755a9e93f8568adaca
+675	Creatures\Images/pump.spr	data.z.675.Creatures_Images_pump.spr	43634	b87e6a678be9d5a733d0262e056783d110b1f6a2499027418490f781d908b712
+676	Creatures\Images/qtoy.spr	data.z.676.Creatures_Images_qtoy.spr	32786	6b71b596aa94622167563a86d61c640ed467c4bb991f6402e0bd89ff3bc7f19b
+677	Creatures\Images/raf2.spr	data.z.677.Creatures_Images_raf2.spr	36326	a63c448d983044cbfcaff0e8c9edfa6d2a26b639e82dcc15133714fb90ed215f
+678	Creatures\Images/rock.spr	data.z.678.Creatures_Images_rock.spr	3510	0961a1b8f940f24c7e8d457f6ac12a849fa100196d31e88448bbb7d5a3d2339e
+679	Creatures\Images/rok2.spr	data.z.679.Creatures_Images_rok2.spr	38974	beb310462ea85c5b23fad7d61dd9eda69a55d9cc4d691528363a0d14880c8317
+680	Creatures\Images/sce1.spr	data.z.680.Creatures_Images_sce1.spr	38246	5220f8fdb241345721858cfa56a9bdf720fd28c389d4df5cc87eac3299b4aa16
+681	Creatures\Images/sce2.spr	data.z.681.Creatures_Images_sce2.spr	69182	775a688a973f69c87e8abbfc76207487e29d34d559c3af0423e90d193cf89939
+682	Creatures\Images/sce3.spr	data.z.682.Creatures_Images_sce3.spr	67642	bd1109fc63005ff52289da3ff9825ba24d56eb33c4c1edf2b8e0ec7e1f3e38de
+683	Creatures\Images/sce4.spr	data.z.683.Creatures_Images_sce4.spr	114858	f73b23c21e50fd57c6bda20412f5f4dcd383dee009012d6bfce09fd0ff19d429
+684	Creatures\Images/sce5.spr	data.z.684.Creatures_Images_sce5.spr	31762	ed49097e1e14bf0534d557d0c43ee52cd16132ea0baafae1db146d256466b78c
+685	Creatures\Images/sce6.spr	data.z.685.Creatures_Images_sce6.spr	134354	17bd0b032edfee3b2b96547948a8bb2ef94f3172099d763d63e79ae823f8d5f6
+686	Creatures\Images/sce7.spr	data.z.686.Creatures_Images_sce7.spr	110562	6e7908d252a37a75e4cf29fe84cfe90ea8fb19ec9bd82d57c076d5ebd5b1fe2f
+687	Creatures\Images/smok.spr	data.z.687.Creatures_Images_smok.spr	5314	95b646a58e176074588cbdcba5a15bdff579b3ad9afa466c49f4fca1c3aa87cd
+688	Creatures\Images/stop.spr	data.z.688.Creatures_Images_stop.spr	15634	18e7c5a8b824852aa74a8f0307eb8562e7272988d4fd10588fff3ee92756af67
+689	Creatures\Images/subm.spr	data.z.689.Creatures_Images_subm.spr	69670	8c61bb7db1efc228c4e721f174ffe324df53752a2625d33befc66135f0f768fd
+690	Creatures\Images/swmp.spr	data.z.690.Creatures_Images_swmp.spr	305994	d30498d9e4071cecabf496562e66312553c58c6934a9027eecbf2288fe09d0c8
+691	Creatures\Images/syst.spr	data.z.691.Creatures_Images_syst.spr	40842	7bcc9428779aa9e4da3d4f7a765e57ddba2676c18e3dbeb3555338d151d20d4e
+692	Creatures\Images/tele.spr	data.z.692.Creatures_Images_tele.spr	98154	8eb6142f046d6750678ecaab4c2f8c237a3594dd71d796c9e02cabd28d9792cb
+693	Creatures\Images/tran.spr	data.z.693.Creatures_Images_tran.spr	204382	2808988564c612ae5ca5474e3065fafa9bd7684551967b5b9edd0dbfd92f3312
+694	Creatures\Images/tub1.spr	data.z.694.Creatures_Images_tub1.spr	17650	1ef4c35368195c8a0ffd87a3eefdfeb1818dce293c30df7eb21c1864305d91cf
+695	Creatures\Images/tub2.spr	data.z.695.Creatures_Images_tub2.spr	49906	9b335a11e590946b84a4b79871c72d5858cc96976d1ede8fa1a1762bd83ef4d6
+696	Creatures\Images/tub3.spr	data.z.696.Creatures_Images_tub3.spr	57970	91a2b473fecc13b8c404e9f8529f45dc7f63b055ed7d7e265b47fb2ade0e12a4
+697	Creatures\Images/tub4.spr	data.z.697.Creatures_Images_tub4.spr	23698	b29db56c69218738778168325a3a38f0067bb5f9b5c8a2a46190318d4a74c58c
+698	Creatures\Images/uraf.spr	data.z.698.Creatures_Images_uraf.spr	17722	4ffd66b978de917957c21b54bcb5abe24091ef2e136438df1ae5c10a9f99b2f2
+699	Creatures\Images/wata.spr	data.z.699.Creatures_Images_wata.spr	3522	020bcab395ac417411675ac7048ca8e0a3b0143f48883d08b1025ae05404d9ed
+700	Creatures\Images/wave.spr	data.z.700.Creatures_Images_wave.spr	20810	e61ebb7addbbc9a2690d306e9d44f45ba5cd7249031a7467ae5ef6e65765015f
+701	Creatures\Palettes/zzzz.spr	data.z.701.Creatures_Images_zzzz.spr	16082	1943e25ad49b31e64704697561b73cac1cc8498235a76492ec1a26c176be79c3
+702	Creatures\Sounds/palette.dta	data.z.702.Creatures_Palettes_palette.dta	768	e41e82ecd095eb2143902fdd199eaa4e57a07f8d7f402bb5747605f1f0e099cd
+703	Creatures\Sounds/aiae.WAV	data.z.703.Creatures_Sounds_aiae.WAV	6378	4b04e3385658b6b6fcdf4141264c83b20455ebdeed4a77c2a7aaa0e8359eddba
+704	Creatures\Sounds/argh.WAV	data.z.704.Creatures_Sounds_argh.WAV	9106	56a7ef0ee536d81b15f7d0b03e2242795e56dc72e74390861c508b2b43fbc142
+705	Creatures\Sounds/asba.WAV	data.z.705.Creatures_Sounds_asba.WAV	7508	3c481d7c37850f004e9a2ee595b741707cf50ec25b58bd1a9b7d2b09bc333982
+706	Creatures\Sounds/ayee.WAV	data.z.706.Creatures_Sounds_ayee.WAV	11496	ca7b66bb130b07cc5cf66e11e1c2e87f2b8a5c99bf67bac901f28e0d14ddc5eb
+707	Creatures\Sounds/Ball.wav	data.z.707.Creatures_Sounds_Ball.wav	1324	ae8fab45daff216b2f362b0c7257dda2d1c52a08cac545dc06b361ba57c8ba87
+708	Creatures\Sounds/bble.WAV	data.z.708.Creatures_Sounds_bble.WAV	46174	5c78aa2f67682a3a31e7565674e61984b0d95ba8025f07461bc036101442c9f4
+709	Creatures\Sounds/Bee0.wav	data.z.709.Creatures_Sounds_Bee0.wav	4150	0a5c75bd790aeec88117ecb76306752587ad357ad39af2286991e2735246262a
+710	Creatures\Sounds/Bee1.wav	data.z.710.Creatures_Sounds_Bee1.wav	4590	a253a38a77c2fdaca65b4b442c8a88b1c9c4f3a074e6de00c845de35342460eb
+711	Creatures\Sounds/bees.WAV	data.z.711.Creatures_Sounds_bees.WAV	71926	e80dfd6eaedd53320436675967878d2cb4ed772a952fb7df17d49fa3fa1350bd
+712	Creatures\Sounds/Beh0.wav	data.z.712.Creatures_Sounds_Beh0.wav	2774	4f1c3337ec2c62ca3c5df27c79e3ff8667e0331f17d461200e89839eca2c0efe
+713	Creatures\Sounds/Beh1.wav	data.z.713.Creatures_Sounds_Beh1.wav	2864	e6fa35d5d73cd3f8736b7f8c69eaa98f1eb9c14fda5c7b8f9771849b6737c08c
+714	Creatures\Sounds/Ber0.wav	data.z.714.Creatures_Sounds_Ber0.wav	2152	17ec4035162765a448b45260e86d558d6ff1515e37888da9972c26f5fdbf2671
+715	Creatures\Sounds/Ber1.wav	data.z.715.Creatures_Sounds_Ber1.wav	2852	664978adabe71fd2588deff295490f8fff3c6a7e9fe86137a7a199948a69512b
+716	Creatures\Sounds/Bing.wav	data.z.716.Creatures_Sounds_Bing.wav	2770	468c15ab274fdbd1a81d6f1cb29c22cf5c21a33392e049336cef9752abc7a255
+717	Creatures\Sounds/blib.wav	data.z.717.Creatures_Sounds_blib.wav	12320	cd26ba04d4484b0677b9f8c482ef3844a6ad7a4f8326d44c818b3bd2479c3b87
+718	Creatures\Sounds/Boh0.wav	data.z.718.Creatures_Sounds_Boh0.wav	2130	db08d7bd8703d46a8f66c96924dd284df788ff2466e7067d98a82b2cd7b0f0da
+719	Creatures\Sounds/boh1.wav	data.z.719.Creatures_Sounds_boh1.wav	2864	e6fa35d5d73cd3f8736b7f8c69eaa98f1eb9c14fda5c7b8f9771849b6737c08c
+720	Creatures\Sounds/boun.wav	data.z.720.Creatures_Sounds_boun.wav	18732	cf622025b6247494c84d8a0014ec81fe539f2097b8392fe90ea8c0e0b1109df0
+721	Creatures\Sounds/brny.wav	data.z.721.Creatures_Sounds_brny.wav	49496	11b08d0885bf404b767ea080d79192c233d37ce6de176089b2bbb27a892976a7
+722	Creatures\Sounds/butt.WAV	data.z.722.Creatures_Sounds_butt.WAV	19580	9b4a40e2f4f59499142fdf7bb7830c0009a1f0341415eb036321409deb72e824
+723	Creatures\Sounds/Cah0.wav	data.z.723.Creatures_Sounds_Cah0.wav	2596	87d0d0ebe6977f9557f645af3a45c7cb767ec020602c426e7ec484c8c20f4a0e
+724	Creatures\Sounds/Cah1.wav	data.z.724.Creatures_Sounds_Cah1.wav	2998	38a1fe3e23f8112d80ee411d10e862cc6a0520818a0a4206103f4ddcbff3d31a
+725	Creatures\Sounds/cann.wav	data.z.725.Creatures_Sounds_cann.wav	35628	44d90ff049768d37600273083756b114e40aac08cae153caa94e042ea6dd0831
+726	Creatures\Sounds/cart.WAV	data.z.726.Creatures_Sounds_cart.WAV	55982	81d012a08ddb2a9f37f7be13df6fa5c881ad047c22193e85ddb95fadae61bce1
+727	Creatures\Sounds/cav2.WAV	data.z.727.Creatures_Sounds_cav2.WAV	82018	13a18c6cdcec069bba9536f1193ffec5abddad54f5edf063b993d8f28cfd35cb
+728	Creatures\Sounds/Chn0.wav	data.z.728.Creatures_Sounds_Chn0.wav	2914	21e36adb4466ca24665a57bb1c2b2fea33f4e668ca8d3d586ea19b53ee681597
+729	Creatures\Sounds/Chn1.wav	data.z.729.Creatures_Sounds_Chn1.wav	2852	250956deebf977397a97d7b5314fc61ea3d3466b8246e50721717fbc96f60d62
+730	Creatures\Sounds/Chw0.wav	data.z.730.Creatures_Sounds_Chw0.wav	4628	d2ed44daeaedc40cd2eb38f8d41c047f37c5beef72c254b863e1bdef640aba15
+731	Creatures\Sounds/Chw1.wav	data.z.731.Creatures_Sounds_Chw1.wav	4610	145398f562c9a02bb717129cbb588517706adb883af83366a2e160ab7a6df604
+732	Creatures\Sounds/chwc.WAV	data.z.732.Creatures_Sounds_chwc.WAV	10006	83dd84f4e810661481a2ceb2e47840649444cccc9d3a0474f204c1ea78058f0a
+733	Creatures\Sounds/chwl.WAV	data.z.733.Creatures_Sounds_chwl.WAV	9492	6bc1ac2eaedf13af5aefa51f17a16778e4c4b5bcfe66da79b0954c5c2602df3b
+734	Creatures\Sounds/chwp.WAV	data.z.734.Creatures_Sounds_chwp.WAV	9492	6bc1ac2eaedf13af5aefa51f17a16778e4c4b5bcfe66da79b0954c5c2602df3b
+735	Creatures\Sounds/clik.WAV	data.z.735.Creatures_Sounds_clik.WAV	438	424dc2ca5fa02702d784537895bef1d321130970a4e491a83de7d94a88b5e8a5
+736	Creatures\Sounds/cofe.wav	data.z.736.Creatures_Sounds_cofe.wav	11082	10e7c755d266382618c8bfb7d7e6a87b59b6ea92816576d97567684fd14cd95d
+737	Creatures\Sounds/comp.wav	data.z.737.Creatures_Sounds_comp.wav	29886	97919c02ca14ac0bca804e8d84c469d35cc17a3ebcd8cadf17703f92942031ed
+738	Creatures\Sounds/coug.WAV	data.z.738.Creatures_Sounds_coug.WAV	5852	7d9c358af64a3eb222a04adaad60b558ac6e1543eae9f312c9f1e0ab70f27f38
+739	Creatures\Sounds/crak.wav	data.z.739.Creatures_Sounds_crak.wav	83484	4bd1cf5c6177780eb6b26ca048fda4971739fa54be0a7565641c12490b9f6055
+740	Creatures\Sounds/Dah0.wav	data.z.740.Creatures_Sounds_Dah0.wav	2644	f709051aa5987a92638a950a5f5e1d295e6576124db0a507694e62a1fcf45d18
+741	Creatures\Sounds/Dah1.wav	data.z.741.Creatures_Sounds_Dah1.wav	2856	4ea8b773e73b020797dbfcd73478b3e3c9f0e9f432e1841f574863d3ee7a5d90
+742	Creatures\Sounds/dead.WAV	data.z.742.Creatures_Sounds_dead.WAV	15624	4da1f51c52ad086e9ae47bd77b177dee1ed01198617113e57bd4e74301ccfe05
+743	Creatures\Sounds/Doh0.wav	data.z.743.Creatures_Sounds_Doh0.wav	2194	17dccbd1126dd1f785724eca67359a2e234623be4ef96cd75f6168ab093d32e3
+744	Creatures\Sounds/Doh1.wav	data.z.744.Creatures_Sounds_Doh1.wav	2068	60f063a654c084cf8507648a5cb461e783a1e9df1d8c8a8b7667c63513a10646
+745	Creatures\Sounds/dome.WAV	data.z.745.Creatures_Sounds_dome.WAV	125932	ee554956c5e910db0ab5c4c4cb45fa9bc516400e4a9d2959db78ae52c6788f8b
+746	Creatures\Sounds/Do_0.wav	data.z.746.Creatures_Sounds_Do_0.wav	3048	fe943fc93ad805340d427b8bda11a323db07720b6860ba61d12c321e445cf253
+747	Creatures\Sounds/Do_1.wav	data.z.747.Creatures_Sounds_Do_1.wav	2992	7c0e1cd8786aba309a966a6aecbd7c12424fde7879ec2ad4067cc29939b65cca
+748	Creatures\Sounds/drip.WAV	data.z.748.Creatures_Sounds_drip.WAV	2274	ad1833d639044f44352ec2ba3e48ad8d43f6cef0d623b94a369bbd94aef91c15
+749	Creatures\Sounds/drm1.wav	data.z.749.Creatures_Sounds_drm1.wav	22162	c3ca59c64f7c0abe9b61a52d199a757df7b806b15438b0fb5e41a8f9b2b87d05
+750	Creatures\Sounds/drnk.WAV	data.z.750.Creatures_Sounds_drnk.WAV	28886	c0780a84b0cb071c327d8ff24812e0e337950fbe9650b9fac6111308386ebf44
+751	Creatures\Sounds/drop.WAV	data.z.751.Creatures_Sounds_drop.WAV	7264	c48303f879fb256cc63e55a469b468779b79a1f77d5ba47137288246e787d942
+752	Creatures\Sounds/Ee_0.wav	data.z.752.Creatures_Sounds_Ee_0.wav	1602	57bf014cdb90a18b7c6b94d38f349606fd09e3d8a4d7a53917a49292f6eead1e
+753	Creatures\Sounds/Ee_1.wav	data.z.753.Creatures_Sounds_Ee_1.wav	1588	fecd903d5be59305b6eb6a488eda2b2cf1732ff8eaebef671cbec711dcf561ae
+754	Creatures\Sounds/fall.WAV	data.z.754.Creatures_Sounds_fall.WAV	63408	7c599a37b128ee8c0a4ec407e22f56caf065de5680b251e84062c9c784edb77b
+755	Creatures\Sounds/Flag.WAV	data.z.755.Creatures_Sounds_Flag.WAV	51082	5f42e76316176403da23e2178de86c3e62b50bec1a867efd9ec5412fd66213d5
+756	Creatures\Sounds/Flam.wav	data.z.756.Creatures_Sounds_Flam.wav	17996	e2a413bcf955c65e2b4757a3f13ab6fd85205dd76df625e72e6ce762771af609
+757	Creatures\Sounds/Foh0.wav	data.z.757.Creatures_Sounds_Foh0.wav	2858	933fde87834833f30b122b21a4db77bcb78ebbb48c2c7212d63f49b23e80b756
+758	Creatures\Sounds/Foh1.wav	data.z.758.Creatures_Sounds_Foh1.wav	2788	181c0522303cea777692af5c3e3a9ed155f087b4c5bcccba50e394b9556dcf85
+759	Creatures\Sounds/Foo0.wav	data.z.759.Creatures_Sounds_Foo0.wav	3304	bcd5b3f39fe3f8c55332c2c9d552f5c9333cd1e3658013dd592b654b40520dfb
+760	Creatures\Sounds/Foo1.wav	data.z.760.Creatures_Sounds_Foo1.wav	3394	5cb89789cbffb8682876344b03fca4b2dac13ea6ef891447b1881f6f8f7b05f7
+761	Creatures\Sounds/frij.WAV	data.z.761.Creatures_Sounds_frij.WAV	3552	53aa27cbee9e71308e57ff75515586daae82008fa9e0782b275cdddb4ea4e857
+762	Creatures\Sounds/Gar1.WAV	data.z.762.Creatures_Sounds_Gar1.WAV	33634	9e4fc8ab51a0d5f688d1a3b4ab7ce3c4686139edfe3c9ced84a78e295d8854da
+763	Creatures\Sounds/Gar2.WAV	data.z.763.Creatures_Sounds_Gar2.WAV	46722	16cd8835b94f04dde39a3037b2bba6e163f6f00872032dea9d6c20958b309aa0
+764	Creatures\Sounds/Gar3.WAV	data.z.764.Creatures_Sounds_Gar3.WAV	35138	be5ea9b4f576829bf006f3ca1f1928be2e28290fb2977e1ec9c537e0d920de16
+765	Creatures\Sounds/garr.WAV	data.z.765.Creatures_Sounds_garr.WAV	7964	c5e184f6ad2398c2abd2cbcfb24e66e94d26e841ace6e1012b62fe9c5b11c2f9
+766	Creatures\Sounds/gauw.WAV	data.z.766.Creatures_Sounds_gauw.WAV	8724	eaa0ff49ab9e2330db2215030e34167c2856286789234ae1283d9c8607d3355c
+767	Creatures\Sounds/gdie.wav	data.z.767.Creatures_Sounds_gdie.wav	33858	0e382d3bff2e41063f9903b73e19f96ffda743fc86e922e1586b4a9d29301abd
+768	Creatures\Sounds/gig1.WAV	data.z.768.Creatures_Sounds_gig1.WAV	11630	cd508c0e527592804fa9f5451a65eb0bc209cc07265d3febeda527b460d2e46f
+769	Creatures\Sounds/gig2.WAV	data.z.769.Creatures_Sounds_gig2.WAV	31648	2297ee19da91c3193ef76e8e86636a83012eb5401eb16b1f9cf7474e4a8139f7
+770	Creatures\Sounds/gig3.WAV	data.z.770.Creatures_Sounds_gig3.WAV	24968	64200d69ae358fb02b15bd7fa9170dfa93c268a28f11266eadc5a0bf0cbf6411
+771	Creatures\Sounds/glaf.wav	data.z.771.Creatures_Sounds_glaf.wav	15476	028075e43243c61e57968e75f372013770d83deb26a48beb65b7dcaaed682fc7
+772	Creatures\Sounds/goww.WAV	data.z.772.Creatures_Sounds_goww.WAV	11148	1874a9741f92a3367dd53917c17053048385d9491a10325af2976112851c4334
+773	Creatures\Sounds/greg.WAV	data.z.773.Creatures_Sounds_greg.WAV	7778	e7b7211a3d90ee9f1c693a681e3d075a26dc5573e4ef5358e47e793cb3d1f4cb
+774	Creatures\Sounds/grht.WAV	data.z.774.Creatures_Sounds_grht.WAV	12194	d608ee2c41a784d873f8c22902baf1392bfc4abd758327229c6dbd9228d87978
+775	Creatures\Sounds/grnn.WAV	data.z.775.Creatures_Sounds_grnn.WAV	11566	01fba72d77ed99a689cf61fcb56b0450991c3d228d69b68203c97ca8c9d7bb27
+776	Creatures\Sounds/gror.WAV	data.z.776.Creatures_Sounds_gror.WAV	7066	c1281408283248daec61fd2e9d0e818ae6bfc14cee5a198470d11aa1bc1244cd
+777	Creatures\Sounds/grun.WAV	data.z.777.Creatures_Sounds_grun.WAV	6158	f4ed5cd9b7df4cd201e86ed5521a10940b211490fa1f71002541af2c7305c40c
+778	Creatures\Sounds/gshv.wav	data.z.778.Creatures_Sounds_gshv.wav	11218	bc42293bb1b472006d597bf816e416d648bdd7a308fb9ce2ad334b69c656d20b
+779	Creatures\Sounds/gslp.wav	data.z.779.Creatures_Sounds_gslp.wav	9566	821f2e9b46204dbfa553783fa1e530cdfa0ddcc3e1358f6c7417c9b12db1f283
+780	Creatures\Sounds/gsnr.wav	data.z.780.Creatures_Sounds_gsnr.wav	43792	907f0840b62ca0d27be373b8e9d0a1bf98ed92125795692ddb4432b32361ec3a
+781	Creatures\Sounds/Ha_0.wav	data.z.781.Creatures_Sounds_Ha_0.wav	3106	ea2dfa2135cabffd480a8dbde3af4e4df6b1b2a6ee4e9e9de99c1d7637bc985b
+782	Creatures\Sounds/Ha_1.wav	data.z.782.Creatures_Sounds_Ha_1.wav	3016	891670bb831cd14adb3ae7663f09707a79c99e5b2f45f635a21a86787f12e300
+783	Creatures\Sounds/hdsk.wav	data.z.783.Creatures_Sounds_hdsk.wav	10836	a3a9de43d4f45a115746247f34bf2c514c75e5635152dc0bde409ba3d7778a75
+784	Creatures\Sounds/hegg.wav	data.z.784.Creatures_Sounds_hegg.wav	22038	226066528dd9c367ca130ac95703f587becdce1dac52fb820990dc243ca4a5d5
+785	Creatures\Sounds/heli.WAV	data.z.785.Creatures_Sounds_heli.WAV	18116	a58b2a2cd638d791efda8540f6ce13fad27c27b9235cc22aff17cdc89598be6d
+786	Creatures\Sounds/hfan.wav	data.z.786.Creatures_Sounds_hfan.wav	15026	fde07206f4589de1a19cc4e495474ac18b90ffb0bf1b1b6e1ad3001ed1c08ee3
+787	Creatures\Sounds/hfml.wav	data.z.787.Creatures_Sounds_hfml.wav	17482	11c56bca4e3163326b0c652c6fb613807b05e80df046bba20372ed40af7a7068
+788	Creatures\Sounds/hlgt.wav	data.z.788.Creatures_Sounds_hlgt.wav	5548	68af6f702f4bd4baa2aa876704f33d1244548250a09085fe4a2c46e1ee49140b
+789	Creatures\Sounds/hmle.wav	data.z.789.Creatures_Sounds_hmle.wav	12884	b1b940b86bc97349a782e6d7cfe82261d0c264542606bfea4f1cd17feac0ded3
+790	Creatures\Sounds/hony.WAV	data.z.790.Creatures_Sounds_hony.WAV	21526	43455fb7d3cf0e8a0843be6d6c24eca93065be57568eff4e42276197d0e8e9d7
+791	Creatures\Sounds/hrp1.wav	data.z.791.Creatures_Sounds_hrp1.wav	12190	b9cf9d84f3d7b3eaf9384de206b1b63470d5cb705d2bb62b56c5330265570e35
+792	Creatures\Sounds/hrp2.wav	data.z.792.Creatures_Sounds_hrp2.wav	11082	85a3d80ac5897af451c02e27971f3f4cccb936faef1d84630aa4977614581114
+793	Creatures\Sounds/hrp3.wav	data.z.793.Creatures_Sounds_hrp3.wav	8542	eed1de48d3fc65e29d1362aa50a425344636be84e5f8e5425aeb0a4aaed1363d
+794	Creatures\Sounds/hrp4.wav	data.z.794.Creatures_Sounds_hrp4.wav	5946	c18462639f801cad3a765bb10c0527dbf96ee9870e475bb5951b74eda1c0cb42
+795	Creatures\Sounds/hrp5.wav	data.z.795.Creatures_Sounds_hrp5.wav	8326	ca1f58dd0481519c51577fcb6e295dd689953bbc56ad099cf9d4e2f885a03523
+796	Creatures\Sounds/hrpd.wav	data.z.796.Creatures_Sounds_hrpd.wav	13302	91c564527d29e7817e6e94347002fbcf3ff0b16dcbe798c8ddf4dd2e9be86f01
+797	Creatures\Sounds/hrpu.wav	data.z.797.Creatures_Sounds_hrpu.wav	19128	562a4b5079ad63e3e488c9a5cc62f162b4c05160ede11050840ac576af0f680f
+798	Creatures\Sounds/hslt.wav	data.z.798.Creatures_Sounds_hslt.wav	22060	adac8c0ebdf5bce4db14aabf30f416182bfb26a8097fcde440bc05eb3f226dca
+799	Creatures\Sounds/icls.WAV	data.z.799.Creatures_Sounds_icls.WAV	10668	02d3fa60c223bb3e339f6fb29fbe50a804f0cb09ae32487d42ea9858dc1d7542
+800	Creatures\Sounds/iend.WAV	data.z.800.Creatures_Sounds_iend.WAV	146616	2817334989979cea5a8914284151a3aa4438aada11e1f1dda6c560abbf6c33cf
+801	Creatures\Sounds/ilop.WAV	data.z.801.Creatures_Sounds_ilop.WAV	88748	55a423bd8284350f11eda8313a8e07d8bcfe07a97083a223085ba7556c31a4b8
+802	Creatures\Sounds/imem.WAV	data.z.802.Creatures_Sounds_imem.WAV	8262	09e2f943c22a23d4c877d96071e4925585af23c051cf22babddabb355197676e
+803	Creatures\Sounds/inc1.wav	data.z.803.Creatures_Sounds_inc1.wav	38612	838fe95b3df94c34bcb7c5509e6f912c0036a3eef0884ed688cf4284869aba18
+804	Creatures\Sounds/ind1.WAV	data.z.804.Creatures_Sounds_ind1.WAV	119062	3240013e4bb28238db5c5bb8d4ca6032c889dd3d0e73abf0288a25a1a540d723
+805	Creatures\Sounds/iopn.WAV	data.z.805.Creatures_Sounds_iopn.WAV	28972	adcbf540cab70053c812a4d0b7fbf3b6502243d6b10fa12a999489b9d818292e
+806	Creatures\Sounds/jack.WAV	data.z.806.Creatures_Sounds_jack.WAV	44246	641b65b03498978834d8b0fd4d05d0dc1a525ebd03dbf6871b10cb090432c417
+807	Creatures\Sounds/juke.WAV	data.z.807.Creatures_Sounds_juke.WAV	370454	b3b1e5b4f54b430e1c68e6bccbb38320b1b05911b3187031031620becb8da4b6
+808	Creatures\Sounds/Jun1.WAV	data.z.808.Creatures_Sounds_Jun1.WAV	17952	fb6a7bbcd1a59dad5dd8feca3914ad4455e92d657317d6e009406fa76d591285
+809	Creatures\Sounds/Jun2.WAV	data.z.809.Creatures_Sounds_Jun2.WAV	18754	f04bc13bbbeb1ee792efd775c3635ef49dddee70372d16eecbb3e4a2b0df4655
+810	Creatures\Sounds/Jun3.WAV	data.z.810.Creatures_Sounds_Jun3.WAV	42850	f28bd68dae7cc14aaace6a1281aae234c5c64b97d4f8da5a8ec2e6ef02fdf02a
+811	Creatures\Sounds/Kah0.wav	data.z.811.Creatures_Sounds_Kah0.wav	2908	6ac7c46e0d8526a42bd13696ada2ba80712be765bbca5d06ef1810cb94bdebc3
+812	Creatures\Sounds/Kah1.wav	data.z.812.Creatures_Sounds_Kah1.wav	2868	1f6d26b6769ee4eee2b8158cbca55bb594ee851f169742e91c77aafe4950759a
+813	Creatures\Sounds/Ke_0.wav	data.z.813.Creatures_Sounds_Ke_0.wav	3188	7582328c4f3e5c21406784c7ea91fcfb7a01b641851bc1f3b6cda41be4dd453b
+814	Creatures\Sounds/Ke_1.wav	data.z.814.Creatures_Sounds_Ke_1.wav	3194	d66909e72fd5a58bf92feb017ef6e5e3f3516cfb90dec56265cdc15298a5d400
+815	Creatures\Sounds/kis1.WAV	data.z.815.Creatures_Sounds_kis1.WAV	13014	2f80848b91ac11229fe7cd019cb05921cd4360a746e89efa8f1c53efa5e9e0f4
+816	Creatures\Sounds/kis2.WAV	data.z.816.Creatures_Sounds_kis2.WAV	69782	18a6b9ecdf51de11e19da1423df55d775bc66907550238290c7de4521d891af4
+817	Creatures\Sounds/kitb.WAV	data.z.817.Creatures_Sounds_kitb.WAV	46158	d6845164bf50460dc4cd3e5ac04de2821c051b264a0c75afbb7a550c9a4de73d
+818	Creatures\Sounds/kitf.WAV	data.z.818.Creatures_Sounds_kitf.WAV	49098	ca519e213d6ff1b38ce69d5a9ffe4239c0967ee7bd07b0b2259cabe6ad931de5
+819	Creatures\Sounds/kith.WAV	data.z.819.Creatures_Sounds_kith.WAV	52908	c7fd5c58540a12f4da9d762c29dc56d1c79e09f8d21e8dfb12339b9c37752ef1
+820	Creatures\Sounds/kito.WAV	data.z.820.Creatures_Sounds_kito.WAV	61870	e45c1bcad101300636a6571660d422592de7ee6dcbd6695018d0e3843baeadc9
+821	Creatures\Sounds/kitp.WAV	data.z.821.Creatures_Sounds_kitp.WAV	48180	a6aa86e658deadd69a86b2088dcc5642d47b21a244b3b398d8daeca38bbd07a8
+822	Creatures\Sounds/kits.WAV	data.z.822.Creatures_Sounds_kits.WAV	61762	72896aca5c60d75c1f3f2384ad8dae94c5535ee650aa4c0b1fc900ae425bdc50
+823	Creatures\Sounds/Koh0.wav	data.z.823.Creatures_Sounds_Koh0.wav	2300	6d1ddb5b34e4e945394a3330fddfb382571d4cbaff5aec54df61267fa9e7c6ca
+824	Creatures\Sounds/Koh1.wav	data.z.824.Creatures_Sounds_Koh1.wav	2314	a5c0137b4147a1c61d86606760972618cc6fe60f4e3a138d75100276dc5ae2cc
+825	Creatures\Sounds/Lft2.wav	data.z.825.Creatures_Sounds_Lft2.wav	114218	91557d34e49193c4b5f2ff09999334e12f10859d22c29d453c3fbeb5bd68db21
+826	Creatures\Sounds/Lift.wav	data.z.826.Creatures_Sounds_Lift.wav	47724	a13bf282e6bec6f1b925e8776b2e1788c286fc280c4ac6d2472fb99f472c3151
+827	Creatures\Sounds/Loh0.wav	data.z.827.Creatures_Sounds_Loh0.wav	2522	47e0a3b38d0083e01679bb74bc2db96d7f0fbeb096c70753dbbeaf18c4fa7e16
+828	Creatures\Sounds/Loh1.wav	data.z.828.Creatures_Sounds_Loh1.wav	2502	24005b4f90004be8cdd393ca380aa05a0340d618988a556aa903e08f4f1a0cc6
+829	Creatures\Sounds/maan.WAV	data.z.829.Creatures_Sounds_maan.WAV	6130	1fad9971fe3e812e1cc0f4f83fbc4c46b9a233327421175a03e82d6e29ad1c59
+830	Creatures\Sounds/Mah0.wav	data.z.830.Creatures_Sounds_Mah0.wav	3308	b100ec3aa019bf3eaeb96ac371810cbd5ed47cebc6c294939deb36453856303f
+831	Creatures\Sounds/Mah1.wav	data.z.831.Creatures_Sounds_Mah1.wav	3254	04c718de812cc4a2a06c8a4488bfe9593da6430215c84f426f24814867e39ca4
+832	Creatures\Sounds/Me_0.wav	data.z.832.Creatures_Sounds_Me_0.wav	4642	bd7746279213d08f2bd5fb72279a758b4549b83e64b61cf0dc7e0d832e7e48fb
+833	Creatures\Sounds/Me_1.wav	data.z.833.Creatures_Sounds_Me_1.wav	4350	7297a18bba84e9b00890d9ecf1d42e0f3bd2a97f7d12291b17beff07b88f9c03
+834	Creatures\Sounds/Mno0.wav	data.z.834.Creatures_Sounds_Mno0.wav	5058	4833ddf5231ea76041c54aabfe4db09ce8c117415b86e60f6ac81e85b903c18e
+835	Creatures\Sounds/mno1.wav	data.z.835.Creatures_Sounds_mno1.wav	5106	149fde6e85dcc4ecadf70629d686914eff8a1ade16ec0aa92e5268c0f194da96
+836	Creatures\Sounds/MU01.wav	data.z.836.Creatures_Sounds_MU01.wav	122028	017589e64d75cbdfcf269b8ef2513bb308c1df91df9d8a10dea4ebb864e0134c
+837	Creatures\Sounds/MU02.wav	data.z.837.Creatures_Sounds_MU02.wav	103916	8552a871dd1f4b0b88dcce2c3bdefb7058c225df6350b85a13dcf68dfc17f5be
+838	Creatures\Sounds/MU03.wav	data.z.838.Creatures_Sounds_MU03.wav	64756	19f3fe3878c22d2a260b2a7765de87cd47d48ed959e997eee4bc5f0dd6baeee9
+839	Creatures\Sounds/MU04.wav	data.z.839.Creatures_Sounds_MU04.wav	128172	73f6b576ef38da67eb5dbe07ad61914caf8a9e5110aea2c98e9ebbae1bbf20fd
+840	Creatures\Sounds/MU05.wav	data.z.840.Creatures_Sounds_MU05.wav	124396	0680a38c9893eca1541ee5c771910a781d3c7e592206338981482cb3e5430900
+841	Creatures\Sounds/MU06.wav	data.z.841.Creatures_Sounds_MU06.wav	145452	9466e0472f74672ef081e30ec607ff13dc5336a5545f2a5f0bb1f896d5e7c911
+842	Creatures\Sounds/MU07.wav	data.z.842.Creatures_Sounds_MU07.wav	74048	76cbf45f3493f459932c18fa782aadd9c2c25a3ddf57cd2acfdbd881b374ca11
+843	Creatures\Sounds/MU08.wav	data.z.843.Creatures_Sounds_MU08.wav	77556	014f27fd4db4d0c69455d161a26342095049720abba0d5711ea6458cccc4d6b6
+844	Creatures\Sounds/MU09.wav	data.z.844.Creatures_Sounds_MU09.wav	75756	1a0cfb513e93a4fb894dda69155f463c5e3e12505f0a5e4c5e2434a6fe542f65
+845	Creatures\Sounds/MU10.wav	data.z.845.Creatures_Sounds_MU10.wav	76460	73108201d369d42eee6da8de1a26b3bda49c1979c3ac2c3e4c7fca8b9ee9052e
+846	Creatures\Sounds/MU11.wav	data.z.846.Creatures_Sounds_MU11.wav	84204	3e0b578531288043eb309aa62fa14673a83ae6cb3d6bc819540cd8b7ca2dddce
+847	Creatures\Sounds/MU12.wav	data.z.847.Creatures_Sounds_MU12.wav	94096	b755fed17bfc681e065b528b3f0cb282e2113659b2503461a6acf73662cb2c5a
+848	Creatures\Sounds/MU13.wav	data.z.848.Creatures_Sounds_MU13.wav	50732	e237f94b30d4b781c81330595306b7232b441bfe8397eba4483c2b95477830c4
+849	Creatures\Sounds/MU14.wav	data.z.849.Creatures_Sounds_MU14.wav	81900	a1f1203327a4d6e3897a99e16633e1dabaf5364bb2d67d5ade69b7d8ce53f713
+850	Creatures\Sounds/MU15.wav	data.z.850.Creatures_Sounds_MU15.wav	64620	bf1c340bacb093ce8c7ebf26d16d7bfc2769cabd693214a3cd5b62117036245f
+851	Creatures\Sounds/MU16.wav	data.z.851.Creatures_Sounds_MU16.wav	81530	59ca3935bbe5060632de7a20488d5c2041f65bd328e57b2fdfd1fa0ff8253096
+852	Creatures\Sounds/MU17.wav	data.z.852.Creatures_Sounds_MU17.wav	92266	e7a6466e3f046697ea6027fd085784416852a8e3df68db3490892e6a170b5988
+853	Creatures\Sounds/MU18.wav	data.z.853.Creatures_Sounds_MU18.wav	101896	8a8212df8588e239330bf35485fbcc4ed75c5520821ec16f8f390653c4c7ce88
+854	Creatures\Sounds/MU19.wav	data.z.854.Creatures_Sounds_MU19.wav	81580	2839cae4032f25f274be8086426b312a2ed2cd2d346e63b534494a963452a03e
+855	Creatures\Sounds/MU20.wav	data.z.855.Creatures_Sounds_MU20.wav	93100	9441ae9f4e672e512d07505561800af95a464952e64a1d5044334e8e05d00843
+856	Creatures\Sounds/MU21.wav	data.z.856.Creatures_Sounds_MU21.wav	114558	3dc990835097d66e63aad28efbba373b4fd43ff200dd0b9a2262cd923425b507
+857	Creatures\Sounds/MU22.wav	data.z.857.Creatures_Sounds_MU22.wav	76176	3f19b934f04fe6d6169190b6e0458f782969550156792906649f139cd93a9997
+858	Creatures\Sounds/MU23.wav	data.z.858.Creatures_Sounds_MU23.wav	106796	a1889e9cd812f1bf8acccc36a13f6feb6733cebef6e1b97dcc398df6982e7c34
+859	Creatures\Sounds/MU24.wav	data.z.859.Creatures_Sounds_MU24.wav	73554	c42527bd8a48b45f2693d6ab90f806052b2e8027fea3568d862da65836c17583
+860	Creatures\Sounds/MU25.wav	data.z.860.Creatures_Sounds_MU25.wav	107380	3df431691a2ffccffcaedd2dee77043305e32465aec093b97a1c6f997ea837b0
+861	Creatures\Sounds/MU26.wav	data.z.861.Creatures_Sounds_MU26.wav	58988	4e5ab69d68261fa405615cef2d7d82b74a27908000c2a2f96bef97c9463d2640
+862	Creatures\Sounds/MU27.wav	data.z.862.Creatures_Sounds_MU27.wav	96684	fff845f24284150f5e039a0c13225ff6a89ff20584ce5fcd1b4d6812b0173d74
+863	Creatures\Sounds/MU28.wav	data.z.863.Creatures_Sounds_MU28.wav	89388	17fb86d2c6d71723cf24c0b8f96bc6cc6804fcfc7a7ad2f603e310ee698d33f6
+864	Creatures\Sounds/Niy0.wav	data.z.864.Creatures_Sounds_Niy0.wav	2378	b9310ba16d7bedf08ddc5b7aa83f75eeb103c8acdb4b8ed8c251514e171ec0e8
+865	Creatures\Sounds/Niy1.wav	data.z.865.Creatures_Sounds_Niy1.wav	2372	bfea9ba8a7d8e650f77d6047e327bfb33d2f813b7b37e02a9be46ada27d9cf17
+866	Creatures\Sounds/nlnl.WAV	data.z.866.Creatures_Sounds_nlnl.WAV	10464	cb838a79536439bef93770cd95c42efa4cda5cce708715281d63698796b69861
+867	Creatures\Sounds/Noh0.wav	data.z.867.Creatures_Sounds_Noh0.wav	4020	7beef58008d85a957ed647e3deade8bcd28e58e7234f4766c9428e3b0474ef07
+868	Creatures\Sounds/Noh1.wav	data.z.868.Creatures_Sounds_Noh1.wav	3840	061632fe75beaaf2f26c52c5f647d606455bdb61ab746e2e9d16001307b9cbef
+869	Creatures\Sounds/oarr.WAV	data.z.869.Creatures_Sounds_oarr.WAV	11564	d4daaae9c71bd95a760efc7e4444310e4bfc9185e1dbb500641b4fa573203a8f
+870	Creatures\Sounds/Oce1.WAV	data.z.870.Creatures_Sounds_Oce1.WAV	35956	e3e7a57ed04188370f68ae2644ac2b971420f4d6b99c9ffcee2f695edba8f92b
+871	Creatures\Sounds/Oce2.WAV	data.z.871.Creatures_Sounds_Oce2.WAV	47958	86f28277032a5e81977fe52dd9ffdf04c2c6da84ca6a345d2a491083072408a8
+872	Creatures\Sounds/oogh.WAV	data.z.872.Creatures_Sounds_oogh.WAV	6782	9dffad72d0876fba514af352c03c8067cd9e1e5091ae7e2b59485690862569be
+873	Creatures\Sounds/ow!1.WAV	data.z.873.Creatures_Sounds_ow!1.WAV	3576	50e0521df034efa9c488c4b45fa09fdf7d0adbcfff8165961ccc4cd117fb19f4
+874	Creatures\Sounds/ow!2.WAV	data.z.874.Creatures_Sounds_ow!2.WAV	7992	346170a45ac54eca7580f3f55c11be870af2b857e44fa519843f0ff4fed2d3e5
+875	Creatures\Sounds/ow!3.WAV	data.z.875.Creatures_Sounds_ow!3.WAV	6892	e8eea8abb7736adc061b848fc065f14bb99475efef6062524b996138cac9da4b
+876	Creatures\Sounds/pade.WAV	data.z.876.Creatures_Sounds_pade.WAV	36892	4607aaa5553df1d63e153d806540ecbc044df3d145a15a485dbe6329444c3b7f
+877	Creatures\Sounds/padl.WAV	data.z.877.Creatures_Sounds_padl.WAV	63482	4c2c4ee4537908016a41152bd32bb8febc8deff9cb1f10a533c14b6d1d1fb279
+878	Creatures\Sounds/Pah0.wav	data.z.878.Creatures_Sounds_Pah0.wav	2928	a842b7c2e306eed279aeb2267a5496ee8b051250e5ce9a3fed396ab37d9f213b
+879	Creatures\Sounds/Pah1.wav	data.z.879.Creatures_Sounds_Pah1.wav	2840	fe54d8a42ff513c86f74b7f2076e4b5d3ede5e85ad9db6fc06674430420582ad
+880	Creatures\Sounds/phel.WAV	data.z.880.Creatures_Sounds_phel.WAV	50604	b91d331cc29cd2e5fed2a21b20595dc4deeb757a875721189d5d7d8337ea9166
+881	Creatures\Sounds/pian.WAV	data.z.881.Creatures_Sounds_pian.WAV	54876	32cbfa0554c46a967ee064ddde95c3b3f3c0e7fb9265dc4cff529b4301479ba8
+882	Creatures\Sounds/Poh0.wav	data.z.882.Creatures_Sounds_Poh0.wav	3010	45e431f09231ef7ac984f4f7e101c2d85aa59b144f7c40e814a35c29389abd5a
+883	Creatures\Sounds/Poh1.wav	data.z.883.Creatures_Sounds_Poh1.wav	2902	a461730b4b38e9af9b110f25d7824852fb4318a7b3b2603dc35f5067b637c87b
+884	Creatures\Sounds/punc.WAV	data.z.884.Creatures_Sounds_punc.WAV	7532	50ab63b5ba1c2526deab9577c14f907dec38bd0f20fbf36280258e5321ffbd54
+885	Creatures\Sounds/Pus0.wav	data.z.885.Creatures_Sounds_Pus0.wav	2836	3c7adee4b353c560c5b72b5710a29336684d59e5101c069f6ebeebe06c0e3a02
+886	Creatures\Sounds/Pus1.wav	data.z.886.Creatures_Sounds_Pus1.wav	1448	3913f4890a118c0b7ce148f069cc7d18b4fb278f366d277563b67e189bcea064
+887	Creatures\Sounds/rad1.WAV	data.z.887.Creatures_Sounds_rad1.WAV	231958	c6687296b72cae283c893e65d062189327a2a2ecea14c62d20dc35e096df98c1
+888	Creatures\Sounds/rad2.WAV	data.z.888.Creatures_Sounds_rad2.WAV	322070	7490b96be712ef70f84f009830e58f20c689af9ab35f850654c10d5bf3ea15ee
+889	Creatures\Sounds/radi.wav	data.z.889.Creatures_Sounds_radi.wav	102924	337b1bbd6c7e260fdadb4e440c3c99782533f92d91184d807747d35ef7f6d68c
+890	Creatures\Sounds/ragh.WAV	data.z.890.Creatures_Sounds_ragh.WAV	7296	789510e01c8e46b6ed3c5601a64a3a405b27903605a5b606e3a9b1cc1998908a
+891	Creatures\Sounds/Rah0.wav	data.z.891.Creatures_Sounds_Rah0.wav	2940	1ebf10fd46814534b25da9c9ce37220611eafa3c618fa3b45b23ed9c41a964a1
+892	Creatures\Sounds/Rah1.wav	data.z.892.Creatures_Sounds_Rah1.wav	2954	d67742191f4f7042da3b8171ff3c228cbac76c3a33462f55e7c69b3e726d4115
+893	Creatures\Sounds/Ras0.wav	data.z.893.Creatures_Sounds_Ras0.wav	3766	242efc7514a0e0f40a7c7afc5670c87b4e192175f3a9c1d1229249bb0a181984
+894	Creatures\Sounds/Ras1.wav	data.z.894.Creatures_Sounds_Ras1.wav	3536	e48d9bd4f2a617ccd37a859b38dd253435f5eae90df222e12c6e70f32b774442
+895	Creatures\Sounds/Roh0.wav	data.z.895.Creatures_Sounds_Roh0.wav	4288	3fa98cb2a524ed622442388e9455debb42f065d71e1a4a80c0ac7e74bef7d5dc
+896	Creatures\Sounds/Roh1.wav	data.z.896.Creatures_Sounds_Roh1.wav	4240	8083036ad6688354b31d143ad7459fe1412017dc1e41c4ca70ad71c824b6a4c9
+897	Creatures\Sounds/say1.wav	data.z.897.Creatures_Sounds_say1.wav	4348	187ef9b8cfc18e8b3a588b4627f999e2cb5d69098e30902064e37911d0768a24
+898	Creatures\Sounds/say2.wav	data.z.898.Creatures_Sounds_say2.wav	5500	65f0efa703ba5ade4e4bc298e57790e43d4ac8bb23c90209846b45bd4f3c9127
+899	Creatures\Sounds/sclo.WAV	data.z.899.Creatures_Sounds_sclo.WAV	6092	31e55de13f4d64f6fb2bb6a3f2efde8ecd4e6ca2f90d6d26f5dcf876f254bdb6
+900	Creatures\Sounds/Sei0.wav	data.z.900.Creatures_Sounds_Sei0.wav	4016	8dcb99cef7046372d3543422eb461ad59b8ca90af0d2749e14ab87ffb2624d64
+901	Creatures\Sounds/Sei1.wav	data.z.901.Creatures_Sounds_Sei1.wav	3832	ad48f71effeff12b7bb60166961f63d3c6044b9d3edd33c8b57c98f5e5f6fdd3
+902	Creatures\Sounds/shiv.WAV	data.z.902.Creatures_Sounds_shiv.WAV	34088	d7a579fc3ad7dd3ba389e599c13f8a0479b5afb6abd69bb04a4c6f5757fdb455
+903	Creatures\Sounds/Show.wav	data.z.903.Creatures_Sounds_Show.wav	75018	895b9901b411425c6b351a97a5871e08392707e0293986d17eb9cff8e898511a
+904	Creatures\Sounds/snee.WAV	data.z.904.Creatures_Sounds_snee.WAV	6530	59d0cbe9844dd1c206f28e9a697975a5618a776c96c565d27eaa66df2bfc5fef
+905	Creatures\Sounds/sonr.WAV	data.z.905.Creatures_Sounds_sonr.WAV	18000	c6debe6091b2e685f47fa5c76b8755063e5272541c5985b8620872402590e7eb
+906	Creatures\Sounds/Soo0.wav	data.z.906.Creatures_Sounds_Soo0.wav	3516	3427da3ea182670f6bb3269f1b8d2b20aba3d366f030b0e986cbc7b0574d5f68
+907	Creatures\Sounds/Soo1.wav	data.z.907.Creatures_Sounds_Soo1.wav	4334	433f7ac77544e6943effeb6db5cff7eb1e28c90d61673f574b8e4e5f82142d1c
+908	Creatures\Sounds/spnk.WAV	data.z.908.Creatures_Sounds_spnk.WAV	3504	c1453351f666c9e5eaac72abbe5e6795c52de9f404450fec6fccd1e73d289a1a
+909	Creatures\Sounds/Sprg.WAV	data.z.909.Creatures_Sounds_Sprg.WAV	8754	e6c5ea5ea9c2b9bcf99ad9e5e931efb57d9abb492e004e52bfee8dfb68c522ab
+910	Creatures\Sounds/sqek.wav	data.z.910.Creatures_Sounds_sqek.wav	36574	43893ae83e2fbc67b82cc69bb9b2e8f91d2577a83763d26e30bdc3aabf176a33
+911	Creatures\Sounds/STEP.WAV	data.z.911.Creatures_Sounds_STEP.WAV	2988	9b9b27b858869d0c30dd58e36002e51204852602a9bea4c64dfdca03edaffb48
+912	Creatures\Sounds/stng.WAV	data.z.912.Creatures_Sounds_stng.WAV	4650	13c9a13ad8eb87406c19012a9fc7b6d85e9231da708f4e0080c802d2e65b311b
+913	Creatures\Sounds/stov.WAV	data.z.913.Creatures_Sounds_stov.WAV	28416	d5eba1f6419ab47b1c386a1ac766246e0a6f537b5ada49f4aa00c796342892f7
+914	Creatures\Sounds/Sub1.WAV	data.z.914.Creatures_Sounds_Sub1.WAV	71740	83536888a1084252fa1e1d48ed6c0e83d2db69de7538b29453bdb4958f802656
+915	Creatures\Sounds/Sub2.WAV	data.z.915.Creatures_Sounds_Sub2.WAV	34942	e2b74ad2f6e1e89e8fa4e6fc883a45e1738bf9fad7362ba6f3398e5e0c11d5b6
+916	Creatures\Sounds/Sub3.WAV	data.z.916.Creatures_Sounds_Sub3.WAV	41052	3c8e640a784b054f192a3887876e78a8d443d5d2f8eefcb608b01da64c784404
+917	Creatures\Sounds/Tckl.WAV	data.z.917.Creatures_Sounds_Tckl.WAV	10982	ad7a20fd43a307b9639d62105029556d89884c320ea1b561a23d375a86fe201b
+918	Creatures\Sounds/telb.WAV	data.z.918.Creatures_Sounds_telb.WAV	15916	a32aa4af821354ba9113aad437554e3bbf8cd6671a06ae33c71363a8d05441c9
+919	Creatures\Sounds/tele.WAV	data.z.919.Creatures_Sounds_tele.WAV	45176	4b854912f515641d7f093ce13337d22c12d8171ee324a00e7e345c7903a89d1a
+920	Creatures\Sounds/tick.WAV	data.z.920.Creatures_Sounds_tick.WAV	8006	88b36e0d88f4a49602d37c6425e9d5f3ee7a50b96655fc1dd4b3380c01f37877
+921	Creatures\Sounds/top1.WAV	data.z.921.Creatures_Sounds_top1.WAV	167762	8705cf8d8a5a7c5b46cf2a6e8d0c9ac39ebb00407c56bbed6e63c043a0ef72a9
+922	Creatures\Sounds/trm1.WAV	data.z.922.Creatures_Sounds_trm1.WAV	113496	c116425ccca9ddbd6462c9f254e95d6998a697a5608df85a5b7ecd8c0931483f
+923	Creatures\Sounds/trm2.wav	data.z.923.Creatures_Sounds_trm2.wav	94742	e69d59638196324270d28c638758d20eaa23305d2149be8652eb4a685d0729ef
+924	Creatures\Sounds/tune.WAV	data.z.924.Creatures_Sounds_tune.WAV	64940	bf68b486087f0807fd658485b18e6f99240e7ec42119528c7e4fa5e78986acd2
+925	Creatures\Sounds/undl.WAV	data.z.925.Creatures_Sounds_undl.WAV	11716	bc4a76a9c4d16776eb4d3bb8295d98dabb0223026420b714298e126457a6bf61
+926	Creatures\Sounds/ungr.WAV	data.z.926.Creatures_Sounds_ungr.WAV	9960	8fa6676c807f468e09dbac0c87bde5a09fb2c014ee86bc5b4ba8e82f9810712f
+927	Creatures\Sounds/Uraf.WAV	data.z.927.Creatures_Sounds_Uraf.WAV	22452	3ebbaaf59ce7f35fb8d8eeacda39d5bcd8eac65d0f80222aa30c503a2d3b367c
+928	Creatures\Sounds/vend.WAV	data.z.928.Creatures_Sounds_vend.WAV	20024	7e5036db081ef1dfc24ffdf392d8dded5108c306c30c6050398fe39ec0618459
+929	Creatures\Sounds/Wah0.wav	data.z.929.Creatures_Sounds_Wah0.wav	3316	65e7a297abd5d8b87ac148ee5c95385615cf384a677f5ec742e29ff0bede0c74
+930	Creatures\Sounds/Wah1.wav	data.z.930.Creatures_Sounds_Wah1.wav	3404	a223325f17a809da316aefa4cb9580202c1f338ff58eab4e497125476976b0ad
+931	Creatures\Sounds/wav1.WAV	data.z.931.Creatures_Sounds_wav1.WAV	47624	694861b9b0a147a7f338b375f670b14726291bc4484388ab351343f8552e6fca
+932	Creatures\Sounds/wav2.WAV	data.z.932.Creatures_Sounds_wav2.WAV	49088	3c5f851b4e9d65a8e2fa19ed6e1909f322158e67c39a31e2178a1b89e51d1ef4
+933	Creatures\Sounds/Wee0.wav	data.z.933.Creatures_Sounds_Wee0.wav	2396	535bf88b85fdf960665f89523e762e3564c75e67653007d300c8bd9379acf9a5
+934	Creatures\Sounds/Wee1.wav	data.z.934.Creatures_Sounds_Wee1.wav	2376	4c68f9323ce554701b1372f0b6aab1c1af1fc583f796c8d17a352d5e4b38da8b
+935	Creatures\Sounds/Weh0.wav	data.z.935.Creatures_Sounds_Weh0.wav	2892	b3dad96d952ba1887ad72aed9fe857c52bc98dcec7d1d76e76c52e16d1641650
+936	Creatures\Sounds/Weh1.wav	data.z.936.Creatures_Sounds_Weh1.wav	2780	35c4b0fb120f2e96fe8c8bdb8595de32ac2825743dd98f2f75274b7c206abaf6
+937	Creatures\Sounds/whir.WAV	data.z.937.Creatures_Sounds_whir.WAV	25510	f808b64a52c744e52e64f37e4f18b795a117d502d198cab28bf380266b96f857
+938	Creatures\Sounds/Woh0.wav	data.z.938.Creatures_Sounds_Woh0.wav	3110	8098b19d017703a1121f436992320e3b0cae55a90e6148182964712cef9df95d
+939	Creatures\Sounds/Woh1.wav	data.z.939.Creatures_Sounds_Woh1.wav	2926	605490c2edb327cd6866bd5c2cb8b1d5db800457b068dff1070c34784e09f83c
+940	Creatures\Sounds/word.wav	data.z.940.Creatures_Sounds_word.wav	23450	cac4b97cb9b49f6bb64eff23595fdf8f3422c4f81c98e405f2671c7191324a65
+941	Creatures\Sounds/Yau0.wav	data.z.941.Creatures_Sounds_Yau0.wav	3328	eeda84f4962c806196c4cc7bed450f0fd2c27cce929137dfc00b7920acc4cde4
+942	Creatures\Sounds/Yau1.wav	data.z.942.Creatures_Sounds_Yau1.wav	3378	e77350deadd13f3bd0c02187d494623acf476125d0942b58435b29badb2df90c
+943	Creatures\Sounds/yhan.WAV	data.z.943.Creatures_Sounds_yhan.WAV	12492	b4ebd21b1c68e3266b7420e4a6425dae6df5601d49f06a5b0ea50d85ae4efd5e
+944	Creatures\Sounds/yoou.WAV	data.z.944.Creatures_Sounds_yoou.WAV	13480	ebc181f3c8d61f55a4f11fcf391349fca103175c217227a931cba7217cae1538
+945	Creatures\Sounds/zyo0.wav	data.z.945.Creatures_Sounds_zyo0.wav	4030	1668faafeb24ff6b8fb5d69c4b74399a7c18e0f22d5d86dc2d69b54041ba36dd
+946	Creatures\Sounds/zyo1.wav	data.z.946.Creatures_Sounds_zyo1.wav	3974	b0f4222f632b5dfa0186658aab0fcdc1af3c7d095332d92857227fc7ee292018
+947	Creatures\TempBu/zzzz.wav	data.z.947.Creatures_Sounds_zzzz.wav	154394	e87211691a4feae3f9a526bf761eab4297ff3563bbab3984e216a8a8b43c1612
+948	DLLS/Bustr.txt	data.z.948.Creatures_TempBu_Bustr.txt	212	d3f258523fc3d69898e39cded31152fb684eb882f750846644cdb463a0936ad9
+949	DLLS/CTL3D32.DLL	data.z.949.DLLS_CTL3D32.DLL	26624	f52be8f2df2d434da7ceae635a45379f071c4b69d44002a7c89ef47028480500
+950	DLLS/MFC40.DLL	data.z.950.DLLS_MFC40.DLL	921872	bacf00658b16bbca064ea6d7c49f74ade8773c9a2b2233031565ddcfc5157dd0
+951	DLLS/MSVCRT40.DLL	data.z.951.DLLS_MSVCRT40.DLL	326656	ab55a2de2b6faf3daacd3e69473d385ceaead8033f7c79beb6bbf802f230f030
+952	DLLS/Wing32.dll	data.z.952.DLLS_Wing32.dll	12800	bb1f552e2525e784b61d2fe0ca23f3402adec05aa5f92f4c1dfbea3966a84cbb

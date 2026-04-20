@@ -1,0 +1,29 @@
+.DS_Store
+
+# Build outputs
+build/
+*.o
+*.obj
+*.a
+*.lib
+*.so
+*.dylib
+*.dll
+
+# Local binary/media drops
+extracted_media/
+*.bin
+*.cue
+*.iso
+*.img
+
+# Local reverse-engineering environments and tooling
+Ghidra/
+ghidra_projects/
+ghidra_scripts/
+ghidra_user_settings/
+tooling/
+
+# Local notes and machine state
+AGENTS.md
+*.log
