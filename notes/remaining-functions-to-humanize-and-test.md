@@ -7,14 +7,14 @@ Coverage rows that describe multiple recovered sub-slices for the same original 
 ## Summary
 
 - Total exported functions: 4630
-- Unique covered entry points: 67
-- Remaining functions to humanize and test: 4563
+- Unique covered entry points: 148
+- Remaining functions to humanize and test: 4482
 
 | Binary | Exported | Covered | Remaining |
 | --- | ---: | ---: | ---: |
 | `Backup.exe` | 49 | 0 | 49 |
 | `Breeder_s_Kit.exe` | 527 | 0 | 527 |
-| `Creatures.exe` | 1116 | 55 | 1061 |
+| `Creatures.exe` | 1116 | 136 | 980 |
 | `Funeral_Kit.exe` | 496 | 0 | 496 |
 | `Hatchery.exe` | 225 | 4 | 221 |
 | `Health_Kit.exe` | 510 | 0 | 510 |
@@ -254,7 +254,7 @@ Remaining: **527** of **527** exported functions.
 | `00405da0` | `FUN_00405da0` | `bool FUN_00405da0(int param_1)` | `pending` |
 | `00405dc0` | `FUN_00405dc0` | `bool FUN_00405dc0(int param_1)` | `pending` |
 | `00405de0` | `FUN_00405de0` | `undefined4 FUN_00405de0(int param_1)` | `pending` |
-| `00406080` | `FUN_00406080` | `undefined4 FUN_00406080(int param_1)` | `pending` |
+| `00406080` | `FUN_00406080` | `undefined4 FUN_00406080(int param_1)` | `verified_slice` |
 | `004062e4` | `FUN_004062e4` | `undefined FUN_004062e4(void)` | `pending` |
 | `004062fc` | `FUN_004062fc` | `undefined FUN_004062fc(void)` | `pending` |
 | `00406304` | `FUN_00406304` | `undefined FUN_00406304(void)` | `pending` |
@@ -657,7 +657,7 @@ Remaining: **1064** of **1116** exported functions.
 | `004021c0` | `FUN_004021c0` | `undefined FUN_004021c0(int param_1)` | `pending` |
 | `00402220` | `FUN_00402220` | `undefined FUN_00402220(void * this, uint param_1)` | `pending` |
 | `00402260` | `FUN_00402260` | `undefined FUN_00402260(int param_1)` | `pending` |
-| `004022a0` | `FUN_004022a0` | `undefined FUN_004022a0(void)` | `pending` |
+| `004022a0` | `FUN_004022a0` | `undefined FUN_004022a0(void)` | `verified_slice` |
 | `004023d0` | `FUN_004023d0` | `undefined FUN_004023d0(void * this, undefined4 param_1, int param_2)` | `pending` |
 | `00402520` | `FUN_00402520` | `undefined FUN_00402520(int param_1)` | `pending` |
 | `00402550` | `FUN_00402550` | `undefined FUN_00402550(int param_1)` | `pending` |
@@ -666,48 +666,48 @@ Remaining: **1064** of **1116** exported functions.
 | `004025d0` | `FUN_004025d0` | `undefined FUN_004025d0(int param_1)` | `pending` |
 | `00402600` | `FUN_00402600` | `undefined FUN_00402600(int param_1)` | `pending` |
 | `00402630` | `FUN_00402630` | `undefined FUN_00402630(void * this, int param_1)` | `pending` |
-| `00402680` | `FUN_00402680` | `undefined FUN_00402680(int param_1)` | `pending` |
-| `00402700` | `FUN_00402700` | `undefined FUN_00402700(int param_1)` | `pending` |
+| `00402680` | `FUN_00402680` | `undefined FUN_00402680(int param_1)` | `verified_slice` |
+| `00402700` | `FUN_00402700` | `undefined FUN_00402700(int param_1)` | `verified_slice` |
 | `004027e0` | `FUN_004027e0` | `undefined FUN_004027e0(int param_1)` | `pending` |
 | `00402950` | `FUN_00402950` | `undefined FUN_00402950(int param_1)` | `pending` |
 | `00402980` | `FUN_00402980` | `undefined FUN_00402980(void * this, int param_1)` | `pending` |
 | `004029b0` | `FUN_004029b0` | `undefined FUN_004029b0(void * this, undefined4 param_1, uint param_2, int param_3)` | `pending` |
 | `00402a10` | `FUN_00402a10` | `undefined FUN_00402a10(void * this, int param_1)` | `pending` |
-| `00402a30` | `FUN_00402a30` | `UINT FUN_00402a30(int param_1)` | `pending` |
-| `00402ab0` | `FUN_00402ab0` | `undefined FUN_00402ab0(void * this, int param_1, int param_2, int param_3, int param_4)` | `pending` |
+| `00402a30` | `FUN_00402a30` | `UINT FUN_00402a30(int param_1)` | `verified_slice` |
+| `00402ab0` | `FUN_00402ab0` | `undefined FUN_00402ab0(void * this, int param_1, int param_2, int param_3, int param_4)` | `verified_slice` |
 | `00402b78` | `FUN_00402b78` | `undefined FUN_00402b78(void)` | `pending` |
-| `00402b90` | `FUN_00402b90` | `undefined FUN_00402b90(void * this, int param_1, int param_2, int param_3, int param_4, int param_5)` | `pending` |
-| `00402c30` | `FUN_00402c30` | `undefined FUN_00402c30(void * this, int param_1, int param_2, int param_3, int param_4, int param_5, int param_6, undefined4 param_7, int param_8, undefined4 param_9)` | `pending` |
+| `00402b90` | `FUN_00402b90` | `undefined FUN_00402b90(void * this, int param_1, int param_2, int param_3, int param_4, int param_5)` | `verified_slice` |
+| `00402c30` | `FUN_00402c30` | `undefined FUN_00402c30(void * this, int param_1, int param_2, int param_3, int param_4, int param_5, int param_6, undefined4 param_7, int param_8, undefined4 param_9)` | `verified_slice` |
 | `00402eea` | `FUN_00402eea` | `undefined FUN_00402eea(void)` | `pending` |
-| `00402f00` | `FUN_00402f00` | `undefined FUN_00402f00(void * this, int param_1, int param_2, int param_3, int param_4)` | `pending` |
-| `00403110` | `FUN_00403110` | `undefined FUN_00403110(void * this, int * param_1, int * param_2)` | `pending` |
+| `00402f00` | `FUN_00402f00` | `undefined FUN_00402f00(void * this, int param_1, int param_2, int param_3, int param_4)` | `verified_slice` |
+| `00403110` | `FUN_00403110` | `undefined FUN_00403110(void * this, int * param_1, int * param_2)` | `verified_slice` |
 | `004031a0` | `FUN_004031a0` | `undefined FUN_004031a0(void * this, int * param_1, int * param_2)` | `pending` |
-| `004031e0` | `FUN_004031e0` | `undefined FUN_004031e0(void * this, int param_1, int param_2)` | `pending` |
-| `00403200` | `FUN_00403200` | `int FUN_00403200(void * this, int param_1)` | `pending` |
-| `00403230` | `FUN_00403230` | `int FUN_00403230(void * this, int param_1)` | `pending` |
-| `00403260` | `FUN_00403260` | `undefined FUN_00403260(void * this, int * param_1, int * param_2)` | `pending` |
+| `004031e0` | `FUN_004031e0` | `undefined FUN_004031e0(void * this, int param_1, int param_2)` | `verified_slice` |
+| `00403200` | `FUN_00403200` | `int FUN_00403200(void * this, int param_1)` | `verified_slice` |
+| `00403230` | `FUN_00403230` | `int FUN_00403230(void * this, int param_1)` | `verified_slice` |
+| `00403260` | `FUN_00403260` | `undefined FUN_00403260(void * this, int * param_1, int * param_2)` | `verified_slice` |
 | `004033db` | `FUN_004033db` | `undefined FUN_004033db(void)` | `pending` |
-| `004033f0` | `FUN_004033f0` | `undefined FUN_004033f0(int param_1)` | `pending` |
-| `00403450` | `FUN_00403450` | `undefined4 FUN_00403450(int param_1)` | `pending` |
+| `004033f0` | `FUN_004033f0` | `undefined FUN_004033f0(int param_1)` | `verified_slice` |
+| `00403450` | `FUN_00403450` | `undefined4 FUN_00403450(int param_1)` | `verified_slice` |
 | `0040345b` | `FUN_0040345b` | `BOOL FUN_0040345b(int param_1)` | `pending` |
-| `00403530` | `FUN_00403530` | `undefined FUN_00403530(void * this, int param_1, int param_2)` | `pending` |
-| `00403640` | `FUN_00403640` | `undefined FUN_00403640(int param_1)` | `pending` |
+| `00403530` | `FUN_00403530` | `undefined FUN_00403530(void * this, int param_1, int param_2)` | `verified_slice` |
+| `00403640` | `FUN_00403640` | `undefined FUN_00403640(int param_1)` | `verified_slice` |
 | `0040364b` | `FUN_0040364b` | `undefined FUN_0040364b(void * param_1)` | `pending` |
-| `00403700` | `FUN_00403700` | `undefined FUN_00403700(int param_1)` | `pending` |
+| `00403700` | `FUN_00403700` | `undefined FUN_00403700(int param_1)` | `verified_slice` |
 | `0040370b` | `FUN_0040370b` | `undefined FUN_0040370b(void * param_1)` | `pending` |
-| `004037c0` | `FUN_004037c0` | `undefined FUN_004037c0(int * param_1)` | `pending` |
+| `004037c0` | `FUN_004037c0` | `undefined FUN_004037c0(int * param_1)` | `verified_slice` |
 | `004037cb` | `FUN_004037cb` | `undefined FUN_004037cb(int * param_1)` | `pending` |
-| `004039c0` | `FUN_004039c0` | `undefined4 FUN_004039c0(int * param_1)` | `pending` |
-| `00403b70` | `FUN_00403b70` | `undefined FUN_00403b70(void * this, int param_1, int param_2)` | `pending` |
+| `004039c0` | `FUN_004039c0` | `undefined4 FUN_004039c0(int * param_1)` | `verified_slice` |
+| `00403b70` | `FUN_00403b70` | `undefined FUN_00403b70(void * this, int param_1, int param_2)` | `verified_slice` |
 | `00403c34` | `FUN_00403c34` | `undefined FUN_00403c34(void)` | `pending` |
 | `00403c90` | `FUN_00403c90` | `undefined FUN_00403c90(int param_1)` | `pending` |
 | `00403cf0` | `FUN_00403cf0` | `HGDIOBJ FUN_00403cf0(void * this, int param_1, int param_2)` | `pending` |
 | `00403dc0` | `FUN_00403dc0` | `undefined FUN_00403dc0(int param_1)` | `pending` |
 | `00403e40` | `FUN_00403e40` | `undefined4 FUN_00403e40(undefined4 param_1)` | `pending` |
-| `00403e50` | `FUN_00403e50` | `undefined4 FUN_00403e50(void * this, char * param_1)` | `pending` |
-| `00404220` | `FUN_00404220` | `LOGPALETTE * FUN_00404220(LOGPALETTE * param_1)` | `pending` |
+| `00403e50` | `FUN_00403e50` | `undefined4 FUN_00403e50(void * this, char * param_1)` | `verified_slice` |
+| `00404220` | `FUN_00404220` | `LOGPALETTE * FUN_00404220(LOGPALETTE * param_1)` | `verified_slice` |
 | `004042f0` | `FUN_004042f0` | `undefined4 FUN_004042f0(undefined4 param_1)` | `pending` |
-| `00404310` | `FUN_00404310` | `bool FUN_00404310(void * this, undefined1 * param_1)` | `pending` |
+| `00404310` | `FUN_00404310` | `bool FUN_00404310(void * this, undefined1 * param_1)` | `verified_slice` |
 | `004043dc` | `FUN_004043dc` | `undefined FUN_004043dc(void)` | `pending` |
 | `004043f0` | `FUN_004043f0` | `undefined FUN_004043f0(undefined4 * param_1)` | `pending` |
 | `00404443` | `FUN_00404443` | `undefined FUN_00404443(void)` | `pending` |
@@ -747,8 +747,8 @@ Remaining: **1064** of **1116** exported functions.
 | `00404f9b` | `FUN_00404f9b` | `undefined FUN_00404f9b(void)` | `pending` |
 | `00404fa9` | `FUN_00404fa9` | `undefined FUN_00404fa9(void)` | `pending` |
 | `00404fcb` | `FUN_00404fcb` | `undefined FUN_00404fcb(void)` | `pending` |
-| `004052f0` | `FUN_004052f0` | `undefined4 FUN_004052f0(undefined4 param_1)` | `pending` |
-| `00405380` | `FUN_00405380` | `bool FUN_00405380(void)` | `pending` |
+| `004052f0` | `FUN_004052f0` | `undefined4 FUN_004052f0(undefined4 param_1)` | `verified_slice` |
+| `00405380` | `FUN_00405380` | `bool FUN_00405380(void)` | `verified_slice` |
 | `004054f0` | `FUN_004054f0` | `undefined FUN_004054f0(int * param_1)` | `pending` |
 | `00405696` | `FUN_00405696` | `undefined FUN_00405696(void)` | `pending` |
 | `004056a0` | `Ordinal_1359` | `undefined Ordinal_1359()` | `pending` |
@@ -759,34 +759,34 @@ Remaining: **1064** of **1116** exported functions.
 | `00405fbc` | `FUN_00405fbc` | `undefined FUN_00405fbc(void)` | `pending` |
 | `00406059` | `FUN_00406059` | `undefined FUN_00406059(void)` | `pending` |
 | `0040606b` | `FUN_0040606b` | `undefined FUN_0040606b(void)` | `pending` |
-| `00406080` | `FUN_00406080` | `int FUN_00406080(void * this, undefined4 * param_1)` | `pending` |
+| `00406080` | `FUN_00406080` | `int FUN_00406080(void * this, undefined4 * param_1)` | `verified_slice` |
 | `00406660` | `FUN_00406660` | `undefined FUN_00406660(void)` | `pending` |
-| `00406880` | `FUN_00406880` | `undefined4 FUN_00406880(byte param_1, byte param_2, int * param_3, undefined4 param_4)` | `pending` |
+| `00406880` | `FUN_00406880` | `undefined4 FUN_00406880(byte param_1, byte param_2, int * param_3, undefined4 param_4)` | `verified_slice` |
 | `004068a5` | `FUN_004068a5` | `undefined4 FUN_004068a5(undefined4 * param_1)` | `pending` |
 | `004069e4` | `FUN_004069e4` | `undefined FUN_004069e4(void)` | `pending` |
-| `004069f0` | `FUN_004069f0` | `undefined FUN_004069f0(int param_1, int param_2)` | `pending` |
+| `004069f0` | `FUN_004069f0` | `undefined FUN_004069f0(int param_1, int param_2)` | `verified_slice` |
 | `00406ec0` | `FUN_00406ec0` | `undefined FUN_00406ec0(void)` | `pending` |
 | `00406ee0` | `FUN_00406ee0` | `undefined FUN_00406ee0(void)` | `pending` |
 | `004071a0` | `FUN_004071a0` | `undefined4 FUN_004071a0(void)` | `pending` |
 | `00407280` | `FUN_00407280` | `undefined4 FUN_00407280(void * this, LPCSTR param_1, undefined2 param_2, undefined2 param_3)` | `pending` |
 | `004073a0` | `FUN_004073a0` | `undefined FUN_004073a0(void * this, int param_1)` | `pending` |
 | `004074d0` | `FUN_004074d0` | `undefined FUN_004074d0(int param_1)` | `pending` |
-| `00407820` | `FUN_00407820` | `undefined FUN_00407820(undefined4 param_1, undefined4 param_2)` | `pending` |
+| `00407820` | `FUN_00407820` | `undefined FUN_00407820(undefined4 param_1, undefined4 param_2)` | `verified_slice` |
 | `00407949` | `FUN_00407949` | `undefined FUN_00407949(void)` | `pending` |
 | `00407951` | `FUN_00407951` | `undefined FUN_00407951(void)` | `pending` |
 | `00407963` | `FUN_00407963` | `undefined FUN_00407963(void)` | `pending` |
-| `00407970` | `FUN_00407970` | `undefined FUN_00407970(undefined4 param_1, undefined4 param_2, undefined4 param_3)` | `pending` |
+| `00407970` | `FUN_00407970` | `undefined FUN_00407970(undefined4 param_1, undefined4 param_2, undefined4 param_3)` | `verified_slice` |
 | `00407ae9` | `FUN_00407ae9` | `undefined FUN_00407ae9(void)` | `pending` |
 | `00407af1` | `FUN_00407af1` | `undefined FUN_00407af1(void)` | `pending` |
 | `00407af9` | `FUN_00407af9` | `undefined FUN_00407af9(void)` | `pending` |
 | `00407b0b` | `FUN_00407b0b` | `undefined FUN_00407b0b(void)` | `pending` |
-| `00407b20` | `FUN_00407b20` | `undefined FUN_00407b20(void)` | `pending` |
+| `00407b20` | `FUN_00407b20` | `undefined FUN_00407b20(void)` | `verified_slice` |
 | `00407c90` | `FUN_00407c90` | `undefined FUN_00407c90(void)` | `pending` |
 | `00407c98` | `FUN_00407c98` | `undefined FUN_00407c98(void)` | `pending` |
 | `00407ca0` | `FUN_00407ca0` | `undefined FUN_00407ca0(void)` | `pending` |
 | `00407ca8` | `FUN_00407ca8` | `undefined FUN_00407ca8(void)` | `pending` |
 | `00407cba` | `FUN_00407cba` | `undefined FUN_00407cba(void)` | `pending` |
-| `00407cd0` | `FUN_00407cd0` | `undefined FUN_00407cd0(void)` | `pending` |
+| `00407cd0` | `FUN_00407cd0` | `undefined FUN_00407cd0(void)` | `verified_slice` |
 | `00407def` | `FUN_00407def` | `undefined FUN_00407def(void)` | `pending` |
 | `00407df7` | `FUN_00407df7` | `undefined FUN_00407df7(void)` | `pending` |
 | `00407dff` | `FUN_00407dff` | `undefined FUN_00407dff(void)` | `pending` |
@@ -794,19 +794,19 @@ Remaining: **1064** of **1116** exported functions.
 | `00407e19` | `FUN_00407e19` | `undefined FUN_00407e19(void)` | `pending` |
 | `00408070` | `FUN_00408070` | `undefined FUN_00408070(void * this, undefined4 param_1)` | `pending` |
 | `004080a0` | `FUN_004080a0` | `undefined FUN_004080a0(int param_1)` | `pending` |
-| `00408150` | `FUN_00408150` | `PHKEY FUN_00408150(void * this, char * param_1, char * param_2, char * param_3)` | `pending` |
-| `00408300` | `FUN_00408300` | `bool FUN_00408300(void * this, int param_1, LPCSTR param_2, LPBYTE param_3, DWORD param_4)` | `pending` |
+| `00408150` | `FUN_00408150` | `PHKEY FUN_00408150(void * this, char * param_1, char * param_2, char * param_3)` | `verified_slice` |
+| `00408300` | `FUN_00408300` | `bool FUN_00408300(void * this, int param_1, LPCSTR param_2, LPBYTE param_3, DWORD param_4)` | `verified_slice` |
 | `00408350` | `FUN_00408350` | `undefined FUN_00408350(void * this, int param_1, LPCSTR param_2, LPBYTE param_3)` | `pending` |
-| `00408370` | `FUN_00408370` | `undefined FUN_00408370(void * this, int param_1, LPCSTR param_2, LPBYTE param_3)` | `pending` |
+| `00408370` | `FUN_00408370` | `undefined FUN_00408370(void * this, int param_1, LPCSTR param_2, LPBYTE param_3)` | `verified_slice` |
 | `00408390` | `FUN_00408390` | `undefined FUN_00408390(void * this, int param_1, LPCSTR param_2, LPBYTE param_3)` | `pending` |
 | `004083b0` | `FUN_004083b0` | `undefined FUN_004083b0(void * this, int param_1, LPCSTR param_2, LPBYTE param_3, DWORD param_4, BYTE * param_5)` | `pending` |
 | `00408420` | `FUN_00408420` | `undefined FUN_00408420(void * this, int param_1, LPCSTR param_2, LPBYTE param_3, undefined4 param_4)` | `pending` |
-| `00408460` | `FUN_00408460` | `undefined FUN_00408460(void * this, int param_1, LPCSTR param_2, LPBYTE param_3, undefined4 param_4, undefined4 param_5, undefined4 param_6, undefined4 param_7)` | `pending` |
+| `00408460` | `FUN_00408460` | `undefined FUN_00408460(void * this, int param_1, LPCSTR param_2, LPBYTE param_3, undefined4 param_4, undefined4 param_5, undefined4 param_6, undefined4 param_7)` | `verified_slice` |
 | `004084c0` | `FUN_004084c0` | `undefined FUN_004084c0(void * this, int param_1, LPCSTR param_2, LPBYTE param_3, undefined4 param_4, undefined4 param_5)` | `pending` |
 | `00408510` | `FUN_00408510` | `bool FUN_00408510(void * this, int param_1, LPCSTR param_2, BYTE * param_3, DWORD param_4)` | `pending` |
-| `00408550` | `FUN_00408550` | `bool FUN_00408550(void * this, int param_1, LPCSTR param_2, BYTE * param_3)` | `pending` |
+| `00408550` | `FUN_00408550` | `bool FUN_00408550(void * this, int param_1, LPCSTR param_2, BYTE * param_3)` | `verified_slice` |
 | `004085a0` | `FUN_004085a0` | `bool FUN_004085a0(void * this, int param_1, LPCSTR param_2)` | `pending` |
-| `004085e0` | `FUN_004085e0` | `bool FUN_004085e0(void * this, int param_1, LPCSTR param_2)` | `pending` |
+| `004085e0` | `FUN_004085e0` | `bool FUN_004085e0(void * this, int param_1, LPCSTR param_2)` | `verified_slice` |
 | `00408620` | `FUN_00408620` | `bool FUN_00408620(void * this, int param_1, LPCSTR param_2)` | `pending` |
 | `00408660` | `FUN_00408660` | `undefined4 * FUN_00408660(undefined4 * param_1)` | `pending` |
 | `004086d0` | `FUN_004086d0` | `undefined4 * FUN_004086d0(void * this, uint param_1)` | `pending` |
@@ -880,8 +880,8 @@ Remaining: **1064** of **1116** exported functions.
 | `0040bab9` | `FUN_0040bab9` | `undefined FUN_0040bab9(void)` | `pending` |
 | `0040bb14` | `FUN_0040bb14` | `undefined FUN_0040bb14(void)` | `pending` |
 | `0040bb2c` | `FUN_0040bb2c` | `undefined FUN_0040bb2c(void)` | `pending` |
-| `0040bb40` | `FUN_0040bb40` | `undefined FUN_0040bb40(void)` | `pending` |
-| `0040bb60` | `FUN_0040bb60` | `undefined FUN_0040bb60(void)` | `pending` |
+| `0040bb40` | `FUN_0040bb40` | `undefined FUN_0040bb40(void)` | `verified_slice` |
+| `0040bb60` | `FUN_0040bb60` | `undefined FUN_0040bb60(void)` | `verified_slice` |
 | `0040bc10` | `FUN_0040bc10` | `undefined FUN_0040bc10(undefined4 param_1, undefined4 param_2, undefined1 param_3)` | `pending` |
 | `0040bc40` | `FUN_0040bc40` | `undefined FUN_0040bc40(void)` | `pending` |
 | `0040bda0` | `FUN_0040bda0` | `undefined FUN_0040bda0(void)` | `pending` |
@@ -902,7 +902,7 @@ Remaining: **1064** of **1116** exported functions.
 | `0040c993` | `FUN_0040c993` | `undefined FUN_0040c993(void)` | `pending` |
 | `0040c9a0` | `FUN_0040c9a0` | `undefined FUN_0040c9a0(int param_1)` | `pending` |
 | `0040c9c0` | `FUN_0040c9c0` | `undefined FUN_0040c9c0(void * this, int param_1)` | `pending` |
-| `0040cb70` | `FUN_0040cb70` | `undefined FUN_0040cb70(void * this, int param_1, int param_2, int param_3, int * param_4, int * param_5, int param_6)` | `pending` |
+| `0040cb70` | `FUN_0040cb70` | `undefined FUN_0040cb70(void * this, int param_1, int param_2, int param_3, int * param_4, int * param_5, int param_6)` | `verified_slice` |
 | `0040cd20` | `FUN_0040cd20` | `undefined FUN_0040cd20(void * this, int param_1, int param_2, int param_3, int param_4, undefined1 param_5)` | `pending` |
 | `0040cda0` | `FUN_0040cda0` | `undefined FUN_0040cda0(void * this, int param_1, int param_2, char * param_3, undefined1 param_4, undefined1 param_5, undefined1 param_6)` | `pending` |
 | `0040ceb0` | `FUN_0040ceb0` | `undefined4 FUN_0040ceb0(int param_1)` | `pending` |
@@ -913,10 +913,10 @@ Remaining: **1064** of **1116** exported functions.
 | `0040d020` | `FUN_0040d020` | `undefined FUN_0040d020(void)` | `pending` |
 | `0040d108` | `FUN_0040d108` | `undefined FUN_0040d108(void)` | `pending` |
 | `0040d120` | `FUN_0040d120` | `short FUN_0040d120(char * param_1)` | `pending` |
-| `0040d150` | `FUN_0040d150` | `undefined FUN_0040d150(void)` | `pending` |
+| `0040d150` | `FUN_0040d150` | `undefined FUN_0040d150(void)` | `verified_slice` |
 | `0040d170` | `FUN_0040d170` | `undefined FUN_0040d170(void)` | `pending` |
-| `0040d1b0` | `FUN_0040d1b0` | `undefined FUN_0040d1b0(int param_1, int param_2, int param_3, int param_4, int param_5, int param_6, int param_7, int param_8, int param_9, int param_10)` | `pending` |
-| `0040d230` | `FUN_0040d230` | `undefined FUN_0040d230(int param_1, int param_2, int param_3, int param_4, int param_5, int param_6, int param_7, int param_8, uint param_9, int param_10)` | `pending` |
+| `0040d1b0` | `FUN_0040d1b0` | `undefined FUN_0040d1b0(int param_1, int param_2, int param_3, int param_4, int param_5, int param_6, int param_7, int param_8, int param_9, int param_10)` | `verified_slice` |
+| `0040d230` | `FUN_0040d230` | `undefined FUN_0040d230(int param_1, int param_2, int param_3, int param_4, int param_5, int param_6, int param_7, int param_8, uint param_9, int param_10)` | `verified_slice` |
 | `0040d2e0` | `FUN_0040d2e0` | `undefined FUN_0040d2e0(void)` | `pending` |
 | `0040d300` | `FUN_0040d300` | `undefined FUN_0040d300(void)` | `pending` |
 | `0040d330` | `FUN_0040d330` | `undefined FUN_0040d330(void)` | `pending` |
@@ -976,7 +976,7 @@ Remaining: **1064** of **1116** exported functions.
 | `00410480` | `FUN_00410480` | `undefined4 * FUN_00410480(void * this, uint param_1)` | `pending` |
 | `004104a0` | `FUN_004104a0` | `undefined FUN_004104a0(undefined4 * param_1)` | `pending` |
 | `004104e7` | `FUN_004104e7` | `undefined FUN_004104e7(void)` | `pending` |
-| `00410520` | `FUN_00410520` | `undefined4 FUN_00410520(int param_1, int param_2, int * param_3, undefined4 param_4)` | `pending` |
+| `00410520` | `FUN_00410520` | `undefined4 FUN_00410520(int param_1, int param_2, int * param_3, undefined4 param_4)` | `verified_slice` |
 | `0041071a` | `FUN_0041071a` | `undefined FUN_0041071a(void)` | `pending` |
 | `0041072c` | `FUN_0041072c` | `undefined FUN_0041072c(void)` | `pending` |
 | `00410750` | `FUN_00410750` | `undefined FUN_00410750(undefined4 * param_1)` | `pending` |
@@ -1017,10 +1017,10 @@ Remaining: **1064** of **1116** exported functions.
 | `00411661` | `FUN_00411661` | `undefined FUN_00411661(void)` | `pending` |
 | `0041166f` | `FUN_0041166f` | `undefined FUN_0041166f(void)` | `pending` |
 | `00411694` | `FUN_00411694` | `undefined FUN_00411694(void)` | `pending` |
-| `00411790` | `FUN_00411790` | `undefined FUN_00411790(int param_1)` | `pending` |
+| `00411790` | `FUN_00411790` | `undefined FUN_00411790(int param_1)` | `verified_slice` |
 | `004118a0` | `FUN_004118a0` | `undefined FUN_004118a0(void * this, byte * param_1, undefined1 param_2)` | `pending` |
 | `00411a90` | `FUN_00411a90` | `undefined FUN_00411a90(void * this, int param_1)` | `pending` |
-| `00411ac0` | `FUN_00411ac0` | `undefined FUN_00411ac0(int param_1)` | `pending` |
+| `00411ac0` | `FUN_00411ac0` | `undefined FUN_00411ac0(int param_1)` | `verified_slice` |
 | `00411b20` | `FUN_00411b20` | `int * FUN_00411b20(void * this, int param_1)` | `pending` |
 | `00411e45` | `FUN_00411e45` | `undefined FUN_00411e45(void)` | `pending` |
 | `00411e53` | `FUN_00411e53` | `undefined FUN_00411e53(void)` | `pending` |
@@ -1033,7 +1033,7 @@ Remaining: **1064** of **1116** exported functions.
 | `00412549` | `FUN_00412549` | `undefined FUN_00412549(void)` | `pending` |
 | `00412690` | `FUN_00412690` | `undefined FUN_00412690(void)` | `pending` |
 | `004126a2` | `FUN_004126a2` | `undefined FUN_004126a2(void)` | `pending` |
-| `004126c0` | `FUN_004126c0` | `undefined FUN_004126c0(void)` | `pending` |
+| `004126c0` | `FUN_004126c0` | `undefined FUN_004126c0(void)` | `verified_slice` |
 | `00412776` | `FUN_00412776` | `undefined FUN_00412776(void)` | `pending` |
 | `004127e0` | `FUN_004127e0` | `undefined FUN_004127e0(void)` | `pending` |
 | `004127f0` | `FUN_004127f0` | `undefined FUN_004127f0(undefined4 * param_1)` | `pending` |
@@ -1069,7 +1069,7 @@ Remaining: **1064** of **1116** exported functions.
 | `00414750` | `FUN_00414750` | `undefined FUN_00414750(int * param_1)` | `pending` |
 | `00414780` | `FUN_00414780` | `undefined FUN_00414780(int param_1)` | `pending` |
 | `004147c0` | `FUN_004147c0` | `undefined FUN_004147c0(void * this, int param_1)` | `pending` |
-| `00414860` | `FUN_00414860` | `int FUN_00414860(void * this, undefined4 * param_1)` | `pending` |
+| `00414860` | `FUN_00414860` | `int FUN_00414860(void * this, undefined4 * param_1)` | `verified_slice` |
 | `00414970` | `FUN_00414970` | `undefined FUN_00414970(int * param_1)` | `pending` |
 | `004149a0` | `FUN_004149a0` | `int * FUN_004149a0(void * this, byte param_1, byte param_2)` | `pending` |
 | `00414b00` | `FUN_00414b00` | `undefined FUN_00414b00(void * this, int * param_1, int * param_2)` | `pending` |
@@ -1200,8 +1200,8 @@ Remaining: **1064** of **1116** exported functions.
 | `0041a052` | `FUN_0041a052` | `undefined FUN_0041a052(void)` | `pending` |
 | `0041a060` | `FUN_0041a060` | `undefined FUN_0041a060(void * this, void * param_1)` | `pending` |
 | `0041a340` | `FUN_0041a340` | `undefined FUN_0041a340(void * this, int param_1, int param_2)` | `pending` |
-| `0041a370` | `FUN_0041a370` | `undefined4 FUN_0041a370(void * this, int * param_1)` | `pending` |
-| `0041a400` | `FUN_0041a400` | `undefined FUN_0041a400(void * this, int param_1, int * param_2, int * param_3)` | `pending` |
+| `0041a370` | `FUN_0041a370` | `undefined4 FUN_0041a370(void * this, int * param_1)` | `verified_slice` |
+| `0041a400` | `FUN_0041a400` | `undefined FUN_0041a400(void * this, int param_1, int * param_2, int * param_3)` | `verified_slice` |
 | `0041a440` | `FUN_0041a440` | `undefined FUN_0041a440(undefined4 param_1)` | `pending` |
 | `0041a460` | `FUN_0041a460` | `undefined FUN_0041a460(int param_1)` | `pending` |
 | `0041a4a0` | `FUN_0041a4a0` | `undefined FUN_0041a4a0(void * this, undefined4 * param_1)` | `pending` |
@@ -1252,11 +1252,11 @@ Remaining: **1064** of **1116** exported functions.
 | `0041be20` | `FUN_0041be20` | `int FUN_0041be20(void * this, uint param_1, uint param_2, int param_3)` | `pending` |
 | `0041bf70` | `FUN_0041bf70` | `undefined1 FUN_0041bf70(int param_1)` | `pending` |
 | `0041c11a` | `FUN_0041c11a` | `undefined FUN_0041c11a(void)` | `pending` |
-| `0041c130` | `FUN_0041c130` | `undefined FUN_0041c130(void * this, int param_1)` | `pending` |
-| `0041c1b0` | `FUN_0041c1b0` | `undefined FUN_0041c1b0(void * this, int param_1, int param_2)` | `pending` |
-| `0041c2f0` | `FUN_0041c2f0` | `undefined FUN_0041c2f0(int param_1)` | `pending` |
+| `0041c130` | `FUN_0041c130` | `undefined FUN_0041c130(void * this, int param_1)` | `verified_slice` |
+| `0041c1b0` | `FUN_0041c1b0` | `undefined FUN_0041c1b0(void * this, int param_1, int param_2)` | `verified_slice` |
+| `0041c2f0` | `FUN_0041c2f0` | `undefined FUN_0041c2f0(int param_1)` | `verified_slice` |
 | `0041c3fd` | `FUN_0041c3fd` | `undefined FUN_0041c3fd(void)` | `pending` |
-| `0041c410` | `FUN_0041c410` | `undefined FUN_0041c410(void)` | `pending` |
+| `0041c410` | `FUN_0041c410` | `undefined FUN_0041c410(void)` | `verified_slice` |
 | `0041c5c0` | `FUN_0041c5c0` | `undefined FUN_0041c5c0(void)` | `pending` |
 | `0041c930` | `FUN_0041c930` | `undefined FUN_0041c930(byte * param_1, char * param_2, char * param_3, undefined1 param_4)` | `pending` |
 | `0041c952` | `FUN_0041c952` | `undefined FUN_0041c952(void)` | `pending` |
@@ -1419,13 +1419,13 @@ Remaining: **1064** of **1116** exported functions.
 | `00428df5` | `FUN_00428df5` | `undefined FUN_00428df5(void)` | `pending` |
 | `00428e00` | `FUN_00428e00` | `undefined FUN_00428e00(int param_1)` | `pending` |
 | `00428eb0` | `FUN_00428eb0` | `undefined4 FUN_00428eb0(void * this, undefined4 param_1)` | `pending` |
-| `00429000` | `FUN_00429000` | `undefined FUN_00429000(int * param_1)` | `pending` |
+| `00429000` | `FUN_00429000` | `undefined FUN_00429000(int * param_1)` | `verified_slice` |
 | `00429040` | `FUN_00429040` | `undefined FUN_00429040(void * this, undefined4 param_1, uint param_2, int param_3)` | `pending` |
 | `00429070` | `FUN_00429070` | `undefined FUN_00429070(void * this, int param_1)` | `pending` |
 | `00429090` | `FUN_00429090` | `undefined FUN_00429090(int param_1)` | `pending` |
 | `004290b0` | `FUN_004290b0` | `undefined FUN_004290b0(int param_1)` | `pending` |
 | `004290bb` | `FUN_004290bb` | `undefined FUN_004290bb(int param_1)` | `pending` |
-| `00429250` | `FUN_00429250` | `undefined FUN_00429250(void)` | `pending` |
+| `00429250` | `FUN_00429250` | `undefined FUN_00429250(void)` | `verified_slice` |
 | `00429270` | `FUN_00429270` | `undefined FUN_00429270(void)` | `pending` |
 | `00429360` | `FUN_00429360` | `undefined4 * FUN_00429360(undefined4 * param_1)` | `pending` |
 | `004294bd` | `FUN_004294bd` | `undefined FUN_004294bd(void)` | `pending` |
@@ -1484,7 +1484,7 @@ Remaining: **1064** of **1116** exported functions.
 | `0042d720` | `FUN_0042d720` | `undefined FUN_0042d720(undefined4 * param_1)` | `pending` |
 | `0042d778` | `FUN_0042d778` | `undefined FUN_0042d778(void)` | `pending` |
 | `0042d79a` | `FUN_0042d79a` | `undefined FUN_0042d79a(void)` | `pending` |
-| `0042d7b0` | `FUN_0042d7b0` | `undefined FUN_0042d7b0(void * this, int param_1)` | `pending` |
+| `0042d7b0` | `FUN_0042d7b0` | `undefined FUN_0042d7b0(void * this, int param_1)` | `verified_slice` |
 | `0042daa0` | `FUN_0042daa0` | `int FUN_0042daa0(void * this, LONG param_1, LONG param_2)` | `pending` |
 | `0042db10` | `FUN_0042db10` | `int FUN_0042db10(int param_1)` | `pending` |
 | `0042db40` | `FUN_0042db40` | `int FUN_0042db40(void * this, LONG param_1, LONG param_2)` | `pending` |

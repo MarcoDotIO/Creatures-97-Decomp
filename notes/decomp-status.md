@@ -30,6 +30,11 @@
   - `Hatchery.exe`
   - `remove.exe`
   - `Launcher.exe`
+- The reconstruction tree now also has an executable-oriented split:
+  - `reconstruction/engine/` for shared startup/settings helpers
+  - `reconstruction/apps/creatures/` for the current `Creatures.exe` startup milestone target
+  - `reconstruction/apps/launcher/` for launcher-oriented executable scaffolding
+  - `reconstruction/apps/remove/` for uninstall-plan executable scaffolding
 
 ## Current counts
 - `Creatures.exe`: 1,116 functions, 720 strings, 511 imported externals.
@@ -73,16 +78,41 @@
 - A verified lift now also exists for the table-loading wrapper above that constructor tail, which resolves the root `ATT` anchors plus the required per-slot `QAD` anchors before instantiating the sprite graph.
 - A verified lift now also exists for the immediate `FUN_0040f900` tail above that wrapper, which reapplies the persisted 15-byte posture string after the sprite graph has been reconstructed.
 - A verified lift now also exists for the body pose-string wrapper layer, including selection-mode driven chain-group reassignment and the 15-character posture-string applicator used immediately above the layout refresh path.
+- A verified lift now also exists for the first recovered render path beneath the display-surface presenter, including the scene-refresh coordinator, the clipped 8-bit sprite blitter, the masked and opaque row-copy kernels, and the immediate visible-sprite helper wrappers used to gather and draw depth-sorted actors.
+- A verified lift now also exists for the viewport-capture/export path above the display surface, including the centered capture-rectangle chooser and the 8-bit backbuffer-region packager that hands the exported payload to the external sink.
 - A verified lift now also exists for the sprite-file cache and temporary body-builder asset-release path that sit directly on the larger body-assembly boot path.
+- A verified lift now also exists for the first higher-level display/backbuffer wrapper layer above the WinG helpers, including auxiliary surface-resource teardown and dword-aligned backbuffer resize/clamp behavior.
+- A verified lift now also exists for the adjacent palette/window synchronization layer above that display object, including the whole-window palette-realize sequence and the window-change guard that triggers it.
+- A verified lift now also exists for the next wrapped-redraw wrapper layer above that display object, including the shared wrapped-rectangle clipper and the two redraw-entry helpers that feed the unresolved common blit core.
+- A verified lift now also exists for the shared display present layer under those wrappers, including wrapped world-to-client projection, aligned region present/blit behavior, palette selection around the blit, and the optional focus-rectangle overlay.
+- A verified lift now also exists for the next viewport-motion layer above that display object, including the wrapped/clamped scroll core plus the immediate whole-axis and combined-axis wrappers that feed camera-follow code.
+- A verified lift now also exists for the next viewport-follow controller layer above that motion core, including scrollbar resynchronization, smoothed and immediate target recentering, and the small settle-then-track state machine that promotes the camera into live follow mode.
+- A verified lift now also exists for the first media-bootstrap helpers, including WinG 8-bit backbuffer creation/palette upload and DirectSound primary-buffer initialization.
+- A verified lift now also exists for the recovered Creatures registry/bootstrap layer, including HKCU/HKLM handler initialization, WindowPosn and EyePosn default/writeback helpers, and the main-window and eye-window save paths that sit directly on top of those registry payloads.
+- A verified lift now also exists for the palette-file/bootstrap layer beneath the world-load gate, including PALETTE.DTA table loading, LOGPALETTE seeding with reserved system colors, and the four-table palette bootstrap path used immediately before the first world-load branch.
+- A verified lift now also exists for the adjacent world-file staging layer above that gate, including glob-based world-file delete/copy helpers plus the TempBu and Backup orchestration paths that preserve `World.sfc` and `*.spr` payloads across load/restore flows.
+- A verified lift now also exists for the first archive-backed `World.sfc` prefix layer beneath the unresolved full world deserializer, including the shared archive `u32` loader, MFC new-class/count/CString helpers, the recovered `MapData` / `CGallery` prefix parse, and the next live class-boundary scan that now resolves to `PointerTool`.
+- A verified lift now also exists for the fixed-size `MapData` archive container around that prefix, including the two leading state dwords, the bounded 40-record room table, the `0x105` scanline/boundary table, and the final 100 embedded object slots.
+- A verified lift now also exists for the selected-creature UI/status cluster above the same gate, including the four-slot history list maintenance, status-bar slot refresh path, health-and-score numeric formatting, main-window title rebuild, and selected-creature setter wrapper.
 - A verified lift now also exists for the higher-level `FUN_0040f922` body-builder pass, which flushes the temporary sprite cache, rebuilds the packed body bank from the active genome recipe, reacquires the finished frame set, and reconstructs the posed sprite graph.
 - A verified lift now also exists for the first higher-level caller above the body builder (`FUN_00422db0`), including its genome/body refresh sequencing and final male/female/grendel voice selection.
 - A verified lift now also exists for the automatic sex-balancing helper inside `FUN_00422aa0`, which biases new creatures toward the underrepresented non-excluded population.
 - A verified lift now also exists for the next higher-level creature lifecycle callers above that refresh path, including the wait-state bootstrap, the runtime attention/growth updater, and the imported-genome rebuild path.
 
 ## Latest completed functions
-- `FUN_00420b20` (`0x00420b20`) -> `creatures_creature_start_waiting_behavior`
-- `FUN_004224c0` (`0x004224c0`) -> `creatures_creature_update_attention_and_growth`
-- `FUN_004230c0` (`0x004230c0`) -> `creatures_creature_rebuild_from_export_genome`
+- `FUN_00406080` (`0x00406080`) -> `creatures_archive_read_u32`
+- `FUN_00414860` (`0x00414860`) -> `creatures_archive_read_u32`
+- `FUN_0042d7b0` (`0x0042d7b0`) -> `creatures_map_data_archive_load`
+- `FUN_004069f0` (`0x004069f0`) -> `creatures_selected_creature_set`
+- `FUN_00407820` (`0x00407820`) -> `creatures_world_directory_delete_mask`
+- `FUN_00407970` (`0x00407970`) -> `creatures_world_directory_copy_mask`
+- `FUN_00407b20` (`0x00407b20`) -> `creatures_world_stage_temp_backup`
+- `FUN_00407cd0` (`0x00407cd0`) -> `creatures_world_restore_backup_to_temp`
+- `FUN_004126c0` (`0x004126c0`) -> `creatures_main_window_refresh_title`
+- `FUN_0041c130` (`0x0041c130`) -> `creatures_selected_creature_history_push`
+- `FUN_0041c1b0` (`0x0041c1b0`) -> `creatures_selected_creature_history_remove`
+- `FUN_0041c2f0` (`0x0041c2f0`) -> `creatures_status_bar_refresh_history_and_metrics`
+- `FUN_0041c410` (`0x0041c410`) -> `creatures_status_bar_refresh_selected_metrics`
 
 ## Working directories
 - Ghidra exports: `analysis/ghidra_exports/`

@@ -13,7 +13,8 @@ This repository contains the decompilation-facing project surface:
 - `recovered_src/`
   Per-function raw decompiler output exported from Ghidra.
 - `reconstruction/`
-  The compilable reconstruction slice and its tests.
+  The compilable reconstruction slice, shared engine scaffolding, and
+  executable-oriented app targets.
 - `manifests/`
   Naming maps, binary inventories, and reconstruction coverage tables.
 - `notes/`
@@ -35,7 +36,19 @@ assets, including:
 
 ## Current reconstruction status
 
-The active compilable slice lives under `reconstruction/creatures_slice/`.
+The active low-level verification harness lives under
+`reconstruction/creatures_slice/`.
+Executable-oriented targets now sit alongside it under:
+
+- `reconstruction/engine/`
+  Shared settings and startup helpers for higher-level reconstructed apps.
+- `reconstruction/apps/creatures/`
+  The current `Creatures.exe` startup smoke target.
+- `reconstruction/apps/launcher/`
+  A small launcher-oriented CLI target wired to recovered launcher helpers.
+- `reconstruction/apps/remove/`
+  A small uninstall-plan CLI target wired to recovered `remove.exe` helpers.
+
 Recent verified `Creatures.exe` lifts include:
 
 - `FUN_00420b20` -> `creatures_creature_start_waiting_behavior`
@@ -52,14 +65,28 @@ See `notes/decomp-status.md` and
 Native host build:
 
 ```bash
-bash scripts/build_reconstruction_native.sh
+bash scripts/build_reconstruction_native.sh slice
 build/reconstruction_native/reconstruction_native
 ```
 
 Windows cross-build:
 
 ```bash
-bash scripts/build_reconstruction_windows.sh
+bash scripts/build_reconstruction_windows.sh all
+```
+
+Windows 11 Parallels smoke run against a staged live asset tree:
+
+```bash
+bash scripts/stage_and_run_creatures_reconstruction_in_vm.sh
+```
+
+Executable smoke targets:
+
+```bash
+bash scripts/build_reconstruction_native.sh creatures
+bash scripts/build_reconstruction_native.sh launcher
+bash scripts/build_reconstruction_native.sh remove
 ```
 
 ## Layout rule

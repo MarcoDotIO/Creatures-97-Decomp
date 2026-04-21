@@ -3,9 +3,15 @@
 ## Current verified target
 - A reconstruction slice now builds and runs on both macOS ARM and Windows.
 - Source location: `reconstruction/creatures_slice/`
+- Higher-level executable targets now build from:
+  - `reconstruction/apps/creatures/`
+  - `reconstruction/apps/launcher/`
+  - `reconstruction/apps/remove/`
+  - `reconstruction/engine/`
 - Native build script: `scripts/build_reconstruction_native.sh`
 - Windows build script: `scripts/build_reconstruction_windows.sh`
 - VM staging/run script: `scripts/stage_and_run_creatures_slice_in_vm.sh`
+- Windows 11 live-asset smoke script: `scripts/stage_and_run_creatures_reconstruction_in_vm.sh`
 
 ## Verified loop
 1. Build natively on macOS ARM with `clang`.
@@ -17,15 +23,35 @@
 - Native artifact: `build/reconstruction_native/reconstruction_native`
 - Native execution result:
   - `creatures_slice.exe: all slice checks passed`
+- Additional native artifacts now build cleanly:
+  - `build/reconstruction_native/creatures_reconstruction`
+  - `build/reconstruction_native/launcher_reconstruction`
+  - `build/reconstruction_native/remove_reconstruction`
+- Native executable-smoke results:
+  - `creatures_reconstruction` passes a fixture-backed startup asset probe
+  - `creatures_reconstruction` now also runs the recovered world-load bootstrap, stages `World.sfc` into `TempBu`, refreshes the recovered title and score panes against the live asset tree, and parses the live `MapData` / `CGallery` archive prefix through the next `PointerTool` class boundary
+  - `launcher_reconstruction` initializes the recovered launcher registry path and enumerates pipe-delimited applets
+  - `remove_reconstruction` prints the recovered uninstall cleanup plan and registry cleanup set
 - Built artifact: `build/creatures_slice/creatures_slice.exe`
 - Guest execution result:
   - `creatures_slice.exe: all slice checks passed`
+- Additional Windows artifacts now build cleanly:
+  - `build/creatures_slice/creatures_reconstruction.exe`
+  - `build/creatures_slice/launcher_reconstruction.exe`
+  - `build/creatures_slice/remove_reconstruction.exe`
+- Windows 11 live-asset smoke result:
+  - `creatures_reconstruction.exe` passes from inside the Parallels guest when staged beside the normalized live asset tree from `build/reconstruction_native/` and launched with `--genetics NORN.GNO`
+  - the guest run now also exercises the recovered TempBu staging path, the recovered title and score-pane refresh callbacks, and the live `World.sfc` class-boundary parse through `PointerTool`
 
 ## What is verified so far
 - The host can produce Windows PE binaries from reconstructed code.
 - The host can also build and run the same reconstruction slice natively on macOS ARM.
 - The Windows 11 ARM VM can run the produced x86 PE through its compatibility layer.
 - A small set of recovered functions can already be turned into compilable, runnable code with provenance preserved.
+- The repo now supports executable-oriented milestone targets in addition to the low-level slice harness.
+- The `Creatures.exe` milestone target can already validate startup-directory seeding and required-asset discovery against a synthetic install tree.
+- The `Creatures.exe` milestone target now also exercises the recovered palette bootstrap path, TempBu world staging path, first title/status refresh path, and the first archive-backed live `World.sfc` prefix parse against the staged live asset tree.
+- The slice harness now also verifies the recovered fixed-size `MapData` container serializer around that world-source prefix, including its room-table, boundary-table, and embedded-object slot ordering.
 
 ## Verified slice contents
 - `FUN_0041d030` with human-readable wrapper `pack_color_le`
@@ -89,6 +115,44 @@
 - `FUN_0040c118` with human-readable wrapper `creatures_sprite_file_cache_acquire_before_or_at_stamp`
 - `FUN_0040c1f0` with human-readable wrapper `creatures_sprite_file_cache_flush`
 - `FUN_004102a0` with human-readable wrapper `creatures_body_builder_release_assets`
+- `FUN_00402950` with human-readable wrapper `creatures_display_surface_reset_backbuffer`
+- `FUN_004029b0` with human-readable wrapper `creatures_display_surface_resize_backbuffer`
+- `FUN_00402a10` with human-readable wrapper `creatures_display_surface_sync_palette_window`
+- `FUN_00402a30` with human-readable wrapper `creatures_display_surface_realize_palette`
+- `FUN_00402ab0` with human-readable wrapper `creatures_display_surface_prepare_and_redraw_region`
+- `FUN_00402b90` with human-readable wrapper `creatures_display_surface_redraw_region`
+- `FUN_00402c30` with human-readable wrapper `creatures_display_surface_present_region`
+- `FUN_00402f00` with human-readable wrapper `creatures_display_surface_render_scene`
+- `FUN_00403110` with human-readable wrapper `creatures_display_surface_world_to_client_rect`
+- `FUN_004031e0` with human-readable wrapper `creatures_display_surface_scroll_by`
+- `FUN_00403200` with human-readable wrapper `creatures_display_surface_scroll_horizontally`
+- `FUN_00403230` with human-readable wrapper `creatures_display_surface_scroll_vertically`
+- `FUN_00403260` with human-readable wrapper `creatures_display_surface_scroll`
+- `FUN_004022a0` with human-readable wrapper `creatures_viewport_sync_scrollbars`
+- `FUN_00402680` with human-readable wrapper `creatures_viewport_follow_controller_update`
+- `FUN_00402700` with human-readable wrapper `creatures_viewport_follow_controller_force_recenter`
+- `FUN_00406880` with human-readable wrapper `creatures_capture_centered_viewport_region`
+- `FUN_00403640` with human-readable wrapper `creatures_camera_follow_seek_target`
+- `FUN_00403700` with human-readable wrapper `creatures_camera_follow_set_target`
+- `FUN_0040b300` with human-readable wrapper `creatures_display_intersect_wrapped_rect`
+- `FUN_0040cb70` with human-readable wrapper `creatures_frame_entry_draw_clipped_to_buffer`
+- `FUN_0040d1b0` with human-readable wrapper `creatures_copy_masked_pixels`
+- `FUN_0040d230` with human-readable wrapper `creatures_copy_opaque_pixels`
+- `FUN_00410520` with human-readable wrapper `creatures_capture_8bit_bitmap_region`
+- `FUN_0041a370` with human-readable wrapper `creatures_renderable_sprite_collect_visible`
+- `FUN_0041a400` with human-readable wrapper `creatures_renderable_sprite_draw`
+- `FUN_00403c90` with human-readable wrapper `creatures_wing_surface_release`
+- `FUN_00403cf0` with human-readable wrapper `creatures_wing_surface_create_8bit_bitmap`
+- `FUN_00403dc0` with human-readable wrapper `creatures_wing_surface_refresh_palette`
+- `FUN_00408760` with human-readable wrapper `creatures_audio_voice_slot_reset`
+- `FUN_00408780` with human-readable wrapper `creatures_audio_output_create_primary_buffer`
+- `FUN_00408960` with human-readable wrapper `creatures_audio_output_destroy`
+- `FUN_00408980` with human-readable wrapper `creatures_audio_output_shutdown`
+- `FUN_00409020` with human-readable wrapper `creatures_audio_output_release_registered_streams_and_slots`
+- `FUN_00409050` with human-readable wrapper `creatures_audio_output_release_registered_streams`
+- `FUN_004091b0` with human-readable wrapper `creatures_audio_output_release_voice_slot`
+- `FUN_00409210` with human-readable wrapper `creatures_audio_output_release_owner_chain`
+- `FUN_004092d0` with human-readable wrapper `creatures_audio_output_release_registered_owners`
 
 ## remove.exe reconstruction coverage
 - Install-path lookup recovered from the original HKLM Creatures key.
@@ -131,6 +195,88 @@
 - Executable-path-driven seeding is now verified through the shared native/Windows test harness.
 - Missing-file fallback through the configured `CD Drive` setting is now verified, including the retry loop that probes `Genetics` before rebuilding the requested asset path.
 
+## Creatures.exe registry/window-state coverage
+- The shared Creatures registry bootstrap layer is now verified through:
+  - `creatures_registry_bootstrap_main_handler`
+  - `creatures_registry_handler_init`
+  - `creatures_registry_read_value`
+  - `creatures_registry_read_rect`
+  - `creatures_registry_read_pair32`
+  - `creatures_registry_read_or_default_rect`
+  - `creatures_registry_read_or_default_pair32`
+  - `creatures_registry_write_string`
+  - `creatures_registry_write_rect`
+  - `creatures_registry_write_pair32`
+- The first boot-adjacent window-state callers above that registry layer are now verified through:
+  - `creatures_window_bootstrap_placement`
+  - `creatures_main_window_save_placement_and_shutdown`
+  - `creatures_eye_window_save_position_and_destroy`
+- The shared harness checks:
+  - recovered `Millennium Interactive\\Creatures\\1.0` registry-path construction for both HKCU and HKLM
+  - 16-byte `WindowPosn` read/default/write behavior
+  - 8-byte `EyePosn` read/default/write behavior
+  - saved-window rejection when the stored origin is outside the current screen metrics
+  - main-window save suppression while the window is iconic
+  - eye-window left/top persistence before the recovered destroy callback
+
+## Creatures.exe world-file staging coverage
+- The world-file staging layer above the palette bootstrap is now verified through:
+  - `creatures_world_directory_delete_mask`
+  - `creatures_world_directory_copy_mask`
+  - `creatures_world_stage_temp_backup`
+  - `creatures_world_restore_backup_to_temp`
+- The shared harness checks:
+  - glob-based delete and copy behavior inside world directories
+  - TempBu staging order for `World.sfc`, `*.spr`, and extra file masks
+  - Backup-to-TempBu restore ordering
+- The milestone executable now also verifies that the recovered world-load bootstrap creates `TempBu` and stages `World.sfc` from the live asset tree.
+
+## Creatures.exe world-source archive coverage
+- The world-source archive prefix layer is now verified through:
+  - `creatures_archive_read_u32`
+  - `creatures_mfc_archive_read_new_class_header`
+  - `creatures_mfc_archive_read_count`
+  - `creatures_mfc_archive_read_cstring`
+  - `creatures_mfc_archive_find_next_new_class_header`
+  - `creatures_world_source_parse_header`
+- The shared harness checks:
+  - the `MapData` top-level class header and its two zeroed state dwords
+  - the inline `CGallery` class header
+  - gallery count `464`
+  - fixed eight-byte gallery name `Back`
+  - the first preserved descriptor bytes `04 00 00 90`
+  - the next valid archive class header scan reaching `PointerTool`
+- The milestone executable now also prints the live next-class boundary:
+  - `next_class_offset: 0x24a7`
+  - `next_class: PointerTool`
+
+## Creatures.exe MapData archive coverage
+- The fixed-size `MapData` container serializer is now verified through:
+  - `creatures_map_data_archive_load`
+  - `creatures_map_data_archive_save`
+- The shared harness checks:
+  - two leading state dwords
+  - the nested gallery callback position
+  - the bounded 40-record room table layout
+  - the full `0x105` scanline/boundary table
+  - the final 100 embedded object callback slots
+
+## Creatures.exe selected-creature UI coverage
+- The selected-creature UI/status cluster above the world-load bootstrap is now verified through:
+  - `creatures_selected_creature_set`
+  - `creatures_main_window_refresh_title`
+  - `creatures_selected_creature_history_push`
+  - `creatures_selected_creature_history_remove`
+  - `creatures_status_bar_refresh_history_and_metrics`
+  - `creatures_status_bar_refresh_selected_metrics`
+- The shared harness checks:
+  - four-slot history push and remove behavior
+  - active/inactive/non-creature status-pane labeling
+  - right-aligned health and score text formatting
+  - title composition from the base `Creatures` caption and selected-creature name
+  - selected-creature setter ordering for title refresh, eye-window handling, main-surface refresh, and final invalidation
+- The milestone executable now also uses the recovered title and score-pane callbacks during the world-load bootstrap instead of no-op placeholders.
+
 ## Creatures.exe body-data reconstruction coverage
 - Body-data asset token construction is now verified for the four-byte `family/group/row/column` naming scheme consumed by the main creature-body loaders.
 - Body-data path construction is now verified for the `Body data\\<token><suffix>` layout used by `FUN_0040b5c0`.
@@ -150,6 +296,63 @@
   - `creatures_frame_entry_apply_palette_map` remaps a single frame through a 256-byte palette table.
   - `creatures_frame_set_apply_palette_map` iterates an entire frame set and remaps each entry.
 - The compositor's random depth chooser is now verified for the collision-and-retry loop recovered from `FUN_0040f870`, including rejection of an occupied eight-slot depth band.
+
+## Creatures.exe media-bootstrap coverage
+- WinG backbuffer bootstrap is now verified through:
+  - `creatures_wing_surface_create_8bit_bitmap`
+  - `creatures_wing_surface_refresh_palette`
+  - `creatures_wing_surface_release`
+- Palette bootstrap is now verified through:
+  - `creatures_palette_table_load`
+  - `creatures_log_palette_seed_system_colors`
+  - `creatures_palette_handle_create`
+  - `creatures_palette_bootstrap`
+- The shared harness checks:
+  - recovered 8-bit DIB header configuration
+  - recovered `PALETTE.DTA` 0x1e-byte seek and 236-entry RGB load
+  - reserved low/high system-palette entry preservation
+  - mid-band LOGPALETTE population for the 236 game-controlled colors
+  - four-table palette bootstrap sequencing before the final palette handle create
+  - palette-entry to RGBQUAD translation
+  - WinG bitmap creation and selection into the backing DC
+  - teardown of the retained bitmap/DC handles
+- DirectSound bootstrap is now verified through:
+  - `creatures_audio_voice_slot_reset`
+
+## Creatures.exe viewport-controller coverage
+- Scrollbar midpoint resynchronization is now verified through `creatures_viewport_sync_scrollbars`.
+- The next follow-controller caller chain above the recovered camera integrator is now verified:
+  - `creatures_viewport_follow_controller_set_mode`
+  - `creatures_camera_follow_seek_target`
+  - `creatures_camera_follow_set_target`
+  - `creatures_viewport_handle_vertical_scroll`
+  - `creatures_viewport_follow_controller_update`
+  - `creatures_viewport_follow_controller_force_recenter`
+- The shared harness now checks:
+  - midpoint scrollbar range/position refresh for both axes
+  - follow-mode demotion and whole-window invalidation on direct scrollbar movement
+  - pending follow-state reset when follow mode is disabled explicitly
+  - smoothed recentering on an active tracked target
+  - immediate wrapped recentering when the target crosses the horizontal seam
+  - the twenty-tick settle gate that promotes follow mode into active tracking
+  - whole-window invalidation on forced recenter and on settle completion
+  - `creatures_audio_output_create_primary_buffer`
+  - `creatures_audio_output_release_registered_streams`
+  - `creatures_audio_output_release_registered_streams_and_slots`
+  - `creatures_audio_output_release_voice_slot`
+  - `creatures_audio_output_release_owner_chain`
+  - `creatures_audio_output_release_registered_owners`
+  - `creatures_audio_output_shutdown`
+  - `creatures_audio_output_destroy`
+- The shared harness checks:
+  - recovered primary-buffer descriptor values
+  - cooperative-level request
+  - stereo 22050 Hz 16-bit PCM format rewrite
+  - ready-flag behavior on both success and format-set failure
+  - active voice-slot shutdown and owner refcount drops
+  - linked-owner chain release behavior
+  - registered-stream release and mixer-idle notifications
+  - optional self-destroy behavior on the destructor wrapper
 
 ## Creatures.exe body-sprite construction coverage
 - The common body-sprite base initializer is now verified for the reset of frame-band state and pose-selection state.

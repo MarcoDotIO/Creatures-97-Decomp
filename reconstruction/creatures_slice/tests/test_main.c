@@ -3,6 +3,25 @@
 #include <string.h>
 
 #include "creatures_slice.h"
+#include "creatures_boot_registry.h"
+#include "creatures_archive_stream.h"
+#include "creatures_camera_follow.h"
+#include "creatures_media_audio.h"
+#include "creatures_media_display.h"
+#include "creatures_map_data_archive.h"
+#include "creatures_mfc_archive.h"
+#include "creatures_sprite_blit.h"
+#include "creatures_palette_bootstrap.h"
+#include "creatures_selected_creature_ui.h"
+#include "creatures_viewport_follow.h"
+#include "creatures_viewport_controller.h"
+#include "creatures_viewport_capture.h"
+#include "creatures_media_wing.h"
+#include "creatures_world_source.h"
+#include "creatures_world_files.h"
+#include "creatures_world_bootstrap.h"
+#include "creatures_window_state.h"
+#include "reconstruction_startup.h"
 
 static void expect_u32(uint32_t actual, uint32_t expected, const char *label) {
     if (actual != expected) {
@@ -53,6 +72,118 @@ static void expect_size(size_t actual, size_t expected, const char *label) {
     }
 }
 
+typedef struct FakeMapDataArchiveContext {
+    uint32_t read_u32_values[512];
+    size_t read_u32_count;
+    size_t read_u32_index;
+    uint8_t read_room_bytes[CREATURES_MAP_DATA_ROOM_CAPACITY][16];
+    size_t read_room_byte_count;
+    size_t read_room_byte_index;
+    int load_gallery_count;
+    int save_gallery_count;
+    int load_object_count;
+    int save_object_count;
+    void *loaded_gallery_handle;
+    uint32_t written_u32_values[512];
+    size_t written_u32_count;
+    uint8_t written_room_bytes[CREATURES_MAP_DATA_ROOM_CAPACITY][16];
+    size_t written_room_byte_count;
+} FakeMapDataArchiveContext;
+
+static int fake_map_data_read_u32(void *archive_ctx, uint32_t *out_value, void *ctx) {
+    FakeMapDataArchiveContext *map_context;
+
+    (void)archive_ctx;
+    map_context = (FakeMapDataArchiveContext *)ctx;
+    if (map_context->read_u32_index >= map_context->read_u32_count) {
+        return 1;
+    }
+    *out_value = map_context->read_u32_values[map_context->read_u32_index++];
+    return 0;
+}
+
+static int fake_map_data_write_u32(void *archive_ctx, uint32_t value, void *ctx) {
+    FakeMapDataArchiveContext *map_context;
+
+    (void)archive_ctx;
+    map_context = (FakeMapDataArchiveContext *)ctx;
+    if (map_context->written_u32_count >=
+        sizeof(map_context->written_u32_values) / sizeof(map_context->written_u32_values[0])) {
+        return 1;
+    }
+    map_context->written_u32_values[map_context->written_u32_count++] = value;
+    return 0;
+}
+
+static int fake_map_data_read_bytes(void *archive_ctx, void *out_bytes, size_t byte_count, void *ctx) {
+    FakeMapDataArchiveContext *map_context;
+
+    (void)archive_ctx;
+    map_context = (FakeMapDataArchiveContext *)ctx;
+    if (byte_count != 16 || map_context->read_room_byte_index >= map_context->read_room_byte_count) {
+        return 1;
+    }
+    memcpy(out_bytes, map_context->read_room_bytes[map_context->read_room_byte_index++], byte_count);
+    return 0;
+}
+
+static int fake_map_data_write_bytes(
+    void *archive_ctx, const void *bytes, size_t byte_count, void *ctx) {
+    FakeMapDataArchiveContext *map_context;
+
+    (void)archive_ctx;
+    map_context = (FakeMapDataArchiveContext *)ctx;
+    if (byte_count != 16 || map_context->written_room_byte_count >=
+        sizeof(map_context->written_room_bytes) / sizeof(map_context->written_room_bytes[0])) {
+        return 1;
+    }
+    memcpy(
+        map_context->written_room_bytes[map_context->written_room_byte_count++], bytes, byte_count);
+    return 0;
+}
+
+static int fake_map_data_load_gallery(void *archive_ctx, void **gallery_slot, void *ctx) {
+    FakeMapDataArchiveContext *map_context;
+
+    (void)archive_ctx;
+    map_context = (FakeMapDataArchiveContext *)ctx;
+    map_context->load_gallery_count++;
+    *gallery_slot = map_context->loaded_gallery_handle;
+    return 0;
+}
+
+static int fake_map_data_save_gallery(void *archive_ctx, void *gallery_slot, void *ctx) {
+    FakeMapDataArchiveContext *map_context;
+
+    (void)archive_ctx;
+    map_context = (FakeMapDataArchiveContext *)ctx;
+    map_context->save_gallery_count++;
+    return gallery_slot == map_context->loaded_gallery_handle ? 0 : 1;
+}
+
+static int fake_map_data_load_embedded_object(
+    void *archive_ctx, CreaturesMapDataEmbeddedObjectSlot *slot, void *ctx) {
+    FakeMapDataArchiveContext *map_context;
+
+    (void)archive_ctx;
+    map_context = (FakeMapDataArchiveContext *)ctx;
+    memset(slot->opaque_bytes, (int)(0xa0 + map_context->load_object_count),
+        sizeof(slot->opaque_bytes));
+    map_context->load_object_count++;
+    return 0;
+}
+
+static int fake_map_data_save_embedded_object(
+    void *archive_ctx, const CreaturesMapDataEmbeddedObjectSlot *slot, void *ctx) {
+    FakeMapDataArchiveContext *map_context;
+
+    (void)archive_ctx;
+    (void)slot;
+    map_context = (FakeMapDataArchiveContext *)ctx;
+    map_context->save_object_count++;
+    return 0;
+}
+
 static int fake_registry_query(uintptr_t hive_handle, const char *value_name, uint32_t *type_out,
     uint8_t *data_out, uint32_t *size_inout) {
     const char *payload = hive_handle == 1 ? "user-value" : "machine-value";
@@ -93,6 +224,11 @@ typedef struct FakeFilesystemContext {
     size_t match_set_count;
     char deleted_paths[64][REMOVE_MAX_PATH];
     size_t deleted_path_count;
+    char copied_sources[64][REMOVE_MAX_PATH];
+    char copied_destinations[64][REMOVE_MAX_PATH];
+    size_t copy_count;
+    char ensured_directories[16][REMOVE_MAX_PATH];
+    size_t ensure_directory_count;
 } FakeFilesystemContext;
 
 typedef struct FakeShellContext {
@@ -122,6 +258,113 @@ typedef struct LauncherRegistryContext {
     LauncherWriteRecord writes[8];
     size_t write_count;
 } LauncherRegistryContext;
+
+typedef struct BootRegistryEntry {
+    const char *root_name;
+    const char *subkey;
+    const char *value_name;
+    uint8_t data[32];
+    size_t data_size;
+} BootRegistryEntry;
+
+typedef struct BootRegistryWriteRecord {
+    char root_name[32];
+    char subkey[128];
+    char value_name[64];
+    uint8_t data[32];
+    size_t data_size;
+} BootRegistryWriteRecord;
+
+typedef struct BootRegistryContext {
+    const BootRegistryEntry *entries;
+    size_t entry_count;
+    char created_keys[8][160];
+    size_t created_key_count;
+    BootRegistryWriteRecord writes[8];
+    size_t write_count;
+} BootRegistryContext;
+
+typedef struct BootWindowContext {
+    int system_metrics[2];
+    CreaturesWindowPlacement finalized_placement;
+    int finalize_call_count;
+} BootWindowContext;
+
+typedef struct SavedWindowContext {
+    int is_iconic;
+    CreaturesDisplayRect next_rect;
+    void *last_window_handle;
+    void *last_owner;
+    int read_rect_call_count;
+    int shutdown_call_count;
+    int destroy_call_count;
+} SavedWindowContext;
+
+typedef struct FakePaletteFileContext {
+    char expected_path[REMOVE_MAX_PATH];
+    uint8_t bytes[CREATURES_PALETTE_FILE_HEADER_SKIP +
+        CREATURES_PALETTE_GAME_COLOR_COUNT * 3];
+    size_t size;
+    size_t cursor;
+    int open_call_count;
+    int close_call_count;
+} FakePaletteFileContext;
+
+typedef struct FakePaletteSystemContext {
+    CreaturesPaletteEntry low_entries[CREATURES_PALETTE_SYSTEM_RESERVED_COUNT];
+    CreaturesPaletteEntry high_entries[CREATURES_PALETTE_SYSTEM_RESERVED_COUNT];
+    CreaturesLogPalette created_palettes[8];
+    void *created_handles[8];
+    int create_palette_call_count;
+    int select_palette_call_count;
+    int realize_palette_call_count;
+    int get_system_entries_call_count;
+    int delete_object_call_count;
+    int release_dc_call_count;
+    void *screen_dc;
+    void *previous_palette_handle;
+    void *last_deleted_object;
+    void *last_released_dc;
+} FakePaletteSystemContext;
+
+typedef struct FakeWorldBootstrapContext {
+    char call_order[16];
+    size_t call_count;
+    void *last_world_source;
+    void *last_tool_owner;
+    void *last_window_handle;
+    int set_timer_call_count;
+    int kill_timer_call_count;
+    int load_world_result;
+    int bootstrap_palette_result;
+    int reset_metrics_callback_count;
+} FakeWorldBootstrapContext;
+
+typedef struct FakeSelectedCreature {
+    uint32_t class_flags;
+    int inactive;
+    unsigned int health_raw;
+    const char *name;
+} FakeSelectedCreature;
+
+typedef struct FakeSelectedCreatureUiContext {
+    char pane_texts[8][64];
+    uint32_t pane_states[8];
+    uint32_t loaded_resource_ids[16];
+    size_t loaded_resource_count;
+    int score_parts[8];
+    char window_title[256];
+    void *last_invalidated_window;
+    int last_invalidate_erase;
+    int invalidate_count;
+    int selection_mode_values[8];
+    size_t selection_mode_count;
+    int close_eye_count;
+    int refresh_eye_count;
+    int refresh_main_surface_count;
+    void *removed_inactive_creatures[4];
+    size_t removed_inactive_count;
+} FakeSelectedCreatureUiContext;
 
 typedef struct LauncherShellContext {
     const char *existing_paths[8];
@@ -388,6 +631,36 @@ static int fake_remove_filesystem_delete_path(const char *path, void *ctx) {
     return 0;
 }
 
+static int fake_world_filesystem_copy_path(
+    const char *source_path, const char *destination_path, void *ctx) {
+    FakeFilesystemContext *filesystem_context;
+
+    filesystem_context = (FakeFilesystemContext *)ctx;
+    strncpy(filesystem_context->copied_sources[filesystem_context->copy_count], source_path,
+        REMOVE_MAX_PATH - 1);
+    filesystem_context
+        ->copied_sources[filesystem_context->copy_count][REMOVE_MAX_PATH - 1] = '\0';
+    strncpy(filesystem_context->copied_destinations[filesystem_context->copy_count],
+        destination_path, REMOVE_MAX_PATH - 1);
+    filesystem_context
+        ->copied_destinations[filesystem_context->copy_count][REMOVE_MAX_PATH - 1] = '\0';
+    filesystem_context->copy_count++;
+    return 0;
+}
+
+static int fake_world_filesystem_ensure_directory(const char *path, void *ctx) {
+    FakeFilesystemContext *filesystem_context;
+
+    filesystem_context = (FakeFilesystemContext *)ctx;
+    strncpy(filesystem_context->ensured_directories[filesystem_context->ensure_directory_count],
+        path, REMOVE_MAX_PATH - 1);
+    filesystem_context
+        ->ensured_directories[filesystem_context->ensure_directory_count][REMOVE_MAX_PATH - 1] =
+        '\0';
+    filesystem_context->ensure_directory_count++;
+    return 0;
+}
+
 static int fake_remove_shell_execute(const char *command_line, void *ctx) {
     FakeShellContext *shell_context;
 
@@ -458,6 +731,459 @@ static int fake_launcher_registry_write_value(const char *root_name, const char 
     memcpy(record->value, data, data_size);
     record->value[sizeof(record->value) - 1] = '\0';
     return 0;
+}
+
+static int fake_boot_registry_create_key(const char *root_name, const char *subkey, void *ctx) {
+    BootRegistryContext *registry_context;
+
+    registry_context = (BootRegistryContext *)ctx;
+    snprintf(registry_context->created_keys[registry_context->created_key_count],
+        sizeof(registry_context->created_keys[registry_context->created_key_count]), "%s|%s",
+        root_name, subkey);
+    registry_context->created_key_count++;
+    return 0;
+}
+
+static int fake_boot_registry_read_value(const char *root_name, const char *subkey,
+    const char *value_name, uint8_t *data_out, size_t *size_inout, void *ctx) {
+    BootRegistryContext *registry_context;
+    size_t index;
+
+    registry_context = (BootRegistryContext *)ctx;
+    for (index = 0; index < registry_context->entry_count; index++) {
+        if (strcmp(registry_context->entries[index].root_name, root_name) != 0) {
+            continue;
+        }
+        if (strcmp(registry_context->entries[index].subkey, subkey) != 0) {
+            continue;
+        }
+        if (strcmp(registry_context->entries[index].value_name, value_name) != 0) {
+            continue;
+        }
+        if (*size_inout < registry_context->entries[index].data_size) {
+            return 1;
+        }
+        memcpy(data_out, registry_context->entries[index].data,
+            registry_context->entries[index].data_size);
+        *size_inout = registry_context->entries[index].data_size;
+        return 0;
+    }
+    return 1;
+}
+
+static int fake_boot_registry_write_value(const char *root_name, const char *subkey,
+    const char *value_name, const uint8_t *data, size_t data_size, void *ctx) {
+    BootRegistryContext *registry_context;
+    BootRegistryWriteRecord *record;
+
+    registry_context = (BootRegistryContext *)ctx;
+    record = &registry_context->writes[registry_context->write_count++];
+    strncpy(record->root_name, root_name, sizeof(record->root_name) - 1);
+    record->root_name[sizeof(record->root_name) - 1] = '\0';
+    strncpy(record->subkey, subkey, sizeof(record->subkey) - 1);
+    record->subkey[sizeof(record->subkey) - 1] = '\0';
+    strncpy(record->value_name, value_name, sizeof(record->value_name) - 1);
+    record->value_name[sizeof(record->value_name) - 1] = '\0';
+    if (data_size > sizeof(record->data)) {
+        data_size = sizeof(record->data);
+    }
+    memcpy(record->data, data, data_size);
+    record->data_size = data_size;
+    return 0;
+}
+
+static int fake_boot_get_system_metric(int metric_index, void *ctx) {
+    BootWindowContext *window_context;
+
+    window_context = (BootWindowContext *)ctx;
+    if (metric_index == 0x10) {
+        return window_context->system_metrics[0];
+    }
+    if (metric_index == 0x11) {
+        return window_context->system_metrics[1];
+    }
+    return 0;
+}
+
+static void fake_boot_finalize_window_placement(
+    CreaturesWindowPlacement *placement, void *ctx) {
+    BootWindowContext *window_context;
+
+    window_context = (BootWindowContext *)ctx;
+    window_context->finalized_placement = *placement;
+    window_context->finalize_call_count++;
+}
+
+static int fake_window_is_iconic(void *window_handle, void *ctx) {
+    SavedWindowContext *window_context;
+
+    window_context = (SavedWindowContext *)ctx;
+    window_context->last_window_handle = window_handle;
+    return window_context->is_iconic;
+}
+
+static void fake_window_read_rect(void *window_handle, CreaturesDisplayRect *rect_out, void *ctx) {
+    SavedWindowContext *window_context;
+
+    window_context = (SavedWindowContext *)ctx;
+    window_context->last_window_handle = window_handle;
+    window_context->read_rect_call_count++;
+    *rect_out = window_context->next_rect;
+}
+
+static void fake_main_window_shutdown(void *ctx) {
+    SavedWindowContext *window_context;
+
+    window_context = (SavedWindowContext *)ctx;
+    window_context->shutdown_call_count++;
+}
+
+static void fake_eye_window_destroy(void *owner, void *ctx) {
+    SavedWindowContext *window_context;
+
+    window_context = (SavedWindowContext *)ctx;
+    window_context->last_owner = owner;
+    window_context->destroy_call_count++;
+}
+
+static void *fake_palette_open_file(const char *path, const char *mode, void *ctx) {
+    FakePaletteFileContext *file_context;
+
+    (void)mode;
+    file_context = (FakePaletteFileContext *)ctx;
+    if (strcmp(path, file_context->expected_path) != 0) {
+        return NULL;
+    }
+    file_context->cursor = 0;
+    file_context->open_call_count++;
+    return file_context;
+}
+
+static int fake_palette_seek_file(void *file_handle, long offset, int origin, void *ctx) {
+    FakePaletteFileContext *file_context;
+    size_t base_offset;
+
+    (void)ctx;
+    file_context = (FakePaletteFileContext *)file_handle;
+    if (origin == 0) {
+        base_offset = 0;
+    } else {
+        base_offset = file_context->cursor;
+    }
+    if (offset < 0 || base_offset + (size_t)offset > file_context->size) {
+        return 1;
+    }
+    file_context->cursor = base_offset + (size_t)offset;
+    return 0;
+}
+
+static int fake_palette_read_byte(void *file_handle, void *ctx) {
+    FakePaletteFileContext *file_context;
+
+    (void)ctx;
+    file_context = (FakePaletteFileContext *)file_handle;
+    if (file_context->cursor >= file_context->size) {
+        return -1;
+    }
+    return file_context->bytes[file_context->cursor++];
+}
+
+static int fake_palette_close_file(void *file_handle, void *ctx) {
+    FakePaletteFileContext *file_context;
+
+    (void)file_handle;
+    file_context = (FakePaletteFileContext *)ctx;
+    file_context->close_call_count++;
+    return 0;
+}
+
+static void *fake_palette_get_screen_dc(void *ctx) {
+    FakePaletteSystemContext *palette_context;
+
+    palette_context = (FakePaletteSystemContext *)ctx;
+    return palette_context->screen_dc;
+}
+
+static void *fake_palette_create_palette(const CreaturesLogPalette *palette, void *ctx) {
+    FakePaletteSystemContext *palette_context;
+    void *handle;
+
+    palette_context = (FakePaletteSystemContext *)ctx;
+    palette_context->created_palettes[palette_context->create_palette_call_count] = *palette;
+    handle = (void *)(uintptr_t)(0x1000 + palette_context->create_palette_call_count);
+    palette_context->created_handles[palette_context->create_palette_call_count] = handle;
+    palette_context->create_palette_call_count++;
+    return handle;
+}
+
+static void *fake_palette_select_palette(
+    void *dc, void *palette_handle, int force_background, void *ctx) {
+    FakePaletteSystemContext *palette_context;
+    void *latest_created_handle;
+
+    (void)dc;
+    (void)force_background;
+    palette_context = (FakePaletteSystemContext *)ctx;
+    palette_context->select_palette_call_count++;
+    latest_created_handle =
+        palette_context->create_palette_call_count == 0 ?
+            NULL :
+            palette_context
+                ->created_handles[palette_context->create_palette_call_count - 1];
+    if (palette_handle == latest_created_handle) {
+        return palette_context->previous_palette_handle;
+    }
+    return latest_created_handle;
+}
+
+static unsigned int fake_palette_realize_palette(void *dc, void *ctx) {
+    FakePaletteSystemContext *palette_context;
+
+    (void)dc;
+    palette_context = (FakePaletteSystemContext *)ctx;
+    palette_context->realize_palette_call_count++;
+    return 1;
+}
+
+static unsigned int fake_palette_get_system_entries(void *dc, unsigned int start_index,
+    unsigned int entry_count, CreaturesPaletteEntry *entries_out, void *ctx) {
+    FakePaletteSystemContext *palette_context;
+
+    (void)dc;
+    palette_context = (FakePaletteSystemContext *)ctx;
+    palette_context->get_system_entries_call_count++;
+    if (start_index == 0) {
+        memcpy(entries_out, palette_context->low_entries,
+            entry_count * sizeof(CreaturesPaletteEntry));
+    } else {
+        memcpy(entries_out, palette_context->high_entries,
+            entry_count * sizeof(CreaturesPaletteEntry));
+    }
+    return entry_count;
+}
+
+static int fake_palette_delete_object(void *object_handle, void *ctx) {
+    FakePaletteSystemContext *palette_context;
+
+    palette_context = (FakePaletteSystemContext *)ctx;
+    palette_context->last_deleted_object = object_handle;
+    palette_context->delete_object_call_count++;
+    return 0;
+}
+
+static int fake_palette_release_dc(void *dc, void *ctx) {
+    FakePaletteSystemContext *palette_context;
+
+    palette_context = (FakePaletteSystemContext *)ctx;
+    palette_context->last_released_dc = dc;
+    palette_context->release_dc_call_count++;
+    return 0;
+}
+
+static int fake_world_set_timer(
+    void *window_handle, unsigned int timer_id, unsigned int interval_ms, void *ctx) {
+    FakeWorldBootstrapContext *world_context;
+
+    world_context = (FakeWorldBootstrapContext *)ctx;
+    (void)timer_id;
+    (void)interval_ms;
+    world_context->last_window_handle = window_handle;
+    world_context->call_order[world_context->call_count++] = 'T';
+    world_context->set_timer_call_count++;
+    return 0;
+}
+
+static int fake_world_kill_timer(void *window_handle, unsigned int timer_id, void *ctx) {
+    FakeWorldBootstrapContext *world_context;
+
+    world_context = (FakeWorldBootstrapContext *)ctx;
+    (void)timer_id;
+    world_context->last_window_handle = window_handle;
+    world_context->call_order[world_context->call_count++] = 'K';
+    world_context->kill_timer_call_count++;
+    return 0;
+}
+
+static int fake_world_load_source(void *world_source, void *ctx) {
+    FakeWorldBootstrapContext *world_context;
+
+    world_context = (FakeWorldBootstrapContext *)ctx;
+    world_context->last_world_source = world_source;
+    world_context->call_order[world_context->call_count++] = 'L';
+    return world_context->load_world_result;
+}
+
+static int fake_world_bootstrap_palette(void *ctx) {
+    FakeWorldBootstrapContext *world_context;
+
+    world_context = (FakeWorldBootstrapContext *)ctx;
+    world_context->call_order[world_context->call_count++] = 'P';
+    return world_context->bootstrap_palette_result;
+}
+
+static void fake_world_stage_temp_backup(void *ctx) {
+    FakeWorldBootstrapContext *world_context;
+
+    world_context = (FakeWorldBootstrapContext *)ctx;
+    world_context->call_order[world_context->call_count++] = 'B';
+}
+
+static void fake_world_reset_metrics_callback(void *ctx) {
+    FakeWorldBootstrapContext *world_context;
+
+    world_context = (FakeWorldBootstrapContext *)ctx;
+    world_context->call_order[world_context->call_count++] = 'M';
+    world_context->reset_metrics_callback_count++;
+}
+
+static void fake_world_refresh_creature_status(void *ctx) {
+    FakeWorldBootstrapContext *world_context;
+
+    world_context = (FakeWorldBootstrapContext *)ctx;
+    world_context->call_order[world_context->call_count++] = 'C';
+}
+
+static void fake_world_refresh_score_panel(void *ctx) {
+    FakeWorldBootstrapContext *world_context;
+
+    world_context = (FakeWorldBootstrapContext *)ctx;
+    world_context->call_order[world_context->call_count++] = 'S';
+}
+
+static void fake_world_refresh_window_title(void *ctx) {
+    FakeWorldBootstrapContext *world_context;
+
+    world_context = (FakeWorldBootstrapContext *)ctx;
+    world_context->call_order[world_context->call_count++] = 'W';
+}
+
+static uint32_t fake_selected_creature_class_flags(void *creature, void *ctx) {
+    (void)ctx;
+    return ((FakeSelectedCreature *)creature)->class_flags;
+}
+
+static int fake_selected_creature_is_inactive(void *creature, void *ctx) {
+    (void)ctx;
+    return ((FakeSelectedCreature *)creature)->inactive;
+}
+
+static unsigned int fake_selected_creature_health_raw(void *creature, void *ctx) {
+    (void)ctx;
+    return ((FakeSelectedCreature *)creature)->health_raw;
+}
+
+static const char *fake_selected_creature_name(void *creature, void *ctx) {
+    (void)ctx;
+    return ((FakeSelectedCreature *)creature)->name;
+}
+
+static void fake_selected_load_string_resource(
+    uint32_t resource_id, char *out_text, size_t out_size, void *ctx) {
+    FakeSelectedCreatureUiContext *ui_context;
+    const char *text;
+
+    ui_context = (FakeSelectedCreatureUiContext *)ctx;
+    ui_context->loaded_resource_ids[ui_context->loaded_resource_count++] = resource_id;
+    switch (resource_id) {
+    case 0x0000ef1bU:
+        text = "Inactive";
+        break;
+    case 0x0000ef1cU:
+        text = "Creature";
+        break;
+    default:
+        text = "Other";
+        break;
+    }
+    snprintf(out_text, out_size, "%s", text);
+}
+
+static int fake_selected_read_status_pane_text(
+    int pane_index, char *out_text, size_t out_size, void *ctx) {
+    FakeSelectedCreatureUiContext *ui_context;
+
+    ui_context = (FakeSelectedCreatureUiContext *)ctx;
+    snprintf(out_text, out_size, "%s", ui_context->pane_texts[pane_index]);
+    return 0;
+}
+
+static void fake_selected_set_status_pane_text(
+    int pane_index, const char *text, int redraw, void *ctx) {
+    FakeSelectedCreatureUiContext *ui_context;
+
+    (void)redraw;
+    ui_context = (FakeSelectedCreatureUiContext *)ctx;
+    snprintf(ui_context->pane_texts[pane_index], sizeof(ui_context->pane_texts[pane_index]), "%s",
+        text);
+}
+
+static void fake_selected_set_status_pane_state(int pane_index, uint32_t state, void *ctx) {
+    FakeSelectedCreatureUiContext *ui_context;
+
+    ui_context = (FakeSelectedCreatureUiContext *)ctx;
+    ui_context->pane_states[pane_index] = state;
+}
+
+static int fake_selected_score_part_value(int part_index, void *ctx) {
+    FakeSelectedCreatureUiContext *ui_context;
+
+    ui_context = (FakeSelectedCreatureUiContext *)ctx;
+    return ui_context->score_parts[part_index];
+}
+
+static void fake_selected_invalidate_window(void *window_handle, int erase_background, void *ctx) {
+    FakeSelectedCreatureUiContext *ui_context;
+
+    ui_context = (FakeSelectedCreatureUiContext *)ctx;
+    ui_context->last_invalidated_window = window_handle;
+    ui_context->last_invalidate_erase = erase_background;
+    ui_context->invalidate_count++;
+}
+
+static void fake_selected_set_main_window_title(const char *title, void *ctx) {
+    FakeSelectedCreatureUiContext *ui_context;
+
+    ui_context = (FakeSelectedCreatureUiContext *)ctx;
+    snprintf(ui_context->window_title, sizeof(ui_context->window_title), "%s", title);
+}
+
+static void fake_selected_notify_selection_mode(
+    int channel, int value, int first_arg, int second_arg, void *ctx) {
+    FakeSelectedCreatureUiContext *ui_context;
+
+    (void)channel;
+    (void)first_arg;
+    (void)second_arg;
+    ui_context = (FakeSelectedCreatureUiContext *)ctx;
+    ui_context->selection_mode_values[ui_context->selection_mode_count++] = value;
+}
+
+static void fake_selected_close_eye_window(void *ctx) {
+    FakeSelectedCreatureUiContext *ui_context;
+
+    ui_context = (FakeSelectedCreatureUiContext *)ctx;
+    ui_context->close_eye_count++;
+}
+
+static void fake_selected_refresh_eye_window(void *ctx) {
+    FakeSelectedCreatureUiContext *ui_context;
+
+    ui_context = (FakeSelectedCreatureUiContext *)ctx;
+    ui_context->refresh_eye_count++;
+}
+
+static void fake_selected_refresh_main_surface(void *ctx) {
+    FakeSelectedCreatureUiContext *ui_context;
+
+    ui_context = (FakeSelectedCreatureUiContext *)ctx;
+    ui_context->refresh_main_surface_count++;
+}
+
+static void fake_selected_on_remove_inactive_creature(void *creature, void *ctx) {
+    FakeSelectedCreatureUiContext *ui_context;
+
+    ui_context = (FakeSelectedCreatureUiContext *)ctx;
+    ui_context->removed_inactive_creatures[ui_context->removed_inactive_count++] = creature;
 }
 
 static int fake_launcher_shell_execute(const char *target, void *ctx) {
@@ -1197,6 +1923,848 @@ static void fake_imported_creature_flush_global_events(void *ctx) {
     ((FakeImportedCreatureContext *)ctx)->flush_call_count++;
 }
 
+typedef struct FakeStartupProbeContext {
+    const char *existing_paths[32];
+    size_t existing_path_count;
+    int prompt_return_value;
+} FakeStartupProbeContext;
+
+static int fake_startup_probe_path_exists(const char *path, void *ctx) {
+    FakeStartupProbeContext *startup_context;
+    size_t index;
+
+    startup_context = (FakeStartupProbeContext *)ctx;
+    for (index = 0; index < startup_context->existing_path_count; index++) {
+        if (strcmp(startup_context->existing_paths[index], path) == 0) {
+            return 1;
+        }
+    }
+
+    return 0;
+}
+
+static int fake_startup_probe_prompt(void *ctx) {
+    return ((FakeStartupProbeContext *)ctx)->prompt_return_value;
+}
+
+typedef struct FakeWingContext {
+    CreaturesWingPaletteEntry palette_entries[256];
+    void *created_bitmap_handle;
+    void *old_selected_bitmap;
+    uint8_t pixels[128];
+    int get_palette_call_count;
+    int create_bitmap_call_count;
+    int select_object_call_count;
+    int set_color_table_call_count;
+    int delete_object_call_count;
+    int delete_dc_call_count;
+    void *last_selected_object;
+    void *last_deleted_object;
+    void *last_deleted_dc;
+    unsigned int last_color_table_count;
+    CreaturesWingRgbQuad last_first_color;
+} FakeWingContext;
+
+static int fake_wing_get_palette_entries(void *palette_handle, unsigned int start_index,
+    unsigned int entry_count, CreaturesWingPaletteEntry *entries_out, void *ctx) {
+    FakeWingContext *wing_context;
+
+    (void)palette_handle;
+    (void)start_index;
+    wing_context = (FakeWingContext *)ctx;
+    wing_context->get_palette_call_count++;
+    memcpy(entries_out, wing_context->palette_entries, entry_count * sizeof(entries_out[0]));
+    return (int)entry_count;
+}
+
+static void *fake_wing_create_bitmap(void *dc, CreaturesWingBitmapInfo *bitmap_info,
+    uint8_t **pixels_out, void *ctx) {
+    FakeWingContext *wing_context;
+
+    (void)dc;
+    (void)bitmap_info;
+    wing_context = (FakeWingContext *)ctx;
+    wing_context->create_bitmap_call_count++;
+    *pixels_out = wing_context->pixels;
+    return wing_context->created_bitmap_handle;
+}
+
+static void *fake_wing_select_object(void *dc, void *object_handle, void *ctx) {
+    FakeWingContext *wing_context;
+
+    (void)dc;
+    wing_context = (FakeWingContext *)ctx;
+    wing_context->select_object_call_count++;
+    wing_context->last_selected_object = object_handle;
+    return wing_context->old_selected_bitmap;
+}
+
+static int fake_wing_set_color_table(void *dc, unsigned int start_index, unsigned int color_count,
+    const CreaturesWingRgbQuad *colors, void *ctx) {
+    FakeWingContext *wing_context;
+
+    (void)dc;
+    (void)start_index;
+    wing_context = (FakeWingContext *)ctx;
+    wing_context->set_color_table_call_count++;
+    wing_context->last_color_table_count = color_count;
+    wing_context->last_first_color = colors[0];
+    return (int)color_count;
+}
+
+static int fake_wing_delete_object(void *object_handle, void *ctx) {
+    FakeWingContext *wing_context;
+
+    wing_context = (FakeWingContext *)ctx;
+    wing_context->delete_object_call_count++;
+    wing_context->last_deleted_object = object_handle;
+    return 1;
+}
+
+static int fake_wing_delete_dc(void *dc, void *ctx) {
+    FakeWingContext *wing_context;
+
+    wing_context = (FakeWingContext *)ctx;
+    wing_context->delete_dc_call_count++;
+    wing_context->last_deleted_dc = dc;
+    return 1;
+}
+
+typedef struct FakeDisplayContext {
+    void *retired_bitmap_handle;
+    void *returned_dc_handle;
+    void *returned_previous_palette;
+    unsigned int first_realize_result;
+    int release_auxiliary_call_count;
+    int release_backbuffer_call_count;
+    int create_backbuffer_call_count;
+    int delete_bitmap_call_count;
+    int get_dc_call_count;
+    int select_palette_call_count;
+    int realize_palette_call_count;
+    int release_dc_call_count;
+    int invalidate_rect_call_count;
+    void *last_released_auxiliary_resource;
+    void *last_released_backbuffer;
+    void *last_surface_ctx;
+    void *last_deleted_bitmap;
+    void *last_get_dc_window;
+    void *last_selected_dc;
+    void *last_selected_palette;
+    int last_select_background;
+    void *last_realize_dc;
+    void *last_release_dc_window;
+    void *last_release_dc_handle;
+    void *last_invalidated_window;
+    const CreaturesDisplayRect *last_invalidated_rect;
+    int last_invalidate_erase_background;
+    uint32_t last_create_width;
+    int last_create_height;
+} FakeDisplayContext;
+
+typedef struct FakeDisplayRedrawContext {
+    int begin_redraw_scope_call_count;
+    int end_redraw_scope_call_count;
+    int execute_redraw_call_count;
+    void *last_begin_owner;
+    void *last_begin_scratch;
+    void *last_end_scratch;
+    void *last_execute_scratch;
+    CreaturesDisplayRect last_visible_bounds;
+    CreaturesDisplayRect last_viewport_bounds;
+    CreaturesDisplayRect last_current_bounds;
+} FakeDisplayRedrawContext;
+
+typedef struct FakeDisplayPresentContext {
+    void *returned_target_dc;
+    int render_scene_call_count;
+    int resolve_target_dc_call_count;
+    int bit_blt_call_count;
+    int draw_focus_rect_call_count;
+    int flush_gdi_call_count;
+    void *last_resolve_scratch;
+    CreaturesDisplayRect last_render_world_bounds;
+    void *last_bit_blt_target_dc;
+    int last_bit_blt_dest_x;
+    int last_bit_blt_dest_y;
+    int last_bit_blt_width;
+    int last_bit_blt_height;
+    void *last_bit_blt_source_dc;
+    int last_bit_blt_source_x;
+    int last_bit_blt_source_y;
+    CreaturesDisplayRect last_focus_rect;
+} FakeDisplayPresentContext;
+
+typedef struct FakeDisplayPresentOpsContext {
+    FakeDisplayContext *display_context;
+    FakeDisplayPresentContext *present_context;
+} FakeDisplayPresentOpsContext;
+
+typedef struct FakeDisplaySceneActor {
+    int actor_id;
+    int visible;
+    int draw_depth;
+} FakeDisplaySceneActor;
+
+typedef struct FakeDisplaySceneContext {
+    size_t actor_count;
+    FakeDisplaySceneActor actors[8];
+    void *acquired_auxiliary_resource;
+    int background_draw_call_count;
+    int get_actor_count_call_count;
+    int get_actor_call_count;
+    int collect_visible_actor_call_count;
+    int draw_actor_call_count;
+    int acquire_auxiliary_call_count;
+    int draw_auxiliary_call_count;
+    int background_wrapped_columns[8];
+    int background_rows[8];
+    int background_world_x[8];
+    int background_world_y[8];
+    int drawn_actor_ids[8];
+    uint32_t last_acquired_auxiliary_token;
+    void *last_drawn_auxiliary_resource;
+    CreaturesDisplayRect last_background_clip_bounds;
+    CreaturesDisplayRect last_background_viewport_bounds;
+    CreaturesDisplayRect last_actor_clip_bounds;
+    CreaturesDisplayRect last_actor_viewport_bounds;
+    CreaturesDisplayRect last_auxiliary_clip_bounds;
+    CreaturesDisplayRect last_auxiliary_viewport_bounds;
+} FakeDisplaySceneContext;
+
+typedef struct FakeDisplayScrollListener {
+    int listener_id;
+    int listener_type;
+    int notify_call_count;
+    int last_delta_x;
+    int last_delta_y;
+} FakeDisplayScrollListener;
+
+typedef struct FakeDisplayScrollContext {
+    size_t listener_count;
+    FakeDisplayScrollListener listeners[8];
+    int refresh_owner_call_count;
+    int notified_listener_count;
+    int notified_listener_ids[8];
+    void *last_refresh_owner;
+} FakeDisplayScrollContext;
+
+typedef struct FakeViewportScrollbarContext {
+    int current_position[2];
+    int set_range_call_count;
+    int set_position_call_count;
+    int last_range_axis[4];
+    int last_range_minimum[4];
+    int last_range_maximum[4];
+    int last_range_redraw[4];
+    int last_position_axis[4];
+    int last_position_value[4];
+    int last_position_redraw[4];
+} FakeViewportScrollbarContext;
+
+typedef struct FakeViewportCaptureContext {
+    CreaturesDisplayRect resolved_bounds;
+    uint8_t allocation_buffer[128];
+    uint8_t submitted_payload[128];
+    int resolve_bounds_call_count;
+    int allocate_call_count;
+    int free_call_count;
+    int begin_capture_call_count;
+    int submit_capture_call_count;
+    int end_capture_call_count;
+    int report_failure_call_count;
+    int submit_result;
+    size_t last_allocation_size;
+    size_t last_submit_size;
+    void *last_submit_target;
+    unsigned int last_submit_format;
+    const char *last_failure_message;
+} FakeViewportCaptureContext;
+
+static void fake_display_release_auxiliary_resource(void *resource, void *ctx) {
+    FakeDisplayContext *display_context;
+
+    display_context = (FakeDisplayContext *)ctx;
+    display_context->release_auxiliary_call_count++;
+    display_context->last_released_auxiliary_resource = resource;
+}
+
+static void fake_display_release_backbuffer(void *surface_ctx, void *ctx) {
+    FakeDisplayContext *display_context;
+
+    display_context = (FakeDisplayContext *)ctx;
+    display_context->release_backbuffer_call_count++;
+    display_context->last_released_backbuffer = surface_ctx;
+}
+
+static void *fake_display_create_backbuffer(
+    void *surface_ctx, uint32_t width, int height, void *ctx) {
+    FakeDisplayContext *display_context;
+
+    display_context = (FakeDisplayContext *)ctx;
+    display_context->create_backbuffer_call_count++;
+    display_context->last_surface_ctx = surface_ctx;
+    display_context->last_create_width = width;
+    display_context->last_create_height = height;
+    return display_context->retired_bitmap_handle;
+}
+
+static int fake_display_delete_bitmap(void *bitmap_handle, void *ctx) {
+    FakeDisplayContext *display_context;
+
+    display_context = (FakeDisplayContext *)ctx;
+    display_context->delete_bitmap_call_count++;
+    display_context->last_deleted_bitmap = bitmap_handle;
+    return 1;
+}
+
+static void *fake_display_get_dc(void *window_handle, void *ctx) {
+    FakeDisplayContext *display_context;
+
+    display_context = (FakeDisplayContext *)ctx;
+    display_context->get_dc_call_count++;
+    display_context->last_get_dc_window = window_handle;
+    return display_context->returned_dc_handle;
+}
+
+static void *fake_display_select_palette(
+    void *dc, void *palette_handle, int force_background, void *ctx) {
+    FakeDisplayContext *display_context;
+
+    display_context = (FakeDisplayContext *)ctx;
+    display_context->select_palette_call_count++;
+    display_context->last_selected_dc = dc;
+    display_context->last_selected_palette = palette_handle;
+    display_context->last_select_background = force_background;
+    return display_context->returned_previous_palette;
+}
+
+static unsigned int fake_display_realize_palette(void *dc, void *ctx) {
+    FakeDisplayContext *display_context;
+
+    display_context = (FakeDisplayContext *)ctx;
+    display_context->realize_palette_call_count++;
+    display_context->last_realize_dc = dc;
+    return display_context->realize_palette_call_count == 1 ?
+        display_context->first_realize_result :
+        0;
+}
+
+static int fake_display_release_dc(void *window_handle, void *dc, void *ctx) {
+    FakeDisplayContext *display_context;
+
+    display_context = (FakeDisplayContext *)ctx;
+    display_context->release_dc_call_count++;
+    display_context->last_release_dc_window = window_handle;
+    display_context->last_release_dc_handle = dc;
+    return 1;
+}
+
+static int fake_display_invalidate_rect(
+    void *window_handle, const CreaturesDisplayRect *rect, int erase_background, void *ctx) {
+    FakeDisplayContext *display_context;
+
+    display_context = (FakeDisplayContext *)ctx;
+    display_context->invalidate_rect_call_count++;
+    display_context->last_invalidated_window = window_handle;
+    display_context->last_invalidated_rect = rect;
+    display_context->last_invalidate_erase_background = erase_background;
+    return 1;
+}
+
+static void fake_display_begin_redraw_scope(void *owner_handle, void *scratch_context, void *ctx) {
+    FakeDisplayRedrawContext *redraw_context;
+
+    redraw_context = (FakeDisplayRedrawContext *)ctx;
+    redraw_context->begin_redraw_scope_call_count++;
+    redraw_context->last_begin_owner = owner_handle;
+    redraw_context->last_begin_scratch = scratch_context;
+}
+
+static void fake_display_end_redraw_scope(void *scratch_context, void *ctx) {
+    FakeDisplayRedrawContext *redraw_context;
+
+    redraw_context = (FakeDisplayRedrawContext *)ctx;
+    redraw_context->end_redraw_scope_call_count++;
+    redraw_context->last_end_scratch = scratch_context;
+}
+
+static void fake_display_execute_redraw(CreaturesDisplaySurface *surface, void *scratch_context,
+    const CreaturesDisplayRedrawState *state, void *ctx) {
+    FakeDisplayRedrawContext *redraw_context;
+
+    (void)surface;
+    redraw_context = (FakeDisplayRedrawContext *)ctx;
+    redraw_context->execute_redraw_call_count++;
+    redraw_context->last_execute_scratch = scratch_context;
+    redraw_context->last_visible_bounds = state->visible_bounds;
+    redraw_context->last_viewport_bounds = state->viewport_bounds;
+    redraw_context->last_current_bounds = state->current_bounds;
+}
+
+static void *fake_display_resolve_target_dc(void *scratch_context, void *ctx) {
+    FakeDisplayPresentContext *present_context;
+
+    present_context = ((FakeDisplayPresentOpsContext *)ctx)->present_context;
+    present_context->resolve_target_dc_call_count++;
+    present_context->last_resolve_scratch = scratch_context;
+    return present_context->returned_target_dc;
+}
+
+static void fake_display_render_scene(
+    CreaturesDisplaySurface *surface, const CreaturesDisplayRect *world_bounds, void *ctx) {
+    FakeDisplayPresentContext *present_context;
+
+    (void)surface;
+    present_context = ((FakeDisplayPresentOpsContext *)ctx)->present_context;
+    present_context->render_scene_call_count++;
+    present_context->last_render_world_bounds = *world_bounds;
+}
+
+static int fake_display_bit_blt(void *target_dc, int dest_x, int dest_y, int width, int height,
+    void *source_dc, int source_x, int source_y, void *ctx) {
+    FakeDisplayPresentContext *present_context;
+
+    present_context = ((FakeDisplayPresentOpsContext *)ctx)->present_context;
+    present_context->bit_blt_call_count++;
+    present_context->last_bit_blt_target_dc = target_dc;
+    present_context->last_bit_blt_dest_x = dest_x;
+    present_context->last_bit_blt_dest_y = dest_y;
+    present_context->last_bit_blt_width = width;
+    present_context->last_bit_blt_height = height;
+    present_context->last_bit_blt_source_dc = source_dc;
+    present_context->last_bit_blt_source_x = source_x;
+    present_context->last_bit_blt_source_y = source_y;
+    return 1;
+}
+
+static void fake_display_draw_focus_rect(
+    void *target_dc, const CreaturesDisplayRect *focus_rect, void *ctx) {
+    FakeDisplayPresentContext *present_context;
+
+    (void)target_dc;
+    present_context = ((FakeDisplayPresentOpsContext *)ctx)->present_context;
+    present_context->draw_focus_rect_call_count++;
+    present_context->last_focus_rect = *focus_rect;
+}
+
+static void fake_display_flush_gdi(void *ctx) {
+    FakeDisplayPresentContext *present_context;
+
+    present_context = ((FakeDisplayPresentOpsContext *)ctx)->present_context;
+    present_context->flush_gdi_call_count++;
+}
+
+static void *fake_present_select_palette(
+    void *dc, void *palette_handle, int force_background, void *ctx) {
+    return fake_display_select_palette(dc, palette_handle, force_background,
+        ((FakeDisplayPresentOpsContext *)ctx)->display_context);
+}
+
+static unsigned int fake_present_realize_palette(void *dc, void *ctx) {
+    return fake_display_realize_palette(dc,
+        ((FakeDisplayPresentOpsContext *)ctx)->display_context);
+}
+
+static void fake_display_draw_background_tile(CreaturesDisplaySurface *surface, int wrapped_column,
+    int tile_row, int world_x, int world_y, const CreaturesDisplayRect *clip_bounds,
+    const CreaturesDisplayRect *viewport_bounds, void *ctx) {
+    FakeDisplaySceneContext *scene_context;
+    int call_index;
+
+    (void)surface;
+    scene_context = (FakeDisplaySceneContext *)ctx;
+    call_index = scene_context->background_draw_call_count;
+    scene_context->background_draw_call_count++;
+    if (call_index < (int)(sizeof(scene_context->background_wrapped_columns) /
+            sizeof(scene_context->background_wrapped_columns[0]))) {
+        scene_context->background_wrapped_columns[call_index] = wrapped_column;
+        scene_context->background_rows[call_index] = tile_row;
+        scene_context->background_world_x[call_index] = world_x;
+        scene_context->background_world_y[call_index] = world_y;
+    }
+    scene_context->last_background_clip_bounds = *clip_bounds;
+    scene_context->last_background_viewport_bounds = *viewport_bounds;
+}
+
+static size_t fake_display_get_actor_count(void *ctx) {
+    FakeDisplaySceneContext *scene_context;
+
+    scene_context = (FakeDisplaySceneContext *)ctx;
+    scene_context->get_actor_count_call_count++;
+    return scene_context->actor_count;
+}
+
+static void *fake_display_get_actor(size_t actor_index, void *ctx) {
+    FakeDisplaySceneContext *scene_context;
+
+    scene_context = (FakeDisplaySceneContext *)ctx;
+    scene_context->get_actor_call_count++;
+    return actor_index < scene_context->actor_count ? &scene_context->actors[actor_index] : NULL;
+}
+
+static int fake_display_collect_visible_actor(
+    void *actor, const CreaturesDisplayRect *clip_bounds, int *draw_depth_out, void *ctx) {
+    FakeDisplaySceneActor *scene_actor;
+    FakeDisplaySceneContext *scene_context;
+
+    scene_actor = (FakeDisplaySceneActor *)actor;
+    scene_context = (FakeDisplaySceneContext *)ctx;
+    scene_context->collect_visible_actor_call_count++;
+    scene_context->last_actor_clip_bounds = *clip_bounds;
+    if (!scene_actor->visible) {
+        return 0;
+    }
+
+    *draw_depth_out = scene_actor->draw_depth;
+    return 1;
+}
+
+static void fake_display_draw_actor(CreaturesDisplaySurface *surface, void *actor,
+    const CreaturesDisplayRect *clip_bounds, const CreaturesDisplayRect *viewport_bounds,
+    void *ctx) {
+    FakeDisplaySceneActor *scene_actor;
+    FakeDisplaySceneContext *scene_context;
+    int call_index;
+
+    (void)surface;
+    scene_actor = (FakeDisplaySceneActor *)actor;
+    scene_context = (FakeDisplaySceneContext *)ctx;
+    call_index = scene_context->draw_actor_call_count;
+    scene_context->draw_actor_call_count++;
+    if (call_index < (int)(sizeof(scene_context->drawn_actor_ids) /
+            sizeof(scene_context->drawn_actor_ids[0]))) {
+        scene_context->drawn_actor_ids[call_index] = scene_actor->actor_id;
+    }
+    scene_context->last_actor_clip_bounds = *clip_bounds;
+    scene_context->last_actor_viewport_bounds = *viewport_bounds;
+}
+
+static void *fake_display_acquire_auxiliary_sprite(uint32_t token, void *ctx) {
+    FakeDisplaySceneContext *scene_context;
+
+    scene_context = (FakeDisplaySceneContext *)ctx;
+    scene_context->acquire_auxiliary_call_count++;
+    scene_context->last_acquired_auxiliary_token = token;
+    return scene_context->acquired_auxiliary_resource;
+}
+
+static void fake_display_draw_auxiliary_sprite(CreaturesDisplaySurface *surface,
+    void *auxiliary_sprite, const CreaturesDisplayRect *clip_bounds,
+    const CreaturesDisplayRect *viewport_bounds, void *ctx) {
+    FakeDisplaySceneContext *scene_context;
+
+    (void)surface;
+    scene_context = (FakeDisplaySceneContext *)ctx;
+    scene_context->draw_auxiliary_call_count++;
+    scene_context->last_drawn_auxiliary_resource = auxiliary_sprite;
+    scene_context->last_auxiliary_clip_bounds = *clip_bounds;
+    scene_context->last_auxiliary_viewport_bounds = *viewport_bounds;
+}
+
+static size_t fake_display_get_listener_count(void *ctx) {
+    return ((FakeDisplayScrollContext *)ctx)->listener_count;
+}
+
+static void *fake_display_get_listener(size_t listener_index, void *ctx) {
+    FakeDisplayScrollContext *scroll_context;
+
+    scroll_context = (FakeDisplayScrollContext *)ctx;
+    return listener_index < scroll_context->listener_count ?
+        &scroll_context->listeners[listener_index] :
+        NULL;
+}
+
+static int fake_display_is_scroll_listener(void *listener, void *ctx) {
+    FakeDisplayScrollListener *scroll_listener;
+
+    (void)ctx;
+    scroll_listener = (FakeDisplayScrollListener *)listener;
+    return scroll_listener->listener_type == 1 || scroll_listener->listener_type == 2;
+}
+
+static void fake_display_notify_scroll_listener(
+    void *listener, int delta_x, int delta_y, void *ctx) {
+    FakeDisplayScrollListener *scroll_listener;
+    FakeDisplayScrollContext *scroll_context;
+    int notify_index;
+
+    scroll_listener = (FakeDisplayScrollListener *)listener;
+    scroll_context = (FakeDisplayScrollContext *)ctx;
+    scroll_listener->notify_call_count++;
+    scroll_listener->last_delta_x = delta_x;
+    scroll_listener->last_delta_y = delta_y;
+    notify_index = scroll_context->notified_listener_count;
+    if (notify_index < (int)(sizeof(scroll_context->notified_listener_ids) /
+            sizeof(scroll_context->notified_listener_ids[0]))) {
+        scroll_context->notified_listener_ids[notify_index] = scroll_listener->listener_id;
+    }
+    scroll_context->notified_listener_count++;
+}
+
+static void fake_display_refresh_owner(void *owner_handle, void *ctx) {
+    FakeDisplayScrollContext *scroll_context;
+
+    scroll_context = (FakeDisplayScrollContext *)ctx;
+    scroll_context->refresh_owner_call_count++;
+    scroll_context->last_refresh_owner = owner_handle;
+}
+
+static int fake_viewport_set_scrollbar_range(
+    int axis, int minimum, int maximum, int redraw, void *ctx) {
+    FakeViewportScrollbarContext *scrollbar_context;
+    int call_index;
+
+    scrollbar_context = (FakeViewportScrollbarContext *)ctx;
+    call_index = scrollbar_context->set_range_call_count;
+    if (call_index < (int)(sizeof(scrollbar_context->last_range_axis) /
+            sizeof(scrollbar_context->last_range_axis[0]))) {
+        scrollbar_context->last_range_axis[call_index] = axis;
+        scrollbar_context->last_range_minimum[call_index] = minimum;
+        scrollbar_context->last_range_maximum[call_index] = maximum;
+        scrollbar_context->last_range_redraw[call_index] = redraw;
+    }
+    scrollbar_context->set_range_call_count++;
+    return 1;
+}
+
+static int fake_viewport_get_scrollbar_position(int axis, void *ctx) {
+    FakeViewportScrollbarContext *scrollbar_context;
+
+    scrollbar_context = (FakeViewportScrollbarContext *)ctx;
+    return axis >= 0 && axis < 2 ? scrollbar_context->current_position[axis] : 0;
+}
+
+static int fake_viewport_set_scrollbar_position(
+    int axis, int position, int redraw, void *ctx) {
+    FakeViewportScrollbarContext *scrollbar_context;
+    int call_index;
+
+    scrollbar_context = (FakeViewportScrollbarContext *)ctx;
+    call_index = scrollbar_context->set_position_call_count;
+    if (call_index < (int)(sizeof(scrollbar_context->last_position_axis) /
+            sizeof(scrollbar_context->last_position_axis[0]))) {
+        scrollbar_context->last_position_axis[call_index] = axis;
+        scrollbar_context->last_position_value[call_index] = position;
+        scrollbar_context->last_position_redraw[call_index] = redraw;
+    }
+    if (axis >= 0 && axis < 2) {
+        scrollbar_context->current_position[axis] = position;
+    }
+    scrollbar_context->set_position_call_count++;
+    return 1;
+}
+
+static void fake_viewport_capture_resolve_bounds(
+    void *bounds_source, CreaturesDisplayRect *out_bounds, void *ctx) {
+    FakeViewportCaptureContext *capture_context;
+
+    (void)bounds_source;
+    capture_context = (FakeViewportCaptureContext *)ctx;
+    capture_context->resolve_bounds_call_count++;
+    *out_bounds = capture_context->resolved_bounds;
+}
+
+static void *fake_viewport_capture_allocate(size_t allocation_size, void *ctx) {
+    FakeViewportCaptureContext *capture_context;
+
+    capture_context = (FakeViewportCaptureContext *)ctx;
+    capture_context->allocate_call_count++;
+    capture_context->last_allocation_size = allocation_size;
+    return allocation_size <= sizeof(capture_context->allocation_buffer) ?
+        capture_context->allocation_buffer :
+        NULL;
+}
+
+static void fake_viewport_capture_free(void *allocation, void *ctx) {
+    FakeViewportCaptureContext *capture_context;
+
+    (void)allocation;
+    capture_context = (FakeViewportCaptureContext *)ctx;
+    capture_context->free_call_count++;
+}
+
+static void fake_viewport_capture_begin(void *ctx) {
+    FakeViewportCaptureContext *capture_context;
+
+    capture_context = (FakeViewportCaptureContext *)ctx;
+    capture_context->begin_capture_call_count++;
+}
+
+static int fake_viewport_capture_submit(
+    void *capture_target, unsigned int format_id, const void *payload, size_t payload_size,
+    void *ctx) {
+    FakeViewportCaptureContext *capture_context;
+
+    capture_context = (FakeViewportCaptureContext *)ctx;
+    capture_context->submit_capture_call_count++;
+    capture_context->last_submit_target = capture_target;
+    capture_context->last_submit_format = format_id;
+    capture_context->last_submit_size = payload_size;
+    memcpy(capture_context->submitted_payload, payload,
+        payload_size < sizeof(capture_context->submitted_payload) ?
+            payload_size :
+            sizeof(capture_context->submitted_payload));
+    return capture_context->submit_result;
+}
+
+static void fake_viewport_capture_end(void *ctx) {
+    FakeViewportCaptureContext *capture_context;
+
+    capture_context = (FakeViewportCaptureContext *)ctx;
+    capture_context->end_capture_call_count++;
+}
+
+static void fake_viewport_capture_report_failure(const char *message, void *ctx) {
+    FakeViewportCaptureContext *capture_context;
+
+    capture_context = (FakeViewportCaptureContext *)ctx;
+    capture_context->report_failure_call_count++;
+    capture_context->last_failure_message = message;
+}
+
+typedef struct FakeAudioContext {
+    int create_device_result;
+    int set_cooperative_level_result;
+    int create_buffer_result;
+    int get_format_result;
+    int set_format_result;
+    int stop_buffer_result;
+    int release_buffer_result;
+    int release_stream_result;
+    int release_owner_result;
+    void *created_device_handle;
+    void *created_buffer_handle;
+    int create_device_call_count;
+    int set_cooperative_level_call_count;
+    int create_buffer_call_count;
+    int get_format_call_count;
+    int set_format_call_count;
+    int stop_buffer_call_count;
+    int release_buffer_call_count;
+    int release_stream_call_count;
+    int release_owner_call_count;
+    int notify_mixer_idle_call_count;
+    uintptr_t last_window_handle;
+    unsigned int last_cooperative_level;
+    CreaturesSoundBufferDesc last_buffer_desc;
+    CreaturesWaveFormat initial_format;
+    CreaturesWaveFormat last_set_format;
+    void *last_stopped_buffer;
+    void *last_released_buffer;
+    void *last_released_stream;
+    CreaturesAudioBufferOwner *last_released_owner;
+    int last_release_stream_mode;
+    int last_release_owner_mode;
+    int last_notify_channel;
+    int last_notify_value;
+} FakeAudioContext;
+
+static int fake_audio_create_device(void *guid, void **device_out, void *outer, void *ctx) {
+    FakeAudioContext *audio_context;
+
+    (void)guid;
+    (void)outer;
+    audio_context = (FakeAudioContext *)ctx;
+    audio_context->create_device_call_count++;
+    *device_out = audio_context->created_device_handle;
+    return audio_context->create_device_result;
+}
+
+static int fake_audio_set_cooperative_level(
+    void *device, uintptr_t window_handle, unsigned int level, void *ctx) {
+    FakeAudioContext *audio_context;
+
+    (void)device;
+    audio_context = (FakeAudioContext *)ctx;
+    audio_context->set_cooperative_level_call_count++;
+    audio_context->last_window_handle = window_handle;
+    audio_context->last_cooperative_level = level;
+    return audio_context->set_cooperative_level_result;
+}
+
+static int fake_audio_create_buffer(void *device, const CreaturesSoundBufferDesc *buffer_desc,
+    void **buffer_out, void *ctx) {
+    FakeAudioContext *audio_context;
+
+    (void)device;
+    audio_context = (FakeAudioContext *)ctx;
+    audio_context->create_buffer_call_count++;
+    audio_context->last_buffer_desc = *buffer_desc;
+    *buffer_out = audio_context->created_buffer_handle;
+    return audio_context->create_buffer_result;
+}
+
+static int fake_audio_get_format(
+    void *buffer, CreaturesWaveFormat *format_out, size_t format_size, void *ctx) {
+    FakeAudioContext *audio_context;
+
+    (void)buffer;
+    (void)format_size;
+    audio_context = (FakeAudioContext *)ctx;
+    audio_context->get_format_call_count++;
+    *format_out = audio_context->initial_format;
+    return audio_context->get_format_result;
+}
+
+static int fake_audio_set_format(void *buffer, const CreaturesWaveFormat *format, void *ctx) {
+    FakeAudioContext *audio_context;
+
+    (void)buffer;
+    audio_context = (FakeAudioContext *)ctx;
+    audio_context->set_format_call_count++;
+    audio_context->last_set_format = *format;
+    return audio_context->set_format_result;
+}
+
+static int fake_audio_stop_buffer(void *buffer, void *ctx) {
+    FakeAudioContext *audio_context;
+
+    audio_context = (FakeAudioContext *)ctx;
+    audio_context->stop_buffer_call_count++;
+    audio_context->last_stopped_buffer = buffer;
+    return audio_context->stop_buffer_result;
+}
+
+static int fake_audio_release_buffer(void *buffer, void *ctx) {
+    FakeAudioContext *audio_context;
+
+    audio_context = (FakeAudioContext *)ctx;
+    audio_context->release_buffer_call_count++;
+    audio_context->last_released_buffer = buffer;
+    return audio_context->release_buffer_result;
+}
+
+static int fake_audio_release_stream(void *stream, int destroy_mode, void *ctx) {
+    FakeAudioContext *audio_context;
+
+    audio_context = (FakeAudioContext *)ctx;
+    audio_context->release_stream_call_count++;
+    audio_context->last_released_stream = stream;
+    audio_context->last_release_stream_mode = destroy_mode;
+    return audio_context->release_stream_result;
+}
+
+static int fake_audio_release_owner(
+    CreaturesAudioBufferOwner *owner, int destroy_mode, void *ctx) {
+    FakeAudioContext *audio_context;
+
+    audio_context = (FakeAudioContext *)ctx;
+    audio_context->release_owner_call_count++;
+    audio_context->last_released_owner = owner;
+    audio_context->last_release_owner_mode = destroy_mode;
+    return audio_context->release_owner_result;
+}
+
+static void fake_audio_notify_mixer_idle(int channel, int value, void *ctx) {
+    FakeAudioContext *audio_context;
+
+    audio_context = (FakeAudioContext *)ctx;
+    audio_context->notify_mixer_idle_call_count++;
+    audio_context->last_notify_channel = channel;
+    audio_context->last_notify_value = value;
+}
+
 int main(void) {
     ScrollWidget widget = {{0}, NULL};
     HatcherySelectionState selection = {{1, 2, 3, 4, 5}};
@@ -1222,11 +2790,22 @@ int main(void) {
         {"C:\\Creatures\\Genetics\\*.gno", {"catalog.gno"}, 1},
         {"C:\\Creatures\\Genetics\\*.gen", {"norn.gen"}, 1},
     };
+    const FakeFilesystemMatchSet world_match_sets[] = {
+        {"C:\\Creatures\\World\\World.sfc", {"World.sfc"}, 1},
+        {"C:\\Creatures\\World\\*.spr", {"alpha.spr", "beta.spr"}, 2},
+        {"C:\\Creatures\\World\\*.photo album", {"album.photo album"}, 1},
+        {"C:\\Creatures\\TempBu\\World.sfc", {"stale.sfc"}, 1},
+        {"C:\\Creatures\\TempBu\\*.spr", {"stale1.spr", "stale2.spr"}, 2},
+        {"C:\\Creatures\\Backup\\World.sfc", {"backup.sfc"}, 1},
+        {"C:\\Creatures\\Backup\\*.spr", {"restore1.spr", "restore2.spr"}, 2},
+    };
     FakeFilesystemContext remove_filesystem_context = {
-        remove_match_sets,
-        sizeof(remove_match_sets) / sizeof(remove_match_sets[0]),
-        {{0}},
-        0,
+        .match_sets = remove_match_sets,
+        .match_set_count = sizeof(remove_match_sets) / sizeof(remove_match_sets[0]),
+    };
+    FakeFilesystemContext world_filesystem_context = {
+        .match_sets = world_match_sets,
+        .match_set_count = sizeof(world_match_sets) / sizeof(world_match_sets[0]),
     };
     FakeShellContext remove_shell_context = {NULL, 0};
     const LauncherRegistryEntry launcher_registry_entries[] = {
@@ -1234,6 +2813,17 @@ int main(void) {
             "IntroPath", "D:\\Creatures\\ntro2.smk"},
         {"HKEY_LOCAL_MACHINE", "SOFTWARE\\Millennium Interactive\\Creatures\\AppletConfig",
             "TitlePath", "D:\\Creatures\\Title.bmp"},
+    };
+    const CreaturesDisplayRect boot_saved_window_rect = {32, 24, 0x280 + 32, 0x1e0 + 24};
+    const CreaturesDisplayRect boot_offscreen_window_rect = {640, 480, 0x280 + 640, 0x1e0 + 480};
+    const CreaturesRegistryPair32 boot_saved_eye_pos = {19, 27};
+    BootRegistryEntry boot_registry_entries[] = {
+        {"HKEY_CURRENT_USER", "SOFTWARE\\Millennium Interactive\\Creatures\\1.0", "WindowPosn",
+            {0}, sizeof(CreaturesDisplayRect)},
+        {"HKEY_CURRENT_USER", "SOFTWARE\\Millennium Interactive\\Creatures\\1.0", "EyePosn",
+            {0}, sizeof(CreaturesRegistryPair32)},
+        {"HKEY_LOCAL_MACHINE", "SOFTWARE\\Millennium Interactive\\Creatures\\1.0", "Language",
+            {'e', 'n', '-', 'G', 'B', '\0'}, 6},
     };
     LauncherRegistryContext launcher_registry_context;
     LauncherRegistryOps launcher_registry_ops = {
@@ -1243,6 +2833,93 @@ int main(void) {
         &launcher_registry_context,
     };
     LauncherRegistryHandler launcher_registry_handler;
+    BootRegistryContext boot_registry_context;
+    CreaturesRegistryOps boot_registry_ops = {
+        fake_boot_registry_create_key,
+        fake_boot_registry_read_value,
+        fake_boot_registry_write_value,
+        &boot_registry_context,
+    };
+    CreaturesRegistryHandler boot_registry_handler;
+    BootWindowContext boot_window_context = {{200, 150}, {0}, 0};
+    CreaturesWindowBootOps boot_window_ops = {
+        fake_boot_get_system_metric,
+        fake_boot_finalize_window_placement,
+        &boot_window_context,
+    };
+    SavedWindowContext saved_window_context;
+    CreaturesMainWindowStateOps main_window_state_ops = {
+        fake_window_is_iconic,
+        fake_window_read_rect,
+        fake_main_window_shutdown,
+        &saved_window_context,
+    };
+    CreaturesEyeWindowStateOps eye_window_state_ops = {
+        fake_window_read_rect,
+        fake_eye_window_destroy,
+        &saved_window_context,
+    };
+    FakePaletteFileContext palette_file_context;
+    CreaturesPaletteFileOps palette_file_ops = {
+        fake_palette_open_file,
+        fake_palette_seek_file,
+        fake_palette_read_byte,
+        fake_palette_close_file,
+        &palette_file_context,
+    };
+    FakePaletteSystemContext palette_system_context;
+    CreaturesPaletteSystemOps palette_system_ops = {
+        fake_palette_get_screen_dc,
+        fake_palette_create_palette,
+        fake_palette_select_palette,
+        fake_palette_realize_palette,
+        fake_palette_get_system_entries,
+        fake_palette_delete_object,
+        fake_palette_release_dc,
+        &palette_system_context,
+    };
+    FakeWorldBootstrapContext world_bootstrap_context;
+    CreaturesWindowTimerOps world_timer_ops = {
+        fake_world_set_timer,
+        fake_world_kill_timer,
+        &world_bootstrap_context,
+    };
+    CreaturesWorldBootstrapOps world_bootstrap_ops = {
+        fake_world_load_source,
+        fake_world_bootstrap_palette,
+        fake_world_stage_temp_backup,
+        fake_world_reset_metrics_callback,
+        fake_world_refresh_creature_status,
+        fake_world_refresh_score_panel,
+        fake_world_refresh_window_title,
+        &world_timer_ops,
+        &world_bootstrap_context,
+    };
+    FakeSelectedCreature active_creature = {0x04000000U, 0, 0x80U, "Alice"};
+    FakeSelectedCreature inactive_creature = {0x04000000U, 1, 0xffU, "Bob"};
+    FakeSelectedCreature non_creature = {0x05000000U, 0, 0x10U, "Toy"};
+    FakeSelectedCreatureUiContext selected_ui_context;
+    CreaturesSelectedCreatureUiOps selected_ui_ops = {
+        fake_selected_creature_class_flags,
+        fake_selected_creature_is_inactive,
+        fake_selected_creature_health_raw,
+        fake_selected_creature_name,
+        fake_selected_load_string_resource,
+        fake_selected_read_status_pane_text,
+        fake_selected_set_status_pane_text,
+        fake_selected_set_status_pane_state,
+        fake_selected_score_part_value,
+        fake_selected_invalidate_window,
+        fake_selected_set_main_window_title,
+        fake_selected_notify_selection_mode,
+        fake_selected_close_eye_window,
+        fake_selected_refresh_eye_window,
+        fake_selected_refresh_main_surface,
+        fake_selected_on_remove_inactive_creature,
+        &selected_ui_context,
+    };
+    CreaturesSelectedCreatureHistory selected_history = {0, {NULL, NULL, NULL, NULL}};
+    void *selected_creature_ptr;
     LauncherShellContext launcher_shell_context = {
         {"C:\\Applet1.exe", "C:\\Applet2.exe"},
         2,
@@ -1289,6 +2966,13 @@ int main(void) {
         fake_remove_filesystem_delete_path,
         &remove_filesystem_context,
     };
+    CreaturesWorldFilesystemOps world_filesystem_ops = {
+        fake_remove_filesystem_enumerate,
+        fake_remove_filesystem_delete_path,
+        fake_world_filesystem_copy_path,
+        fake_world_filesystem_ensure_directory,
+        &world_filesystem_context,
+    };
     RemoveShellOps remove_shell_ops = {
         fake_remove_shell_execute,
         &remove_shell_context,
@@ -1298,6 +2982,16 @@ int main(void) {
     size_t registry_key_count;
     const char *const *registry_keys;
     size_t value_size;
+    CreaturesDisplayRect boot_rect;
+    CreaturesRegistryPair32 boot_pair;
+    CreaturesWindowPlacement boot_window_placement;
+    uint8_t palette_primary_rgb[CREATURES_PALETTE_GAME_COLOR_COUNT * 3];
+    uint8_t palette_secondary_rgb[CREATURES_PALETTE_GAME_COLOR_COUNT * 3];
+    uint8_t palette_tertiary_rgb[CREATURES_PALETTE_GAME_COLOR_COUNT * 3];
+    uint8_t palette_quaternary_rgb[CREATURES_PALETTE_GAME_COLOR_COUNT * 3];
+    void *bootstrap_palette_handle;
+    CreaturesWorldMetrics world_metrics;
+    int world_loading_flag;
     char body_pair_table_text[1024];
     char body_quad_table_text[512];
     FakeTextAssetEntry body_text_entries[2];
@@ -1568,6 +3262,12 @@ int main(void) {
 
     creatures_slice_reset_runtime();
     memset(&launcher_registry_context, 0, sizeof(launcher_registry_context));
+    memset(&boot_registry_context, 0, sizeof(boot_registry_context));
+    memset(&boot_window_context.finalized_placement, 0, sizeof(boot_window_context.finalized_placement));
+    memset(&saved_window_context, 0, sizeof(saved_window_context));
+    memset(&palette_file_context, 0, sizeof(palette_file_context));
+    memset(&palette_system_context, 0, sizeof(palette_system_context));
+    memset(&world_bootstrap_context, 0, sizeof(world_bootstrap_context));
     memset(&creatures_settings_context, 0, sizeof(creatures_settings_context));
     memset(&frame_factory_context, 0, sizeof(frame_factory_context));
     memset(cached_frame_entries, 0, sizeof(cached_frame_entries));
@@ -1617,6 +3317,33 @@ int main(void) {
     launcher_registry_context.entries = launcher_registry_entries;
     launcher_registry_context.entry_count =
         sizeof(launcher_registry_entries) / sizeof(launcher_registry_entries[0]);
+    memcpy(boot_registry_entries[0].data, &boot_saved_window_rect, sizeof(boot_saved_window_rect));
+    memcpy(boot_registry_entries[1].data, &boot_saved_eye_pos, sizeof(boot_saved_eye_pos));
+    boot_registry_context.entries = boot_registry_entries;
+    boot_registry_context.entry_count =
+        sizeof(boot_registry_entries) / sizeof(boot_registry_entries[0]);
+    strcpy(palette_file_context.expected_path, "C:\\Creatures\\Palettes\\PALETTE.DTA");
+    palette_file_context.size = sizeof(palette_file_context.bytes);
+    palette_system_context.screen_dc = (void *)0x4444;
+    palette_system_context.previous_palette_handle = (void *)0x2222;
+    for (palette_index = 0; palette_index < CREATURES_PALETTE_SYSTEM_RESERVED_COUNT;
+         palette_index++) {
+        palette_system_context.low_entries[palette_index].red = (uint8_t)(palette_index + 1);
+        palette_system_context.low_entries[palette_index].green = (uint8_t)(palette_index + 2);
+        palette_system_context.low_entries[palette_index].blue = (uint8_t)(palette_index + 3);
+        palette_system_context.low_entries[palette_index].flags = 0;
+        palette_system_context.high_entries[palette_index].red = (uint8_t)(palette_index + 101);
+        palette_system_context.high_entries[palette_index].green = (uint8_t)(palette_index + 102);
+        palette_system_context.high_entries[palette_index].blue = (uint8_t)(palette_index + 103);
+        palette_system_context.high_entries[palette_index].flags = 0;
+    }
+    for (palette_index = 0; palette_index < CREATURES_PALETTE_GAME_COLOR_COUNT * 3;
+         palette_index++) {
+        palette_file_context.bytes[CREATURES_PALETTE_FILE_HEADER_SKIP + palette_index] =
+            (uint8_t)(palette_index & 0x3f);
+    }
+    world_bootstrap_context.load_world_result = 1;
+    world_bootstrap_context.bootstrap_palette_result = 1;
     build_fake_pair_table_text(body_pair_table_text, sizeof(body_pair_table_text));
     build_fake_quad_table_text(body_quad_table_text, sizeof(body_quad_table_text));
     body_table_lookup_context.pair_table_text = body_pair_table_text;
@@ -2497,6 +4224,493 @@ int main(void) {
         "launcher_registry_write_string value name");
     expect_str(launcher_registry_context.writes[0].value, "D:\\Creatures\\Build.txt",
         "launcher_registry_write_string value");
+
+    expect_true(
+        creatures_registry_bootstrap_main_handler(&boot_registry_handler, &boot_registry_ops),
+        "creatures_registry_bootstrap_main_handler");
+    expect_true(boot_registry_handler.is_open,
+        "creatures_registry_bootstrap_main_handler is open");
+    expect_str(boot_registry_handler.registry_path,
+        "SOFTWARE\\Millennium Interactive\\Creatures\\1.0",
+        "creatures_registry_bootstrap_main_handler path");
+    expect_size(boot_registry_context.created_key_count, 2,
+        "creatures_registry_bootstrap_main_handler key count");
+    expect_str(boot_registry_context.created_keys[0],
+        "HKEY_CURRENT_USER|SOFTWARE\\Millennium Interactive\\Creatures\\1.0",
+        "creatures_registry_bootstrap_main_handler current user key");
+    expect_str(boot_registry_context.created_keys[1],
+        "HKEY_LOCAL_MACHINE|SOFTWARE\\Millennium Interactive\\Creatures\\1.0",
+        "creatures_registry_bootstrap_main_handler local machine key");
+
+    memset(&boot_rect, 0, sizeof(boot_rect));
+    expect_true(creatures_registry_read_rect(&boot_registry_handler, &boot_registry_ops, 0,
+                    "WindowPosn", &boot_rect),
+        "creatures_registry_read_rect current user");
+    expect_i32(boot_rect.left, 32, "creatures_registry_read_rect left");
+    expect_i32(boot_rect.top, 24, "creatures_registry_read_rect top");
+    expect_i32(boot_rect.right, 0x280 + 32, "creatures_registry_read_rect right");
+    expect_i32(boot_rect.bottom, 0x1e0 + 24, "creatures_registry_read_rect bottom");
+
+    value_size = sizeof(registry_buffer);
+    expect_true(creatures_registry_read_value(&boot_registry_handler, &boot_registry_ops, 1,
+                    "Language", (uint8_t *)registry_buffer, &value_size),
+        "creatures_registry_read_value local machine");
+    expect_str(registry_buffer, "en-GB", "creatures_registry_read_value payload");
+
+    expect_true(creatures_registry_write_string(&boot_registry_handler, &boot_registry_ops, 1,
+                    "Primary Genome", "NORN.GEN"),
+        "creatures_registry_write_string");
+    expect_size(boot_registry_context.write_count, 1,
+        "creatures_registry_write_string count");
+    expect_str(boot_registry_context.writes[0].root_name, "HKEY_LOCAL_MACHINE",
+        "creatures_registry_write_string root");
+    expect_str(boot_registry_context.writes[0].subkey,
+        "SOFTWARE\\Millennium Interactive\\Creatures\\1.0",
+        "creatures_registry_write_string subkey");
+    expect_str(boot_registry_context.writes[0].value_name, "Primary Genome",
+        "creatures_registry_write_string name");
+    expect_str((const char *)boot_registry_context.writes[0].data, "NORN.GEN",
+        "creatures_registry_write_string payload");
+
+    expect_true(creatures_registry_write_rect(&boot_registry_handler, &boot_registry_ops, 0,
+                    "WindowPosn", &boot_offscreen_window_rect),
+        "creatures_registry_write_rect");
+    expect_size(boot_registry_context.write_count, 2,
+        "creatures_registry_write_rect count");
+    expect_size(boot_registry_context.writes[1].data_size, sizeof(CreaturesDisplayRect),
+        "creatures_registry_write_rect size");
+    memcpy(&boot_rect, boot_registry_context.writes[1].data, sizeof(boot_rect));
+    expect_i32(boot_rect.left, 640, "creatures_registry_write_rect left");
+    expect_i32(boot_rect.top, 480, "creatures_registry_write_rect top");
+
+    memset(&boot_pair, 0, sizeof(boot_pair));
+    expect_true(creatures_registry_read_pair32(&boot_registry_handler, &boot_registry_ops, 0,
+                    "EyePosn", &boot_pair),
+        "creatures_registry_read_pair32 current user");
+    expect_i32(boot_pair.first, 19, "creatures_registry_read_pair32 first");
+    expect_i32(boot_pair.second, 27, "creatures_registry_read_pair32 second");
+
+    boot_pair.first = 88;
+    boot_pair.second = 144;
+    expect_true(creatures_registry_write_pair32(&boot_registry_handler, &boot_registry_ops, 0,
+                    "EyePosn", &boot_pair),
+        "creatures_registry_write_pair32");
+    expect_size(boot_registry_context.write_count, 3,
+        "creatures_registry_write_pair32 count");
+    memcpy(&boot_pair, boot_registry_context.writes[2].data, sizeof(boot_pair));
+    expect_i32(boot_pair.first, 88, "creatures_registry_write_pair32 first");
+    expect_i32(boot_pair.second, 144, "creatures_registry_write_pair32 second");
+
+    memset(&boot_rect, 0, sizeof(boot_rect));
+    creatures_registry_read_or_default_rect(&boot_registry_handler, &boot_registry_ops, 0,
+        "MissingWindowPosn", &boot_rect, &boot_saved_window_rect);
+    expect_i32(boot_rect.left, 32, "creatures_registry_read_or_default_rect left");
+    expect_i32(boot_rect.top, 24, "creatures_registry_read_or_default_rect top");
+    expect_size(boot_registry_context.write_count, 4,
+        "creatures_registry_read_or_default_rect write count");
+    expect_str(boot_registry_context.writes[3].value_name, "MissingWindowPosn",
+        "creatures_registry_read_or_default_rect name");
+    memcpy(&boot_rect, boot_registry_context.writes[3].data, sizeof(boot_rect));
+    expect_i32(boot_rect.right, 0x280 + 32,
+        "creatures_registry_read_or_default_rect right");
+    expect_i32(boot_rect.bottom, 0x1e0 + 24,
+        "creatures_registry_read_or_default_rect bottom");
+
+    memset(&boot_pair, 0, sizeof(boot_pair));
+    creatures_registry_read_or_default_pair32(&boot_registry_handler, &boot_registry_ops, 0,
+        "MissingEyePosn", &boot_pair, &boot_saved_eye_pos);
+    expect_i32(boot_pair.first, 19, "creatures_registry_read_or_default_pair32 first");
+    expect_i32(boot_pair.second, 27, "creatures_registry_read_or_default_pair32 second");
+    expect_size(boot_registry_context.write_count, 5,
+        "creatures_registry_read_or_default_pair32 count");
+    expect_str(boot_registry_context.writes[4].value_name, "MissingEyePosn",
+        "creatures_registry_read_or_default_pair32 name");
+
+    memset(&boot_window_placement, 0, sizeof(boot_window_placement));
+    boot_window_context.finalize_call_count = 0;
+    creatures_window_bootstrap_placement(&boot_window_placement, &boot_registry_handler,
+        &boot_registry_ops, &boot_window_ops);
+    expect_i32(boot_window_placement.x, 32, "creatures_window_bootstrap_placement x");
+    expect_i32(boot_window_placement.y, 24, "creatures_window_bootstrap_placement y");
+    expect_i32(boot_window_placement.width, 0x280,
+        "creatures_window_bootstrap_placement width");
+    expect_i32(boot_window_placement.height, 0x1e0,
+        "creatures_window_bootstrap_placement height");
+    expect_u32(boot_window_placement.style, 0x00cf0000u,
+        "creatures_window_bootstrap_placement style");
+    expect_i32(boot_window_context.finalize_call_count, 1,
+        "creatures_window_bootstrap_placement finalize count");
+    expect_i32(boot_window_context.finalized_placement.x, 32,
+        "creatures_window_bootstrap_placement finalized x");
+
+    memcpy(boot_registry_entries[0].data, &boot_offscreen_window_rect,
+        sizeof(boot_offscreen_window_rect));
+    memset(&boot_window_placement, 0, sizeof(boot_window_placement));
+    creatures_window_bootstrap_placement(&boot_window_placement, &boot_registry_handler,
+        &boot_registry_ops, &boot_window_ops);
+    expect_i32(boot_window_placement.x, 0,
+        "creatures_window_bootstrap_placement offscreen reset x");
+    expect_i32(boot_window_placement.y, 0,
+        "creatures_window_bootstrap_placement offscreen reset y");
+    expect_i32(boot_window_placement.width, 0x280,
+        "creatures_window_bootstrap_placement offscreen reset width");
+    expect_i32(boot_window_placement.height, 0x1e0,
+        "creatures_window_bootstrap_placement offscreen reset height");
+
+    memset(&saved_window_context, 0, sizeof(saved_window_context));
+    saved_window_context.next_rect = boot_saved_window_rect;
+    creatures_main_window_save_placement_and_shutdown((void *)0x1234, &boot_registry_handler,
+        &boot_registry_ops, &main_window_state_ops);
+    expect_i32(saved_window_context.read_rect_call_count, 1,
+        "creatures_main_window_save_placement_and_shutdown read count");
+    expect_i32(saved_window_context.shutdown_call_count, 1,
+        "creatures_main_window_save_placement_and_shutdown shutdown count");
+    expect_size(boot_registry_context.write_count, 6,
+        "creatures_main_window_save_placement_and_shutdown write count");
+    expect_str(boot_registry_context.writes[5].value_name, "WindowPosn",
+        "creatures_main_window_save_placement_and_shutdown name");
+
+    memset(&saved_window_context, 0, sizeof(saved_window_context));
+    saved_window_context.is_iconic = 1;
+    creatures_main_window_save_placement_and_shutdown((void *)0x5678, &boot_registry_handler,
+        &boot_registry_ops, &main_window_state_ops);
+    expect_i32(saved_window_context.read_rect_call_count, 0,
+        "creatures_main_window_save_placement_and_shutdown iconic skip read");
+    expect_i32(saved_window_context.shutdown_call_count, 1,
+        "creatures_main_window_save_placement_and_shutdown iconic shutdown");
+    expect_size(boot_registry_context.write_count, 6,
+        "creatures_main_window_save_placement_and_shutdown iconic write count");
+
+    memset(&saved_window_context, 0, sizeof(saved_window_context));
+    saved_window_context.next_rect = boot_saved_window_rect;
+    creatures_eye_window_save_position_and_destroy((void *)0x9999, (void *)0x8888,
+        &boot_registry_handler, &boot_registry_ops, &eye_window_state_ops);
+    expect_i32(saved_window_context.read_rect_call_count, 1,
+        "creatures_eye_window_save_position_and_destroy read count");
+    expect_i32(saved_window_context.destroy_call_count, 1,
+        "creatures_eye_window_save_position_and_destroy destroy count");
+    expect_true(saved_window_context.last_owner == (void *)0x9999,
+        "creatures_eye_window_save_position_and_destroy owner");
+    expect_size(boot_registry_context.write_count, 7,
+        "creatures_eye_window_save_position_and_destroy write count");
+    expect_str(boot_registry_context.writes[6].value_name, "EyePosn",
+        "creatures_eye_window_save_position_and_destroy name");
+    memcpy(&boot_pair, boot_registry_context.writes[6].data, sizeof(boot_pair));
+    expect_i32(boot_pair.first, 32,
+        "creatures_eye_window_save_position_and_destroy left");
+    expect_i32(boot_pair.second, 24,
+        "creatures_eye_window_save_position_and_destroy top");
+
+    memset(palette_primary_rgb, 0, sizeof(palette_primary_rgb));
+    expect_true(creatures_palette_table_load(palette_primary_rgb, "C:\\Creatures\\Palettes\\",
+                    "PALETTE.DTA", &palette_file_ops),
+        "creatures_palette_table_load");
+    expect_i32(palette_file_context.open_call_count, 1,
+        "creatures_palette_table_load open count");
+    expect_i32(palette_file_context.close_call_count, 1,
+        "creatures_palette_table_load close count");
+    expect_u8(palette_primary_rgb[0], (uint8_t)(palette_file_context.bytes[0x1e] << 2),
+        "creatures_palette_table_load first red");
+    expect_u8(palette_primary_rgb[1], (uint8_t)(palette_file_context.bytes[0x1f] << 2),
+        "creatures_palette_table_load first green");
+    expect_u8(palette_primary_rgb[2], (uint8_t)(palette_file_context.bytes[0x20] << 2),
+        "creatures_palette_table_load first blue");
+
+    memset(&palette_system_context.created_palettes[0], 0,
+        sizeof(palette_system_context.created_palettes[0]));
+    creatures_log_palette_seed_system_colors(
+        &palette_system_context.created_palettes[0], &palette_system_ops);
+    expect_i32(palette_system_context.create_palette_call_count, 1,
+        "creatures_log_palette_seed_system_colors create count");
+    expect_i32(palette_system_context.select_palette_call_count, 2,
+        "creatures_log_palette_seed_system_colors select count");
+    expect_i32(palette_system_context.realize_palette_call_count, 1,
+        "creatures_log_palette_seed_system_colors realize count");
+    expect_i32(palette_system_context.delete_object_call_count, 1,
+        "creatures_log_palette_seed_system_colors delete count");
+    expect_true(palette_system_context.last_deleted_object ==
+            palette_system_context.created_handles[0],
+        "creatures_log_palette_seed_system_colors deleted bootstrap palette");
+    expect_i32(palette_system_context.release_dc_call_count, 1,
+        "creatures_log_palette_seed_system_colors release count");
+    expect_u8(palette_system_context.created_palettes[0].entries[0].red, 1,
+        "creatures_log_palette_seed_system_colors low entry");
+    expect_u8(palette_system_context.created_palettes[0]
+                  .entries[CREATURES_PALETTE_SYSTEM_RESERVED_COUNT]
+                  .flags,
+        4, "creatures_log_palette_seed_system_colors middle flags");
+    expect_u8(palette_system_context.created_palettes[0]
+                  .entries[CREATURES_PALETTE_ENTRY_COUNT -
+                      CREATURES_PALETTE_SYSTEM_RESERVED_COUNT]
+                  .red,
+        101, "creatures_log_palette_seed_system_colors high entry");
+
+    bootstrap_palette_handle = NULL;
+    expect_true(creatures_palette_handle_create(
+                    &bootstrap_palette_handle, palette_primary_rgb, &palette_system_ops),
+        "creatures_palette_handle_create");
+    expect_true(bootstrap_palette_handle == palette_system_context.created_handles[2],
+        "creatures_palette_handle_create handle");
+    expect_u8(palette_system_context.created_palettes[2]
+                  .entries[CREATURES_PALETTE_SYSTEM_RESERVED_COUNT]
+                  .red,
+        palette_primary_rgb[0], "creatures_palette_handle_create first game red");
+
+    memset(palette_primary_rgb, 0, sizeof(palette_primary_rgb));
+    memset(palette_secondary_rgb, 0, sizeof(palette_secondary_rgb));
+    memset(palette_tertiary_rgb, 0, sizeof(palette_tertiary_rgb));
+    memset(palette_quaternary_rgb, 0, sizeof(palette_quaternary_rgb));
+    expect_true(creatures_palette_bootstrap(&bootstrap_palette_handle, palette_primary_rgb,
+                    palette_secondary_rgb, palette_tertiary_rgb, palette_quaternary_rgb,
+                    "C:\\Creatures\\Palettes\\", "PALETTE.DTA", &palette_file_ops,
+                    &palette_system_ops),
+        "creatures_palette_bootstrap");
+    expect_i32(palette_file_context.open_call_count, 5,
+        "creatures_palette_bootstrap total file opens");
+    expect_i32(palette_system_context.create_palette_call_count, 5,
+        "creatures_palette_bootstrap total palette creates");
+    expect_true(bootstrap_palette_handle == palette_system_context.created_handles[4],
+        "creatures_palette_bootstrap final handle");
+    expect_u8(palette_secondary_rgb[0], palette_primary_rgb[0],
+        "creatures_palette_bootstrap secondary copied");
+    expect_u8(palette_tertiary_rgb[0], palette_primary_rgb[0],
+        "creatures_palette_bootstrap tertiary copied");
+    expect_u8(palette_quaternary_rgb[0], palette_primary_rgb[0],
+        "creatures_palette_bootstrap quaternary copied");
+
+    memset(&world_bootstrap_context, 0, sizeof(world_bootstrap_context));
+    world_bootstrap_context.load_world_result = 1;
+    world_bootstrap_context.bootstrap_palette_result = 1;
+    world_metrics.first = 9;
+    world_metrics.second = 8;
+    world_metrics.third = 7;
+    world_metrics.fourth = 6;
+    world_loading_flag = 5;
+    creatures_window_timer_stop((void *)0xaaaa, &world_timer_ops);
+    creatures_window_timer_start((void *)0xaaaa, &world_timer_ops);
+    expect_i32(world_bootstrap_context.kill_timer_call_count, 1,
+        "creatures_window_timer_stop count");
+    expect_i32(world_bootstrap_context.set_timer_call_count, 1,
+        "creatures_window_timer_start count");
+    expect_true(world_bootstrap_context.last_window_handle == (void *)0xaaaa,
+        "creatures_window_timer_start handle");
+
+    creatures_world_reset_metrics(&world_metrics, fake_world_reset_metrics_callback,
+        &world_bootstrap_context);
+    expect_i32(world_metrics.first, 0, "creatures_world_reset_metrics first");
+    expect_i32(world_metrics.fourth, 0, "creatures_world_reset_metrics fourth");
+    expect_i32(world_bootstrap_context.reset_metrics_callback_count, 1,
+        "creatures_world_reset_metrics callback count");
+
+    memset(&world_bootstrap_context, 0, sizeof(world_bootstrap_context));
+    world_bootstrap_context.load_world_result = 1;
+    world_bootstrap_context.bootstrap_palette_result = 1;
+    world_metrics.first = 4;
+    world_metrics.second = 3;
+    world_metrics.third = 2;
+    world_metrics.fourth = 1;
+    world_loading_flag = 9;
+    expect_true(creatures_world_load_bootstrap((void *)0x1111, &world_loading_flag,
+                    (void *)0x2222, &world_metrics, &world_bootstrap_ops),
+        "creatures_world_load_bootstrap success");
+    expect_i32(world_loading_flag, 1, "creatures_world_load_bootstrap loading flag");
+    expect_i32(world_metrics.first, 0, "creatures_world_load_bootstrap reset first");
+    expect_i32(world_bootstrap_context.kill_timer_call_count, 1,
+        "creatures_world_load_bootstrap stop timer count");
+    expect_i32(world_bootstrap_context.set_timer_call_count, 1,
+        "creatures_world_load_bootstrap start timer count");
+    expect_true(world_bootstrap_context.last_world_source == (void *)0x1111,
+        "creatures_world_load_bootstrap world source");
+    expect_str(world_bootstrap_context.call_order, "KLPBMCSTW",
+        "creatures_world_load_bootstrap call order");
+
+    memset(&world_bootstrap_context, 0, sizeof(world_bootstrap_context));
+    world_bootstrap_context.load_world_result = 0;
+    world_bootstrap_context.bootstrap_palette_result = 1;
+    world_loading_flag = 7;
+    expect_false(creatures_world_load_bootstrap((void *)0x1111, &world_loading_flag,
+                    (void *)0x2222, &world_metrics, &world_bootstrap_ops),
+        "creatures_world_load_bootstrap load failure");
+    expect_i32(world_loading_flag, 0,
+        "creatures_world_load_bootstrap load failure loading flag");
+    expect_str(world_bootstrap_context.call_order, "KL",
+        "creatures_world_load_bootstrap load failure order");
+
+    memset(&world_bootstrap_context, 0, sizeof(world_bootstrap_context));
+    world_bootstrap_context.load_world_result = 1;
+    world_bootstrap_context.bootstrap_palette_result = 0;
+    world_loading_flag = 7;
+    expect_false(creatures_world_load_bootstrap((void *)0x1111, &world_loading_flag,
+                    (void *)0x2222, &world_metrics, &world_bootstrap_ops),
+        "creatures_world_load_bootstrap palette failure");
+    expect_i32(world_loading_flag, 0,
+        "creatures_world_load_bootstrap palette failure loading flag");
+    expect_str(world_bootstrap_context.call_order, "KLP",
+        "creatures_world_load_bootstrap palette failure order");
+
+    memset(&world_filesystem_context, 0, sizeof(world_filesystem_context));
+    world_filesystem_context.match_sets = world_match_sets;
+    world_filesystem_context.match_set_count =
+        sizeof(world_match_sets) / sizeof(world_match_sets[0]);
+    expect_size(creatures_world_directory_delete_mask(
+                    "C:\\Creatures\\TempBu", "*.spr", &world_filesystem_ops),
+        2, "creatures_world_directory_delete_mask");
+    expect_str(world_filesystem_context.deleted_paths[0], "C:\\Creatures\\TempBu\\stale1.spr",
+        "creatures_world_directory_delete_mask first");
+    expect_str(world_filesystem_context.deleted_paths[1], "C:\\Creatures\\TempBu\\stale2.spr",
+        "creatures_world_directory_delete_mask second");
+
+    memset(&world_filesystem_context, 0, sizeof(world_filesystem_context));
+    world_filesystem_context.match_sets = world_match_sets;
+    world_filesystem_context.match_set_count =
+        sizeof(world_match_sets) / sizeof(world_match_sets[0]);
+    expect_size(creatures_world_directory_copy_mask("C:\\Creatures\\World",
+                    "C:\\Creatures\\TempBu", "*.spr", &world_filesystem_ops),
+        2, "creatures_world_directory_copy_mask");
+    expect_str(world_filesystem_context.copied_sources[0], "C:\\Creatures\\World\\alpha.spr",
+        "creatures_world_directory_copy_mask first source");
+    expect_str(world_filesystem_context.copied_destinations[1],
+        "C:\\Creatures\\TempBu\\beta.spr",
+        "creatures_world_directory_copy_mask second destination");
+
+    memset(&world_filesystem_context, 0, sizeof(world_filesystem_context));
+    world_filesystem_context.match_sets = world_match_sets;
+    world_filesystem_context.match_set_count =
+        sizeof(world_match_sets) / sizeof(world_match_sets[0]);
+    {
+        const char *const extra_world_patterns[] = {"*.photo album"};
+
+        expect_true(creatures_world_stage_temp_backup("C:\\Creatures\\World",
+                        "C:\\Creatures\\TempBu", extra_world_patterns, 1,
+                        &world_filesystem_ops),
+            "creatures_world_stage_temp_backup");
+    }
+    expect_size(world_filesystem_context.ensure_directory_count, 1,
+        "creatures_world_stage_temp_backup ensure count");
+    expect_str(world_filesystem_context.ensured_directories[0], "C:\\Creatures\\TempBu",
+        "creatures_world_stage_temp_backup ensured directory");
+    expect_size(world_filesystem_context.deleted_path_count, 3,
+        "creatures_world_stage_temp_backup delete count");
+    expect_str(world_filesystem_context.deleted_paths[0], "C:\\Creatures\\TempBu\\stale.sfc",
+        "creatures_world_stage_temp_backup deleted world");
+    expect_str(world_filesystem_context.deleted_paths[2], "C:\\Creatures\\TempBu\\stale2.spr",
+        "creatures_world_stage_temp_backup deleted final sprite");
+    expect_size(world_filesystem_context.copy_count, 4,
+        "creatures_world_stage_temp_backup copy count");
+    expect_str(world_filesystem_context.copied_sources[0], "C:\\Creatures\\World\\World.sfc",
+        "creatures_world_stage_temp_backup copied world");
+    expect_str(world_filesystem_context.copied_destinations[3],
+        "C:\\Creatures\\TempBu\\album.photo album",
+        "creatures_world_stage_temp_backup copied extra");
+
+    memset(&world_filesystem_context, 0, sizeof(world_filesystem_context));
+    world_filesystem_context.match_sets = world_match_sets;
+    world_filesystem_context.match_set_count =
+        sizeof(world_match_sets) / sizeof(world_match_sets[0]);
+    expect_true(creatures_world_restore_backup_to_temp(
+                    "C:\\Creatures\\TempBu", "C:\\Creatures\\Backup", &world_filesystem_ops),
+        "creatures_world_restore_backup_to_temp");
+    expect_size(world_filesystem_context.ensure_directory_count, 2,
+        "creatures_world_restore_backup_to_temp ensure count");
+    expect_str(world_filesystem_context.ensured_directories[1], "C:\\Creatures\\Backup",
+        "creatures_world_restore_backup_to_temp ensured backup");
+    expect_size(world_filesystem_context.deleted_path_count, 3,
+        "creatures_world_restore_backup_to_temp delete count");
+    expect_size(world_filesystem_context.copy_count, 3,
+        "creatures_world_restore_backup_to_temp copy count");
+    expect_str(world_filesystem_context.copied_sources[0], "C:\\Creatures\\Backup\\backup.sfc",
+        "creatures_world_restore_backup_to_temp copied world");
+    expect_str(world_filesystem_context.copied_destinations[2],
+        "C:\\Creatures\\TempBu\\restore2.spr",
+        "creatures_world_restore_backup_to_temp copied final sprite");
+
+    memset(&selected_ui_context, 0, sizeof(selected_ui_context));
+    snprintf(selected_ui_context.pane_texts[6], sizeof(selected_ui_context.pane_texts[6]),
+        "Health 000");
+    snprintf(selected_ui_context.pane_texts[7], sizeof(selected_ui_context.pane_texts[7]),
+        "Score 000000");
+    selected_ui_context.score_parts[1] = 0x12;
+    selected_ui_context.score_parts[4] = 0x34;
+    selected_history.count = 0;
+    memset(selected_history.slots, 0, sizeof(selected_history.slots));
+    selected_creature_ptr = NULL;
+
+    creatures_selected_creature_history_push(
+        &selected_history, &active_creature, selected_creature_ptr, (void *)0x4444, &selected_ui_ops);
+    creatures_selected_creature_history_push(
+        &selected_history, &inactive_creature, selected_creature_ptr, (void *)0x4444, &selected_ui_ops);
+    creatures_selected_creature_history_push(
+        &selected_history, &non_creature, selected_creature_ptr, (void *)0x4444, &selected_ui_ops);
+    expect_i32(selected_history.count, 3, "creatures_selected_creature_history_push count");
+    expect_true(selected_history.slots[0] == &active_creature,
+        "creatures_selected_creature_history_push first slot");
+    expect_true(selected_history.slots[1] == &inactive_creature,
+        "creatures_selected_creature_history_push second slot");
+    expect_true(selected_history.slots[2] == &non_creature,
+        "creatures_selected_creature_history_push third slot");
+
+    creatures_status_bar_refresh_history_and_metrics(
+        &selected_history, &active_creature, (void *)0x4444, &selected_ui_ops);
+    expect_str(selected_ui_context.pane_texts[4], "Creature",
+        "creatures_status_bar_refresh_history_and_metrics slot 4 text");
+    expect_str(selected_ui_context.pane_texts[3], "Inactive",
+        "creatures_status_bar_refresh_history_and_metrics slot 3 text");
+    expect_str(selected_ui_context.pane_texts[2], "Other",
+        "creatures_status_bar_refresh_history_and_metrics slot 2 text");
+    expect_u32(selected_ui_context.pane_states[1], 0x04000100U,
+        "creatures_status_bar_refresh_history_and_metrics slot 1 disabled");
+    expect_u32(selected_ui_context.pane_states[6], 0,
+        "creatures_status_bar_refresh_history_and_metrics active pane enabled");
+    expect_str(selected_ui_context.pane_texts[6], "Health  50",
+        "creatures_status_bar_refresh_history_and_metrics health text");
+    expect_str(selected_ui_context.pane_texts[7], "Score   4660",
+        "creatures_status_bar_refresh_history_and_metrics score text");
+    expect_i32(selected_ui_context.invalidate_count, 4,
+        "creatures_status_bar_refresh_history_and_metrics invalidate count");
+
+    creatures_main_window_refresh_title("Creatures", &active_creature, &selected_ui_ops);
+    expect_str(selected_ui_context.window_title, "Creatures - Alice",
+        "creatures_main_window_refresh_title");
+
+    creatures_selected_creature_history_remove(
+        &selected_history, &inactive_creature, 1, &active_creature, (void *)0x4444, &selected_ui_ops);
+    expect_i32(selected_history.count, 2, "creatures_selected_creature_history_remove count");
+    expect_true(selected_ui_context.removed_inactive_creatures[0] == &inactive_creature,
+        "creatures_selected_creature_history_remove inactive callback");
+
+    memset(&selected_ui_context, 0, sizeof(selected_ui_context));
+    snprintf(selected_ui_context.pane_texts[6], sizeof(selected_ui_context.pane_texts[6]),
+        "Health 000");
+    snprintf(selected_ui_context.pane_texts[7], sizeof(selected_ui_context.pane_texts[7]),
+        "Score 000000");
+    selected_ui_context.score_parts[1] = 1;
+    selected_ui_context.score_parts[4] = 2;
+    selected_history.count = 2;
+    selected_history.slots[0] = &active_creature;
+    selected_history.slots[1] = &non_creature;
+    selected_history.slots[2] = NULL;
+    selected_history.slots[3] = NULL;
+    selected_creature_ptr = NULL;
+    creatures_selected_creature_set(&selected_creature_ptr, &inactive_creature, 1,
+        &selected_history, (void *)0x4444, (void *)0x5555, "Creatures", &selected_ui_ops);
+    expect_true(selected_creature_ptr == &inactive_creature,
+        "creatures_selected_creature_set pointer");
+    expect_i32((int)selected_ui_context.selection_mode_count, 2,
+        "creatures_selected_creature_set selection mode count");
+    expect_i32(selected_ui_context.selection_mode_values[0], 6,
+        "creatures_selected_creature_set initial selection mode");
+    expect_i32(selected_ui_context.selection_mode_values[1], 8,
+        "creatures_selected_creature_set inactive selection mode");
+    expect_i32(selected_ui_context.close_eye_count, 1,
+        "creatures_selected_creature_set close eye");
+    expect_i32(selected_ui_context.refresh_main_surface_count, 1,
+        "creatures_selected_creature_set refresh main surface");
+    expect_i32(selected_ui_context.invalidate_count, 2,
+        "creatures_selected_creature_set invalidate count");
+    expect_true(selected_ui_context.last_invalidated_window == (void *)0x5555,
+        "creatures_selected_creature_set invalidated window");
+    expect_str(selected_ui_context.window_title, "Creatures - Bob",
+        "creatures_selected_creature_set title");
 
     expect_size(launcher_launch_applets(
                     "C:\\Applet1.exe|C:\\Missing.exe|C:\\Applet2.exe", &launcher_shell_ops),
@@ -3410,6 +5624,1854 @@ int main(void) {
                    sizeof(render_depth_participants) / sizeof(render_depth_participants[0]),
                    fake_render_depth_read, fake_random_next, &random_context),
         1800, "creatures_choose_unique_render_depth_base");
+
+    {
+        ReconstructionCreaturesStartupResult startup_result;
+        ReconstructionStartupProbeOptions startup_options;
+        ReconstructionStartupHostOps startup_host_ops;
+        FakeStartupProbeContext startup_context = {{
+                                                   "C:\\Creatures\\World.sfc",
+                                                   "C:\\Creatures\\Images\\A000.spr",
+                                                   "C:\\Creatures\\Body data\\a000.att",
+                                                   "C:\\Creatures\\Palettes\\",
+                                                   "C:\\Creatures\\Sounds\\",
+                                                   "D:\\Genetics",
+                                                   "D:\\Creatures\\Genetics\\norn.gen",
+                                               },
+            7, 1};
+
+        memset(&startup_options, 0, sizeof(startup_options));
+        startup_options.install_root = "C:\\Creatures";
+        startup_options.cd_drive = "D:";
+        startup_options.seed_defaults_from_executable = 1;
+
+        startup_host_ops.path_exists = fake_startup_probe_path_exists;
+        startup_host_ops.prompt_insert_cd = fake_startup_probe_prompt;
+        startup_host_ops.ctx = &startup_context;
+
+        expect_true(reconstruction_probe_creatures_startup(
+                        &startup_result, &startup_options, &startup_host_ops),
+            "reconstruction_probe_creatures_startup");
+        expect_true(startup_result.all_required_assets_present,
+            "reconstruction_probe_creatures_startup all assets");
+        expect_i32(startup_result.prompt_count, 0,
+            "reconstruction_probe_creatures_startup prompt count");
+        expect_size(startup_result.asset_count, 6,
+            "reconstruction_probe_creatures_startup asset count");
+        expect_str(startup_result.directory_config.directories[0], "C:\\Creatures\\",
+            "reconstruction_probe_creatures_startup main directory");
+        expect_str(startup_result.assets[0].resolved_path, "C:\\Creatures\\World.sfc",
+            "reconstruction_probe_creatures_startup world path");
+        expect_str(startup_result.assets[1].resolved_path, "D:\\Creatures\\Genetics\\norn.gen",
+            "reconstruction_probe_creatures_startup genetics path");
+        expect_true(startup_result.assets[1].used_cd_fallback,
+            "reconstruction_probe_creatures_startup genetics fallback");
+        expect_str(reconstruction_settings_store_get(&startup_result.settings_store, "CD Drive"),
+            "D:", "reconstruction_probe_creatures_startup cd drive setting");
+    }
+
+    {
+        CreaturesWingSurface wing_surface;
+        CreaturesWingSurfaceOps wing_ops;
+        FakeWingContext wing_context;
+
+        memset(&wing_context, 0, sizeof(wing_context));
+        wing_context.created_bitmap_handle = (void *)0x1234;
+        wing_context.old_selected_bitmap = (void *)0x5678;
+        for (int index = 0; index < 256; index++) {
+            wing_context.palette_entries[index].red = (uint8_t)index;
+            wing_context.palette_entries[index].green = (uint8_t)(index + 1);
+            wing_context.palette_entries[index].blue = (uint8_t)(index + 2);
+        }
+
+        wing_ops.get_palette_entries = fake_wing_get_palette_entries;
+        wing_ops.create_bitmap = fake_wing_create_bitmap;
+        wing_ops.select_object = fake_wing_select_object;
+        wing_ops.set_color_table = fake_wing_set_color_table;
+        wing_ops.delete_object = fake_wing_delete_object;
+        wing_ops.delete_dc = fake_wing_delete_dc;
+        wing_ops.ctx = &wing_context;
+
+        creatures_wing_surface_init(&wing_surface, (void *)0x9999, (void *)0xaaaa);
+        expect_true(creatures_wing_surface_create_8bit_bitmap(&wing_surface, 13, 7, &wing_ops),
+            "creatures_wing_surface_create_8bit_bitmap");
+        expect_i32(wing_context.get_palette_call_count, 2,
+            "creatures_wing_surface_create_8bit_bitmap palette calls");
+        expect_i32(wing_context.create_bitmap_call_count, 1,
+            "creatures_wing_surface_create_8bit_bitmap create calls");
+        expect_i32(wing_context.select_object_call_count, 1,
+            "creatures_wing_surface_create_8bit_bitmap select calls");
+        expect_i32((int)wing_surface.bitmap_info.width, 13,
+            "creatures_wing_surface_create_8bit_bitmap width");
+        expect_i32((int)wing_surface.bitmap_info.height, -7,
+            "creatures_wing_surface_create_8bit_bitmap height");
+        expect_i32((int)wing_surface.bitmap_info.bit_count, 8,
+            "creatures_wing_surface_create_8bit_bitmap bit count");
+        expect_true(wing_surface.bitmap_handle == wing_context.created_bitmap_handle,
+            "creatures_wing_surface_create_8bit_bitmap handle");
+        expect_true(wing_surface.selected_bitmap_before_surface == wing_context.old_selected_bitmap,
+            "creatures_wing_surface_create_8bit_bitmap old handle");
+        expect_true(wing_surface.pixels == wing_context.pixels,
+            "creatures_wing_surface_create_8bit_bitmap pixels");
+        expect_u8(wing_surface.bitmap_info.colors[0].red, 0,
+            "creatures_wing_surface_create_8bit_bitmap first red");
+        expect_u8(wing_surface.bitmap_info.colors[0].green, 1,
+            "creatures_wing_surface_create_8bit_bitmap first green");
+        expect_u8(wing_surface.bitmap_info.colors[0].blue, 2,
+            "creatures_wing_surface_create_8bit_bitmap first blue");
+        expect_size(wing_context.last_color_table_count, 256,
+            "creatures_wing_surface_create_8bit_bitmap color table size");
+
+        creatures_wing_surface_release(&wing_surface, &wing_ops);
+        expect_i32(wing_context.select_object_call_count, 2,
+            "creatures_wing_surface_release select calls");
+        expect_true(wing_context.last_deleted_object == wing_context.created_bitmap_handle,
+            "creatures_wing_surface_release deleted bitmap");
+        expect_true(wing_context.last_deleted_dc == (void *)0x9999,
+            "creatures_wing_surface_release deleted dc");
+        expect_true(wing_surface.bitmap_handle == NULL,
+            "creatures_wing_surface_release cleared handle");
+        expect_true(wing_surface.pixels == NULL,
+            "creatures_wing_surface_release cleared pixels");
+    }
+
+    {
+        CreaturesDisplaySurface display_surface;
+        CreaturesDisplaySurfaceOps display_ops;
+        CreaturesDisplayPaletteOps palette_ops;
+        CreaturesDisplayRedrawOps redraw_ops;
+        CreaturesDisplayScrollOps scroll_ops;
+        CreaturesDisplayPresentOps present_ops;
+        CreaturesDisplaySceneOps scene_ops;
+        FakeDisplayContext display_context;
+        FakeDisplayRedrawContext redraw_context;
+        FakeDisplayScrollContext scroll_context;
+        FakeDisplayPresentContext present_context;
+        FakeDisplayPresentOpsContext present_ops_context;
+        FakeDisplaySceneContext scene_context;
+        CreaturesDisplayRect requested_bounds;
+        CreaturesDisplayRect helper_left;
+        CreaturesDisplayRect helper_right;
+        CreaturesDisplayRect focus_bounds;
+        CreaturesDisplayRect client_rect;
+        CreaturesDisplayRedrawState present_state;
+
+        memset(&display_context, 0, sizeof(display_context));
+        memset(&redraw_context, 0, sizeof(redraw_context));
+        memset(&scroll_context, 0, sizeof(scroll_context));
+        memset(&present_context, 0, sizeof(present_context));
+        memset(&present_ops_context, 0, sizeof(present_ops_context));
+        memset(&scene_context, 0, sizeof(scene_context));
+        display_context.retired_bitmap_handle = (void *)0x4444;
+        display_context.returned_dc_handle = (void *)0x5151;
+        display_context.returned_previous_palette = (void *)0x6161;
+        display_context.first_realize_result = 7;
+        present_context.returned_target_dc = (void *)0x9292;
+        present_ops_context.display_context = &display_context;
+        present_ops_context.present_context = &present_context;
+
+        display_ops.release_auxiliary_resource = fake_display_release_auxiliary_resource;
+        display_ops.release_backbuffer = fake_display_release_backbuffer;
+        display_ops.create_backbuffer = fake_display_create_backbuffer;
+        display_ops.delete_bitmap = fake_display_delete_bitmap;
+        display_ops.ctx = &display_context;
+        palette_ops.get_dc = fake_display_get_dc;
+        palette_ops.select_palette = fake_display_select_palette;
+        palette_ops.realize_palette = fake_display_realize_palette;
+        palette_ops.release_dc = fake_display_release_dc;
+        palette_ops.invalidate_rect = fake_display_invalidate_rect;
+        palette_ops.ctx = &display_context;
+        redraw_ops.begin_redraw_scope = fake_display_begin_redraw_scope;
+        redraw_ops.end_redraw_scope = fake_display_end_redraw_scope;
+        redraw_ops.execute_redraw = fake_display_execute_redraw;
+        redraw_ops.ctx = &redraw_context;
+        scroll_ops.get_listener_count = fake_display_get_listener_count;
+        scroll_ops.get_listener = fake_display_get_listener;
+        scroll_ops.is_scroll_listener = fake_display_is_scroll_listener;
+        scroll_ops.notify_scroll_listener = fake_display_notify_scroll_listener;
+        scroll_ops.refresh_owner = fake_display_refresh_owner;
+        scroll_ops.redraw_ops = &redraw_ops;
+        scroll_ops.ctx = &scroll_context;
+        present_ops.resolve_target_dc = fake_display_resolve_target_dc;
+        present_ops.render_scene = fake_display_render_scene;
+        present_ops.select_palette = fake_present_select_palette;
+        present_ops.realize_palette = fake_present_realize_palette;
+        present_ops.bit_blt = fake_display_bit_blt;
+        present_ops.draw_focus_rect = fake_display_draw_focus_rect;
+        present_ops.flush_gdi = fake_display_flush_gdi;
+        present_ops.ctx = &present_ops_context;
+        scene_ops.draw_background_tile = fake_display_draw_background_tile;
+        scene_ops.get_actor_count = fake_display_get_actor_count;
+        scene_ops.get_actor = fake_display_get_actor;
+        scene_ops.collect_visible_actor = fake_display_collect_visible_actor;
+        scene_ops.draw_actor = fake_display_draw_actor;
+        scene_ops.acquire_auxiliary_sprite = fake_display_acquire_auxiliary_sprite;
+        scene_ops.draw_auxiliary_sprite = fake_display_draw_auxiliary_sprite;
+        scene_ops.ctx = &scene_context;
+
+        creatures_display_surface_init(&display_surface, (void *)0x1357);
+        display_surface.bounds.left = 100;
+        display_surface.bounds.top = 200;
+        display_surface.redraw_enabled = 1;
+        display_surface.auxiliary_sprite_token = 0x11223344u;
+        display_surface.auxiliary_sprite_resource = (void *)0x2468;
+        creatures_display_surface_bind_owner(&display_surface, (void *)0x6262);
+        creatures_display_surface_bind_palette_target(
+            &display_surface, (void *)0x7171, (void *)0x8181);
+        creatures_display_surface_bind_backbuffer_dc(&display_surface, (void *)0xa1a1);
+
+        creatures_display_surface_reset_backbuffer(&display_surface, &display_ops);
+        expect_i32(display_context.release_auxiliary_call_count, 1,
+            "creatures_display_surface_reset_backbuffer auxiliary releases");
+        expect_true(display_context.last_released_auxiliary_resource == (void *)0x2468,
+            "creatures_display_surface_reset_backbuffer released resource");
+        expect_i32(display_context.release_backbuffer_call_count, 1,
+            "creatures_display_surface_reset_backbuffer surface releases");
+        expect_true(display_context.last_released_backbuffer == (void *)0x1357,
+            "creatures_display_surface_reset_backbuffer released surface");
+        expect_false(display_surface.redraw_enabled,
+            "creatures_display_surface_reset_backbuffer redraw flag");
+        expect_true(display_surface.auxiliary_sprite_resource == (void *)0x2468,
+            "creatures_display_surface_reset_backbuffer retains released pointer");
+
+        creatures_display_surface_resize_backbuffer(&display_surface, 13, 7, &display_ops);
+        expect_i32(display_context.create_backbuffer_call_count, 1,
+            "creatures_display_surface_resize_backbuffer create calls");
+        expect_true(display_context.last_surface_ctx == (void *)0x1357,
+            "creatures_display_surface_resize_backbuffer surface context");
+        expect_u32(display_context.last_create_width, 16,
+            "creatures_display_surface_resize_backbuffer aligned width");
+        expect_i32(display_context.last_create_height, 7,
+            "creatures_display_surface_resize_backbuffer height");
+        expect_i32(display_context.delete_bitmap_call_count, 1,
+            "creatures_display_surface_resize_backbuffer delete calls");
+        expect_true(display_context.last_deleted_bitmap == (void *)0x4444,
+            "creatures_display_surface_resize_backbuffer deleted retired bitmap");
+        expect_i32(display_surface.bounds.right, 116,
+            "creatures_display_surface_resize_backbuffer right");
+        expect_i32(display_surface.bounds.bottom, 207,
+            "creatures_display_surface_resize_backbuffer bottom");
+
+        display_surface.bounds.left = 40;
+        display_surface.bounds.top = CREATURES_WORLD_HEIGHT - 5;
+        display_context.retired_bitmap_handle = NULL;
+        creatures_display_surface_resize_backbuffer(&display_surface, 8, 20, &display_ops);
+        expect_i32(display_context.create_backbuffer_call_count, 2,
+            "creatures_display_surface_resize_backbuffer second create");
+        expect_i32(display_context.delete_bitmap_call_count, 1,
+            "creatures_display_surface_resize_backbuffer null retired handle");
+        expect_i32(display_surface.bounds.right, 48,
+            "creatures_display_surface_resize_backbuffer clamped right");
+        expect_i32(display_surface.bounds.top, CREATURES_WORLD_HEIGHT - 20,
+            "creatures_display_surface_resize_backbuffer clamped top");
+        expect_i32(display_surface.bounds.bottom, CREATURES_WORLD_HEIGHT,
+            "creatures_display_surface_resize_backbuffer clamped bottom");
+
+        creatures_display_surface_resize_backbuffer(&display_surface, 0, 10, &display_ops);
+        expect_i32(display_context.create_backbuffer_call_count, 2,
+            "creatures_display_surface_resize_backbuffer ignores zero width");
+
+        expect_u32(creatures_display_surface_realize_palette(&display_surface, &palette_ops), 7,
+            "creatures_display_surface_realize_palette");
+        expect_i32(display_context.get_dc_call_count, 1,
+            "creatures_display_surface_realize_palette get dc");
+        expect_true(display_context.last_get_dc_window == (void *)0x7171,
+            "creatures_display_surface_realize_palette window");
+        expect_i32(display_context.select_palette_call_count, 2,
+            "creatures_display_surface_realize_palette select count");
+        expect_true(display_context.last_selected_dc == (void *)0x5151,
+            "creatures_display_surface_realize_palette selected dc");
+        expect_true(display_context.last_selected_palette == (void *)0x6161,
+            "creatures_display_surface_realize_palette restored previous palette");
+        expect_i32(display_context.last_select_background, 1,
+            "creatures_display_surface_realize_palette restore mode");
+        expect_i32(display_context.realize_palette_call_count, 2,
+            "creatures_display_surface_realize_palette realize count");
+        expect_true(display_context.last_realize_dc == (void *)0x5151,
+            "creatures_display_surface_realize_palette realize dc");
+        expect_i32(display_context.release_dc_call_count, 1,
+            "creatures_display_surface_realize_palette release dc");
+        expect_true(display_context.last_release_dc_window == (void *)0x7171,
+            "creatures_display_surface_realize_palette release window");
+        expect_true(display_context.last_release_dc_handle == (void *)0x5151,
+            "creatures_display_surface_realize_palette release handle");
+        expect_i32(display_context.invalidate_rect_call_count, 1,
+            "creatures_display_surface_realize_palette invalidate count");
+        expect_true(display_context.last_invalidated_window == (void *)0x7171,
+            "creatures_display_surface_realize_palette invalidate window");
+        expect_true(display_context.last_invalidated_rect == NULL,
+            "creatures_display_surface_realize_palette invalidate whole window");
+        expect_i32(display_context.last_invalidate_erase_background, 1,
+            "creatures_display_surface_realize_palette invalidate erase");
+
+        display_context.get_dc_call_count = 0;
+        display_context.select_palette_call_count = 0;
+        display_context.realize_palette_call_count = 0;
+        display_context.release_dc_call_count = 0;
+        display_context.invalidate_rect_call_count = 0;
+        creatures_display_surface_sync_palette_window(
+            &display_surface, (void *)0x7171, &palette_ops);
+        expect_i32(display_context.get_dc_call_count, 0,
+            "creatures_display_surface_sync_palette_window same window");
+        creatures_display_surface_sync_palette_window(
+            &display_surface, (void *)0x9191, &palette_ops);
+        expect_i32(display_context.get_dc_call_count, 1,
+            "creatures_display_surface_sync_palette_window changed window");
+
+        creatures_display_surface_bind_palette_target(&display_surface, (void *)0x7171, NULL);
+        display_context.get_dc_call_count = 0;
+        expect_u32(creatures_display_surface_realize_palette(&display_surface, &palette_ops), 1,
+            "creatures_display_surface_realize_palette null palette");
+        expect_i32(display_context.get_dc_call_count, 0,
+            "creatures_display_surface_realize_palette null palette skips gdi");
+
+        helper_left.left = 100;
+        helper_left.top = 20;
+        helper_left.right = 200;
+        helper_left.bottom = 60;
+        helper_right.left = 150;
+        helper_right.top = 30;
+        helper_right.right = 250;
+        helper_right.bottom = 70;
+        expect_true(creatures_display_intersect_wrapped_rect(&helper_left, &helper_right),
+            "creatures_display_intersect_wrapped_rect");
+        expect_i32(helper_left.left, 150,
+            "creatures_display_intersect_wrapped_rect left");
+        expect_i32(helper_left.top, 30,
+            "creatures_display_intersect_wrapped_rect top");
+        expect_i32(helper_left.right, 200,
+            "creatures_display_intersect_wrapped_rect right");
+        expect_i32(helper_left.bottom, 60,
+            "creatures_display_intersect_wrapped_rect bottom");
+
+        display_surface.redraw_enabled = 1;
+        display_surface.bounds.left = 100;
+        display_surface.bounds.top = 50;
+        display_surface.bounds.right = 200;
+        display_surface.bounds.bottom = 150;
+        requested_bounds.left = 150;
+        requested_bounds.top = 70;
+        requested_bounds.right = 250;
+        requested_bounds.bottom = 140;
+        creatures_display_surface_redraw_region(
+            &display_surface, (void *)0x7373, &requested_bounds, &redraw_ops);
+        expect_i32(redraw_context.execute_redraw_call_count, 1,
+            "creatures_display_surface_redraw_region execute");
+        expect_true(redraw_context.last_execute_scratch == (void *)0x7373,
+            "creatures_display_surface_redraw_region scratch");
+        expect_i32(redraw_context.last_visible_bounds.left, 150,
+            "creatures_display_surface_redraw_region visible left");
+        expect_i32(redraw_context.last_visible_bounds.top, 70,
+            "creatures_display_surface_redraw_region visible top");
+        expect_i32(redraw_context.last_visible_bounds.right, 200,
+            "creatures_display_surface_redraw_region visible right");
+        expect_i32(redraw_context.last_visible_bounds.bottom, 140,
+            "creatures_display_surface_redraw_region visible bottom");
+        expect_i32(redraw_context.last_viewport_bounds.left, 100,
+            "creatures_display_surface_redraw_region viewport left");
+        expect_i32(redraw_context.last_current_bounds.right, 200,
+            "creatures_display_surface_redraw_region current right");
+
+        redraw_context.begin_redraw_scope_call_count = 0;
+        redraw_context.end_redraw_scope_call_count = 0;
+        redraw_context.execute_redraw_call_count = 0;
+        creatures_display_surface_prepare_and_redraw_region(
+            &display_surface, &requested_bounds, &redraw_ops);
+        expect_i32(redraw_context.begin_redraw_scope_call_count, 1,
+            "creatures_display_surface_prepare_and_redraw_region begin");
+        expect_i32(redraw_context.end_redraw_scope_call_count, 1,
+            "creatures_display_surface_prepare_and_redraw_region end");
+        expect_i32(redraw_context.execute_redraw_call_count, 1,
+            "creatures_display_surface_prepare_and_redraw_region execute");
+        expect_true(redraw_context.last_begin_owner == (void *)0x6262,
+            "creatures_display_surface_prepare_and_redraw_region owner");
+        expect_true(redraw_context.last_begin_scratch == redraw_context.last_execute_scratch,
+            "creatures_display_surface_prepare_and_redraw_region scratch begin");
+        expect_true(redraw_context.last_end_scratch == redraw_context.last_execute_scratch,
+            "creatures_display_surface_prepare_and_redraw_region scratch end");
+
+        redraw_context.execute_redraw_call_count = 0;
+        requested_bounds.left = 10;
+        requested_bounds.top = 10;
+        requested_bounds.right = 10;
+        requested_bounds.bottom = 20;
+        creatures_display_surface_redraw_region(
+            &display_surface, (void *)0x7373, &requested_bounds, &redraw_ops);
+        expect_i32(redraw_context.execute_redraw_call_count, 0,
+            "creatures_display_surface_redraw_region ignores empty width");
+
+        scroll_context.listener_count = 3;
+        scroll_context.listeners[0].listener_id = 11;
+        scroll_context.listeners[0].listener_type = 0;
+        scroll_context.listeners[1].listener_id = 22;
+        scroll_context.listeners[1].listener_type = 1;
+        scroll_context.listeners[2].listener_id = 33;
+        scroll_context.listeners[2].listener_type = 2;
+        redraw_context.execute_redraw_call_count = 0;
+        redraw_context.last_execute_scratch = NULL;
+        display_surface.bounds.left = 100;
+        display_surface.bounds.top = 50;
+        display_surface.bounds.right = 200;
+        display_surface.bounds.bottom = 150;
+        {
+            int scroll_delta_x;
+            int scroll_delta_y;
+
+            scroll_delta_x = 30;
+            scroll_delta_y = 20;
+            creatures_display_surface_scroll(
+                &display_surface, &scroll_delta_x, &scroll_delta_y, &scroll_ops);
+            expect_i32(display_surface.bounds.left, 130,
+                "creatures_display_surface_scroll left");
+            expect_i32(display_surface.bounds.top, 70,
+                "creatures_display_surface_scroll top");
+            expect_i32(display_surface.bounds.right, 230,
+                "creatures_display_surface_scroll right");
+            expect_i32(display_surface.bounds.bottom, 170,
+                "creatures_display_surface_scroll bottom");
+            expect_i32(scroll_delta_x, 30,
+                "creatures_display_surface_scroll caller dx");
+            expect_i32(scroll_delta_y, 20,
+                "creatures_display_surface_scroll caller dy");
+            expect_i32(scroll_context.refresh_owner_call_count, 1,
+                "creatures_display_surface_scroll refresh owner");
+            expect_true(scroll_context.last_refresh_owner == (void *)0x6262,
+                "creatures_display_surface_scroll refresh handle");
+            expect_i32(scroll_context.notified_listener_count, 2,
+                "creatures_display_surface_scroll notify count");
+            expect_i32(scroll_context.notified_listener_ids[0], 22,
+                "creatures_display_surface_scroll notify id0");
+            expect_i32(scroll_context.notified_listener_ids[1], 33,
+                "creatures_display_surface_scroll notify id1");
+            expect_i32(scroll_context.listeners[0].notify_call_count, 0,
+                "creatures_display_surface_scroll ignore non scroll listener");
+            expect_i32(scroll_context.listeners[1].last_delta_x, 30,
+                "creatures_display_surface_scroll listener dx");
+            expect_i32(scroll_context.listeners[1].last_delta_y, 20,
+                "creatures_display_surface_scroll listener dy");
+            expect_i32(redraw_context.execute_redraw_call_count, 1,
+                "creatures_display_surface_scroll redraw");
+            expect_true(redraw_context.last_execute_scratch != NULL,
+                "creatures_display_surface_scroll redraw scratch");
+            expect_i32(redraw_context.last_visible_bounds.left, 130,
+                "creatures_display_surface_scroll redraw left");
+            expect_i32(redraw_context.last_visible_bounds.bottom, 170,
+                "creatures_display_surface_scroll redraw bottom");
+        }
+
+        memset(&scroll_context, 0, sizeof(scroll_context));
+        scroll_context.listener_count = 1;
+        scroll_context.listeners[0].listener_id = 44;
+        scroll_context.listeners[0].listener_type = 1;
+        redraw_context.execute_redraw_call_count = 0;
+        display_surface.bounds.left = 10;
+        display_surface.bounds.top = 100;
+        display_surface.bounds.right = 110;
+        display_surface.bounds.bottom = 200;
+        {
+            int scroll_delta_x;
+            int scroll_delta_y;
+
+            scroll_delta_x = -50;
+            scroll_delta_y = -200;
+            creatures_display_surface_scroll(
+                &display_surface, &scroll_delta_x, &scroll_delta_y, &scroll_ops);
+            expect_i32(display_surface.bounds.left, CREATURES_WORLD_WRAP_WIDTH - 40,
+                "creatures_display_surface_scroll wrapped left");
+            expect_i32(display_surface.bounds.right, CREATURES_WORLD_WRAP_WIDTH + 60,
+                "creatures_display_surface_scroll wrapped right");
+            expect_i32(display_surface.bounds.top, 0,
+                "creatures_display_surface_scroll clamped top");
+            expect_i32(display_surface.bounds.bottom, 100,
+                "creatures_display_surface_scroll clamped bottom");
+            expect_i32(scroll_delta_x, -50,
+                "creatures_display_surface_scroll wrapped caller dx");
+            expect_i32(scroll_delta_y, -100,
+                "creatures_display_surface_scroll clamped caller dy");
+            expect_i32(scroll_context.listeners[0].last_delta_x,
+                CREATURES_WORLD_WRAP_WIDTH - 50,
+                "creatures_display_surface_scroll wrapped listener dx");
+            expect_i32(scroll_context.listeners[0].last_delta_y, -100,
+                "creatures_display_surface_scroll clamped listener dy");
+            expect_i32(redraw_context.execute_redraw_call_count, 1,
+                "creatures_display_surface_scroll wrapped redraw");
+        }
+
+        memset(&scroll_context, 0, sizeof(scroll_context));
+        redraw_context.execute_redraw_call_count = 0;
+        creatures_display_surface_scroll_by(&display_surface, 0, 0, &scroll_ops);
+        expect_i32(scroll_context.refresh_owner_call_count, 0,
+            "creatures_display_surface_scroll_by ignores zero move");
+        expect_i32(redraw_context.execute_redraw_call_count, 0,
+            "creatures_display_surface_scroll_by ignores zero redraw");
+
+        memset(&scroll_context, 0, sizeof(scroll_context));
+        scroll_context.listener_count = 1;
+        scroll_context.listeners[0].listener_id = 55;
+        scroll_context.listeners[0].listener_type = 2;
+        display_surface.bounds.left = CREATURES_WORLD_WRAP_WIDTH - 22;
+        display_surface.bounds.top = 100;
+        display_surface.bounds.right = CREATURES_WORLD_WRAP_WIDTH + 78;
+        display_surface.bounds.bottom = 200;
+        expect_i32(creatures_display_surface_scroll_horizontally(&display_surface, 40, &scroll_ops),
+            40, "creatures_display_surface_scroll_horizontally");
+        expect_i32(display_surface.bounds.left, 18,
+            "creatures_display_surface_scroll_horizontally left");
+        expect_i32(display_surface.bounds.right, 118,
+            "creatures_display_surface_scroll_horizontally right");
+        expect_i32(scroll_context.listeners[0].last_delta_x, -8312,
+            "creatures_display_surface_scroll_horizontally listener dx");
+
+        memset(&scroll_context, 0, sizeof(scroll_context));
+        scroll_context.listener_count = 1;
+        scroll_context.listeners[0].listener_id = 66;
+        scroll_context.listeners[0].listener_type = 1;
+        display_surface.bounds.left = 100;
+        display_surface.bounds.top = 900;
+        display_surface.bounds.right = 200;
+        display_surface.bounds.bottom = 1100;
+        expect_i32(creatures_display_surface_scroll_vertically(&display_surface, 200, &scroll_ops),
+            100, "creatures_display_surface_scroll_vertically");
+        expect_i32(display_surface.bounds.top, 1000,
+            "creatures_display_surface_scroll_vertically top");
+        expect_i32(display_surface.bounds.bottom, CREATURES_WORLD_HEIGHT,
+            "creatures_display_surface_scroll_vertically bottom");
+
+        display_surface.bounds.left = 100;
+        display_surface.bounds.top = 50;
+        display_surface.bounds.right = 200;
+        display_surface.bounds.bottom = 150;
+        creatures_display_surface_bind_palette_target(
+            &display_surface, (void *)0x7171, (void *)0x8181);
+        focus_bounds.left = 130;
+        focus_bounds.top = 60;
+        focus_bounds.right = 170;
+        focus_bounds.bottom = 80;
+        creatures_display_surface_set_focus_bounds(&display_surface, 1, &focus_bounds);
+        requested_bounds.left = 150;
+        requested_bounds.top = 70;
+        requested_bounds.right = 188;
+        requested_bounds.bottom = 120;
+        present_state.visible_bounds = requested_bounds;
+        present_state.viewport_bounds = display_surface.bounds;
+        present_state.current_bounds = display_surface.bounds;
+        display_context.select_palette_call_count = 0;
+        display_context.realize_palette_call_count = 0;
+        creatures_display_surface_world_to_client_rect(
+            &display_surface, &client_rect, &requested_bounds);
+        expect_i32(client_rect.left, 50,
+            "creatures_display_surface_world_to_client_rect left");
+        expect_i32(client_rect.top, 20,
+            "creatures_display_surface_world_to_client_rect top");
+        expect_i32(client_rect.right, 88,
+            "creatures_display_surface_world_to_client_rect right");
+        expect_i32(client_rect.bottom, 70,
+            "creatures_display_surface_world_to_client_rect bottom");
+
+        scene_context.actor_count = 3;
+        scene_context.actors[0].actor_id = 101;
+        scene_context.actors[0].visible = 1;
+        scene_context.actors[0].draw_depth = 20;
+        scene_context.actors[1].actor_id = 102;
+        scene_context.actors[1].visible = 1;
+        scene_context.actors[1].draw_depth = 10;
+        scene_context.actors[2].actor_id = 103;
+        scene_context.actors[2].visible = 0;
+        scene_context.actors[2].draw_depth = 30;
+        scene_context.acquired_auxiliary_resource = (void *)0xc3c3;
+        display_surface.auxiliary_sprite_token = 0x55667788u;
+        display_surface.auxiliary_sprite_resource = NULL;
+        requested_bounds.left = 150;
+        requested_bounds.top = 70;
+        requested_bounds.right = 410;
+        requested_bounds.bottom = 220;
+        creatures_display_surface_render_scene(&display_surface, &requested_bounds, &scene_ops);
+        expect_i32(scene_context.background_draw_call_count, 4,
+            "creatures_display_surface_render_scene background count");
+        expect_i32(scene_context.background_wrapped_columns[0], 1,
+            "creatures_display_surface_render_scene background col0");
+        expect_i32(scene_context.background_rows[0], 0,
+            "creatures_display_surface_render_scene background row0");
+        expect_i32(scene_context.background_world_x[0], 144,
+            "creatures_display_surface_render_scene background x0");
+        expect_i32(scene_context.background_world_y[0], 0,
+            "creatures_display_surface_render_scene background y0");
+        expect_i32(scene_context.background_wrapped_columns[3], 2,
+            "creatures_display_surface_render_scene background col3");
+        expect_i32(scene_context.background_rows[3], 1,
+            "creatures_display_surface_render_scene background row3");
+        expect_i32(scene_context.get_actor_count_call_count, 1,
+            "creatures_display_surface_render_scene actor count");
+        expect_i32(scene_context.get_actor_call_count, 3,
+            "creatures_display_surface_render_scene actor gets");
+        expect_i32(scene_context.collect_visible_actor_call_count, 3,
+            "creatures_display_surface_render_scene visibility checks");
+        expect_i32(scene_context.draw_actor_call_count, 2,
+            "creatures_display_surface_render_scene actor draws");
+        expect_i32(scene_context.drawn_actor_ids[0], 102,
+            "creatures_display_surface_render_scene actor draw order0");
+        expect_i32(scene_context.drawn_actor_ids[1], 101,
+            "creatures_display_surface_render_scene actor draw order1");
+        expect_i32(scene_context.acquire_auxiliary_call_count, 1,
+            "creatures_display_surface_render_scene auxiliary acquire");
+        expect_u32(scene_context.last_acquired_auxiliary_token, 0x55667788u,
+            "creatures_display_surface_render_scene auxiliary token");
+        expect_i32(scene_context.draw_auxiliary_call_count, 1,
+            "creatures_display_surface_render_scene auxiliary draw");
+        expect_true(scene_context.last_drawn_auxiliary_resource == (void *)0xc3c3,
+            "creatures_display_surface_render_scene auxiliary resource");
+        expect_true(display_surface.auxiliary_sprite_resource == (void *)0xc3c3,
+            "creatures_display_surface_render_scene cached auxiliary");
+        expect_i32(scene_context.last_background_clip_bounds.left, 150,
+            "creatures_display_surface_render_scene background clip left");
+        expect_i32(scene_context.last_actor_viewport_bounds.left, 100,
+            "creatures_display_surface_render_scene actor viewport left");
+        expect_i32(scene_context.last_auxiliary_viewport_bounds.top, 50,
+            "creatures_display_surface_render_scene auxiliary viewport top");
+
+        scene_context.acquire_auxiliary_call_count = 0;
+        scene_context.draw_auxiliary_call_count = 0;
+        scene_context.last_drawn_auxiliary_resource = NULL;
+        scene_context.acquired_auxiliary_resource = NULL;
+        display_surface.auxiliary_sprite_token = 0xabcdef01u;
+        display_surface.auxiliary_sprite_resource = NULL;
+        creatures_display_surface_render_scene(&display_surface, &requested_bounds, &scene_ops);
+        expect_i32(scene_context.acquire_auxiliary_call_count, 1,
+            "creatures_display_surface_render_scene failed auxiliary acquire");
+        expect_i32(scene_context.draw_auxiliary_call_count, 0,
+            "creatures_display_surface_render_scene failed auxiliary skips draw");
+        expect_u32(display_surface.auxiliary_sprite_token, 0,
+            "creatures_display_surface_render_scene clears failed token");
+
+        requested_bounds.left = 150;
+        requested_bounds.top = 70;
+        requested_bounds.right = 188;
+        requested_bounds.bottom = 120;
+        display_surface.auxiliary_sprite_token = 0;
+        display_surface.auxiliary_sprite_resource = NULL;
+
+        creatures_display_surface_present_region(
+            &display_surface, (void *)0xb2b2, &present_state, &present_ops);
+        expect_i32(present_context.resolve_target_dc_call_count, 1,
+            "creatures_display_surface_present_region resolve dc");
+        expect_true(present_context.last_resolve_scratch == (void *)0xb2b2,
+            "creatures_display_surface_present_region scratch");
+        expect_i32(present_context.render_scene_call_count, 1,
+            "creatures_display_surface_present_region render scene");
+        expect_i32(present_context.last_render_world_bounds.left, 150,
+            "creatures_display_surface_present_region render left");
+        expect_i32(present_context.last_render_world_bounds.right, 190,
+            "creatures_display_surface_present_region aligned render right");
+        expect_i32(present_context.bit_blt_call_count, 1,
+            "creatures_display_surface_present_region bitblt");
+        expect_true(present_context.last_bit_blt_target_dc == (void *)0x9292,
+            "creatures_display_surface_present_region target dc");
+        expect_i32(present_context.last_bit_blt_dest_x, 50,
+            "creatures_display_surface_present_region dest x");
+        expect_i32(present_context.last_bit_blt_dest_y, 20,
+            "creatures_display_surface_present_region dest y");
+        expect_i32(present_context.last_bit_blt_width, 40,
+            "creatures_display_surface_present_region width");
+        expect_i32(present_context.last_bit_blt_height, 50,
+            "creatures_display_surface_present_region height");
+        expect_true(present_context.last_bit_blt_source_dc == (void *)0xa1a1,
+            "creatures_display_surface_present_region source dc");
+        expect_i32(present_context.last_bit_blt_source_x, 50,
+            "creatures_display_surface_present_region source x");
+        expect_i32(present_context.last_bit_blt_source_y, 20,
+            "creatures_display_surface_present_region source y");
+        expect_i32(present_context.draw_focus_rect_call_count, 1,
+            "creatures_display_surface_present_region focus");
+        expect_i32(present_context.last_focus_rect.left, 50,
+            "creatures_display_surface_present_region focus left");
+        expect_i32(present_context.last_focus_rect.top, 20,
+            "creatures_display_surface_present_region focus top");
+        expect_i32(present_context.last_focus_rect.right, 70,
+            "creatures_display_surface_present_region focus right");
+        expect_i32(present_context.last_focus_rect.bottom, 30,
+            "creatures_display_surface_present_region focus bottom");
+        expect_i32(present_context.flush_gdi_call_count, 1,
+            "creatures_display_surface_present_region flush");
+        expect_i32(display_context.select_palette_call_count, 2,
+            "creatures_display_surface_present_region palette selects");
+        expect_i32(display_context.realize_palette_call_count, 2,
+            "creatures_display_surface_present_region palette realizes");
+    }
+
+    {
+        CreaturesDisplayRect wrapped_rect;
+        CreaturesViewportPoint test_point;
+        CreaturesDisplaySurface display_surface;
+
+        wrapped_rect.left = 100;
+        wrapped_rect.top = 20;
+        wrapped_rect.right = 200;
+        wrapped_rect.bottom = 60;
+        test_point.x = 150;
+        test_point.y = 30;
+        expect_true(creatures_point_in_wrapped_rect(&wrapped_rect, &test_point),
+            "creatures_point_in_wrapped_rect direct hit");
+        test_point.x = 210;
+        expect_false(creatures_point_in_wrapped_rect(&wrapped_rect, &test_point),
+            "creatures_point_in_wrapped_rect direct miss");
+
+        wrapped_rect.left = CREATURES_WORLD_WRAP_WIDTH - 52;
+        wrapped_rect.top = 20;
+        wrapped_rect.right = CREATURES_WORLD_WRAP_WIDTH + 23;
+        wrapped_rect.bottom = 60;
+        test_point.x = 10;
+        test_point.y = 30;
+        expect_true(creatures_point_in_wrapped_rect(&wrapped_rect, &test_point),
+            "creatures_point_in_wrapped_rect wrapped low x");
+        test_point.x = CREATURES_WORLD_WRAP_WIDTH - 10;
+        expect_true(creatures_point_in_wrapped_rect(&wrapped_rect, &test_point),
+            "creatures_point_in_wrapped_rect wrapped high x");
+        test_point.x = 100;
+        expect_false(creatures_point_in_wrapped_rect(&wrapped_rect, &test_point),
+            "creatures_point_in_wrapped_rect wrapped miss");
+
+        creatures_display_surface_init(&display_surface, NULL);
+        display_surface.bounds.left = 100;
+        display_surface.bounds.top = 50;
+        display_surface.bounds.right = 300;
+        display_surface.bounds.bottom = 250;
+        expect_true(creatures_display_surface_target_inside_follow_window(
+                        &display_surface, 150, 150),
+            "creatures_display_surface_target_inside_follow_window direct");
+        expect_false(creatures_display_surface_target_inside_follow_window(
+                         &display_surface, 110, 150),
+            "creatures_display_surface_target_inside_follow_window outside");
+
+        display_surface.bounds.left = CREATURES_WORLD_WRAP_WIDTH - 40;
+        display_surface.bounds.top = 50;
+        display_surface.bounds.right = CREATURES_WORLD_WRAP_WIDTH + 40;
+        display_surface.bounds.bottom = 210;
+        expect_true(creatures_display_surface_target_inside_follow_window(
+                        &display_surface, 10, 120),
+            "creatures_display_surface_target_inside_follow_window wrapped");
+        expect_false(creatures_display_surface_target_inside_follow_window(
+                         &display_surface, 200, 120),
+            "creatures_display_surface_target_inside_follow_window wrapped miss");
+    }
+
+    {
+        CreaturesCameraFollowState follow_state;
+        CreaturesViewportRefreshOps refresh_ops;
+        CreaturesDisplayScrollOps scroll_ops;
+        FakeDisplayRedrawContext redraw_context;
+        FakeDisplayScrollContext scroll_context;
+        CreaturesDisplayRedrawOps redraw_ops;
+        CreaturesCameraFollowTarget target;
+
+        memset(&follow_state, 0, sizeof(follow_state));
+        memset(&redraw_context, 0, sizeof(redraw_context));
+        memset(&scroll_context, 0, sizeof(scroll_context));
+        redraw_ops.begin_redraw_scope = NULL;
+        redraw_ops.end_redraw_scope = NULL;
+        redraw_ops.execute_redraw = fake_display_execute_redraw;
+        redraw_ops.ctx = &redraw_context;
+        refresh_ops.refresh_owner = fake_display_refresh_owner;
+        refresh_ops.redraw_ops = &redraw_ops;
+        refresh_ops.ctx = &scroll_context;
+        scroll_ops.get_listener_count = fake_display_get_listener_count;
+        scroll_ops.get_listener = fake_display_get_listener;
+        scroll_ops.is_scroll_listener = fake_display_is_scroll_listener;
+        scroll_ops.notify_scroll_listener = fake_display_notify_scroll_listener;
+        scroll_ops.refresh_owner = fake_display_refresh_owner;
+        scroll_ops.redraw_ops = &redraw_ops;
+        scroll_ops.ctx = &scroll_context;
+
+        creatures_display_surface_init(&follow_state.surface, NULL);
+        creatures_display_surface_bind_owner(&follow_state.surface, (void *)0xbeef);
+        follow_state.surface.redraw_enabled = 1;
+        follow_state.surface.bounds.left = 100;
+        follow_state.surface.bounds.top = 50;
+        follow_state.surface.bounds.right = 200;
+        follow_state.surface.bounds.bottom = 150;
+        follow_state.pending_target_dx = 9;
+        follow_state.pending_target_dy = -7;
+        follow_state.accumulated_dx = 4;
+        follow_state.accumulated_dy = -3;
+        follow_state.current_step_dx = 2;
+        follow_state.current_step_dy = -1;
+        follow_state.last_target_handle = (void *)0x1111;
+        creatures_camera_follow_reset_state(&follow_state);
+        expect_i32(follow_state.pending_target_dx, 0,
+            "creatures_camera_follow_reset_state pending dx");
+        expect_i32(follow_state.pending_target_dy, 0,
+            "creatures_camera_follow_reset_state pending dy");
+        expect_i32(follow_state.current_step_dx, 0,
+            "creatures_camera_follow_reset_state step dx");
+        expect_true(follow_state.last_target_handle == NULL,
+            "creatures_camera_follow_reset_state target");
+
+        creatures_camera_follow_set_origin(&follow_state, -5, 1200, &refresh_ops);
+        expect_i32(follow_state.surface.bounds.left, 0,
+            "creatures_camera_follow_set_origin left clamp");
+        expect_i32(follow_state.surface.bounds.top, CREATURES_WORLD_HEIGHT - 100,
+            "creatures_camera_follow_set_origin top clamp");
+        expect_i32(follow_state.surface.bounds.right, 100,
+            "creatures_camera_follow_set_origin right");
+        expect_i32(follow_state.surface.bounds.bottom, CREATURES_WORLD_HEIGHT,
+            "creatures_camera_follow_set_origin bottom");
+        expect_i32(scroll_context.refresh_owner_call_count, 1,
+            "creatures_camera_follow_set_origin refresh");
+        expect_true(scroll_context.last_refresh_owner == (void *)0xbeef,
+            "creatures_camera_follow_set_origin refresh owner");
+        expect_i32(redraw_context.execute_redraw_call_count, 1,
+            "creatures_camera_follow_set_origin redraw");
+
+        memset(&scroll_context, 0, sizeof(scroll_context));
+        redraw_context.execute_redraw_call_count = 0;
+        follow_state.smoothing_enabled = 0;
+        creatures_camera_follow_seek_origin(&follow_state, 40, 60, &refresh_ops);
+        expect_i32(follow_state.surface.bounds.left, 40,
+            "creatures_camera_follow_seek_origin direct left");
+        expect_i32(follow_state.surface.bounds.top, 60,
+            "creatures_camera_follow_seek_origin direct top");
+        expect_i32(follow_state.pending_target_dx, 0,
+            "creatures_camera_follow_seek_origin direct pending dx");
+        expect_i32(redraw_context.execute_redraw_call_count, 1,
+            "creatures_camera_follow_seek_origin direct redraw");
+
+        memset(&scroll_context, 0, sizeof(scroll_context));
+        redraw_context.execute_redraw_call_count = 0;
+        follow_state.smoothing_enabled = 1;
+        follow_state.surface.bounds.left = 100;
+        follow_state.surface.bounds.top = 50;
+        follow_state.surface.bounds.right = 200;
+        follow_state.surface.bounds.bottom = 150;
+        creatures_camera_follow_seek_origin(&follow_state, 130, 80, &refresh_ops);
+        expect_i32(follow_state.pending_target_dx, 30,
+            "creatures_camera_follow_seek_origin smooth pending dx");
+        expect_i32(follow_state.pending_target_dy, 30,
+            "creatures_camera_follow_seek_origin smooth pending dy");
+        expect_i32(follow_state.accumulated_dx, 0,
+            "creatures_camera_follow_seek_origin smooth accumulated dx");
+        expect_i32(redraw_context.execute_redraw_call_count, 0,
+            "creatures_camera_follow_seek_origin smooth no redraw");
+
+        creatures_camera_follow_seek_origin(&follow_state, 400, 500, &refresh_ops);
+        expect_i32(follow_state.surface.bounds.left, 400,
+            "creatures_camera_follow_seek_origin large left");
+        expect_i32(follow_state.surface.bounds.top, 500,
+            "creatures_camera_follow_seek_origin large top");
+        expect_i32(follow_state.pending_target_dx, 0,
+            "creatures_camera_follow_seek_origin large pending dx");
+        expect_i32(redraw_context.execute_redraw_call_count, 1,
+            "creatures_camera_follow_seek_origin large redraw");
+
+        memset(&scroll_context, 0, sizeof(scroll_context));
+        redraw_context.execute_redraw_call_count = 0;
+        follow_state.smoothing_enabled = 0;
+        follow_state.surface.bounds.left = 100;
+        follow_state.surface.bounds.top = 50;
+        follow_state.surface.bounds.right = 200;
+        follow_state.surface.bounds.bottom = 150;
+        target.handle = NULL;
+        target.world_x = 0;
+        target.world_y = 0;
+        target.suppress_follow = 0;
+        follow_state.last_target_handle = (void *)0x7777;
+        creatures_camera_follow_track_target(&follow_state, &target, NULL, &scroll_ops);
+        expect_true(follow_state.last_target_handle == NULL,
+            "creatures_camera_follow_track_target clears missing target");
+
+        target.handle = (void *)0x1234;
+        target.world_x = 150;
+        target.world_y = 100;
+        target.suppress_follow = 0;
+        creatures_camera_follow_track_target(&follow_state, &target, NULL, &scroll_ops);
+        expect_true(follow_state.last_target_handle == (void *)0x1234,
+            "creatures_camera_follow_track_target stores handle");
+        expect_i32(scroll_context.refresh_owner_call_count, 0,
+            "creatures_camera_follow_track_target inside follow window");
+
+        scroll_context.listener_count = 1;
+        scroll_context.listeners[0].listener_id = 77;
+        scroll_context.listeners[0].listener_type = 1;
+        target.world_x = 260;
+        target.world_y = 140;
+        creatures_camera_follow_track_target(&follow_state, &target, NULL, &scroll_ops);
+        expect_i32(follow_state.surface.bounds.left, 210,
+            "creatures_camera_follow_track_target direct left");
+        expect_i32(follow_state.surface.bounds.top, 78,
+            "creatures_camera_follow_track_target direct top");
+        expect_i32(scroll_context.listeners[0].last_delta_x, 110,
+            "creatures_camera_follow_track_target direct listener dx");
+        expect_i32(scroll_context.listeners[0].last_delta_y, 28,
+            "creatures_camera_follow_track_target direct listener dy");
+
+        memset(&scroll_context, 0, sizeof(scroll_context));
+        redraw_context.execute_redraw_call_count = 0;
+        scroll_context.listener_count = 1;
+        scroll_context.listeners[0].listener_id = 88;
+        scroll_context.listeners[0].listener_type = 1;
+        follow_state.smoothing_enabled = 1;
+        follow_state.current_step_dx = 0;
+        follow_state.current_step_dy = 0;
+        follow_state.surface.bounds.left = 100;
+        follow_state.surface.bounds.top = 50;
+        follow_state.surface.bounds.right = 200;
+        follow_state.surface.bounds.bottom = 150;
+        target.world_x = 230;
+        target.world_y = 140;
+        creatures_camera_follow_track_target(&follow_state, &target, NULL, &scroll_ops);
+        expect_i32(follow_state.surface.bounds.left, 101,
+            "creatures_camera_follow_track_target smooth left");
+        expect_i32(follow_state.surface.bounds.top, 51,
+            "creatures_camera_follow_track_target smooth top");
+        expect_i32(follow_state.current_step_dx, 2,
+            "creatures_camera_follow_track_target smooth step dx");
+        expect_i32(follow_state.current_step_dy, 2,
+            "creatures_camera_follow_track_target smooth step dy");
+        expect_i32(scroll_context.listeners[0].last_delta_x, 1,
+            "creatures_camera_follow_track_target smooth listener dx");
+        expect_i32(scroll_context.listeners[0].last_delta_y, 1,
+            "creatures_camera_follow_track_target smooth listener dy");
+
+        memset(&scroll_context, 0, sizeof(scroll_context));
+        follow_state.pending_target_dx = 10;
+        follow_state.pending_target_dy = -5;
+        follow_state.accumulated_dx = 0;
+        follow_state.accumulated_dy = 0;
+        follow_state.current_step_dx = 0;
+        follow_state.current_step_dy = 0;
+        follow_state.smoothing_enabled = 1;
+        expect_true(creatures_camera_follow_step_pending_motion(&follow_state, &scroll_ops),
+            "creatures_camera_follow_step_pending_motion");
+        expect_i32(follow_state.current_step_dx, 2,
+            "creatures_camera_follow_step_pending_motion step dx");
+        expect_i32(follow_state.current_step_dy, -2,
+            "creatures_camera_follow_step_pending_motion step dy");
+        expect_i32(follow_state.accumulated_dx, 2,
+            "creatures_camera_follow_step_pending_motion accumulated dx");
+        expect_i32(follow_state.accumulated_dy, -2,
+            "creatures_camera_follow_step_pending_motion accumulated dy");
+        expect_i32(follow_state.pending_target_dx, 8,
+            "creatures_camera_follow_step_pending_motion pending dx");
+        expect_i32(follow_state.pending_target_dy, -3,
+            "creatures_camera_follow_step_pending_motion pending dy");
+
+        follow_state.smoothing_enabled = 0;
+        expect_false(creatures_camera_follow_step_pending_motion(&follow_state, &scroll_ops),
+            "creatures_camera_follow_step_pending_motion disabled");
+    }
+
+    {
+        CreaturesCameraFollowState follow_state;
+        CreaturesViewportFollowController controller;
+        CreaturesViewportRefreshOps refresh_ops;
+        CreaturesDisplayScrollOps scroll_ops;
+        CreaturesViewportScrollbarOps scrollbar_ops;
+        CreaturesViewportScrollEventOps scroll_event_ops;
+        CreaturesViewportInvalidationOps invalidation_ops;
+        CreaturesViewportScrollMetrics scroll_metrics;
+        FakeDisplayRedrawContext redraw_context;
+        FakeDisplayScrollContext scroll_context;
+        FakeDisplayContext display_context;
+        FakeViewportScrollbarContext scrollbar_context;
+        CreaturesDisplayRedrawOps redraw_ops;
+        CreaturesCameraFollowTarget target;
+
+        memset(&follow_state, 0, sizeof(follow_state));
+        memset(&controller, 0, sizeof(controller));
+        memset(&redraw_context, 0, sizeof(redraw_context));
+        memset(&scroll_context, 0, sizeof(scroll_context));
+        memset(&display_context, 0, sizeof(display_context));
+        memset(&scrollbar_context, 0, sizeof(scrollbar_context));
+        redraw_ops.begin_redraw_scope = NULL;
+        redraw_ops.end_redraw_scope = NULL;
+        redraw_ops.execute_redraw = fake_display_execute_redraw;
+        redraw_ops.ctx = &redraw_context;
+        refresh_ops.refresh_owner = fake_display_refresh_owner;
+        refresh_ops.redraw_ops = &redraw_ops;
+        refresh_ops.ctx = &scroll_context;
+        scroll_ops.get_listener_count = fake_display_get_listener_count;
+        scroll_ops.get_listener = fake_display_get_listener;
+        scroll_ops.is_scroll_listener = fake_display_is_scroll_listener;
+        scroll_ops.notify_scroll_listener = fake_display_notify_scroll_listener;
+        scroll_ops.refresh_owner = fake_display_refresh_owner;
+        scroll_ops.redraw_ops = &redraw_ops;
+        scroll_ops.ctx = &scroll_context;
+        scrollbar_ops.set_scrollbar_range = fake_viewport_set_scrollbar_range;
+        scrollbar_ops.set_scrollbar_position = fake_viewport_set_scrollbar_position;
+        scrollbar_ops.ctx = &scrollbar_context;
+        scroll_event_ops.get_scrollbar_position = fake_viewport_get_scrollbar_position;
+        scroll_event_ops.set_scrollbar_position = fake_viewport_set_scrollbar_position;
+        scroll_event_ops.ctx = &scrollbar_context;
+        invalidation_ops.invalidate_rect = fake_display_invalidate_rect;
+        invalidation_ops.window_handle = (void *)0x8181;
+        invalidation_ops.ctx = &display_context;
+        scroll_metrics.horizontal_page = 50;
+        scroll_metrics.vertical_page = 36;
+
+        creatures_display_surface_init(&follow_state.surface, NULL);
+        creatures_display_surface_bind_owner(&follow_state.surface, (void *)0x12345678);
+        follow_state.surface.redraw_enabled = 1;
+        follow_state.surface.bounds.left = 100;
+        follow_state.surface.bounds.top = 50;
+        follow_state.surface.bounds.right = 200;
+        follow_state.surface.bounds.bottom = 150;
+        controller.camera = &follow_state;
+
+        creatures_viewport_sync_scrollbars(&scroll_metrics, &scrollbar_ops);
+        expect_i32(scrollbar_context.set_range_call_count, 2,
+            "creatures_viewport_sync_scrollbars range count");
+        expect_i32(scrollbar_context.last_range_axis[0], 0,
+            "creatures_viewport_sync_scrollbars horizontal axis");
+        expect_i32(scrollbar_context.last_range_maximum[0], 100,
+            "creatures_viewport_sync_scrollbars horizontal maximum");
+        expect_i32(scrollbar_context.last_range_axis[1], 1,
+            "creatures_viewport_sync_scrollbars vertical axis");
+        expect_i32(scrollbar_context.last_range_maximum[1], 72,
+            "creatures_viewport_sync_scrollbars vertical maximum");
+        expect_i32(scrollbar_context.set_position_call_count, 2,
+            "creatures_viewport_sync_scrollbars position count");
+        expect_i32(scrollbar_context.last_position_axis[0], 0,
+            "creatures_viewport_sync_scrollbars horizontal position axis");
+        expect_i32(scrollbar_context.last_position_value[0], 50,
+            "creatures_viewport_sync_scrollbars horizontal position");
+        expect_i32(scrollbar_context.last_position_axis[1], 1,
+            "creatures_viewport_sync_scrollbars vertical position axis");
+        expect_i32(scrollbar_context.last_position_value[1], 36,
+            "creatures_viewport_sync_scrollbars vertical position");
+
+        memset(&scroll_context, 0, sizeof(scroll_context));
+        redraw_context.execute_redraw_call_count = 0;
+        target.handle = (void *)0x4010;
+        target.world_x = 300;
+        target.world_y = 200;
+        target.suppress_follow = 0;
+        creatures_camera_follow_seek_target(&follow_state, &target, &refresh_ops);
+        expect_i32(follow_state.surface.bounds.left, 250,
+            "creatures_camera_follow_seek_target left");
+        expect_i32(follow_state.surface.bounds.top, 138,
+            "creatures_camera_follow_seek_target top");
+        expect_i32(redraw_context.execute_redraw_call_count, 1,
+            "creatures_camera_follow_seek_target redraw");
+
+        follow_state.last_target_handle = (void *)0x7070;
+        target.handle = NULL;
+        creatures_camera_follow_seek_target(&follow_state, &target, &refresh_ops);
+        expect_true(follow_state.last_target_handle == NULL,
+            "creatures_camera_follow_seek_target clears missing target");
+
+        memset(&scroll_context, 0, sizeof(scroll_context));
+        redraw_context.execute_redraw_call_count = 0;
+        follow_state.surface.bounds.left = 100;
+        follow_state.surface.bounds.top = 50;
+        follow_state.surface.bounds.right = 200;
+        follow_state.surface.bounds.bottom = 150;
+        target.handle = (void *)0x4020;
+        target.world_x = 20;
+        target.world_y = 200;
+        creatures_camera_follow_set_target(&follow_state, &target, &refresh_ops);
+        expect_i32(follow_state.surface.bounds.left, CREATURES_WORLD_WRAP_WIDTH - 100,
+            "creatures_camera_follow_set_target wrapped left");
+        expect_i32(follow_state.surface.bounds.top, 138,
+            "creatures_camera_follow_set_target top");
+        expect_i32(redraw_context.execute_redraw_call_count, 1,
+            "creatures_camera_follow_set_target redraw");
+
+        memset(&scrollbar_context, 0, sizeof(scrollbar_context));
+        memset(&display_context, 0, sizeof(display_context));
+        controller.follow_mode = 1;
+        controller.stable_frame_count = 19;
+        follow_state.smoothing_enabled = 1;
+        follow_state.pending_target_dx = 0;
+        follow_state.pending_target_dy = 0;
+        follow_state.surface.bounds.left = 100;
+        follow_state.surface.bounds.top = 50;
+        follow_state.surface.bounds.right = 200;
+        follow_state.surface.bounds.bottom = 150;
+        target.handle = (void *)0x4030;
+        target.world_x = 150;
+        target.world_y = 100;
+        creatures_viewport_follow_controller_update(&controller, &scroll_metrics, &target, NULL,
+            &scrollbar_ops, &scroll_ops, &invalidation_ops);
+        expect_i32(controller.follow_mode, 2,
+            "creatures_viewport_follow_controller_update promote mode");
+        expect_i32(controller.stable_frame_count, 20,
+            "creatures_viewport_follow_controller_update stable count");
+        expect_i32(scrollbar_context.set_range_call_count, 2,
+            "creatures_viewport_follow_controller_update sync ranges");
+        expect_i32(display_context.invalidate_rect_call_count, 1,
+            "creatures_viewport_follow_controller_update invalidate");
+        expect_true(display_context.last_invalidated_window == (void *)0x8181,
+            "creatures_viewport_follow_controller_update invalidate window");
+        expect_true(display_context.last_invalidated_rect == NULL,
+            "creatures_viewport_follow_controller_update invalidate full window");
+        expect_i32(display_context.last_invalidate_erase_background, 0,
+            "creatures_viewport_follow_controller_update invalidate erase");
+
+        memset(&scrollbar_context, 0, sizeof(scrollbar_context));
+        memset(&display_context, 0, sizeof(display_context));
+        controller.follow_mode = 1;
+        controller.stable_frame_count = 7;
+        target.world_x = 260;
+        target.world_y = 100;
+        creatures_viewport_follow_controller_update(&controller, &scroll_metrics, &target, NULL,
+            &scrollbar_ops, &scroll_ops, &invalidation_ops);
+        expect_i32(controller.stable_frame_count, 0,
+            "creatures_viewport_follow_controller_update reset stable count");
+        expect_i32(scrollbar_context.set_range_call_count, 0,
+            "creatures_viewport_follow_controller_update no sync when outside");
+        expect_i32(display_context.invalidate_rect_call_count, 0,
+            "creatures_viewport_follow_controller_update no invalidate when outside");
+
+        memset(&scroll_context, 0, sizeof(scroll_context));
+        controller.follow_mode = 2;
+        follow_state.smoothing_enabled = 0;
+        follow_state.surface.bounds.left = 100;
+        follow_state.surface.bounds.top = 50;
+        follow_state.surface.bounds.right = 200;
+        follow_state.surface.bounds.bottom = 150;
+        target.world_x = 260;
+        target.world_y = 140;
+        creatures_viewport_follow_controller_update(&controller, &scroll_metrics, &target, NULL,
+            &scrollbar_ops, &scroll_ops, &invalidation_ops);
+        expect_i32(follow_state.surface.bounds.left, 210,
+            "creatures_viewport_follow_controller_update direct track left");
+        expect_i32(follow_state.surface.bounds.top, 78,
+            "creatures_viewport_follow_controller_update direct track top");
+
+        memset(&scrollbar_context, 0, sizeof(scrollbar_context));
+        memset(&display_context, 0, sizeof(display_context));
+        memset(&scroll_context, 0, sizeof(scroll_context));
+        redraw_context.execute_redraw_call_count = 0;
+        controller.follow_mode = 1;
+        follow_state.surface.bounds.left = 100;
+        follow_state.surface.bounds.top = 50;
+        follow_state.surface.bounds.right = 200;
+        follow_state.surface.bounds.bottom = 150;
+        target.world_x = 300;
+        target.world_y = 200;
+        creatures_viewport_follow_controller_force_recenter(
+            &controller, &scroll_metrics, &target, &scrollbar_ops, &refresh_ops,
+            &invalidation_ops);
+        expect_i32(controller.follow_mode, 2,
+            "creatures_viewport_follow_controller_force_recenter mode");
+        expect_i32(scrollbar_context.set_range_call_count, 2,
+            "creatures_viewport_follow_controller_force_recenter sync ranges");
+        expect_i32(follow_state.surface.bounds.left, 250,
+            "creatures_viewport_follow_controller_force_recenter left");
+        expect_i32(follow_state.surface.bounds.top, 138,
+            "creatures_viewport_follow_controller_force_recenter top");
+        expect_i32(display_context.invalidate_rect_call_count, 1,
+            "creatures_viewport_follow_controller_force_recenter invalidate");
+
+        memset(&scrollbar_context, 0, sizeof(scrollbar_context));
+        memset(&display_context, 0, sizeof(display_context));
+        controller.follow_mode = 0;
+        follow_state.surface.bounds.left = 111;
+        follow_state.surface.bounds.top = 77;
+        follow_state.surface.bounds.right = 211;
+        follow_state.surface.bounds.bottom = 177;
+        creatures_viewport_follow_controller_force_recenter(
+            &controller, &scroll_metrics, &target, &scrollbar_ops, &refresh_ops,
+            &invalidation_ops);
+        expect_i32(scrollbar_context.set_range_call_count, 0,
+            "creatures_viewport_follow_controller_force_recenter disabled no sync");
+        expect_i32(follow_state.surface.bounds.left, 111,
+            "creatures_viewport_follow_controller_force_recenter disabled left");
+        expect_i32(display_context.invalidate_rect_call_count, 1,
+            "creatures_viewport_follow_controller_force_recenter disabled invalidate");
+
+        memset(&display_context, 0, sizeof(display_context));
+        controller.follow_mode = 2;
+        controller.stable_frame_count = 9;
+        follow_state.pending_target_dx = 6;
+        follow_state.pending_target_dy = -4;
+        follow_state.current_step_dx = 2;
+        follow_state.current_step_dy = -1;
+        follow_state.last_target_handle = (void *)0x5151;
+        creatures_viewport_follow_controller_set_mode(&controller, 0, &invalidation_ops);
+        expect_i32(controller.follow_mode, 0,
+            "creatures_viewport_follow_controller_set_mode disabled");
+        expect_i32(controller.stable_frame_count, 0,
+            "creatures_viewport_follow_controller_set_mode stable count");
+        expect_i32(follow_state.pending_target_dx, 0,
+            "creatures_viewport_follow_controller_set_mode reset pending dx");
+        expect_true(follow_state.last_target_handle == NULL,
+            "creatures_viewport_follow_controller_set_mode reset target");
+        expect_i32(display_context.invalidate_rect_call_count, 1,
+            "creatures_viewport_follow_controller_set_mode invalidate");
+
+        memset(&scrollbar_context, 0, sizeof(scrollbar_context));
+        memset(&display_context, 0, sizeof(display_context));
+        memset(&scroll_context, 0, sizeof(scroll_context));
+        controller.follow_mode = 2;
+        follow_state.smoothing_enabled = 0;
+        follow_state.surface.bounds.left = 100;
+        follow_state.surface.bounds.top = 50;
+        follow_state.surface.bounds.right = 200;
+        follow_state.surface.bounds.bottom = 150;
+        scrollbar_context.current_position[0] = 40;
+        creatures_viewport_handle_horizontal_scroll(&controller, 3, 0, &scroll_metrics,
+            &scroll_event_ops, &invalidation_ops, &scroll_ops);
+        expect_i32(controller.follow_mode, 1,
+            "creatures_viewport_handle_horizontal_scroll mode");
+        expect_i32(scrollbar_context.current_position[0], 65,
+            "creatures_viewport_handle_horizontal_scroll scrollbar");
+        expect_i32(follow_state.surface.bounds.left, 125,
+            "creatures_viewport_handle_horizontal_scroll left");
+        expect_i32(display_context.invalidate_rect_call_count, 1,
+            "creatures_viewport_handle_horizontal_scroll invalidate");
+
+        memset(&scrollbar_context, 0, sizeof(scrollbar_context));
+        memset(&display_context, 0, sizeof(display_context));
+        memset(&scroll_context, 0, sizeof(scroll_context));
+        controller.follow_mode = 2;
+        follow_state.smoothing_enabled = 0;
+        follow_state.surface.bounds.left = 100;
+        follow_state.surface.bounds.top = 50;
+        follow_state.surface.bounds.right = 200;
+        follow_state.surface.bounds.bottom = 150;
+        scrollbar_context.current_position[1] = 10;
+        creatures_viewport_handle_vertical_scroll(&controller, 7, 0, &scroll_metrics,
+            &scroll_event_ops, &invalidation_ops, &scroll_ops);
+        expect_i32(controller.follow_mode, 1,
+            "creatures_viewport_handle_vertical_scroll mode");
+        expect_i32(scrollbar_context.current_position[1], 72,
+            "creatures_viewport_handle_vertical_scroll scrollbar");
+        expect_i32(follow_state.surface.bounds.top, 112,
+            "creatures_viewport_handle_vertical_scroll top");
+        expect_i32(display_context.invalidate_rect_call_count, 1,
+            "creatures_viewport_handle_vertical_scroll invalidate");
+    }
+
+    {
+        CreaturesFrameEntry frame_entry;
+        CreaturesFrameSet frame_set;
+        CreaturesRenderableSprite renderable_sprite;
+        CreaturesPixelBuffer8 target_buffer;
+        CreaturesDisplayRect clip_bounds;
+        CreaturesDisplayRect viewport_bounds;
+        uint8_t source_pixels[12] = {
+            1, 0, 2, 3,
+            4, 5, 0, 6,
+            7, 8, 9, 0,
+        };
+        uint8_t target_pixels[12];
+        uint32_t access_serial_counter;
+        int draw_depth;
+
+        memset(&frame_entry, 0, sizeof(frame_entry));
+        memset(&frame_set, 0, sizeof(frame_set));
+        memset(&renderable_sprite, 0, sizeof(renderable_sprite));
+        frame_entry.flags = 1;
+        frame_entry.pixels = source_pixels;
+        frame_entry.width = 4;
+        frame_entry.height = 3;
+        frame_set.entries = &frame_entry;
+        frame_set.entry_count = 1;
+        renderable_sprite.frame_set = &frame_set;
+        renderable_sprite.frame_index = 0;
+        renderable_sprite.world_x = CREATURES_WORLD_WRAP_WIDTH - 2;
+        renderable_sprite.world_y = 50;
+        renderable_sprite.draw_depth = 1234;
+        clip_bounds.left = 0;
+        clip_bounds.top = 50;
+        clip_bounds.right = 4;
+        clip_bounds.bottom = 53;
+        viewport_bounds = clip_bounds;
+        target_buffer.pixels = target_pixels;
+        target_buffer.stride = 4;
+
+        expect_true(creatures_renderable_sprite_collect_visible(
+                        &renderable_sprite, &clip_bounds, &draw_depth),
+            "creatures_renderable_sprite_collect_visible wrapped");
+        expect_i32(draw_depth, 1234,
+            "creatures_renderable_sprite_collect_visible depth");
+
+        memset(target_pixels, 0xaa, sizeof(target_pixels));
+        access_serial_counter = 0;
+        creatures_frame_entry_draw_clipped_to_buffer(&frame_entry, &target_buffer,
+            CREATURES_WORLD_WRAP_WIDTH - 2, 50, &clip_bounds, &viewport_bounds,
+            &access_serial_counter, 1);
+        expect_u32(access_serial_counter, 1,
+            "creatures_frame_entry_draw_clipped_to_buffer access serial");
+        expect_u8(target_pixels[0], 2,
+            "creatures_frame_entry_draw_clipped_to_buffer wrapped row0 col0");
+        expect_u8(target_pixels[1], 3,
+            "creatures_frame_entry_draw_clipped_to_buffer wrapped row0 col1");
+        expect_u8(target_pixels[4], 0,
+            "creatures_frame_entry_draw_clipped_to_buffer wrapped row1 col0");
+        expect_u8(target_pixels[5], 6,
+            "creatures_frame_entry_draw_clipped_to_buffer wrapped row1 col1");
+        expect_u8(target_pixels[8], 9,
+            "creatures_frame_entry_draw_clipped_to_buffer wrapped row2 col0");
+        expect_u8(target_pixels[9], 0,
+            "creatures_frame_entry_draw_clipped_to_buffer wrapped row2 col1");
+
+        memset(target_pixels, 0, sizeof(target_pixels));
+        access_serial_counter = 0;
+        renderable_sprite.world_x = 101;
+        renderable_sprite.world_y = 50;
+        clip_bounds.left = 100;
+        clip_bounds.top = 50;
+        clip_bounds.right = 104;
+        clip_bounds.bottom = 53;
+        viewport_bounds = clip_bounds;
+        creatures_renderable_sprite_draw(&renderable_sprite, &target_buffer,
+            &clip_bounds, &viewport_bounds, &access_serial_counter, 0);
+        expect_u8(target_pixels[0], 0,
+            "creatures_renderable_sprite_draw masked row0 col0");
+        expect_u8(target_pixels[1], 1,
+            "creatures_renderable_sprite_draw masked row0 col1");
+        expect_u8(target_pixels[2], 0,
+            "creatures_renderable_sprite_draw masked row0 col2");
+        expect_u8(target_pixels[3], 2,
+            "creatures_renderable_sprite_draw masked row0 col3");
+        expect_u8(target_pixels[4], 0,
+            "creatures_renderable_sprite_draw masked row1 col0");
+        expect_u8(target_pixels[5], 4,
+            "creatures_renderable_sprite_draw masked row1 col1");
+        expect_u8(target_pixels[6], 5,
+            "creatures_renderable_sprite_draw masked row1 col2");
+        expect_u8(target_pixels[7], 0,
+            "creatures_renderable_sprite_draw masked row1 col3");
+        expect_u8(target_pixels[8], 0,
+            "creatures_renderable_sprite_draw masked row2 col0");
+        expect_u8(target_pixels[9], 7,
+            "creatures_renderable_sprite_draw masked row2 col1");
+        expect_u8(target_pixels[10], 8,
+            "creatures_renderable_sprite_draw masked row2 col2");
+        expect_u8(target_pixels[11], 9,
+            "creatures_renderable_sprite_draw masked row2 col3");
+    }
+
+    {
+        CreaturesDisplaySurface display_surface;
+        CreaturesViewportCaptureSource capture_source;
+        CreaturesViewportCaptureOps capture_ops;
+        FakeViewportCaptureContext capture_context;
+        CreaturesWingBitmapInfo bitmap_info;
+        CreaturesCapturedBitmapHeader *capture_header;
+        CreaturesDisplayRect client_rect;
+        uint8_t backbuffer_pixels[24] = {
+            10, 11, 12, 13, 14, 15, 16, 17,
+            20, 21, 22, 23, 24, 25, 26, 27,
+            30, 31, 32, 33, 34, 35, 36, 37,
+        };
+
+        memset(&display_surface, 0, sizeof(display_surface));
+        memset(&capture_context, 0, sizeof(capture_context));
+        memset(&bitmap_info, 0, sizeof(bitmap_info));
+        capture_context.submit_result = 1;
+        bitmap_info.width = 5;
+        bitmap_info.height = 1;
+        bitmap_info.bit_count = 8;
+        client_rect.left = 1;
+        client_rect.top = 1;
+        client_rect.right = 4;
+        client_rect.bottom = 3;
+        capture_ops.resolve_bounds = fake_viewport_capture_resolve_bounds;
+        capture_ops.allocate_capture = fake_viewport_capture_allocate;
+        capture_ops.free_capture = fake_viewport_capture_free;
+        capture_ops.begin_capture = fake_viewport_capture_begin;
+        capture_ops.submit_capture = fake_viewport_capture_submit;
+        capture_ops.end_capture = fake_viewport_capture_end;
+        capture_ops.report_capture_failure = fake_viewport_capture_report_failure;
+        capture_ops.ctx = &capture_context;
+
+        expect_true(creatures_capture_8bit_bitmap_region(&bitmap_info, backbuffer_pixels,
+                        &client_rect, (void *)0x7777, &capture_ops),
+            "creatures_capture_8bit_bitmap_region");
+        expect_i32(capture_context.allocate_call_count, 1,
+            "creatures_capture_8bit_bitmap_region allocate");
+        expect_i32(capture_context.begin_capture_call_count, 1,
+            "creatures_capture_8bit_bitmap_region begin");
+        expect_i32(capture_context.submit_capture_call_count, 1,
+            "creatures_capture_8bit_bitmap_region submit");
+        expect_i32(capture_context.end_capture_call_count, 1,
+            "creatures_capture_8bit_bitmap_region end");
+        expect_i32(capture_context.free_call_count, 1,
+            "creatures_capture_8bit_bitmap_region free");
+        expect_true(capture_context.last_submit_target == (void *)0x7777,
+            "creatures_capture_8bit_bitmap_region target");
+        expect_u32(capture_context.last_submit_format, 0x1001u,
+            "creatures_capture_8bit_bitmap_region format");
+        capture_header = (CreaturesCapturedBitmapHeader *)capture_context.submitted_payload;
+        expect_u32(capture_header->row_pitch, 4,
+            "creatures_capture_8bit_bitmap_region row pitch");
+        expect_u32(capture_header->height, 2,
+            "creatures_capture_8bit_bitmap_region height");
+        expect_u32(capture_header->stored_stride, 4,
+            "creatures_capture_8bit_bitmap_region stored stride");
+        expect_u8(capture_context.submitted_payload[12], 21,
+            "creatures_capture_8bit_bitmap_region pixel0");
+        expect_u8(capture_context.submitted_payload[13], 22,
+            "creatures_capture_8bit_bitmap_region pixel1");
+        expect_u8(capture_context.submitted_payload[14], 23,
+            "creatures_capture_8bit_bitmap_region pixel2");
+        expect_u8(capture_context.submitted_payload[15], 24,
+            "creatures_capture_8bit_bitmap_region pixel3");
+        expect_u8(capture_context.submitted_payload[16], 31,
+            "creatures_capture_8bit_bitmap_region pixel4");
+        expect_u8(capture_context.submitted_payload[17], 32,
+            "creatures_capture_8bit_bitmap_region pixel5");
+        expect_u8(capture_context.submitted_payload[18], 33,
+            "creatures_capture_8bit_bitmap_region pixel6");
+        expect_u8(capture_context.submitted_payload[19], 34,
+            "creatures_capture_8bit_bitmap_region pixel7");
+
+        memset(&capture_context, 0, sizeof(capture_context));
+        capture_context.submit_result = 1;
+        display_surface.bounds.left = 0;
+        display_surface.bounds.top = 0;
+        display_surface.bounds.right = 20;
+        display_surface.bounds.bottom = 20;
+        capture_source.surface = &display_surface;
+        capture_source.bitmap_info = &bitmap_info;
+        capture_source.backbuffer_pixels = backbuffer_pixels;
+        capture_context.resolved_bounds.left = 2;
+        capture_context.resolved_bounds.top = 2;
+        capture_context.resolved_bounds.right = 10;
+        capture_context.resolved_bounds.bottom = 10;
+        capture_ops.ctx = &capture_context;
+        expect_true(creatures_capture_centered_viewport_region(4, 2, (void *)0x8888, NULL,
+                        &capture_source, (void *)0x9999, &capture_ops),
+            "creatures_capture_centered_viewport_region");
+        expect_i32(capture_context.resolve_bounds_call_count, 1,
+            "creatures_capture_centered_viewport_region resolve");
+        expect_i32(capture_context.submit_capture_call_count, 1,
+            "creatures_capture_centered_viewport_region submit");
+        expect_true(capture_context.last_submit_target == (void *)0x9999,
+            "creatures_capture_centered_viewport_region target");
+
+        memset(&capture_context, 0, sizeof(capture_context));
+        capture_context.submit_result = 0;
+        capture_ops.ctx = &capture_context;
+        expect_false(creatures_capture_8bit_bitmap_region(&bitmap_info, backbuffer_pixels,
+                         &client_rect, (void *)0x7777, &capture_ops),
+            "creatures_capture_8bit_bitmap_region submit failure");
+        expect_i32(capture_context.report_failure_call_count, 1,
+            "creatures_capture_8bit_bitmap_region report failure");
+        expect_str(capture_context.last_failure_message, "Could not create file.",
+            "creatures_capture_8bit_bitmap_region failure message");
+    }
+
+    {
+        static const uint8_t archive_bytes[] = {0x11, 0x34, 0x12, 0x78, 0x56, 0x00};
+        CreaturesArchiveCursor archive_cursor;
+        uint8_t read_u8_value;
+        uint16_t read_u16_value;
+        uint8_t read_block[2];
+
+        memset(&archive_cursor, 0, sizeof(archive_cursor));
+        archive_cursor.cursor = (uint8_t *)archive_bytes;
+        archive_cursor.end = (uint8_t *)archive_bytes + sizeof(archive_bytes);
+        expect_true(creatures_archive_read_u8(&archive_cursor, &read_u8_value),
+            "creatures_archive_read_u8");
+        expect_u8(read_u8_value, 0x11, "creatures_archive_read_u8 value");
+        expect_true(creatures_archive_read_u16(&archive_cursor, &read_u16_value),
+            "creatures_archive_read_u16");
+        expect_u32(read_u16_value, 0x1234, "creatures_archive_read_u16 value");
+        expect_true(creatures_archive_read_bytes(&archive_cursor, read_block, sizeof(read_block)),
+            "creatures_archive_read_bytes");
+        expect_u8(read_block[0], 0x78, "creatures_archive_read_bytes first");
+        expect_u8(read_block[1], 0x56, "creatures_archive_read_bytes second");
+        expect_true(creatures_archive_skip(&archive_cursor, 1), "creatures_archive_skip");
+        expect_false(creatures_archive_read_u8(&archive_cursor, &read_u8_value),
+            "creatures_archive_read_u8 end failure");
+    }
+
+    {
+        static const uint8_t counted_string_bytes[] = {
+            0x10, 'a', 'n', 'i', 'm', ' ', '[', '1', '1', '1', '0', ']', ',', 'e', 'n', 'd',
+            'm',
+        };
+        CreaturesArchiveCursor archive_cursor;
+        uint32_t archive_count;
+        char archive_text[32];
+
+        memset(&archive_cursor, 0, sizeof(archive_cursor));
+        memset(archive_text, 0, sizeof(archive_text));
+        archive_cursor.cursor = (uint8_t *)counted_string_bytes;
+        archive_cursor.end = (uint8_t *)counted_string_bytes + sizeof(counted_string_bytes);
+        expect_true(
+            creatures_mfc_archive_read_count(&archive_cursor, &archive_count),
+            "creatures_mfc_archive_read_count");
+        expect_u32(archive_count, 0x10, "creatures_mfc_archive_read_count value");
+
+        archive_cursor.cursor = (uint8_t *)counted_string_bytes;
+        archive_cursor.end = (uint8_t *)counted_string_bytes + sizeof(counted_string_bytes);
+        expect_true(
+            creatures_mfc_archive_read_cstring(&archive_cursor, archive_text, sizeof(archive_text)),
+            "creatures_mfc_archive_read_cstring");
+        expect_str(archive_text, "anim [1110],endm", "creatures_mfc_archive_read_cstring text");
+    }
+
+    {
+        static const uint8_t world_header_bytes[] = {
+            0xff, 0xff, 0x01, 0x00, 0x07, 0x00, 'M', 'a', 'p', 'D', 'a', 't', 'a',
+            0x00, 0x00, 0x00, 0x00,
+            0x00, 0x00, 0x00, 0x00,
+            0xff, 0xff, 0x01, 0x00, 0x08, 0x00, 'C', 'G', 'a', 'l', 'l', 'e', 'r', 'y',
+            0xd0, 0x01, 0x00, 0x00,
+            'B', 'a', 'c', 'k', 0x00, 0x00, 0x00, 0x00,
+            0x01, 0x00, 0x00, 0x00,
+            0x04, 0x00, 0x00, 0x00,
+            0x90, 0x00, 0x00, 0x00,
+            0x96, 0x00, 0x00, 0x00,
+            0x82, 0x0e, 0x00, 0x00,
+            0xff, 0xff, 0x01, 0x00, 0x0b, 0x00, 'P', 'o', 'i', 'n', 't', 'e', 'r', 'T', 'o',
+            'o', 'l',
+        };
+        CreaturesArchiveCursor archive_cursor;
+        CreaturesMfcArchiveClassHeader class_header;
+        CreaturesWorldSourceHeader world_header;
+
+        memset(&archive_cursor, 0, sizeof(archive_cursor));
+        memset(&class_header, 0, sizeof(class_header));
+        archive_cursor.cursor = (uint8_t *)world_header_bytes;
+        archive_cursor.end = (uint8_t *)world_header_bytes + sizeof(world_header_bytes);
+        expect_true(
+            creatures_mfc_archive_read_new_class_header(&archive_cursor, &class_header),
+            "creatures_mfc_archive_read_new_class_header");
+        expect_u32(class_header.schema, 1, "creatures_mfc_archive_read_new_class_header schema");
+        expect_u32(class_header.class_name_length, 7,
+            "creatures_mfc_archive_read_new_class_header name length");
+        expect_str(class_header.class_name, "MapData",
+            "creatures_mfc_archive_read_new_class_header class name");
+
+        expect_true(creatures_world_source_parse_header(
+                        world_header_bytes, sizeof(world_header_bytes), &world_header),
+            "creatures_world_source_parse_header");
+        expect_str(world_header.map_class_header.class_name, "MapData",
+            "creatures_world_source_parse_header map class");
+        expect_u32(world_header.map_state_primary, 0,
+            "creatures_world_source_parse_header map state primary");
+        expect_u32(world_header.map_state_secondary, 0,
+            "creatures_world_source_parse_header map state secondary");
+        expect_str(world_header.gallery_class_header.class_name, "CGallery",
+            "creatures_world_source_parse_header gallery class");
+        expect_u32(world_header.gallery_entry_count, 0x1d0,
+            "creatures_world_source_parse_header gallery entries");
+        expect_str(world_header.gallery_name, "Back",
+            "creatures_world_source_parse_header gallery name");
+        expect_u32(world_header.gallery_plane_count, 1,
+            "creatures_world_source_parse_header gallery planes");
+        expect_u8(world_header.gallery_descriptor_prefix[0], 0x04,
+            "creatures_world_source_parse_header descriptor prefix 0");
+        expect_u8(world_header.gallery_descriptor_prefix[1], 0x00,
+            "creatures_world_source_parse_header descriptor prefix 1");
+        expect_u8(world_header.gallery_descriptor_prefix[2], 0x00,
+            "creatures_world_source_parse_header descriptor prefix 2");
+        expect_u8(world_header.gallery_descriptor_prefix[3], 0x00,
+            "creatures_world_source_parse_header descriptor prefix 3");
+        expect_u32(world_header.next_class_header_offset, 0x43,
+            "creatures_world_source_parse_header next class offset");
+        expect_str(world_header.next_class_header.class_name, "PointerTool",
+            "creatures_world_source_parse_header next class");
+    }
+
+    {
+        CreaturesMapDataArchive map_data;
+        CreaturesMapDataArchiveLoadOps load_ops;
+        FakeMapDataArchiveContext map_context;
+        size_t boundary_index;
+        size_t object_index;
+
+        memset(&map_data, 0, sizeof(map_data));
+        memset(&map_context, 0, sizeof(map_context));
+        map_context.read_u32_values[0] = 0;
+        map_context.read_u32_values[1] = 0;
+        map_context.read_u32_values[2] = 2;
+        map_context.read_u32_values[3] = 0x1111;
+        map_context.read_u32_values[4] = 0x2222;
+        map_context.read_u32_count = 5 + CREATURES_MAP_DATA_BOUNDARY_TABLE_CAPACITY;
+        for (boundary_index = 0; boundary_index < CREATURES_MAP_DATA_BOUNDARY_TABLE_CAPACITY;
+             boundary_index++) {
+            map_context.read_u32_values[5 + boundary_index] = (uint32_t)(0x3000 + boundary_index);
+        }
+        for (object_index = 0; object_index < 2; object_index++) {
+            memset(map_context.read_room_bytes[object_index], (int)(0x40 + object_index), 16);
+        }
+        map_context.read_room_byte_count = 2;
+        map_context.loaded_gallery_handle = (void *)0x55667788;
+
+        memset(&load_ops, 0, sizeof(load_ops));
+        load_ops.read_u32 = fake_map_data_read_u32;
+        load_ops.read_bytes = fake_map_data_read_bytes;
+        load_ops.load_gallery = fake_map_data_load_gallery;
+        load_ops.load_embedded_object = fake_map_data_load_embedded_object;
+        load_ops.ctx = &map_context;
+
+        expect_true(
+            creatures_map_data_archive_load(&map_data, NULL, &load_ops),
+            "creatures_map_data_archive_load");
+        expect_u32(map_data.state_primary, 0, "creatures_map_data_archive_load state primary");
+        expect_u32(map_data.state_secondary, 0, "creatures_map_data_archive_load state secondary");
+        expect_true(map_data.background_gallery == (void *)0x55667788,
+            "creatures_map_data_archive_load gallery handle");
+        expect_u32(map_data.room_count, 2, "creatures_map_data_archive_load room count");
+        expect_u8(map_data.room_records[0].packed_room_bounds[0], 0x40,
+            "creatures_map_data_archive_load room 0 bytes");
+        expect_u8(map_data.room_records[1].packed_room_bounds[0], 0x41,
+            "creatures_map_data_archive_load room 1 bytes");
+        expect_u32(map_data.room_records[0].trailing_value, 0x1111,
+            "creatures_map_data_archive_load room 0 trailing");
+        expect_u32(map_data.room_records[1].trailing_value, 0x2222,
+            "creatures_map_data_archive_load room 1 trailing");
+        expect_u32(map_data.room_scanline_boundaries[0], 0x3000,
+            "creatures_map_data_archive_load boundary 0");
+        expect_u32(map_data.room_scanline_boundaries[0x104], 0x3104,
+            "creatures_map_data_archive_load boundary 0x104");
+        expect_i32(map_context.load_gallery_count, 1,
+            "creatures_map_data_archive_load gallery count");
+        expect_i32(map_context.load_object_count, CREATURES_MAP_DATA_EMBEDDED_OBJECT_CAPACITY,
+            "creatures_map_data_archive_load object count");
+        expect_u8(map_data.embedded_objects[0].opaque_bytes[0], 0xa0,
+            "creatures_map_data_archive_load object 0");
+        expect_u8(
+            map_data.embedded_objects[CREATURES_MAP_DATA_EMBEDDED_OBJECT_CAPACITY - 1]
+                .opaque_bytes[0],
+            (uint8_t)(0xa0 + CREATURES_MAP_DATA_EMBEDDED_OBJECT_CAPACITY - 1),
+            "creatures_map_data_archive_load object last");
+    }
+
+    {
+        CreaturesMapDataArchive map_data;
+        CreaturesMapDataArchiveSaveOps save_ops;
+        FakeMapDataArchiveContext map_context;
+        size_t boundary_index;
+
+        memset(&map_data, 0, sizeof(map_data));
+        memset(&map_context, 0, sizeof(map_context));
+        map_data.state_primary = 0x01020304;
+        map_data.state_secondary = 0x05060708;
+        map_data.background_gallery = (void *)0x11223344;
+        map_data.room_count = 2;
+        memset(map_data.room_records[0].packed_room_bounds, 0x44, 16);
+        memset(map_data.room_records[1].packed_room_bounds, 0x55, 16);
+        map_data.room_records[0].trailing_value = 0x11112222;
+        map_data.room_records[1].trailing_value = 0x33334444;
+        for (boundary_index = 0; boundary_index < CREATURES_MAP_DATA_BOUNDARY_TABLE_CAPACITY;
+             boundary_index++) {
+            map_data.room_scanline_boundaries[boundary_index] =
+                (uint32_t)(0x2000 + boundary_index);
+        }
+        map_context.loaded_gallery_handle = (void *)0x11223344;
+
+        memset(&save_ops, 0, sizeof(save_ops));
+        save_ops.write_u32 = fake_map_data_write_u32;
+        save_ops.write_bytes = fake_map_data_write_bytes;
+        save_ops.save_gallery = fake_map_data_save_gallery;
+        save_ops.save_embedded_object = fake_map_data_save_embedded_object;
+        save_ops.ctx = &map_context;
+
+        expect_true(
+            creatures_map_data_archive_save(&map_data, NULL, &save_ops),
+            "creatures_map_data_archive_save");
+        expect_i32(map_context.save_gallery_count, 1,
+            "creatures_map_data_archive_save gallery count");
+        expect_i32(map_context.save_object_count, CREATURES_MAP_DATA_EMBEDDED_OBJECT_CAPACITY,
+            "creatures_map_data_archive_save object count");
+        expect_size(map_context.written_u32_count, 2 + 1 + 2 + CREATURES_MAP_DATA_BOUNDARY_TABLE_CAPACITY,
+            "creatures_map_data_archive_save u32 count");
+        expect_u32(map_context.written_u32_values[0], 0x01020304,
+            "creatures_map_data_archive_save state primary");
+        expect_u32(map_context.written_u32_values[1], 0x05060708,
+            "creatures_map_data_archive_save state secondary");
+        expect_u32(map_context.written_u32_values[2], 2,
+            "creatures_map_data_archive_save room count");
+        expect_u32(map_context.written_u32_values[3], 0x11112222,
+            "creatures_map_data_archive_save room 0 trailing");
+        expect_u32(map_context.written_u32_values[4], 0x33334444,
+            "creatures_map_data_archive_save room 1 trailing");
+        expect_u32(
+            map_context.written_u32_values[map_context.written_u32_count - 1], 0x2104,
+            "creatures_map_data_archive_save last boundary");
+        expect_size(map_context.written_room_byte_count, 2,
+            "creatures_map_data_archive_save room byte count");
+        expect_u8(map_context.written_room_bytes[0][0], 0x44,
+            "creatures_map_data_archive_save room 0 bytes");
+        expect_u8(map_context.written_room_bytes[1][0], 0x55,
+            "creatures_map_data_archive_save room 1 bytes");
+    }
+
+    {
+        CreaturesAudioOutput audio_output;
+        CreaturesAudioOutputOps audio_ops;
+        FakeAudioContext audio_context;
+
+        memset(&audio_context, 0, sizeof(audio_context));
+        audio_context.created_device_handle = (void *)0x3333;
+        audio_context.created_buffer_handle = (void *)0x4444;
+        audio_context.initial_format.format_tag = 1;
+        audio_context.initial_format.channel_count = 1;
+        audio_context.initial_format.samples_per_second = 11025;
+        audio_context.initial_format.average_bytes_per_second = 11025;
+        audio_context.initial_format.block_align = 1;
+        audio_context.initial_format.bits_per_sample = 8;
+
+        audio_ops.create_device = fake_audio_create_device;
+        audio_ops.set_cooperative_level = fake_audio_set_cooperative_level;
+        audio_ops.create_buffer = fake_audio_create_buffer;
+        audio_ops.get_format = fake_audio_get_format;
+        audio_ops.set_format = fake_audio_set_format;
+        audio_ops.stop_buffer = fake_audio_stop_buffer;
+        audio_ops.release_buffer = fake_audio_release_buffer;
+        audio_ops.release_stream = fake_audio_release_stream;
+        audio_ops.release_owner = fake_audio_release_owner;
+        audio_ops.notify_mixer_idle = fake_audio_notify_mixer_idle;
+        audio_ops.ctx = &audio_context;
+
+        expect_true(creatures_audio_output_create_primary_buffer(
+                        &audio_output, (uintptr_t)0x87654321u, &audio_ops),
+            "creatures_audio_output_create_primary_buffer");
+        expect_i32(audio_context.create_device_call_count, 1,
+            "creatures_audio_output_create_primary_buffer create device calls");
+        expect_i32(audio_context.set_cooperative_level_call_count, 1,
+            "creatures_audio_output_create_primary_buffer cooperative calls");
+        expect_i32(audio_context.create_buffer_call_count, 1,
+            "creatures_audio_output_create_primary_buffer create buffer calls");
+        expect_i32(audio_context.get_format_call_count, 1,
+            "creatures_audio_output_create_primary_buffer get format calls");
+        expect_i32(audio_context.set_format_call_count, 1,
+            "creatures_audio_output_create_primary_buffer set format calls");
+        expect_u32(audio_context.last_buffer_desc.size, 0x14,
+            "creatures_audio_output_create_primary_buffer desc size");
+        expect_u32(audio_context.last_buffer_desc.flags, 1,
+            "creatures_audio_output_create_primary_buffer desc flags");
+        expect_u32((uint32_t)audio_context.last_window_handle, 0x87654321u,
+            "creatures_audio_output_create_primary_buffer window handle");
+        expect_i32((int)audio_context.last_cooperative_level,
+            CREATURES_AUDIO_COOPERATIVE_LEVEL_PRIORITY,
+            "creatures_audio_output_create_primary_buffer level");
+        expect_i32((int)audio_context.last_set_format.channel_count, 2,
+            "creatures_audio_output_create_primary_buffer channels");
+        expect_u32(audio_context.last_set_format.samples_per_second, 22050,
+            "creatures_audio_output_create_primary_buffer samples");
+        expect_u32(audio_context.last_set_format.average_bytes_per_second, 88200,
+            "creatures_audio_output_create_primary_buffer average bytes");
+        expect_i32((int)audio_context.last_set_format.block_align, 4,
+            "creatures_audio_output_create_primary_buffer block align");
+        expect_i32((int)audio_context.last_set_format.bits_per_sample, 16,
+            "creatures_audio_output_create_primary_buffer bits");
+        expect_true(audio_output.is_device_ready,
+            "creatures_audio_output_create_primary_buffer device ready");
+        expect_true(audio_output.is_primary_buffer_ready,
+            "creatures_audio_output_create_primary_buffer primary ready");
+        expect_true(audio_output.device_handle == audio_context.created_device_handle,
+            "creatures_audio_output_create_primary_buffer device handle");
+        expect_true(audio_output.primary_buffer_handle == audio_context.created_buffer_handle,
+            "creatures_audio_output_create_primary_buffer buffer handle");
+
+        audio_context.set_format_result = 1;
+        expect_false(creatures_audio_output_create_primary_buffer(
+                         &audio_output, (uintptr_t)0x11111111u, &audio_ops),
+            "creatures_audio_output_create_primary_buffer format failure");
+        expect_false(audio_output.is_device_ready,
+            "creatures_audio_output_create_primary_buffer format failure device ready");
+        expect_false(audio_output.is_primary_buffer_ready,
+            "creatures_audio_output_create_primary_buffer format failure primary ready");
+
+        {
+            CreaturesAudioBufferOwner owner_a;
+            CreaturesAudioBufferOwner owner_b;
+            CreaturesAudioOutput *destroy_result;
+
+            memset(&owner_a, 0, sizeof(owner_a));
+            memset(&owner_b, 0, sizeof(owner_b));
+            owner_a.active_voice_ref_count = 1;
+            owner_a.linked_owner = &owner_b;
+            owner_b.active_voice_ref_count = 1;
+
+            creatures_audio_output_init(&audio_output);
+            audio_output.is_device_ready = 1;
+            audio_output.is_primary_buffer_ready = 1;
+            audio_output.primary_buffer_handle = audio_context.created_buffer_handle;
+            audio_output.active_voice_count = 2;
+            audio_output.voice_slots[0].buffer_handle = (void *)0x1111;
+            audio_output.voice_slots[0].is_active = 1;
+            audio_output.voice_slots[0].owner = &owner_a;
+            audio_output.voice_slots[1].buffer_handle = (void *)0x2222;
+            audio_output.voice_slots[1].is_active = 1;
+            audio_output.voice_slots[1].owner = &owner_b;
+            audio_output.registered_stream_count = 2;
+            audio_output.registered_streams[0] = (void *)0xaaaa;
+            audio_output.registered_streams[1] = (void *)0xbbbb;
+            audio_output.owner_count = 1;
+            audio_output.owners[0] = &owner_a;
+
+            expect_true(creatures_audio_output_release_voice_slot(&audio_output, 0, &audio_ops),
+                "creatures_audio_output_release_voice_slot");
+            expect_i32(audio_context.stop_buffer_call_count, 1,
+                "creatures_audio_output_release_voice_slot stop calls");
+            expect_i32(audio_context.release_buffer_call_count, 1,
+                "creatures_audio_output_release_voice_slot release buffer calls");
+            expect_true(audio_context.last_stopped_buffer == (void *)0x1111,
+                "creatures_audio_output_release_voice_slot stopped buffer");
+            expect_i32(owner_a.active_voice_ref_count, 0,
+                "creatures_audio_output_release_voice_slot owner refs");
+            expect_i32(audio_output.active_voice_count, 1,
+                "creatures_audio_output_release_voice_slot active count");
+
+            creatures_audio_output_release_owner_chain(&audio_output, &owner_a, &audio_ops);
+            expect_i32(audio_context.release_owner_call_count, 2,
+                "creatures_audio_output_release_owner_chain owner releases");
+            expect_i32(audio_context.release_buffer_call_count, 2,
+                "creatures_audio_output_release_owner_chain buffer releases");
+            expect_true(owner_a.linked_owner == NULL,
+                "creatures_audio_output_release_owner_chain clears link");
+            expect_i32(audio_output.active_voice_count, 0,
+                "creatures_audio_output_release_owner_chain active count");
+
+            audio_context.stop_buffer_call_count = 0;
+            audio_context.release_buffer_call_count = 0;
+            audio_context.release_stream_call_count = 0;
+            audio_context.release_owner_call_count = 0;
+            audio_context.notify_mixer_idle_call_count = 0;
+            owner_a.active_voice_ref_count = 1;
+            owner_a.linked_owner = &owner_b;
+            owner_b.active_voice_ref_count = 1;
+            audio_output.is_device_ready = 1;
+            audio_output.is_primary_buffer_ready = 1;
+            audio_output.primary_buffer_handle = audio_context.created_buffer_handle;
+            audio_output.active_voice_count = 2;
+            audio_output.voice_slots[0].buffer_handle = (void *)0x1111;
+            audio_output.voice_slots[0].is_active = 1;
+            audio_output.voice_slots[0].owner = &owner_a;
+            audio_output.voice_slots[1].buffer_handle = (void *)0x2222;
+            audio_output.voice_slots[1].is_active = 1;
+            audio_output.voice_slots[1].owner = &owner_b;
+            audio_output.registered_stream_count = 2;
+            audio_output.registered_streams[0] = (void *)0xaaaa;
+            audio_output.registered_streams[1] = (void *)0xbbbb;
+            audio_output.owner_count = 1;
+            audio_output.owners[0] = &owner_a;
+
+            creatures_audio_output_shutdown(&audio_output, &audio_ops);
+            expect_i32(audio_context.release_stream_call_count, 2,
+                "creatures_audio_output_shutdown stream releases");
+            expect_i32(audio_context.notify_mixer_idle_call_count, 2,
+                "creatures_audio_output_shutdown mixer notifications");
+            expect_i32(audio_context.stop_buffer_call_count, 2,
+                "creatures_audio_output_shutdown stop calls");
+            expect_i32(audio_context.release_buffer_call_count, 3,
+                "creatures_audio_output_shutdown buffer releases");
+            expect_i32(audio_context.release_owner_call_count, 2,
+                "creatures_audio_output_shutdown owner releases");
+            expect_false(audio_output.is_device_ready,
+                "creatures_audio_output_shutdown device ready");
+            expect_false(audio_output.is_primary_buffer_ready,
+                "creatures_audio_output_shutdown primary ready");
+            expect_true(audio_output.primary_buffer_handle == NULL,
+                "creatures_audio_output_shutdown clears primary");
+
+            audio_output.is_device_ready = 1;
+            destroy_result = creatures_audio_output_destroy(&audio_output, 1, &audio_ops);
+            expect_true(destroy_result == NULL, "creatures_audio_output_destroy");
+            expect_i32(audio_context.release_stream_call_count, 3,
+                "creatures_audio_output_destroy release stream calls");
+            expect_true(audio_context.last_released_stream == &audio_output,
+                "creatures_audio_output_destroy released self");
+        }
+    }
 
     puts("creatures_slice.exe: all slice checks passed");
     return 0;

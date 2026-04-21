@@ -1,0 +1,17 @@
+# Creatures display-surface reconstruction
+
+- `FUN_00402950` sits one layer above the WinG helpers. It releases the lazily retained auxiliary sprite resource, clears the redraw-enabled flag, and then tears down the active WinG backbuffer surface.
+- `FUN_004029b0` is the matching backbuffer-resize wrapper. It rounds the requested width up to a four-pixel boundary, recreates the 8-bit WinG surface, deletes the replaced bitmap handle returned by the lower layer, and refreshes the viewport bounds.
+- `FUN_00402a30` is the adjacent palette-realization helper. It grabs the bound window DC, selects the current palette, realizes it, restores the previous palette, realizes again, and invalidates the entire window.
+- `FUN_00402a10` is the small guard above that helper. It only triggers the palette-realize path when the observed window handle differs from the surface's current target window.
+- `FUN_0040b300` is the wrapped-world rectangle clipper shared by the next redraw wrappers. It clips one rectangle against another while accounting for Creatures' `0x20a0` horizontal wrap.
+- `FUN_00402b90` is the direct redraw wrapper above that clipper. It checks the redraw-enabled flag, rejects empty rectangles, clips the request against the current viewport, and then forwards the result into the shared blit core.
+- `FUN_00402ab0` is the scoped variant of the same wrapper. It enters the owner redraw scope first, then forwards the clipped request into the same blit core before unwinding the temporary scope object.
+- `FUN_00403110` is the world-to-client projection helper used by the blit layer. It converts a wrapped world rect into client-space coordinates relative to the current viewport origin.
+- `FUN_00403260` is the next viewport-motion helper above that projection layer. It applies wrapped horizontal movement and clamped vertical movement to the viewport, notifies the registered scroll listeners using the internal wrapped delta, refreshes the owner, redraws the whole moved viewport, and only then restores the caller-visible horizontal delta.
+- `FUN_004031e0` is the small combined-axis guard above that helper. It skips the scroll path entirely when both requested deltas are zero.
+- `FUN_00403200` and `FUN_00403230` are the one-axis wrappers above the same helper. They force the unused axis to zero and return the caller-facing horizontal or vertical movement after the wrapped/clamped update completes.
+- `FUN_00402c30` is the shared present helper underneath the redraw wrappers. It dword-aligns the clipped world span, asks the deeper scene renderer to refresh the backbuffer, projects the span into client space, blits it to the target DC, and optionally draws the magenta focus rectangle overlay.
+- `FUN_00402f00` is that deeper scene renderer. It walks the visible background tile rows and columns, gathers every visible actor with its draw depth, renders them front-to-back, and then draws the optional cached auxiliary overlay sprite when one is active.
+- The bottom edge is clamped to the fixed `0x4b0` world height. When a resize would run below that edge, the top coordinate is shifted upward by the overflow amount so the buffer height stays intact.
+- The recovered portable module lives in `reconstruction/engine/src/creatures_media_display.c` and is covered by the shared slice harness. The remaining unresolved pieces directly above this layer are the higher-level viewport-follow/chase callers (`FUN_00403450`, `FUN_004037c0`, and `FUN_004039c0`) that decide when to feed motion into the recovered scroll core.
