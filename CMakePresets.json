@@ -1,0 +1,195 @@
+{
+  "version": 3,
+  "cmakeMinimumRequired": {
+    "major": 3,
+    "minor": 20,
+    "patch": 0
+  },
+  "configurePresets": [
+    {
+      "name": "native-core",
+      "displayName": "Native Core",
+      "description": "Shared slice harness plus the core Creatures, Launcher, and remove.exe app surfaces.",
+      "generator": "Unix Makefiles",
+      "binaryDir": "${sourceDir}/build/cmake/native-core",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Debug",
+        "CREATURES_BUILD_SLICE": "ON",
+        "CREATURES_BUILD_CORE_BINARIES": "ON",
+        "CREATURES_BUILD_PREVIEW_TOOLS": "OFF",
+        "CREATURES_BUILD_SCIENCE_TOOLS": "OFF",
+        "CREATURES_BUILD_HEALTH_TOOLS": "OFF",
+        "CREATURES_BUILD_BREEDER_TOOLS": "OFF"
+      }
+    },
+    {
+      "name": "native-kits",
+      "displayName": "Native Kits",
+      "description": "Core binaries plus the current Science, Health, and Breeder kit probes.",
+      "inherits": "native-core",
+      "binaryDir": "${sourceDir}/build/cmake/native-kits",
+      "cacheVariables": {
+        "CREATURES_BUILD_PREVIEW_TOOLS": "OFF",
+        "CREATURES_BUILD_SCIENCE_TOOLS": "ON",
+        "CREATURES_BUILD_HEALTH_TOOLS": "ON",
+        "CREATURES_BUILD_BREEDER_TOOLS": "ON"
+      }
+    },
+    {
+      "name": "native-all",
+      "displayName": "Native All Organized Targets",
+      "description": "Core binaries, preview tools, and the current kit-focused organized targets.",
+      "inherits": "native-kits",
+      "binaryDir": "${sourceDir}/build/cmake/native-all",
+      "cacheVariables": {
+        "CREATURES_BUILD_PREVIEW_TOOLS": "ON"
+      }
+    },
+    {
+      "name": "windows-core",
+      "displayName": "Windows Core (MinGW)",
+      "description": "Cross-compile the core binaries with the same 32-bit MinGW toolchain used by the shell scripts.",
+      "generator": "Unix Makefiles",
+      "binaryDir": "${sourceDir}/build/cmake/windows-core",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Release",
+        "CMAKE_SYSTEM_NAME": "Windows",
+        "CMAKE_C_COMPILER": "/opt/homebrew/bin/i686-w64-mingw32-gcc",
+        "CREATURES_BUILD_SLICE": "ON",
+        "CREATURES_BUILD_CORE_BINARIES": "ON",
+        "CREATURES_BUILD_PREVIEW_TOOLS": "OFF",
+        "CREATURES_BUILD_SCIENCE_TOOLS": "OFF",
+        "CREATURES_BUILD_HEALTH_TOOLS": "OFF",
+        "CREATURES_BUILD_BREEDER_TOOLS": "OFF"
+      }
+    },
+    {
+      "name": "windows-vm-base",
+      "hidden": true,
+      "generator": "Ninja",
+      "binaryDir": "${sourceDir}/build/cmake/${presetName}",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Debug"
+      }
+    },
+    {
+      "name": "windows-vm-llvm-mingw-i686",
+      "hidden": true,
+      "inherits": "windows-vm-base",
+      "toolchainFile": "${sourceDir}/cmake/toolchains/windows_vm_llvm_mingw_i686.cmake"
+    },
+    {
+      "name": "windows-vm-llvm-mingw-aarch64",
+      "hidden": true,
+      "inherits": "windows-vm-base",
+      "toolchainFile": "${sourceDir}/cmake/toolchains/windows_vm_llvm_mingw_aarch64.cmake"
+    },
+    {
+      "name": "windows-vm-core",
+      "displayName": "Windows VM Core",
+      "description": "Native Windows configure for the shared-folder VM workflow using the committed llvm-mingw i686 toolchain preset.",
+      "inherits": "windows-vm-llvm-mingw-i686",
+      "cacheVariables": {
+        "CREATURES_BUILD_SLICE": "ON",
+        "CREATURES_BUILD_CORE_BINARIES": "ON",
+        "CREATURES_BUILD_PREVIEW_TOOLS": "OFF",
+        "CREATURES_BUILD_SCIENCE_TOOLS": "OFF",
+        "CREATURES_BUILD_HEALTH_TOOLS": "OFF",
+        "CREATURES_BUILD_BREEDER_TOOLS": "OFF"
+      }
+    },
+    {
+      "name": "windows-vm-kits",
+      "displayName": "Windows VM Kits",
+      "description": "Native Windows configure for the Science, Health, and Breeder kit probe surfaces in the Windows VM using llvm-mingw i686.",
+      "inherits": "windows-vm-core",
+      "cacheVariables": {
+        "CREATURES_BUILD_SCIENCE_TOOLS": "ON",
+        "CREATURES_BUILD_HEALTH_TOOLS": "ON",
+        "CREATURES_BUILD_BREEDER_TOOLS": "ON"
+      }
+    },
+    {
+      "name": "windows-vm-core-arm64",
+      "displayName": "Windows VM Core ARM64",
+      "description": "Native Windows configure for the shared-folder VM workflow using the committed llvm-mingw ARM64 toolchain preset.",
+      "inherits": "windows-vm-llvm-mingw-aarch64",
+      "cacheVariables": {
+        "CREATURES_BUILD_SLICE": "ON",
+        "CREATURES_BUILD_CORE_BINARIES": "ON",
+        "CREATURES_BUILD_PREVIEW_TOOLS": "OFF",
+        "CREATURES_BUILD_SCIENCE_TOOLS": "OFF",
+        "CREATURES_BUILD_HEALTH_TOOLS": "OFF",
+        "CREATURES_BUILD_BREEDER_TOOLS": "OFF"
+      }
+    },
+    {
+      "name": "windows-vm-kits-arm64",
+      "displayName": "Windows VM Kits ARM64",
+      "description": "Native Windows configure for the Science, Health, and Breeder kit probe surfaces in the Windows VM using llvm-mingw ARM64.",
+      "inherits": "windows-vm-core-arm64",
+      "cacheVariables": {
+        "CREATURES_BUILD_SCIENCE_TOOLS": "ON",
+        "CREATURES_BUILD_HEALTH_TOOLS": "ON",
+        "CREATURES_BUILD_BREEDER_TOOLS": "ON"
+      }
+    }
+  ],
+  "buildPresets": [
+    {
+      "name": "native-core",
+      "configurePreset": "native-core"
+    },
+    {
+      "name": "native-kits",
+      "configurePreset": "native-kits"
+    },
+    {
+      "name": "native-all",
+      "configurePreset": "native-all"
+    },
+    {
+      "name": "windows-core",
+      "configurePreset": "windows-core"
+    },
+    {
+      "name": "windows-vm-core",
+      "configurePreset": "windows-vm-core"
+    },
+    {
+      "name": "windows-vm-kits",
+      "configurePreset": "windows-vm-kits"
+    },
+    {
+      "name": "windows-vm-core-arm64",
+      "configurePreset": "windows-vm-core-arm64"
+    },
+    {
+      "name": "windows-vm-kits-arm64",
+      "configurePreset": "windows-vm-kits-arm64"
+    }
+  ],
+  "testPresets": [
+    {
+      "name": "native-core",
+      "configurePreset": "native-core",
+      "output": {
+        "outputOnFailure": true
+      }
+    },
+    {
+      "name": "windows-vm-core",
+      "configurePreset": "windows-vm-core",
+      "output": {
+        "outputOnFailure": true
+      }
+    },
+    {
+      "name": "windows-vm-core-arm64",
+      "configurePreset": "windows-vm-core-arm64",
+      "output": {
+        "outputOnFailure": true
+      }
+    }
+  ]
+}
